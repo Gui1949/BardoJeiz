@@ -1,10 +1,6 @@
 # BardoJeiz
 > Se o Instagram fosse bom, seria o Bar do Jeiz
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 Rede social inteiramente programa em React Native e Expo, rodando o seu backend no Google Cloud. O Bar do Jeiz é uma rede social para quem já está cansado das redes sociais chatas e repetitivas. Aqui você posta o que quiser, e já era, sem mais nem menos.
 
 ## Histórico de lançamentos
