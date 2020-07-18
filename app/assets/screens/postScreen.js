@@ -15,10 +15,11 @@ import {
   View,
   Platform,
 } from "react-native";
-import { Constants } from "expo";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import { AsyncStorage } from "react-native";
+
+let pickerResult = '';
 
 export default class postScreen extends Component {
   state = {
@@ -57,34 +58,22 @@ export default class postScreen extends Component {
         ></TextInput>
         {this._maybeRenderImage()}
         {this._maybeRenderUploadingOverlay()}
+        <Button
+          onPress={() => this._handleImagePicked(pickerResult)}
+          title="Postar"
+          style={styles.maybeRenderImageText}
+        />
       </KeyboardAvoidingView>
     );
   }
 
   _maybeRenderUploadingOverlay = () => {
     if (this.state.uploading) {
-      //   return (
-      //     <View style={[StyleSheet.absoluteFill, styles.maybeRenderUploading]}>
-      //       <ActivityIndicator color="#fff" size="large" />
-      //     </View>
-      //   );
+      return null;
     }
   };
 
   _maybeRenderImage = () => {};
-
-  _share = () => {
-    Share.share({
-      message: this.state.image,
-      title: "Check out this photo",
-      url: this.state.image,
-    });
-  };
-
-  _copyToClipboard = () => {
-    Clipboard.setString(this.state.image);
-    alert("Copied image URL to clipboard");
-  };
 
   _takePhoto = async () => {
     const { status: cameraPerm } = await Permissions.askAsync(
@@ -95,14 +84,10 @@ export default class postScreen extends Component {
       Permissions.CAMERA_ROLL
     );
 
-    // only if user allows permission to camera AND camera roll
     if (cameraPerm === "granted" && cameraRollPerm === "granted") {
-      let pickerResult = await ImagePicker.launchCameraAsync({
-        allowsEditing: true,
-        aspect: [4, 3],
+      pickerResult = await ImagePicker.launchCameraAsync({
+        allowsEditing: false,
       });
-
-      this._handleImagePicked(pickerResult);
     }
   };
 
@@ -112,12 +97,9 @@ export default class postScreen extends Component {
     );
 
     if (cameraRollPerm === "granted") {
-      let pickerResult = await ImagePicker.launchImageLibraryAsync({
-        allowsEditing: true,
-        aspect: [4, 3],
+      pickerResult = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: false,
       });
-
-      this._handleImagePicked(pickerResult);
     }
   };
 
@@ -141,10 +123,10 @@ export default class postScreen extends Component {
         });
       }
     } catch (e) {
+      Alert.alert("Erro", "Insira uma imagem né PORRA");
       console.log({ uploadResponse });
       console.log({ uploadResult });
       console.log({ e });
-      // alert("Upload failed, sorry :(");
     } finally {
       this.setState({
         uploading: false,
@@ -181,7 +163,12 @@ async function uploadImageAsync(uri, joao_carlos) {
         "Content-Type": "multipart/form-data",
       },
     };
-    Alert.alert("Show!", "A imagem foi enviada");
+    Alert.alert(
+      "Show!",
+      "A imagem foi enviada",
+      [{ text: "OK", onPress: () => (joao_carlos = "") }],
+      { cancelable: false }
+    );
     return fetch(apiUrl, options);
   }
 }
@@ -239,7 +226,6 @@ const styles = StyleSheet.create({
     width: 250,
   },
   maybeRenderImageText: {
-    paddingHorizontal: 10,
-    paddingVertical: 10,
+    marginTop: 20,
   },
 });

@@ -16,9 +16,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
-import Constants from "expo-constants";
-import logo from "../bar.png";
-import WelcomeScreen from "./WelcomeScreen";
 
 let likeCounter = [];
 let dislikeCounter = [];
@@ -186,12 +183,15 @@ export default class ViewImageScreen extends React.Component {
               style={styles.FloatingButtonStyle}
             />
           </TouchableOpacity>
-          <ScrollView>
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              // onRefresh={() => this.componentDidMount()}
-              onRefresh={this._onRefresh.bind(this)}
-            />
+          <ScrollView
+            removeClippedSubviews
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh.bind(this)}
+              />
+            }
+          >
             {antenor_albuquerque.map((antenor_albuquerque) => (
               <View style={styles.Viewimg} key={i}>
                 {(() => {
@@ -233,7 +233,6 @@ export default class ViewImageScreen extends React.Component {
                     id={"buttonLike_" + window["Object" + i][0]}
                     key={i}
                     style={{
-                      // borderRadius: 12,
                       width: "50%",
                       height: 46,
                       borderTopWidth: 1.5,
@@ -242,9 +241,6 @@ export default class ViewImageScreen extends React.Component {
                       justifyContent: "center",
                       alignItems: "center",
                       fontSize: 13,
-                      // backgroundColor: this.state[
-                      //   "buttonLikeColor_" + window["Object" + i][0]
-                      // ],
                     }}
                     onPress={() =>
                       this.likeColor(
@@ -272,14 +268,12 @@ export default class ViewImageScreen extends React.Component {
                         ],
                       }}
                     >
-                      {/* Gostei */}
                       {window["Object" + i][6]}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     id={"buttonDislike_" + window["Object" + i][0]}
                     style={{
-                      // borderRadius: 12,
                       width: "50%",
                       height: 46,
                       borderTopWidth: 1.5,
@@ -288,9 +282,6 @@ export default class ViewImageScreen extends React.Component {
                       justifyContent: "center",
                       alignItems: "center",
                       fontSize: 13,
-                      // backgroundColor: this.state[
-                      //   "buttondisLikeColor_" + window["Object" + i][0]
-                      // ],
                     }}
                     onPress={() =>
                       this.dislikeColor(
@@ -386,7 +377,7 @@ const styles = StyleSheet.create({
     height: 450,
     paddingTop: 0,
     borderBottomWidth: 0.8,
-    borderColor: "#f0f0f0", //
+    borderColor: "#f0f0f0",
     flexDirection: "column",
     flex: 1,
   },
@@ -457,5 +448,3 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
-
-// export default ViewImageScreen;
