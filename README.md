@@ -7,12 +7,12 @@ Rede social inteiramente programa em React Native e Expo, rodando o seu backend 
 
 * 0.0.1
     * Upload inicial
+* 0.0.2
+    * Posts carregando conforme scroll. Removida ferramenta de corte e agora para postar, o usuário pode inserir a descrição após escolher/tirar a foto.
 
 ## Meta
 
 Guilherme Floriano – [@xxpoliclinicaxx](https://twitter.com/xxpoliclinicaxx) – guilhermesantiago12@gmail.com
-
-Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 [https://github.com/Gui1949](https://github.com/Gui1949/)
 
