@@ -16,6 +16,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
+import postScreen from "./postScreen";
 
 let likeCounter = [];
 let dislikeCounter = [];
@@ -220,6 +221,7 @@ export default class ViewImageScreen extends React.Component {
                   </View>
                 </View>
                 <Image
+                  
                   source={{ uri: window["Object" + i][4] }}
                   style={styles.img}
                 />
