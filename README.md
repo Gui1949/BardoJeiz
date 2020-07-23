@@ -9,6 +9,8 @@ Rede social inteiramente programa em React Native e Expo, rodando o seu backend 
     * Upload inicial
 * 0.0.2
     * Posts carregando conforme scroll. Removida ferramenta de corte e agora para postar, o usuário pode inserir a descrição após escolher/tirar a foto.
+* 0.0.3
+    * Adicionado o fabuloso gerador de nickname
 
 ## Meta
 
