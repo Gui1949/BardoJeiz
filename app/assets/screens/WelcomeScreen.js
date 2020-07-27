@@ -79,7 +79,6 @@ function generate_nick() {
     name1[getRandomInt(0, name1.length)] +
     " " +
     name2[getRandomInt(0, name2.length)];
-  console.log(name);
 }
 
 const WelcomeScreen = ({ navigation }) => {

@@ -21,7 +21,7 @@ import { withNavigation } from 'react-navigation';
 let likeCounter = [];
 let dislikeCounter = [];
 
-export default class ViewImageScreen extends React.Component {
+export default class ViewVideoScreen extends React.Component {
   state = {
     persons: {
       data: [],
@@ -39,7 +39,7 @@ export default class ViewImageScreen extends React.Component {
   }
 
   async componentDidMount() {
-    axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
+    axios.get(`http://34.95.243.9:80/data/video_file`).then((res) => {
       const persons = res.data;
       this.setState({ persons });
     });
@@ -180,7 +180,7 @@ export default class ViewImageScreen extends React.Component {
             style={styles.postButton}
           >
             <FontAwesomeIcon
-              icon={["far", "image"]}
+              icon={["fas", "video"]}
               style={styles.FloatingButtonStyle}
             />
           </TouchableOpacity>
@@ -206,7 +206,7 @@ export default class ViewImageScreen extends React.Component {
                   <Image
                     key={window["Object" + i][1]}
                     source={{
-                      uri: window["Object" + i][2],
+                      uri: 'https://storage.needpix.com/rsynced_images/videos-2277019_1280.png',
                     }}
                     style={styles.avatar}
                   />
@@ -220,9 +220,13 @@ export default class ViewImageScreen extends React.Component {
                     </Text>
                   </View>
                 </View>
-                <Image
+                <Video
                   source={{ uri: window["Object" + i][4] }}
                   style={styles.img}
+                  resizeMode="cover"
+                  useNativeControls
+                  isLooping
+                  default
                 />
                 <View style={styles.description}>
                   <Text numberOfLines={1} style={styles.imageDescription}>
@@ -333,9 +337,9 @@ const styles = StyleSheet.create({
     right: 30,
     bottom: 30,
     zIndex: 1,
-    backgroundColor: "#3498db",
+    backgroundColor: "#e74c3c",
     borderRadius: 50,
-    borderColor: "#2980b9",
+    borderColor: "#c0392b",
     borderWidth: 2,
   },
 

@@ -19,7 +19,7 @@ import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import { AsyncStorage } from "react-native";
 
-let pickerResult = '';
+let pickerResult = "";
 
 export default class postScreen extends Component {
   state = {
@@ -37,13 +37,13 @@ export default class postScreen extends Component {
       >
         <StatusBar barStyle="default" />
 
-        <Text style={styles.exampleText}>
-          Você quer mesmo postar uma foto no Bar do Jeiz?
-        </Text>
-
         <Button onPress={this._pickImage} title="Pegar uma imagem da galeria" />
 
+        <Button onPress={this._pickVideo} title="Pegar um video da galeria" />
+
         <Button onPress={this._takePhoto} title="Tirar uma foto agora" />
+
+        <Button onPress={this._takeVideo} title="Filmar agora" />        
 
         <TextInput
           ref={(el) => {
@@ -91,6 +91,24 @@ export default class postScreen extends Component {
     }
   };
 
+  _takeVideo = async () => {
+    const { status: cameraPerm } = await Permissions.askAsync(
+      Permissions.CAMERA
+    );
+
+    const { status: cameraRollPerm } = await Permissions.askAsync(
+      Permissions.CAMERA_ROLL
+    );
+
+    if (cameraPerm === "granted" && cameraRollPerm === "granted") {
+      pickerResult = await ImagePicker.launchCameraAsync({
+        allowsEditing: false,
+        quality:0.3,
+        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+      });
+    }
+  };
+
   _pickImage = async () => {
     const { status: cameraRollPerm } = await Permissions.askAsync(
       Permissions.CAMERA_ROLL
@@ -98,6 +116,20 @@ export default class postScreen extends Component {
 
     if (cameraRollPerm === "granted") {
       pickerResult = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: false,
+      });
+    }
+  };
+
+  _pickVideo = async () => {
+    const { status: cameraRollPerm } = await Permissions.askAsync(
+      Permissions.CAMERA_ROLL
+    );
+
+    if (cameraRollPerm === "granted") {
+      pickerResult = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+        quality:0.3,
         allowsEditing: false,
       });
     }
