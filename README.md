@@ -7,12 +7,20 @@ Rede social inteiramente programa em React Native e Expo, rodando o seu backend 
 
 * 0.0.1
     * Upload inicial
+* 0.0.2
+    * Posts carregando conforme scroll. 
+    * Removida ferramenta de corte
+    * O usuário pode inserir a descrição após escolher/tirar a foto.
+* 0.0.3
+    * Adicionado o fabuloso gerador de nickname
+* 0.0.4
+    * Adicionada a opção de upload de vídeos 
+    * Arrumado o tamanho da descrição (anteriormente cortava algumas letras) 
+    * Alterada a barra superior do app, agora com dois botões nas telas principais
 
 ## Meta
 
 Guilherme Floriano – [@xxpoliclinicaxx](https://twitter.com/xxpoliclinicaxx) – guilhermesantiago12@gmail.com
-
-Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 [https://github.com/Gui1949](https://github.com/Gui1949/)
 

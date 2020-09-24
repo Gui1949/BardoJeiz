@@ -9,10 +9,18 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
+<<<<<<< HEAD
 import { Image as RneImage } from "react-native-elements";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
 import postScreen from "./postScreen";
+=======
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import axios from "axios";
+import postScreen from "./postScreen";
+import { Video } from "expo-av";
+import { withNavigation } from 'react-navigation';
+>>>>>>> f00ad932d46fb32e04fd151f9af0234293c6d200
 
 let likeCounter = [];
 let dislikeCounter = [];
@@ -180,7 +188,7 @@ export default class ViewImageScreen extends React.Component {
       let antenor_albuquerque = this.state.persons.data;
       let i = -1;
       return (
-        <>
+        <>     
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => this.props.navigation.navigate("post")}
