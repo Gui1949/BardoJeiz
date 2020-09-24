@@ -132,14 +132,13 @@ body {
 }
 
 #master {
-  padding-top: 315vh;
-  padding-bottom: 10vh;
+  margin-bottom: 10vh;
 }
 
 #post_feed {
   background-color: #ffffff;
   margin-top: 2vh;
-  padding: 0.5vh 3vh 4vh 3vh;
+  padding: 1vh 3vh 2vh 3vh;
   border-radius: 1vh;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
@@ -156,7 +155,7 @@ body {
 }
 
 #header {
-  margin-bottom: 1.5vh;
+  margin-bottom: 1.8vh;
 }
 
 .username_data_post {
@@ -168,6 +167,10 @@ body {
   font-weight: 500;
 }
 
+.username {
+  font-size: 2vh;
+}
+
 .data_post {
   font-size: 1.6vh;
 }
@@ -175,7 +178,7 @@ body {
 .reacao_btn {
   margin-top: 1vh;
   width: 25vh;
-  height: 6vh;
+  height: 7vh;
   border: 0px;
   border-top: 1px solid #F0F0F7;
 }
@@ -195,3 +198,4 @@ body {
 #font_like {
   font-size: 3vh;
 }
+
