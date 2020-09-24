@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
   Image,
+  ImageBackground,
+  Button,
   RefreshControl,
+  FlatList,
   ActivityIndicator,
   StyleSheet,
   View,
@@ -9,17 +12,16 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import { Image as RneImage } from "react-native-elements";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
 import postScreen from "./postScreen";
+import { Video } from "expo-av";
+import { withNavigation } from 'react-navigation';
 
 let likeCounter = [];
 let dislikeCounter = [];
-let catchLikes = [];
-let catchDislikes = [];
 
-export default class ViewImageScreen extends React.Component {
+export default class ViewVideoScreen extends React.Component {
   state = {
     persons: {
       data: [],
@@ -37,7 +39,7 @@ export default class ViewImageScreen extends React.Component {
   }
 
   async componentDidMount() {
-    axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
+    axios.get(`http://34.95.243.9:80/data/video_file`).then((res) => {
       const persons = res.data;
       this.setState({ persons });
     });
@@ -48,25 +50,26 @@ export default class ViewImageScreen extends React.Component {
     var str = "";
     str = i.replace(/[^0-9\.]+/g, "");
 
-    if (catchDislikes.includes(str)){
-      var dislikeLabelColor_ = "#000000";
-      this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
-      dislikeCounter[str] = undefined;
+    // if (currentColorDislike == "#e74c3c") {
+    //   currentColorDislike = "#ffffff";
+    //   this.setState({ ["buttondisLikeColor_" + str]: currentColorDislike });
+    //   var dislikeLabelColor_ = "#e74c3c";
+    //   this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
+    //   dislikeCounter[str] = undefined;
 
-      fetch("http://34.95.243.9:80/data/del_dislike", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ID: str,
-        }),
-      });      
-    }
-
+    //   fetch("http://192.168.0.3:80/data/del_dislike", {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       ID: str,
+    //     }),
+    //   });
+    //   this.componentDidMount();
+    // }
     if (likeCounter[str] == undefined) {
-      catchLikes.push(str); 
       var likeLabelColor_ = "#2980b9";
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = 0;
@@ -82,14 +85,7 @@ export default class ViewImageScreen extends React.Component {
         }),
       });
     } else {
-      if (likeCounter[str] == 0) {        
-        for (var i = 0; i < catchLikes.length; i++) {
-          if (catchLikes[i] === str) {
-            catchLikes.splice(i, 1);
-            console.log(JSON.stringify(catchLikes));
-          }
-        }
-
+      if (likeCounter[str] == 0) {
         var likeLabelColor_ = "#000000";
         this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
         likeCounter[str] = undefined;
@@ -112,30 +108,31 @@ export default class ViewImageScreen extends React.Component {
     this.componentDidMount();
     var str = "";
     str = i.replace(/[^0-9\.]+/g, "");
-    catchDislikes.push(str);
-    
-    if (catchLikes.includes(str)){
-      var likeLabelColor_ = "#000000";
-      this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
-      likeCounter[str] = undefined;
 
-      fetch("http://34.95.243.9:80/data/del_like", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ID: str,
-        }),
-      });      
-    }
+    // console.log(currentColor);
+    // if (currentColor == "#34b7f1") {
+    //   currentColor = "#ffffff";
+    //   this.setState({ ["buttonLikeColor_" + str]: currentColor });
+    //   var likeLabelColor_ = "#34b7f1";
+    //   this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
+    //   likeCounter[str] = undefined;
 
-    if (dislikeCounter[str] == undefined) {      
+    //   fetch("http://192.168.0.3:80/data/del_like", {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       ID: str,
+    //     }),
+    //   });
+    // }
+    if (dislikeCounter[str] == undefined) {
       var dislikeLabelColor_ = "#c0392b";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = 0;
-            
+
       fetch("http://34.95.243.9:80/data/dislike", {
         method: "POST",
         headers: {
@@ -147,11 +144,6 @@ export default class ViewImageScreen extends React.Component {
         }),
       });
     } else {
-      for (var i = 0; i < catchDislikes.length; i++) {
-        if (catchDislikes[i] === str) {
-          catchDislikes.splice(i, 1);
-        }
-      }
       var dislikeLabelColor_ = "#000000";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = undefined;
@@ -170,6 +162,7 @@ export default class ViewImageScreen extends React.Component {
 
   render() {
     let claudinho_sensacao = this.state.persons.data[0];
+
     if (claudinho_sensacao == undefined) {
       return (
         <View style={[StyleSheet.absoluteFill, styles.maybeRenderUploading]}>
@@ -180,14 +173,14 @@ export default class ViewImageScreen extends React.Component {
       let antenor_albuquerque = this.state.persons.data;
       let i = -1;
       return (
-        <>
+        <>     
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => this.props.navigation.navigate("post")}
             style={styles.postButton}
           >
             <FontAwesomeIcon
-              icon={["far", "image"]}
+              icon={["fas", "video"]}
               style={styles.FloatingButtonStyle}
             />
           </TouchableOpacity>
@@ -213,7 +206,7 @@ export default class ViewImageScreen extends React.Component {
                   <Image
                     key={window["Object" + i][1]}
                     source={{
-                      uri: window["Object" + i][2],
+                      uri: 'https://storage.needpix.com/rsynced_images/videos-2277019_1280.png',
                     }}
                     style={styles.avatar}
                   />
@@ -227,9 +220,13 @@ export default class ViewImageScreen extends React.Component {
                     </Text>
                   </View>
                 </View>
-                <Image
+                <Video
                   source={{ uri: window["Object" + i][4] }}
                   style={styles.img}
+                  resizeMode="cover"
+                  useNativeControls
+                  isLooping
+                  default
                 />
                 <View style={styles.description}>
                   <Text numberOfLines={1} style={styles.imageDescription}>
@@ -340,9 +337,9 @@ const styles = StyleSheet.create({
     right: 30,
     bottom: 30,
     zIndex: 1,
-    backgroundColor: "#3498db",
+    backgroundColor: "#e74c3c",
     borderRadius: 50,
-    borderColor: "#2980b9",
+    borderColor: "#c0392b",
     borderWidth: 2,
   },
 
@@ -393,12 +390,12 @@ const styles = StyleSheet.create({
   avatarName: {
     fontWeight: "bold",
     paddingLeft: 7,
-    paddingTop: Platform.OS === "android" ? 1 : 3,
+    paddingTop: 3,
   },
 
   avatarDescription: {
     paddingLeft: 7,
-    paddingTop: Platform.OS === "android" ? 0 : 2,
+    paddingTop: 2,
     fontSize: 12,
   },
 

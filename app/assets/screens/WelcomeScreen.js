@@ -17,9 +17,74 @@ import { createStackNavigator } from "@react-navigation/stack";
 import logo from "../bar.png";
 import { AsyncStorage } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useRef, useEffect } from "react";
+let name = "";
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+var name1 = [
+  "Zé",
+  "Jão",
+  "Marcin",
+  "Chico",
+  "Tonho",
+  "Tião",
+  "Juruna",
+  "Carlinho",
+  "Jefso",
+  "Pedrin",
+  "Marco",
+  "Serjo",
+  "Adilson",
+  "Cleito",
+  "Cabeça de",
+  "Marquinho",
+  "Jeremias",
+  "Ailto",
+  "Cesinho",
+  "Beto",
+  "Jurandir",
+  "Doglinha",
+];
+
+var name2 = [
+  "Bostola",
+  "Carniça",
+  "Fiofó",
+  "Mortandela",
+  "Tribufu",
+  "Bilau",
+  "da Pindaíba",
+  "Boca Quente",
+  "Boca de Ventosa",
+  "Boca de Maçarico",
+  "Corno Manso",
+  "Urucubaca",
+  "Psicopata",
+  "Estrupicio",
+  "Pereba",
+  "do Furunculo",
+  "Chulapa",
+  "Buzanfa",
+  "do Capiroto",
+  "Pingola",
+  "Banheiro de Rodoviaria",
+  "Trabuco",
+];
+
+function generate_nick() {
+  name =
+    name1[getRandomInt(0, name1.length)] +
+    " " +
+    name2[getRandomInt(0, name2.length)];
+}
 
 const WelcomeScreen = ({ navigation }) => {
   const [text, setText] = useState("");
+  const todoInput = useRef();
+
   return (
     <ImageBackground
       style={styles.background}
@@ -35,24 +100,38 @@ const WelcomeScreen = ({ navigation }) => {
           <Image source={logo} style={styles.logo} />
 
           <Text style={styles.title}>Fica logo ali!</Text>
+          <TouchableOpacity
+            onPress={() => {
+              generate_nick();
+              setText(name);
+            }}
+            style={styles.generate_nick}
+          >
+            <Text style={styles.generate_nick_txt}>Gerar Nick</Text>
+          </TouchableOpacity>
         </View>
 
         <TextInput
+          defaultValue={text}
+          ref={todoInput}
+          onTouchStart={() => setText("")}
+          onChangeText={(text) => setText(text)}
           placeholder="Username"
           id="txt_username"
           style={styles.username_text}
-          onChangeText={(text) => setText(text)}
         ></TextInput>
       </KeyboardAvoidingView>
 
       <TouchableOpacity
         style={styles.navButton}
         onPress={() => {
-          if (text == "") {
+          todoInput.current = text;
+          if (todoInput.current == "") {
             Alert.alert("Erro", "Insira um username");
           } else {
             navigation.navigate("home");
             AsyncStorage.setItem("username", text);
+            console.log(text);
           }
         }}
       >
@@ -62,13 +141,15 @@ const WelcomeScreen = ({ navigation }) => {
   );
 };
 
-// function WelcomeScreen({ navigation }) {}
-
 const styles = StyleSheet.create({
   txt_login: {
     color: "#fff",
     alignSelf: "center",
     fontSize: 16,
+  },
+
+  generate_nick_txt: {
+    color: "#3498db",
   },
 
   username_text: {
@@ -81,6 +162,18 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     flexDirection: "row",
     borderColor: "#7f8c8d",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: 13,
+  },
+
+  generate_nick: {
+    alignSelf: "center",
+    top: 0,
+    flexShrink: 1,
+    position: "relative",
+    height: 46,
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     fontSize: 13,
