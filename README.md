@@ -17,7 +17,10 @@ Rede social inteiramente programa em React Native e Expo, rodando o seu backend 
     * Adicionada a opção de upload de vídeos 
     * Arrumado o tamanho da descrição (anteriormente cortava algumas letras) 
     * Alterada a barra superior do app, agora com dois botões nas telas principais
-
+* 0.0.5
+    * Remoção de bugs
+    * Like e dislike agora desmarcam um ao outro
+    
 ## Meta
 
 Guilherme Floriano – [@xxpoliclinicaxx](https://twitter.com/xxpoliclinicaxx) – guilhermesantiago12@gmail.com
