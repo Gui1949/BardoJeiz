@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import "../../assets/styles/global.css";
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,8 +9,19 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
+import axios from "axios";
 
 function Feed() {
+  const [ler_dados, setLer] = useState(0);
+  const contador_request = 0
+
+  axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
+    const persons = res.data;
+    const item1 = persons.data[0];
+    const arrayitem = Object.values(item1);
+    setLer(arrayitem);
+  });
+
   return (
     <>
       <link
@@ -28,15 +39,15 @@ function Feed() {
 
       <div id="master">
         <List className="lista_feed">
-        <div id="post_feed">
+          <div id="post_feed">
             <div id="header">
               <Avatar
                 className="avatar"
-                alt="Nome do caboclo"
+                alt={ler_dados[1]}
                 src="/static/images/avatar/2.jpg"
               />
               <ListItemText
-                primary={<p className="username">Nome do caboclo</p>}
+                primary={<p className="username">{ler_dados[1]}</p>}
                 className="username_data_post"
                 secondary={
                   <React.Fragment>
@@ -46,144 +57,15 @@ function Feed() {
                       className="nav__icon"
                       color="textPrimary"
                     ></Typography>
-                    {<p className="data_post">23/09/2020 - 18:01</p>}
+                    {<p className="data_post">{ler_dados[3]}</p>}
                   </React.Fragment>
                 }
               />
             </div>
-            <img
-              className="conteudo"
-              src="https://www.gazetadigital.com.br/uploads/webdisco/2015/10/05/jpg/588x441/161cba3c8aaa9c200ac52aba7c8017d7.jpg"
-            />
+            <img className="conteudo" src={ler_dados[4]} />
             <br />
             <ListItemText
-              primary={<p className="descricao">Ronaldo</p>}
-              className="username_data_post"
-            />
-            <button className="reacao_btn" id="btn_like">
-              <i className="material-icons nav__link--active" id="font_like">
-                thumb_up
-              </i>
-            </button>
-            <button className="reacao_btn" id="btn_dislike">
-              <i className="material-icons" id="font_dislike">
-                thumb_down
-              </i>
-            </button>
-          </div>        <div id="post_feed">
-            <div id="header">
-              <Avatar
-                className="avatar"
-                alt="Nome do caboclo"
-                src="/static/images/avatar/2.jpg"
-              />
-              <ListItemText
-                primary={<p className="username">Nome do caboclo</p>}
-                className="username_data_post"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className="nav__icon"
-                      color="textPrimary"
-                    ></Typography>
-                    {<p className="data_post">23/09/2020 - 18:01</p>}
-                  </React.Fragment>
-                }
-              />
-            </div>
-            <img
-              className="conteudo"
-              src="https://www.gazetadigital.com.br/uploads/webdisco/2015/10/05/jpg/588x441/161cba3c8aaa9c200ac52aba7c8017d7.jpg"
-            />
-            <br />
-            <ListItemText
-              primary={<p className="descricao">Ronaldo</p>}
-              className="username_data_post"
-            />
-            <button className="reacao_btn" id="btn_like">
-              <i className="material-icons nav__link--active" id="font_like">
-                thumb_up
-              </i>
-            </button>
-            <button className="reacao_btn" id="btn_dislike">
-              <i className="material-icons" id="font_dislike">
-                thumb_down
-              </i>
-            </button>
-          </div>        <div id="post_feed">
-            <div id="header">
-              <Avatar
-                className="avatar"
-                alt="Nome do caboclo"
-                src="/static/images/avatar/2.jpg"
-              />
-              <ListItemText
-                primary={<p className="username">Nome do caboclo</p>}
-                className="username_data_post"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className="nav__icon"
-                      color="textPrimary"
-                    ></Typography>
-                    {<p className="data_post">23/09/2020 - 18:01</p>}
-                  </React.Fragment>
-                }
-              />
-            </div>
-            <img
-              className="conteudo"
-              src="https://www.gazetadigital.com.br/uploads/webdisco/2015/10/05/jpg/588x441/161cba3c8aaa9c200ac52aba7c8017d7.jpg"
-            />
-            <br />
-            <ListItemText
-              primary={<p className="descricao">Ronaldo</p>}
-              className="username_data_post"
-            />
-            <button className="reacao_btn" id="btn_like">
-              <i className="material-icons nav__link--active" id="font_like">
-                thumb_up
-              </i>
-            </button>
-            <button className="reacao_btn" id="btn_dislike">
-              <i className="material-icons" id="font_dislike">
-                thumb_down
-              </i>
-            </button>
-          </div>        <div id="post_feed">
-            <div id="header">
-              <Avatar
-                className="avatar"
-                alt="Nome do caboclo"
-                src="/static/images/avatar/2.jpg"
-              />
-              <ListItemText
-                primary={<p className="username">Nome do caboclo</p>}
-                className="username_data_post"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className="nav__icon"
-                      color="textPrimary"
-                    ></Typography>
-                    {<p className="data_post">23/09/2020 - 18:01</p>}
-                  </React.Fragment>
-                }
-              />
-            </div>
-            <img
-              className="conteudo"
-              src="https://www.gazetadigital.com.br/uploads/webdisco/2015/10/05/jpg/588x441/161cba3c8aaa9c200ac52aba7c8017d7.jpg"
-            />
-            <br />
-            <ListItemText
-              primary={<p className="descricao">Ronaldo</p>}
+              primary={<p className="descricao">{ler_dados[5]}</p>}
               className="username_data_post"
             />
             <button className="reacao_btn" id="btn_like">

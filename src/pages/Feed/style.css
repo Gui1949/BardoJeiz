@@ -129,7 +129,7 @@ body {
 
 #master {
   margin-bottom: 10vh;
-  margin-top: 10vh;
+  margin-top: 8vh;
 }
 
 #post_feed {
@@ -142,7 +142,7 @@ body {
 
 .conteudo {
   width: 50vh;
-  height: auto;
+  height: 50vh;
   border-radius: 1vh;
 }
 
@@ -160,12 +160,12 @@ body {
 }
 
 .username {
-  font-size: 2.2vh;
+  font-size: 1.8vh;
   font-weight: 500;
 }
 
-.username {
-  font-size: 2vh;
+.descricao {
+  font-size: 1.5vh;
 }
 
 .data_post {
