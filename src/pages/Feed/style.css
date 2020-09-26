@@ -139,7 +139,7 @@ body {
   background-color: #ffffff;
   align-self: flex-start;
   margin-top: 2vh;
-  width: 57vh;
+  width: 56vh;
   padding: 1vh 3vh 2vh 3vh;
   display: block;
   margin-left: auto;
@@ -151,7 +151,9 @@ body {
 .conteudo {
   width: 50vh;
   height: 50vh;
+  margin-top: 1vh;
   border-radius: 1vh;
+  object-fit: fill;
 }
 
 .avatar {
@@ -173,7 +175,7 @@ body {
 }
 
 .descricao {
-  font-size: 1.5vh;
+  font-size: 1.8vh;
 }
 
 .data_post {
@@ -202,4 +204,10 @@ body {
 #font_dislike,
 #font_like {
   font-size: 3vh;
+}
+
+@media only screen and (orientation: landscape){
+  .nav{
+    display: none;
+  }
 }

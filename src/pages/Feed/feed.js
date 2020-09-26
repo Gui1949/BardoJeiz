@@ -82,7 +82,8 @@ function Feed(ler_dados) {
                 />
                 <button className="reacao_btn" id="btn_like">
                   <i
-                    className="material-icons nav__link--active"
+                    className="material-icons"
+                    // className="material-icons nav__link--active"
                     id="font_like"
                   >
                     thumb_up
