@@ -13,14 +13,28 @@ import axios from "axios";
 
 function Feed() {
   const [ler_dados, setLer] = useState(0);
-  const contador_request = 0
 
-  axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
-    const persons = res.data;
-    const item1 = persons.data[0];
-    const arrayitem = Object.values(item1);
-    setLer(arrayitem);
-  });
+  console.log("começando a putaria");
+
+  // async function componentDidMount() {
+  //   await axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
+  //     const api_resp = res.data;
+  //     dados = Object.values(api_resp.data[0]);
+  //     setLer(dados);
+  //   });
+  // }
+
+  function componentDidMount() {
+    var obj;
+
+    fetch("http://34.95.243.9:80/data/img_file")
+      .then((res) => res.json())
+      .then((data) => (obj = data))
+      .then(() => console.log(obj))
+      .then(() => setLer(Object.values(obj)));
+  }
+
+  componentDidMount();
 
   return (
     <>
@@ -57,7 +71,7 @@ function Feed() {
                       className="nav__icon"
                       color="textPrimary"
                     ></Typography>
-                    {<p className="data_post">{ler_dados[3]}</p>}
+                    <p className="data_post">{ler_dados[3]}</p>
                   </React.Fragment>
                 }
               />
