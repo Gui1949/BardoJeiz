@@ -125,17 +125,25 @@ body {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   transition: background-color 0.1s ease-in-out;
-} 
+}
 
 #master {
   margin-bottom: 10vh;
-  margin-top: 8vh;
+  position: absolute;
+  width: 100%;
+  top: 10%;
+  margin-top: 0vh;
 }
 
 #post_feed {
   background-color: #ffffff;
+  align-self: flex-start;
   margin-top: 2vh;
+  width: 57vh;
   padding: 1vh 3vh 2vh 3vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 1vh;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
@@ -177,7 +185,7 @@ body {
   width: 25vh;
   height: 7vh;
   border: 0px;
-  border-top: 1px solid #F0F0F7;
+  border-top: 1px solid #f0f0f7;
 }
 
 #btn_like {
@@ -195,4 +203,3 @@ body {
 #font_like {
   font-size: 3vh;
 }
-
