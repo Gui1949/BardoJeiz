@@ -11,23 +11,26 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 
-  async function get_api(setLer) {
-    await axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
-      const api_resp = res.data;
-      const dados = Object.values(api_resp.data[1]);
-      console.log(dados)
-      setLer(dados)
-    });
-  }
+let ler_dados = [];
+
+function get_api(setTeste) {
+  axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
+    const api_resp = res.data;
+    ler_dados = Object.values(api_resp.data[1]);
+    setTeste(ler_dados)
+  });
+}
 
 function Feed() {
-  const [ler_dados, setLer] = useState(0);
-
-  get_api(setLer);
+  const [teste, setTeste] = useState(0)
+  get_api(setTeste);
 
   console.log("começando a putaria");
 
+  return jogar_tela(teste);
+}
 
+function jogar_tela(teste) {
   return (
     <>
       <link
@@ -53,7 +56,7 @@ function Feed() {
                 src="/static/images/avatar/2.jpg"
               />
               <ListItemText
-                primary={<p className="username">{ler_dados[1]}</p>}
+                primary={<p className="username">{teste[1]}</p>}
                 className="username_data_post"
                 secondary={
                   <React.Fragment>
