@@ -13,8 +13,8 @@ const puxar_api = axios
   .get(`http://34.95.243.9:80/data/img_file`)
   .then((res) => {
     puxar_api.dados = res.data;
-    puxar_api.leitura = Object.values(puxar_api.dados.data[1]);
-    let ler_dados = puxar_api.leitura;
+    puxar_api.leitura = puxar_api.dados.data;
+    let ler_dados = Object.values(puxar_api.leitura);
     Feed(ler_dados);
   });
 
@@ -23,32 +23,41 @@ function Feed(ler_dados) {
     console.log("Não leu:", ler_dados[1]);
     return <p>Carregando...</p>;
   } else {
-    console.log("Leu:", ler_dados[1]);
+    let i = -1;
     render(
-        <>
-          <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-          ></link>
-  
-          {/* Barra superior */}
-          <nav className="top_nav">
-            <a href="#" className="nav_top_link">
-              Bar do Jeiz
-            </a>
-          </nav>
-  
-          <div id="master">
-            <List className="lista_feed">
-            <div id="post_feed">
+      <>
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        ></link>
+
+        {/* Barra superior */}
+        <nav className="top_nav">
+          <a href="#" className="nav_top_link">
+            Bar do Jeiz
+          </a>
+        </nav>
+
+        <div id="master">
+          <List className="lista_feed">
+            {ler_dados.map((ler_dados) => (
+              <div id="post_feed">
+                {(() => {
+                  i++;
+                  console.log("Leu:", ler_dados);
+                  window["Object" + parseInt(i)] = new Object();
+                  window["Object" + parseInt(i)] = Object.values(ler_dados);
+                })()}
                 <div id="header">
                   <Avatar
                     className="avatar"
-                    alt={ler_dados[1]}
+                    alt={window["Object" + i][1]}
                     src="/static/images/avatar/2.jpg"
                   />
                   <ListItemText
-                    primary={<p className="username">{ler_dados[1]}</p>}
+                    primary={
+                      <p className="username">{window["Object" + i][1]}</p>
+                    }
                     className="username_data_post"
                     secondary={
                       <React.Fragment>
@@ -58,19 +67,24 @@ function Feed(ler_dados) {
                           className="nav__icon"
                           color="textPrimary"
                         ></Typography>
-                        <p className="data_post">{ler_dados[3]}</p>
+                        <p className="data_post">{window["Object" + i][3]}</p>
                       </React.Fragment>
                     }
                   />
                 </div>
-                <img className="conteudo" src={ler_dados[4]} />
+                <img className="conteudo" src={window["Object" + i][4]} />
                 <br />
                 <ListItemText
-                  primary={<p className="descricao">{ler_dados[5]}</p>}
+                  primary={
+                    <p className="descricao">{window["Object" + i][5]}</p>
+                  }
                   className="username_data_post"
                 />
                 <button className="reacao_btn" id="btn_like">
-                  <i className="material-icons nav__link--active" id="font_like">
+                  <i
+                    className="material-icons nav__link--active"
+                    id="font_like"
+                  >
                     thumb_up
                   </i>
                 </button>
@@ -80,17 +94,18 @@ function Feed(ler_dados) {
                   </i>
                 </button>
               </div>
-            </List>
-          </div>
-          {/* Navigation bar inferior */}
-          <nav className="nav">
-            <a href="#" className="nav__link nav__link--active">
-              <i className="material-icons nav__icon">dashboard</i>
-              <span className="nav__text">Feed</span>
-            </a>
-          </nav>
-        </>
-      );
+            ))}
+          </List>
+        </div>
+        {/* Navigation bar inferior */}
+        <nav className="nav">
+          <a href="#" className="nav__link nav__link--active">
+            <i className="material-icons nav__icon">dashboard</i>
+            <span className="nav__text">Feed</span>
+          </a>
+        </nav>
+      </>
+    );
   }
 }
 
