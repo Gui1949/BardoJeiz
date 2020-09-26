@@ -11,30 +11,22 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 
+  async function get_api(setLer) {
+    await axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
+      const api_resp = res.data;
+      const dados = Object.values(api_resp.data[1]);
+      console.log(dados)
+      setLer(dados)
+    });
+  }
+
 function Feed() {
   const [ler_dados, setLer] = useState(0);
 
+  get_api(setLer);
+
   console.log("começando a putaria");
 
-  // async function componentDidMount() {
-  //   await axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
-  //     const api_resp = res.data;
-  //     dados = Object.values(api_resp.data[0]);
-  //     setLer(dados);
-  //   });
-  // }
-
-  function componentDidMount() {
-    var obj;
-
-    fetch("http://34.95.243.9:80/data/img_file")
-      .then((res) => res.json())
-      .then((data) => (obj = data))
-      .then(() => console.log(obj))
-      .then(() => setLer(Object.values(obj)));
-  }
-
-  componentDidMount();
 
   return (
     <>
