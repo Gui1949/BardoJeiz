@@ -21,9 +21,36 @@ const puxar_api = axios
 function like(id_btn) {
   let id_trat = "";
   id_trat = id_btn.replace(/[^0-9\.]+/g, "");
+
+  let objeto_desfazer = document.getElementById("btn_dislike_" + id_trat);
+  objeto_desfazer.style.color = "#95a5a6";
+
   let objeto = document.getElementById("btn_like_" + id_trat);
-  objeto.style.color = "#009578";
-  console.log(id_trat);
+
+  colorir(objeto)
+}
+
+function dislike(id_btn) {
+  let id_trat = "";
+  id_trat = id_btn.replace(/[^0-9\.]+/g, "");
+
+  let objeto_desfazer = document.getElementById("btn_like_" + id_trat);
+  objeto_desfazer.style.color = "#95a5a6";
+
+  let objeto = document.getElementById("btn_dislike_" + id_trat);
+
+  colorir(objeto)
+
+}
+
+function colorir(objeto){
+  if (objeto.style.color == "rgb(0, 149, 120)"){
+    objeto.style.color = "#95a5a6" 
+   }
+ 
+   else{
+     objeto.style.color = "#009578";
+   }
 }
 
 function Feed(ler_dados) {
@@ -101,7 +128,11 @@ function Feed(ler_dados) {
                     thumb_up
                   </i>
                 </button>
-                <button className="reacao_btn" id="btn_dislike">
+                <button
+                  className="reacao_btn"
+                  id={"btn_dislike_" + window["Object" + i][0]}
+                  onClick={() => dislike(JSON.stringify(ler_dados, ["ID"]))}
+                >
                   <i className="material-icons" id="font_dislike">
                     thumb_down
                   </i>
