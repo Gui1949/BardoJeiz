@@ -18,6 +18,14 @@ const puxar_api = axios
     Feed(ler_dados);
   });
 
+function like(id_btn) {
+  let id_trat = "";
+  id_trat = id_btn.replace(/[^0-9\.]+/g, "");
+  let objeto = document.getElementById("btn_like_" + id_trat);
+  objeto.style.color = "#009578";
+  console.log(id_trat);
+}
+
 function Feed(ler_dados) {
   if (ler_dados[1] == undefined) {
     console.log("Não leu:", ler_dados[1]);
@@ -80,7 +88,11 @@ function Feed(ler_dados) {
                   }
                   className="username_data_post"
                 />
-                <button className="reacao_btn" id="btn_like">
+                <button
+                  className="reacao_btn"
+                  id={"btn_like_" + window["Object" + i][0]}
+                  onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
+                >
                   <i
                     className="material-icons"
                     // className="material-icons nav__link--active"

@@ -85,10 +85,6 @@ body {
   background-color: #eeeeee;
 }
 
-.nav__link--active {
-  color: #009578;
-}
-
 .nav__icon {
   font-size: 18px;
 }
@@ -188,17 +184,10 @@ body {
   height: 7vh;
   border: 0px;
   border-top: 1px solid #f0f0f7;
-}
-
-#btn_like {
   background-color: #ffffff;
   color: #95a5a6;
-  float: left;
-}
-
-#btn_dislike {
-  background-color: #ffffff;
-  color: #95a5a6;
+  cursor: pointer;
+  outline: none;
 }
 
 #font_dislike,
@@ -206,8 +195,8 @@ body {
   font-size: 3vh;
 }
 
-@media only screen and (orientation: landscape){
-  .nav{
+@media only screen and (orientation: landscape) {
+  .nav {
     display: none;
   }
 }
