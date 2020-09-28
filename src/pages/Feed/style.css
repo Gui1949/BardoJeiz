@@ -149,7 +149,7 @@ body {
   height: 50vh;
   margin-top: 1vh;
   border-radius: 1vh;
-  object-fit: fill;
+  object-fit: inherit;
 }
 
 .avatar {

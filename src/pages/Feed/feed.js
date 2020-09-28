@@ -10,7 +10,7 @@ import { render } from "@testing-library/react";
 
 console.log("começando a putaria");
 const puxar_api = axios
-  .get(`http://34.95.243.9:80/data/img_file`)
+  .get(`http://34.95.243.9/data/img_file`)
   .then((res) => {
     puxar_api.dados = res.data;
     puxar_api.leitura = puxar_api.dados.data;
