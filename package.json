@@ -16,7 +16,7 @@
     "use-force-update": "^1.0.7"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=443 react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
