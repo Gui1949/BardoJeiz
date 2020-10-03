@@ -9,14 +9,12 @@ import axios from "axios";
 import { render } from "@testing-library/react";
 
 console.log("começando a putaria");
-const puxar_api = axios
-  .get(`http://34.95.243.9/data/img_file`)
-  .then((res) => {
-    puxar_api.dados = res.data;
-    puxar_api.leitura = puxar_api.dados.data;
-    let ler_dados = Object.values(puxar_api.leitura);
-    Feed(ler_dados);
-  });
+const puxar_api = axios.get(`http://34.95.243.9/data/img_file`).then((res) => {
+  puxar_api.dados = res.data;
+  puxar_api.leitura = puxar_api.dados.data;
+  let ler_dados = Object.values(puxar_api.leitura);
+  Feed(ler_dados);
+});
 
 function like(id_btn) {
   let id_trat = "";
@@ -27,7 +25,7 @@ function like(id_btn) {
 
   let objeto = document.getElementById("btn_like_" + id_trat);
 
-  colorir(objeto)
+  colorir(objeto);
 }
 
 function dislike(id_btn) {
@@ -39,18 +37,30 @@ function dislike(id_btn) {
 
   let objeto = document.getElementById("btn_dislike_" + id_trat);
 
-  colorir(objeto)
-
+  colorir(objeto);
 }
 
-function colorir(objeto){
-  if (objeto.style.color == "rgb(0, 149, 120)"){
-    objeto.style.color = "#95a5a6" 
-   }
- 
-   else{
-     objeto.style.color = "#009578";
-   }
+function colorir(objeto) {
+  if (objeto.style.color == "rgb(0, 149, 120)") {
+    objeto.style.color = "#95a5a6";
+  } else {
+    objeto.style.color = "#009578";
+  }
+}
+
+function upload() {
+  var input = document.querySelector('input[type="file"]');
+  let apiUrl = "http://34.95.243.9:80/data/upload";
+
+  var data = new FormData();
+  data.append("photo", input.files[0]);
+  data.append("description", "Upload via site");
+  data.append("username", "Testezao");
+
+  fetch(apiUrl, {
+    method: "POST",
+    body: data,
+  });
 }
 
 function Feed(ler_dados) {
@@ -75,6 +85,17 @@ function Feed(ler_dados) {
 
         <div id="master">
           <List className="lista_feed">
+            <div id="post_header">
+              <label for="btn_upload" className="material-icons" id="upload">
+                publish
+              </label>
+              <input
+                type="file"
+                id="btn_upload"
+                accept=".png,.jpg,.mp4"
+                onChange={() => upload()}
+              />
+            </div>
             {ler_dados.map((ler_dados) => (
               <div id="post_feed">
                 {(() => {

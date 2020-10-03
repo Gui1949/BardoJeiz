@@ -131,17 +131,30 @@ body {
   margin-top: 0vh;
 }
 
-#post_feed {
+#post_feed,
+#post_header {
   background-color: #ffffff;
   align-self: flex-start;
-  margin-top: 2vh;
   width: 56vh;
-  padding: 1vh 3vh 2vh 3vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
   border-radius: 1vh;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#post_feed {
+  padding: 1vh 3vh 2vh 3vh;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+#post_header {
+  margin-bottom: 2vh;
+  padding: 1vh 3vh 1vh 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .conteudo {
@@ -199,4 +212,23 @@ body {
   .nav {
     display: none;
   }
+}
+
+#txt_desc {
+  width: 50vh;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#upload {
+  /* width: 100%; */
+  /* height: 7vh; */
+  border: 0px;
+  /* background-color: #ffaaaa; */
+  align-self: center;
+  color: #95a5a6;
+  cursor: pointer;
+  outline: none;
 }
