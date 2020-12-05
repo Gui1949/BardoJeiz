@@ -6,7 +6,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
-import { Button, Modal } from "react-bootstrap";
 import { render } from "@testing-library/react";
 
 const puxar_api = axios.get(`http://34.95.243.9/data/img_file`).then((res) => {
