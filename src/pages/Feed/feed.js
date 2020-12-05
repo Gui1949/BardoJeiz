@@ -6,9 +6,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
+import { Button, Modal } from "react-bootstrap";
 import { render } from "@testing-library/react";
 
-console.log("começando a putaria");
 const puxar_api = axios.get(`http://34.95.243.9/data/img_file`).then((res) => {
   puxar_api.dados = res.data;
   puxar_api.leitura = puxar_api.dados.data;
@@ -41,10 +41,10 @@ function dislike(id_btn) {
 }
 
 function colorir(objeto) {
-  if (objeto.style.color == "rgb(0, 149, 120)") {
+  if (objeto.style.color == "rgb(255, 121, 198)") {
     objeto.style.color = "#95a5a6";
   } else {
-    objeto.style.color = "#009578";
+    objeto.style.color = "#ff79c6";
   }
 }
 
@@ -62,7 +62,6 @@ function upload() {
     body: data,
   });
 }
-
 function Feed(ler_dados) {
   if (ler_dados[1] == undefined) {
     console.log("Não leu:", ler_dados[1]);
@@ -92,7 +91,7 @@ function Feed(ler_dados) {
               <input
                 type="file"
                 id="btn_upload"
-                accept=".png,.jpg,.mp4"
+                accept=".png,.jpg,.mp4,.jpeg"
                 onChange={() => upload()}
               />
             </div>

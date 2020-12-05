@@ -2,8 +2,9 @@
     font-size: 60%;
     width: '100%';
     max-width: '36ch';
-    
     --color-background: #F0F0F7;
+    --color-background-dark: #0f0f08;
+    --color-background-dracula: #282a36;
     --color-primary-lighter: #9871F5;
     --color-primary-light: #916BEA;
     --color-primary: #168ca1;
@@ -33,7 +34,7 @@ html, body, #root{
 }
 
 body{
-    background: var(--color-background);
+    background: var(--color-background-dracula);
 }
 
 #root{
@@ -47,6 +48,7 @@ input,
 button,
 textarea{
     font: 500 1.6rem Poppins;
+    color: #f8f8f2;
 }
 
 .container{
