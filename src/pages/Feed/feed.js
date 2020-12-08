@@ -8,14 +8,12 @@ import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import { render } from "@testing-library/react";
 
-const puxar_api = axios
-  .get(`http://34.95.243.9/data`)
-  .then((res) => {
-    puxar_api.dados = res.data;
-    puxar_api.leitura = puxar_api.dados.data;
-    let ler_dados = Object.values(puxar_api.leitura);
-    Feed(ler_dados);
-  });
+const puxar_api = axios.get(`http://34.95.243.9/data`).then((res) => {
+  puxar_api.dados = res.data;
+  puxar_api.leitura = puxar_api.dados.data;
+  let ler_dados = Object.values(puxar_api.leitura);
+  Feed(ler_dados);
+});
 
 function like(id_btn) {
   let id_trat = "";
@@ -61,6 +59,10 @@ function upload() {
   fetch(apiUrl, {
     method: "POST",
     body: data,
+  }).then(function (response) {
+    if(response.ok) {
+      window.location.reload()
+    }
   });
 }
 function Feed(ler_dados) {
@@ -104,13 +106,20 @@ function Feed(ler_dados) {
                   console.log("Leu:", ler_dados);
                   window["Object" + parseInt(i)] = new Object();
                   window["Object" + parseInt(i)] = Object.values(ler_dados);
-                  if(window["Object" + i][4].includes('.mp4','mov') == true)
-                  {
-                    conteudo=<video className="conteudo" controls>
-                      <source src={window["Object" + i][4]} type="video/mp4" />
-                    </video>
+                  if (window["Object" + i][4].includes(".mp4", "mov") == true) {
+                    conteudo = (
+                      <video className="conteudo" controls>
+                        <source
+                          src={window["Object" + i][4]}
+                          type="video/mp4"
+                        />
+                      </video>
+                    );
+                  } else {
+                    conteudo = (
+                      <img className="conteudo" src={window["Object" + i][4]} />
+                    );
                   }
-                  else{ conteudo = <img className="conteudo" src={window["Object" + i][4]} />}                
                 })()}
                 <div id="header">
                   <Avatar
@@ -144,7 +153,7 @@ function Feed(ler_dados) {
                   }
                   className="username_data_post"
                 />
-          
+
                 <button
                   className="reacao_btn"
                   id={"btn_like_" + window["Object" + i][0]}
