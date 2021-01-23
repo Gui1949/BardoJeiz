@@ -80,6 +80,7 @@ restapi.post("/data/insert", function (req, res) {
   };
   var sql =
     "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC) VALUES(?,?,?,?,?)";
+  console.log('Arquivo Upado')
   var params = [
     data.USERNAME,
     data.USER_PIC,
