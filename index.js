@@ -6,14 +6,7 @@ var restapi = express();
 var bodyParser = require("body-parser");
 const { exec } = require("child_process");
 const fs = require("fs");
-//var key = fs.readFileSync('selfsigned.key')
-//var cert = fs.readFileSync('selfsigned.crt')
 var https = require("https");
-
-var options = {
-	//key: key,
-	//cert: cert
-};
 
 restapi.use(bodyParser.urlencoded({ extended: false }));
 restapi.use(bodyParser.json());
@@ -116,6 +109,7 @@ restapi.post("/data/like", function (req, res) {
   };
   var sql = "UPDATE POSTS SET POST_LIKE = POST_LIKE+1 WHERE ID=?";
   var params = [data.ID];
+  console.log('Like recebido no Post ', [data.ID])
   db.all(sql, params, (err, rows) => {
     if (err) {
       console.log(data.ID);
