@@ -8,7 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import { render } from "@testing-library/react";
 
-const puxar_api = axios.get(`http://34.95.243.9/data`).then((res) => {
+// const puxar_api = axios.get(`http://34.95.243.9/data`).then((res) => {
+const puxar_api = axios.get(`https://bardojeiz-server.herokuapp.com/data`).then((res) => {
   puxar_api.dados = res.data;
   puxar_api.leitura = puxar_api.dados.data;
   let ler_dados = Object.values(puxar_api.leitura);
@@ -25,6 +26,14 @@ function like(id_btn) {
   let objeto = document.getElementById("btn_like_" + id_trat);
 
   colorir(objeto);
+
+  let apiUrl = "http://34.95.243.9:80/data/like";
+
+  fetch(apiUrl, {
+    method: "POST",
+    body: id_trat,
+  })
+
 }
 
 function dislike(id_btn) {
@@ -37,6 +46,13 @@ function dislike(id_btn) {
   let objeto = document.getElementById("btn_dislike_" + id_trat);
 
   colorir(objeto);
+
+  let apiUrl = "http://34.95.243.9:80/data/dislike";
+
+  fetch(apiUrl, {
+    method: "POST",
+    body: id_trat,
+  })
 }
 
 function colorir(objeto) {
@@ -49,7 +65,7 @@ function colorir(objeto) {
 
 function upload() {
   var input = document.querySelector('input[type="file"]');
-  let apiUrl = "http://34.95.243.9:80/data/upload";
+  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
 
   var data = new FormData();
   data.append("photo", input.files[0]);
@@ -65,6 +81,7 @@ function upload() {
     }
   });
 }
+
 function Feed(ler_dados) {
   if (ler_dados[1] == undefined) {
     console.log("Não leu:", ler_dados[1]);
