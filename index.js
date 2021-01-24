@@ -260,7 +260,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
 
 //var server = https.createServer(options, restapi);
 
-restapi.listen(80);
+restapi.listen(process.env.PORT || 80);
 //server.listen(443);
 
 
