@@ -60,8 +60,8 @@ function upload() {
     method: "POST",
     body: data,
   }).then(function (response) {
-    if(response.ok) {
-      window.location.reload()
+    if (response.ok) {
+      window.location.reload();
     }
   });
 }
@@ -149,7 +149,10 @@ function Feed(ler_dados) {
                 <br />
                 <ListItemText
                   primary={
-                    <p className="descricao">{window["Object" + i][5]}</p>
+                    <p className="descricao">
+                      {window["Object" + i][5]} - {window["Object" + i][6]}{" "}
+                      Likes, {window["Object" + i][7]}Dislikes
+                    </p>
                   }
                   className="username_data_post"
                 />
@@ -159,11 +162,7 @@ function Feed(ler_dados) {
                   id={"btn_like_" + window["Object" + i][0]}
                   onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
                 >
-                  <i
-                    className="material-icons"
-                    // className="material-icons nav__link--active"
-                    id="font_like"
-                  >
+                  <i className="material-icons" id="font_like">
                     thumb_up
                   </i>
                 </button>
