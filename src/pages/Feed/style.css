@@ -162,8 +162,22 @@ body {
   height: 50vh;
   margin-top: 1vh;
   border-radius: 1vh;
-  object-fit: cover;
+  background-color: #282a36;
+  object-fit: contain;
 }
+
+/* .conteudo {
+  transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
+  -webkit-transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
+  -o-transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
+  -moz-transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
+}
+
+.conteudo:hover,#post_feed:hover
+{
+  height: 100vh;
+  z-index:9999;
+} */
 
 .avatar {
   margin-right: 1.2vh;
@@ -216,8 +230,10 @@ body {
   .conteudo {
     width: 90vh;
   }
-  #post_feed,
-  #post_header {
+  #post_feed{
+    height: 75vh;
+  }
+  #post_feed,#post_header {
     width: 96vh;
   }
   .reacao_btn {
