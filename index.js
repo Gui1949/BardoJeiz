@@ -222,9 +222,9 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
   let minutes = date_ob.getMinutes();
   var data = {
     USERNAME: req.body.username,
-    USER_PIC: "https://bardojeiz-server.herokuapp.com/data/img" + cuiaba,
+    USER_PIC: "https://bardojeiz-server.herokuapp.com/data/img/" + cuiaba,
     POST_DATA: day + "/" + month + "/" + year + " - " + hours + ":" + minutes,
-    PIC_LOCAL: "https://bardojeiz-server.herokuapp.com/data/img" + cuiaba,
+    PIC_LOCAL: "https://bardojeiz-server.herokuapp.com/data/img/" + cuiaba,
     POST_DESC: req.body.description,
     POST_LIKE: 0,
     POST_DISLIKE: 0,
