@@ -27,7 +27,7 @@ function like(id_btn) {
 
   colorir(objeto);
 
-  let apiUrl = "http://34.95.243.9:80/data/like";
+  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/like";
 
   fetch(apiUrl, {
     method: "POST",
@@ -47,7 +47,7 @@ function dislike(id_btn) {
 
   colorir(objeto);
 
-  let apiUrl = "http://34.95.243.9:80/data/dislike";
+  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/dislike";
 
   fetch(apiUrl, {
     method: "POST",
