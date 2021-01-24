@@ -162,7 +162,8 @@ body {
   height: 50vh;
   margin-top: 1vh;
   border-radius: 1vh;
-  object-fit: cover;
+  background-color: #282a36;
+  object-fit: contain;
 }
 
 /* .conteudo {
