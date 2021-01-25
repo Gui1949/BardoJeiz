@@ -147,6 +147,7 @@ body {
   padding: 1vh 3vh 2vh 3vh;
   align-items: center;
   margin-top: 2vh;
+  overflow-wrap: break-word;
 }
 
 #post_header {
@@ -230,10 +231,11 @@ body {
   .conteudo {
     width: 90vh;
   }
-  #post_feed{
+  #post_feed {
     height: 75vh;
   }
-  #post_feed,#post_header {
+  #post_feed,
+  #post_header {
     width: 96vh;
   }
   .reacao_btn {
@@ -255,4 +257,82 @@ input[type="file"] {
   color: #95a5a6;
   cursor: pointer;
   outline: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.modal:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal_window {
+  width: 46.5vh;
+  position: relative;
+  border-radius: 1vh;
+  margin: 10% auto;
+  padding: 15px 20px;
+  background: #282a36;
+}
+
+.fechar {
+  position: absolute;
+  width: 30px;
+  font-weight: 700;
+  right: -15px;
+  top: -20px;
+  text-align: center;
+  line-height: 30px;
+  margin-top: 5px;
+  background-color: #44475a;
+  border-radius: 50%;
+  font-size: 16px;
+  color: #282a36;
+}
+
+#txt_username,
+#txt_descricao {
+  color: #282a36;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 40vh;
+  border: none;
+  padding-left: 1vh;
+  border-radius: 1vh;
+  margin: 1vh 1vh 1vh 0vh;
+}
+
+#txt_username {
+  height: 4vh;
+}
+
+#txt_descricao {
+  padding-top:1vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+#btn_upload_modal {
+  background-color: #44475a;
+  align-self: flex-start;
+  text-align: center;
+  width: 40vh;
+  display: block;
+  border-radius: 1vh;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }

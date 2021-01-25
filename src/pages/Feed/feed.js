@@ -9,12 +9,14 @@ import axios from "axios";
 import { render } from "@testing-library/react";
 
 // const puxar_api = axios.get(`http://34.95.243.9/data`).then((res) => {
-const puxar_api = axios.get(`https://bardojeiz-server.herokuapp.com/data`).then((res) => {
-  puxar_api.dados = res.data;
-  puxar_api.leitura = puxar_api.dados.data;
-  let ler_dados = Object.values(puxar_api.leitura);
-  Feed(ler_dados);
-});
+const puxar_api = axios
+  .get(`https://bardojeiz-server.herokuapp.com/data`)
+  .then((res) => {
+    puxar_api.dados = res.data;
+    puxar_api.leitura = puxar_api.dados.data;
+    let ler_dados = Object.values(puxar_api.leitura);
+    Feed(ler_dados);
+  });
 
 function like(id_btn) {
   let id_trat = "";
@@ -27,13 +29,16 @@ function like(id_btn) {
 
   colorir(objeto);
 
-  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/like";
-
-  fetch(apiUrl, {
+  fetch("https://bardojeiz-server.herokuapp.com/data/like", {
     method: "POST",
-    body: id_trat,
-  })
-
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      ID: id_trat,
+    }),
+  });
 }
 
 function dislike(id_btn) {
@@ -47,12 +52,16 @@ function dislike(id_btn) {
 
   colorir(objeto);
 
-  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/dislike";
-
-  fetch(apiUrl, {
+  fetch("https://bardojeiz-server.herokuapp.com/data/dislike", {
     method: "POST",
-    body: id_trat,
-  })
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      ID: id_trat,
+    }),
+  });
 }
 
 function colorir(objeto) {
@@ -65,12 +74,14 @@ function colorir(objeto) {
 
 function upload() {
   var input = document.querySelector('input[type="file"]');
+  var name = document.getElementById("txt_username").value;
+  var desc = document.getElementById("txt_descricao").value;
   let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
 
   var data = new FormData();
   data.append("photo", input.files[0]);
-  data.append("description", "Upload via site");
-  data.append("username", "Testezao");
+  data.append("description", desc);
+  data.append("username", name);
 
   fetch(apiUrl, {
     method: "POST",
@@ -106,15 +117,44 @@ function Feed(ler_dados) {
         <div id="master">
           <List className="lista_feed">
             <div id="post_header">
-              <label for="btn_upload" className="material-icons" id="upload">
+              <a href="#modal_upload" className="material-icons" id="upload">
                 publish
-              </label>
-              <input
-                type="file"
-                id="btn_upload"
-                accept=".png,.jpg,.mp4,.jpeg"
-                onChange={() => upload()}
-              />
+              </a>
+
+              <div id="modal_upload" class="modal">
+                <div class="modal_window">
+                  <a href="#fechar" title="Fechar" class="fechar">
+                    x
+                  </a>
+                  Username:
+                  <input type="text" id="txt_username" />
+                  <br />
+                  Descrição:
+                  <textarea
+                    name="Text1"
+                    cols="40"
+                    rows="5"
+                    maxLength="70"
+                    id="txt_descricao"
+                  ></textarea>
+                  <br />
+                  <div id="btn_upload_modal">
+                    <label
+                      for="btn_upload"
+                      className="material-icons"
+                      id="upload"
+                    >
+                      publish
+                    </label>
+                    <input
+                      type="file"
+                      id="btn_upload"
+                      accept=".png,.jpg,.mp4,.jpeg"
+                      onChange={() => upload()}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
             {ler_dados.map((ler_dados) => (
               <div id="post_feed">
@@ -168,7 +208,7 @@ function Feed(ler_dados) {
                   primary={
                     <p className="descricao">
                       {window["Object" + i][5]} - {window["Object" + i][6]}{" "}
-                      Likes, {window["Object" + i][7]}Dislikes
+                      Likes, {window["Object" + i][7]} Dislikes
                     </p>
                   }
                   className="username_data_post"
