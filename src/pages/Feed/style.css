@@ -224,6 +224,10 @@ body {
   font-size: 3vh;
 }
 
+#post_fixo {
+  font-size: 1.5vh;
+}
+
 @media only screen and (orientation: landscape) {
   .nav {
     display: none;
@@ -320,7 +324,7 @@ input[type="file"] {
 }
 
 #txt_descricao {
-  padding-top:1vh;
+  padding-top: 1vh;
 }
 
 a {

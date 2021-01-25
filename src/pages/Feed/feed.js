@@ -156,6 +156,60 @@ function Feed(ler_dados) {
                 </div>
               </div>
             </div>
+
+            <div id="post_feed">
+              <div id="header">
+                <Avatar
+                  className="avatar"
+                  alt="Desenvolvedor"
+                  src="/static/images/avatar/2.jpg"
+                />
+                <ListItemText
+                  primary={
+                    <p className="username">
+                      Desenvolvedor{" "}
+                      <i className="material-icons" id="post_fixo">
+                        push_pin
+                      </i>
+                    </p>
+                  }
+                  className="username_data_post"
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className="nav__icon"
+                        color="textPrimary"
+                      ></Typography>
+                      <p className="data_post">24/01/2021 - 22:00</p>
+                    </React.Fragment>
+                  }
+                />
+              </div>
+
+              <iframe
+                class="conteudo"
+                src="https://www.youtube.com/embed/q-bl2O-KnQ8"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+              <br />
+              <ListItemText
+                primary={
+                  <p className="descricao">
+                    Opa, salve! Você está nesse momento no Bar do Jeiz, o
+                    Instagram se fosse bom! Em desenvolvimento desde Abril/2020,
+                    o Bar do Jeiz nada mais é do que um beta gigante, um monstro
+                    indomável... Nem eu sei aonde vai parar essa budega, mas
+                    enfim, por enquanto os posts duram por tempo limitado,
+                    então, aproveite enquanto é tempo...
+                  </p>
+                }
+                className="username_data_post"
+              />
+            </div>
             {ler_dados.map((ler_dados) => (
               <div id="post_feed">
                 {(() => {
