@@ -110,7 +110,7 @@ function Feed(ler_dados) {
         {/* Barra superior */}
         <nav className="top_nav">
           <a href="#" className="nav_top_link">
-            Cadeado Biométrico
+            Bar do Jeiz
           </a>
         </nav>
 
