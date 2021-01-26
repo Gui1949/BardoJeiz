@@ -270,7 +270,7 @@ export default class ViewImageScreen extends React.Component {
                   <Image
                     key={window["Object" + i][1]}
                     source={{
-                      uri: window["Object" + i][2],
+                      uri: 'https://www.tnmc.go.tz/images/2020/avatar.jpg'
                     }}
                     style={styles.avatar}
                   />
