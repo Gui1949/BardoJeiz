@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
 import postScreen from "./postScreen";
 import { Video } from "expo-av";
-import { withNavigation } from 'react-navigation';
+import { withNavigation } from "react-navigation";
 
 let likeCounter = [];
 let dislikeCounter = [];
@@ -39,10 +39,12 @@ export default class ViewVideoScreen extends React.Component {
   }
 
   async componentDidMount() {
-    axios.get(`https://bardojeiz-server.herokuapp.com/data/video_file`).then((res) => {
-      const persons = res.data;
-      this.setState({ persons });
-    });
+    axios
+      .get(`https://bardojeiz-server.herokuapp.com/data/video_file`)
+      .then((res) => {
+        const persons = res.data;
+        this.setState({ persons });
+      });
   }
 
   likeColor(i) {
@@ -173,7 +175,7 @@ export default class ViewVideoScreen extends React.Component {
       let antenor_albuquerque = this.state.persons.data;
       let i = -1;
       return (
-        <>     
+        <>
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => this.props.navigation.navigate("post")}
@@ -193,6 +195,7 @@ export default class ViewVideoScreen extends React.Component {
               />
             }
           >
+
             {antenor_albuquerque.map((antenor_albuquerque) => (
               <View style={styles.Viewimg} key={i}>
                 {(() => {
@@ -206,7 +209,8 @@ export default class ViewVideoScreen extends React.Component {
                   <Image
                     key={window["Object" + i][1]}
                     source={{
-                      uri: 'https://storage.needpix.com/rsynced_images/videos-2277019_1280.png',
+                      uri:
+                        "https://storage.needpix.com/rsynced_images/videos-2277019_1280.png",
                     }}
                     style={styles.avatar}
                   />

@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
 import postScreen from "./postScreen";
 import { Video } from "expo-av";
-import { withNavigation } from 'react-navigation';
+import { withNavigation } from "react-navigation";
 
 let likeCounter = [];
 let dislikeCounter = [];
@@ -38,10 +38,12 @@ export default class ViewImageScreen extends React.Component {
   }
 
   async componentDidMount() {
-    axios.get(`https://bardojeiz-server.herokuapp.com/data/img_file`).then((res) => {
-      const persons = res.data;
-      this.setState({ persons });
-    });
+    axios
+      .get(`https://bardojeiz-server.herokuapp.com/data`)
+      .then((res) => {
+        const persons = res.data;
+        this.setState({ persons });
+      });
   }
 
   likeColor(i) {
@@ -49,7 +51,7 @@ export default class ViewImageScreen extends React.Component {
     var str = "";
     str = i.replace(/[^0-9\.]+/g, "");
 
-    if (catchDislikes.includes(str)){
+    if (catchDislikes.includes(str)) {
       var dislikeLabelColor_ = "#000000";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = undefined;
@@ -63,11 +65,11 @@ export default class ViewImageScreen extends React.Component {
         body: JSON.stringify({
           ID: str,
         }),
-      });      
+      });
     }
 
     if (likeCounter[str] == undefined) {
-      catchLikes.push(str); 
+      catchLikes.push(str);
       var likeLabelColor_ = "#2980b9";
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = 0;
@@ -83,7 +85,7 @@ export default class ViewImageScreen extends React.Component {
         }),
       });
     } else {
-      if (likeCounter[str] == 0) {        
+      if (likeCounter[str] == 0) {
         for (var i = 0; i < catchLikes.length; i++) {
           if (catchLikes[i] === str) {
             catchLikes.splice(i, 1);
@@ -114,8 +116,8 @@ export default class ViewImageScreen extends React.Component {
     var str = "";
     str = i.replace(/[^0-9\.]+/g, "");
     catchDislikes.push(str);
-    
-    if (catchLikes.includes(str)){
+
+    if (catchLikes.includes(str)) {
       var likeLabelColor_ = "#000000";
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = undefined;
@@ -129,14 +131,14 @@ export default class ViewImageScreen extends React.Component {
         body: JSON.stringify({
           ID: str,
         }),
-      });      
+      });
     }
 
-    if (dislikeCounter[str] == undefined) {      
+    if (dislikeCounter[str] == undefined) {
       var dislikeLabelColor_ = "#c0392b";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = 0;
-            
+
       fetch("https://bardojeiz-server.herokuapp.com/data/dislike", {
         method: "POST",
         headers: {
@@ -180,15 +182,16 @@ export default class ViewImageScreen extends React.Component {
     } else {
       let antenor_albuquerque = this.state.persons.data;
       let i = -1;
+      let conteudo;
       return (
-        <>     
+        <>
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() => this.props.navigation.navigate("post")}
             style={styles.postButton}
           >
             <FontAwesomeIcon
-              icon={["far", "image"]}
+              icon={["fas", "upload"]}
               style={styles.FloatingButtonStyle}
             />
           </TouchableOpacity>
@@ -201,6 +204,39 @@ export default class ViewImageScreen extends React.Component {
               />
             }
           >
+            <View style={styles.ViewimgFixed} key={i}>
+              <View style={styles.header}>
+                <Image source={require("../eu.png")} style={styles.avatar} />
+
+                <View>
+                  <Text style={styles.avatarName}>
+                    Desenvolvedor (Post Fixo)
+                  </Text>
+                  <Text style={styles.avatarDescription}>
+                    26/01/2020 - 16:06
+                  </Text>
+                </View>
+              </View>
+              <Video
+                source={require("../fixo.mp4")}
+                style={styles.img}
+                resizeMode="cover"
+                useNativeControls
+                isLooping
+                default
+              />
+              <View style={styles.description}>
+                <Text numberOfLines={6} style={styles.imageDescriptionFixed}>
+                  Opa, salve! Você está nesse momento no Bar do Jeiz, o
+                  Instagram se fosse bom! Em desenvolvimento desde Abril/2020, o
+                  Bar do Jeiz nada mais é do que um beta gigante, um monstro
+                  indomável... Nem eu sei aonde vai parar essa budega, mas
+                  enfim, por enquanto os posts duram por tempo limitado, então,
+                  aproveite enquanto é tempo...
+                </Text>
+              </View>
+            </View>
+
             {antenor_albuquerque.map((antenor_albuquerque) => (
               <View style={styles.Viewimg} key={i}>
                 {(() => {
@@ -209,6 +245,26 @@ export default class ViewImageScreen extends React.Component {
                   window["Object" + parseInt(i)] = Object.values(
                     this.state.persons.data[parseInt(i)]
                   );
+                  if (window["Object" + i][4].includes(".mp4", "mov") == true) {
+                    conteudo = (
+                      <Video
+                        source={{ uri: window["Object" + i][4] }}
+                        style={styles.img}
+                        resizeMode="contain"
+                        useNativeControls
+                        isLooping
+                        default
+                      />
+                    );
+                  } else {
+                    conteudo = (
+                      <Image
+                        source={{ uri: window["Object" + i][4] }}
+                        style={styles.img}
+                        resizeMode="contain"
+                      />
+                    );
+                  }
                 })()}
                 <View style={styles.header}>
                   <Image
@@ -228,10 +284,7 @@ export default class ViewImageScreen extends React.Component {
                     </Text>
                   </View>
                 </View>
-                <Image
-                  source={{ uri: window["Object" + i][4] }}
-                  style={styles.img}
-                />
+                {conteudo}
                 <View style={styles.description}>
                   <Text numberOfLines={1} style={styles.imageDescription}>
                     {window["Object" + i][5]}
@@ -358,6 +411,7 @@ const styles = StyleSheet.create({
   img: {
     width: "100%",
     height: 300,
+    backgroundColor: "#bdc3c7",
   },
 
   description: {
@@ -372,6 +426,11 @@ const styles = StyleSheet.create({
     height: 18,
   },
 
+  imageDescriptionFixed: {
+    fontSize: 13,
+    height: 108,
+  },
+
   header: {
     width: "100%",
     paddingLeft: 10,
@@ -379,6 +438,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#f2f2f2",
     height: 50,
+  },
+
+  ViewimgFixed: {
+    width: "100%",
+    height: 470,
+    paddingTop: 0,
+    borderBottomWidth: 0.8,
+    borderColor: "#f0f0f0",
+    flexDirection: "column",
+    flex: 1,
   },
 
   Viewimg: {

@@ -9,7 +9,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faBorderNone, fas } from "@fortawesome/free-solid-svg-icons";
 import postScreen from "./app/assets/screens/postScreen";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { withNavigation } from "react-navigation";
@@ -32,31 +32,7 @@ export default class App extends Component {
             name="home_video"
             options={({ navigation, route }) => ({
               title: "Bar do Jeiz",
-              headerTitleAlign: "center",
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("home");
-                  }}
-                  style={styles.postButton}
-                >
-                  <FontAwesomeIcon
-                    icon={["far", "image"]}
-                    style={styles.FloatingButtonStyle}
-                  />
-                </TouchableOpacity>
-              ),
-              headerLeft: () => (
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("welcome")}
-                  style={styles.postButton}
-                >
-                  <FontAwesomeIcon
-                    icon={["fas", "arrow-left"]}
-                    style={styles.FloatingButtonStyle}
-                  />
-                </TouchableOpacity>
-              ),            
+              headerTitleAlign: "center",         
             })}
             component={ViewVideoScreen}
           />          
@@ -66,30 +42,7 @@ export default class App extends Component {
             options={({ navigation, route }) => ({
               title: "Bar do Jeiz",
               headerTitleAlign: "center",
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("home_video");
-                  }}
-                  style={styles.postButton}
-                >
-                  <FontAwesomeIcon
-                    icon={["fas", "video"]}
-                    style={styles.FloatingButtonStyle}
-                  />
-                </TouchableOpacity>
-              ),
-              headerLeft: () => (
-                <TouchableOpacity
-                  onPress={() => navigation.goBack()}
-                  style={styles.postButton}
-                >
-                  <FontAwesomeIcon
-                    icon={["fas", "arrow-left"]}
-                    style={styles.FloatingButtonStyle}
-                  />
-                </TouchableOpacity>
-              ),            
+              headerRight: ""   
             })}
           />
           <Stack.Screen
