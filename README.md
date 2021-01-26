@@ -1,7 +1,20 @@
 # BardoJeiz
 > Se o Instagram fosse bom, seria o Bar do Jeiz
 
-Rede social inteiramente programa em React Native e Expo, rodando o seu backend no Google Cloud. O Bar do Jeiz é uma rede social para quem já está cansado das redes sociais chatas e repetitivas. Aqui você posta o que quiser, e já era, sem mais nem menos.
+Rede social inteiramente programada em React Native e Expo, rodando o seu backend no HeroKu. O Bar do Jeiz é uma rede social para quem já está cansado das redes sociais chatas e repetitivas. Aqui você posta o que quiser, e já era, sem mais nem menos.
+
+Atualmente o Bar do Jeiz está distribuído em quatro Branchs:
+    * master
+        * Projeto em React Native;
+    
+    * web
+        * Projeto em ReactJS (código fonte);
+
+    * build
+        * Projeto em ReactJS buildado (hospedado em https://gui1949.github.io/BardoJeiz/);
+
+    * server
+        * Back-End do projeto, em Node.JS e Express;
 
 ## Histórico de lançamentos
 
@@ -9,18 +22,21 @@ Rede social inteiramente programa em React Native e Expo, rodando o seu backend 
     * Upload inicial
 * 0.0.2
     * Posts carregando conforme scroll. 
-    * Removida ferramenta de corte
+    * Removida ferramenta de corte.
     * O usuário pode inserir a descrição após escolher/tirar a foto.
 * 0.0.3
-    * Adicionado o fabuloso gerador de nickname
+    * Adicionado o fabuloso gerador de nickname.
 * 0.0.4
-    * Adicionada a opção de upload de vídeos 
-    * Arrumado o tamanho da descrição (anteriormente cortava algumas letras) 
-    * Alterada a barra superior do app, agora com dois botões nas telas principais
+    * Adicionada a opção de upload de vídeos .
+    * Arrumado o tamanho da descrição (anteriormente cortava algumas letras).
+    * Alterada a barra superior do app, agora com dois botões nas telas principais.
 * 0.0.5
     * Remoção de bugs
     * Like e dislike agora desmarcam um ao outro
-    
+* 0.0.6
+    * Remoção de bugs
+    * Alteração de backend para o HeroKU
+
 ## Meta
 
 Guilherme Floriano – [@xxpoliclinicaxx](https://twitter.com/xxpoliclinicaxx) – guilhermesantiago12@gmail.com
