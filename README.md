@@ -15,7 +15,7 @@ Atualmente o Bar do Jeiz está distribuído em quatro Branchs:
      * Projeto em ReactJS buildado (hospedado em https://gui1949.github.io/BardoJeiz/);
 
  * server
-     * Back-End do projeto, em Node.JS e Express;
+     * Back-End do projeto, em Node.JS e Express (hospedado no Heroku);
 
 ## Histórico de lançamentos
 
@@ -36,7 +36,7 @@ Atualmente o Bar do Jeiz está distribuído em quatro Branchs:
     * Like e dislike agora desmarcam um ao outro
 * 0.0.6
     * Remoção de bugs
-    * Alteração de backend para o HeroKU
+    * Alteração de backend para o Heroku
 
 ## Meta
 
