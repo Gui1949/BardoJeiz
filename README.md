@@ -4,17 +4,18 @@
 Rede social inteiramente programada em React Native e Expo, rodando o seu backend no HeroKu. O Bar do Jeiz é uma rede social para quem já está cansado das redes sociais chatas e repetitivas. Aqui você posta o que quiser, e já era, sem mais nem menos.
 
 Atualmente o Bar do Jeiz está distribuído em quatro Branchs:
-    * master
-        * Projeto em React Native;
-    
-    * web
-        * Projeto em ReactJS (código fonte);
 
-    * build
-        * Projeto em ReactJS buildado (hospedado em https://gui1949.github.io/BardoJeiz/);
+ * master
+     * Projeto em React Native;
 
-    * server
-        * Back-End do projeto, em Node.JS e Express;
+ * web
+     * Projeto em ReactJS (código fonte);
+
+ * build
+     * Projeto em ReactJS buildado (hospedado em https://gui1949.github.io/BardoJeiz/);
+
+ * server
+     * Back-End do projeto, em Node.JS e Express (hospedado no Heroku);
 
 ## Histórico de lançamentos
 
@@ -35,7 +36,7 @@ Atualmente o Bar do Jeiz está distribuído em quatro Branchs:
     * Like e dislike agora desmarcam um ao outro
 * 0.0.6
     * Remoção de bugs
-    * Alteração de backend para o HeroKU
+    * Alteração de backend para o Heroku
 
 ## Meta
 
