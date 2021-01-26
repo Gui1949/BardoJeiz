@@ -39,7 +39,7 @@ export default class ViewVideoScreen extends React.Component {
   }
 
   async componentDidMount() {
-    axios.get(`http://34.95.243.9:80/data/video_file`).then((res) => {
+    axios.get(`https://bardojeiz-server.herokuapp.com/data/video_file`).then((res) => {
       const persons = res.data;
       this.setState({ persons });
     });
@@ -74,7 +74,7 @@ export default class ViewVideoScreen extends React.Component {
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = 0;
 
-      fetch("http://34.95.243.9:80/data/like", {
+      fetch("https://bardojeiz-server.herokuapp.com/data/like", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -90,7 +90,7 @@ export default class ViewVideoScreen extends React.Component {
         this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
         likeCounter[str] = undefined;
 
-        fetch("http://34.95.243.9:80/data/del_like", {
+        fetch("https://bardojeiz-server.herokuapp.com/data/del_like", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -133,7 +133,7 @@ export default class ViewVideoScreen extends React.Component {
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = 0;
 
-      fetch("http://34.95.243.9:80/data/dislike", {
+      fetch("https://bardojeiz-server.herokuapp.com/data/dislike", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -147,7 +147,7 @@ export default class ViewVideoScreen extends React.Component {
       var dislikeLabelColor_ = "#000000";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = undefined;
-      fetch("http://34.95.243.9:80/data/del_dislike", {
+      fetch("https://bardojeiz-server.herokuapp.com/data/del_dislike", {
         method: "POST",
         headers: {
           Accept: "application/json",

@@ -43,7 +43,7 @@ export default class postScreen extends Component {
 
         <Button onPress={this._takePhoto} title="Tirar uma foto agora" />
 
-        <Button onPress={this._takeVideo} title="Filmar agora" />        
+        <Button onPress={this._takeVideo} title="Filmar agora" />
 
         <TextInput
           ref={(el) => {
@@ -103,7 +103,7 @@ export default class postScreen extends Component {
     if (cameraPerm === "granted" && cameraRollPerm === "granted") {
       pickerResult = await ImagePicker.launchCameraAsync({
         allowsEditing: false,
-        quality:0.3,
+        quality: 0.3,
         mediaTypes: ImagePicker.MediaTypeOptions.Videos,
       });
     }
@@ -129,7 +129,7 @@ export default class postScreen extends Component {
     if (cameraRollPerm === "granted") {
       pickerResult = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Videos,
-        quality:0.3,
+        quality: 0.3,
         allowsEditing: false,
       });
     }
@@ -168,11 +168,12 @@ export default class postScreen extends Component {
 }
 
 async function uploadImageAsync(uri, joao_carlos) {
+  carlinhos = uri;
   if (joao_carlos == undefined) {
     Alert.alert("Erro", "Insira uma descrição");
   } else {
-    let apiUrl = "http://34.95.243.9:80/data/upload";
-    let uriParts = uri.split(".");
+    let apiUrl = "http://bardojeiz-server.herokuapp.com/data/upload";
+    let uriParts = carlinhos.split(".");
     let fileType = uriParts[uriParts.length - 1];
     let formData = new FormData();
     formData.append("photo", {

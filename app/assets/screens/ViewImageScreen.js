@@ -9,18 +9,11 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-<<<<<<< HEAD
-import { Image as RneImage } from "react-native-elements";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import axios from "axios";
-import postScreen from "./postScreen";
-=======
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
 import postScreen from "./postScreen";
 import { Video } from "expo-av";
 import { withNavigation } from 'react-navigation';
->>>>>>> f00ad932d46fb32e04fd151f9af0234293c6d200
 
 let likeCounter = [];
 let dislikeCounter = [];
@@ -45,7 +38,7 @@ export default class ViewImageScreen extends React.Component {
   }
 
   async componentDidMount() {
-    axios.get(`http://34.95.243.9:80/data/img_file`).then((res) => {
+    axios.get(`https://bardojeiz-server.herokuapp.com/data/img_file`).then((res) => {
       const persons = res.data;
       this.setState({ persons });
     });
@@ -61,7 +54,7 @@ export default class ViewImageScreen extends React.Component {
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = undefined;
 
-      fetch("http://34.95.243.9:80/data/del_dislike", {
+      fetch("https://bardojeiz-server.herokuapp.com/data/del_dislike", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -79,7 +72,7 @@ export default class ViewImageScreen extends React.Component {
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = 0;
 
-      fetch("http://34.95.243.9:80/data/like", {
+      fetch("https://bardojeiz-server.herokuapp.com/data/like", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -102,7 +95,7 @@ export default class ViewImageScreen extends React.Component {
         this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
         likeCounter[str] = undefined;
 
-        fetch("http://34.95.243.9:80/data/del_like", {
+        fetch("https://bardojeiz-server.herokuapp.com/data/del_like", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -127,7 +120,7 @@ export default class ViewImageScreen extends React.Component {
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = undefined;
 
-      fetch("http://34.95.243.9:80/data/del_like", {
+      fetch("https://bardojeiz-server.herokuapp.com/data/del_like", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -144,7 +137,7 @@ export default class ViewImageScreen extends React.Component {
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = 0;
             
-      fetch("http://34.95.243.9:80/data/dislike", {
+      fetch("https://bardojeiz-server.herokuapp.com/data/dislike", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -163,7 +156,7 @@ export default class ViewImageScreen extends React.Component {
       var dislikeLabelColor_ = "#000000";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = undefined;
-      fetch("http://34.95.243.9:80/data/del_dislike", {
+      fetch("https://bardojeiz-server.herokuapp.com/data/del_dislike", {
         method: "POST",
         headers: {
           Accept: "application/json",
