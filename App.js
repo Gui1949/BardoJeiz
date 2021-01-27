@@ -20,6 +20,7 @@ const Stack = createStackNavigator();
 export default class App extends Component {
   render() {
     const MickJagger = this.props.navigation;
+
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Welcome">
@@ -32,17 +33,21 @@ export default class App extends Component {
             name="home_video"
             options={({ navigation, route }) => ({
               title: "Bar do Jeiz",
-              headerTitleAlign: "center",         
+              headerTitleAlign: "center",
             })}
             component={ViewVideoScreen}
-          />          
+          />
           <Stack.Screen
             name="home"
             component={ViewImageScreen}
             options={({ navigation, route }) => ({
               title: "Bar do Jeiz",
+              headerStyle: { backgroundColor: "#282a36" },
+              headerTitleStyle: {
+                color: "#ffffff",
+              },
               headerTitleAlign: "center",
-              headerRight: ""   
+              headerLeft: "",
             })}
           />
           <Stack.Screen
@@ -59,7 +64,7 @@ export default class App extends Component {
                     style={styles.FloatingButtonStyle}
                   />
                 </TouchableOpacity>
-              ),                   
+              ),
             })}
             component={postScreen}
           />

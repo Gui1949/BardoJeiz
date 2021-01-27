@@ -14,6 +14,8 @@ import axios from "axios";
 import postScreen from "./postScreen";
 import { Video } from "expo-av";
 import { withNavigation } from "react-navigation";
+import { color } from "react-native-reanimated";
+import { StatusBar } from "expo-status-bar";
 
 let likeCounter = [];
 let dislikeCounter = [];
@@ -38,12 +40,10 @@ export default class ViewImageScreen extends React.Component {
   }
 
   async componentDidMount() {
-    axios
-      .get(`https://bardojeiz-server.herokuapp.com/data`)
-      .then((res) => {
-        const persons = res.data;
-        this.setState({ persons });
-      });
+    axios.get(`https://bardojeiz-server.herokuapp.com/data`).then((res) => {
+      const persons = res.data;
+      this.setState({ persons });
+    });
   }
 
   likeColor(i) {
@@ -52,7 +52,7 @@ export default class ViewImageScreen extends React.Component {
     str = i.replace(/[^0-9\.]+/g, "");
 
     if (catchDislikes.includes(str)) {
-      var dislikeLabelColor_ = "#000000";
+      var dislikeLabelColor_ = "#95a5a6";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = undefined;
 
@@ -70,7 +70,7 @@ export default class ViewImageScreen extends React.Component {
 
     if (likeCounter[str] == undefined) {
       catchLikes.push(str);
-      var likeLabelColor_ = "#2980b9";
+      var likeLabelColor_ = "#ff79c6";
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = 0;
 
@@ -93,7 +93,7 @@ export default class ViewImageScreen extends React.Component {
           }
         }
 
-        var likeLabelColor_ = "#000000";
+        var likeLabelColor_ = "#95a5a6";
         this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
         likeCounter[str] = undefined;
 
@@ -118,7 +118,7 @@ export default class ViewImageScreen extends React.Component {
     catchDislikes.push(str);
 
     if (catchLikes.includes(str)) {
-      var likeLabelColor_ = "#000000";
+      var likeLabelColor_ = "#95a5a6";
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = undefined;
 
@@ -135,7 +135,7 @@ export default class ViewImageScreen extends React.Component {
     }
 
     if (dislikeCounter[str] == undefined) {
-      var dislikeLabelColor_ = "#c0392b";
+      var dislikeLabelColor_ = "#ff79c6";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = 0;
 
@@ -155,7 +155,7 @@ export default class ViewImageScreen extends React.Component {
           catchDislikes.splice(i, 1);
         }
       }
-      var dislikeLabelColor_ = "#000000";
+      var dislikeLabelColor_ = "#95a5a6";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = undefined;
       fetch("https://bardojeiz-server.herokuapp.com/data/del_dislike", {
@@ -177,6 +177,7 @@ export default class ViewImageScreen extends React.Component {
       return (
         <View style={[StyleSheet.absoluteFill, styles.maybeRenderUploading]}>
           <ActivityIndicator color="#fff" size="large" />
+          <StatusBar barStyle="light-content" />
         </View>
       );
     } else {
@@ -196,6 +197,7 @@ export default class ViewImageScreen extends React.Component {
             />
           </TouchableOpacity>
           <ScrollView
+            backgroundColor="#282a36"
             removeClippedSubviews
             refreshControl={
               <RefreshControl
@@ -210,29 +212,36 @@ export default class ViewImageScreen extends React.Component {
 
                 <View>
                   <Text style={styles.avatarName}>
-                    Desenvolvedor (Post Fixo)
+                    Desenvolvedor{" "}
+                    <FontAwesomeIcon
+                      icon={["fas", "thumbtack"]}
+                      style={styles.avatarNameIcon}
+                      size={10}
+                    />
                   </Text>
                   <Text style={styles.avatarDescription}>
                     26/01/2020 - 16:06
                   </Text>
                 </View>
               </View>
-              <Video
-                source={require("../fixo.mp4")}
-                style={styles.img}
-                resizeMode="cover"
-                useNativeControls
-                isLooping
-                default
-              />
-              <View style={styles.description}>
+              <View style={styles.img_field}>
+                <Video
+                  source={require("../fixo.mp4")}
+                  style={styles.img_fixed}
+                  resizeMode="cover"
+                  useNativeControls
+                  isLooping
+                  default
+                />
+              </View>
+              <View style={styles.descriptionFixed}>
                 <Text numberOfLines={6} style={styles.imageDescriptionFixed}>
-                  Opa, salve! Você está nesse momento no Bar do Jeiz, o
-                  Instagram se fosse bom! Em desenvolvimento desde Abril/2020, o
-                  Bar do Jeiz nada mais é do que um beta gigante, um monstro
-                  indomável... Nem eu sei aonde vai parar essa budega, mas
-                  enfim, por enquanto os posts duram por tempo limitado, então,
-                  aproveite enquanto é tempo...
+                  Opa, salve! Você está no Bar do Jeiz, o Instagram se fosse
+                  bom! Em desenvolvimento desde Abril/2020, o Bar do Jeiz nada
+                  mais é do que um beta gigante, um monstro indomável... Nem eu
+                  sei aonde vai parar essa budega, mas enfim, por enquanto os
+                  posts duram por tempo limitado, então, aproveite enquanto é
+                  tempo...
                 </Text>
               </View>
             </View>
@@ -270,7 +279,7 @@ export default class ViewImageScreen extends React.Component {
                   <Image
                     key={window["Object" + i][1]}
                     source={{
-                      uri: 'https://www.tnmc.go.tz/images/2020/avatar.jpg'
+                      uri: "https://www.tnmc.go.tz/images/2020/avatar.jpg",
                     }}
                     style={styles.avatar}
                   />
@@ -284,7 +293,7 @@ export default class ViewImageScreen extends React.Component {
                     </Text>
                   </View>
                 </View>
-                {conteudo}
+                <View style={styles.img_field}>{conteudo}</View>
                 <View style={styles.description}>
                   <Text numberOfLines={1} style={styles.imageDescription}>
                     {window["Object" + i][5]}
@@ -299,7 +308,7 @@ export default class ViewImageScreen extends React.Component {
                       height: 46,
                       borderTopWidth: 1.5,
                       flexDirection: "row",
-                      borderColor: "#7f8c8d",
+                      borderColor: "#bd93f9",
                       justifyContent: "center",
                       alignItems: "center",
                       fontSize: 13,
@@ -312,9 +321,14 @@ export default class ViewImageScreen extends React.Component {
                   >
                     <FontAwesomeIcon
                       style={{
-                        color: this.state[
-                          "likeLabelColor_" + window["Object" + i][0]
-                        ],
+                        color:
+                          this.state[
+                            "likeLabelColor_" + window["Object" + i][0]
+                          ] == undefined
+                            ? "#95a5a6"
+                            : this.state[
+                                "likeLabelColor_" + window["Object" + i][0]
+                              ],
                         fontSize: 16,
                         opacity: 0.88,
                       }}
@@ -325,9 +339,14 @@ export default class ViewImageScreen extends React.Component {
                         paddingLeft: 5,
                         fontSize: 17,
                         opacity: 0.88,
-                        color: this.state[
-                          "likeLabelColor_" + window["Object" + i][0]
-                        ],
+                        color:
+                          this.state[
+                            "likeLabelColor_" + window["Object" + i][0]
+                          ] == undefined
+                            ? "#95a5a6"
+                            : this.state[
+                                "likeLabelColor_" + window["Object" + i][0]
+                              ],
                       }}
                     >
                       {window["Object" + i][6]}
@@ -340,7 +359,7 @@ export default class ViewImageScreen extends React.Component {
                       height: 46,
                       borderTopWidth: 1.5,
                       flexDirection: "row",
-                      borderColor: "#7f8c8d",
+                      borderColor: "#bd93f9",
                       justifyContent: "center",
                       alignItems: "center",
                       fontSize: 13,
@@ -353,9 +372,14 @@ export default class ViewImageScreen extends React.Component {
                   >
                     <FontAwesomeIcon
                       style={{
-                        color: this.state[
-                          "dislikeLabelColor_" + window["Object" + i][0]
-                        ],
+                        color:
+                          this.state[
+                            "dislikeLabelColor_" + window["Object" + i][0]
+                          ] == undefined
+                            ? "#95a5a6"
+                            : this.state[
+                                "dislikeLabelColor_" + window["Object" + i][0]
+                              ],
                         opacity: 0.88,
                         fontSize: 16,
                       }}
@@ -366,9 +390,14 @@ export default class ViewImageScreen extends React.Component {
                         paddingLeft: 5,
                         opacity: 0.88,
                         fontSize: 17,
-                        color: this.state[
-                          "dislikeLabelColor_" + window["Object" + i][0]
-                        ],
+                        color:
+                          this.state[
+                            "dislikeLabelColor_" + window["Object" + i][0]
+                          ] == undefined
+                            ? "#95a5a6"
+                            : this.state[
+                                "dislikeLabelColor_" + window["Object" + i][0]
+                              ],
                       }}
                     >
                       {window["Object" + i][7]}
@@ -410,23 +439,48 @@ const styles = StyleSheet.create({
 
   img: {
     width: "100%",
+    alignSelf: "center",
     height: 300,
-    backgroundColor: "#bdc3c7",
+  },
+
+  img_fixed: {
+    width: "100%",
+    borderRadius: 8,
+    alignSelf: "center",
+    height: 300,
+  },
+
+  img_field: {
+    borderRadius: 8,
+    alignSelf: "center",
+    width: "91%",
+    backgroundColor: "#282a36",
+  },
+
+  descriptionFixed: {
+    paddingLeft: 10,
+    paddingTop: 10,
+    paddingRight: 10,
+    width: "97%",
+    alignSelf: "center",
   },
 
   description: {
     paddingLeft: 10,
     paddingTop: 10,
-    backgroundColor: "#fff",
+    width: "97%",
+    alignSelf: "center",
     paddingRight: 10,
   },
 
   imageDescription: {
+    color: "#ffffff",
     fontSize: 13,
     height: 18,
   },
 
   imageDescriptionFixed: {
+    color: "#ffffff",
     fontSize: 13,
     height: 108,
   },
@@ -434,40 +488,59 @@ const styles = StyleSheet.create({
   header: {
     width: "100%",
     paddingLeft: 10,
-    paddingTop: 5,
+    paddingTop: 9,
+    paddingBottom: 46,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
     flexDirection: "row",
-    backgroundColor: "#f2f2f2",
+    color: "#ffffff",
     height: 50,
   },
 
   ViewimgFixed: {
-    width: "100%",
+    width: "95%",
+    alignSelf: "center",
     height: 470,
+    backgroundColor: "#44475a",
+    borderRadius: 8,
     paddingTop: 0,
     borderBottomWidth: 0.8,
-    borderColor: "#f0f0f0",
+    marginBottom: 15,
+    marginTop: 10,
     flexDirection: "column",
     flex: 1,
   },
 
   Viewimg: {
-    width: "100%",
+    width: "95%",
     height: 450,
+    alignSelf: "center",
     paddingTop: 0,
+    backgroundColor: "#44475a",
+    borderRadius: 8,
     borderBottomWidth: 0.8,
-    borderColor: "#f0f0f0",
+    marginBottom: 15,
     flexDirection: "column",
     flex: 1,
+    color: "#ffffff",
   },
 
   avatarName: {
     fontWeight: "bold",
+    color: "#ffffff",
     paddingLeft: 7,
+    paddingTop: Platform.OS === "android" ? 1 : 3,
+  },
+
+  avatarNameIcon: {
+    paddingLeft: 10,
+    color: "#ffffff",
     paddingTop: Platform.OS === "android" ? 1 : 3,
   },
 
   avatarDescription: {
     paddingLeft: 7,
+    color: "#ffffff",
     paddingTop: Platform.OS === "android" ? 0 : 2,
     fontSize: 12,
   },
@@ -475,32 +548,30 @@ const styles = StyleSheet.create({
   avatar: {
     width: 40,
     borderRadius: 60 / 2,
+    marginLeft: 8,
     height: 40,
   },
 
   buttons: {
     flex: 1,
     flexDirection: "row",
-    width: "100%",
+    width: "97%",
+    alignSelf: "center",
     color: "#ffffff",
     paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10,
-    borderBottomWidth: 1.2,
-    backgroundColor: "#ffffff",
-    borderColor: "#ebebeb",
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
     height: 70,
     justifyContent: "space-between",
   },
 
   buttonZap: {
-    borderRadius: 12,
     color: "#ffffff",
     width: "48.5%",
     height: 50,
-    borderWidth: 2,
     flexDirection: "row",
-    borderColor: "#e74c3c",
   },
 
   maybeRenderUploading: {

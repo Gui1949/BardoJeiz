@@ -23,6 +23,7 @@
     "expo-image-picker": "~8.1.0",
     "expo-permissions": "~8.1.0",
     "expo-sqlite": "~8.1.0",
+    "expo-status-bar": "^1.0.3",
     "link": "^0.1.5",
     "react": "~16.9.0",
     "react-data-navigation": "^1.0.0",
