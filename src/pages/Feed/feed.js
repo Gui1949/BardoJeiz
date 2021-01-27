@@ -291,12 +291,12 @@ function Feed(ler_dados) {
           </List>
         </div>
         {/* Navigation bar inferior */}
-        <nav className="nav">
+        {/* <nav className="nav">
           <a href="#" className="nav__link nav__link--active">
             <i className="material-icons nav__icon">dashboard</i>
             <span className="nav__text">Feed</span>
           </a>
-        </nav>
+        </nav> */}
       </>
     );
   }
