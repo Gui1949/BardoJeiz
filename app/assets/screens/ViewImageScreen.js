@@ -186,16 +186,6 @@ export default class ViewImageScreen extends React.Component {
       let conteudo;
       return (
         <>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => this.props.navigation.navigate("post")}
-            style={styles.postButton}
-          >
-            <FontAwesomeIcon
-              icon={["fas", "upload"]}
-              style={styles.FloatingButtonStyle}
-            />
-          </TouchableOpacity>
           <ScrollView
             backgroundColor="#282a36"
             removeClippedSubviews
@@ -206,7 +196,17 @@ export default class ViewImageScreen extends React.Component {
               />
             }
           >
-            <View style={styles.ViewimgFixed} key={i}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => this.props.navigation.navigate("post")}
+              style={styles.btnPostar}
+            >
+              <FontAwesomeIcon
+                icon={["fas", "upload"]}
+                style={styles.btnPostar}
+              />
+            </TouchableOpacity>
+            <View style={styles.ViewimgFixed}>
               <View style={styles.header}>
                 <Image source={require("../eu.png")} style={styles.avatar} />
 
@@ -488,8 +488,8 @@ const styles = StyleSheet.create({
   header: {
     width: "100%",
     paddingLeft: 10,
-    paddingTop: 9,
-    paddingBottom: 46,
+    paddingTop: 10,
+    paddingBottom: 47,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     flexDirection: "row",
@@ -500,13 +500,27 @@ const styles = StyleSheet.create({
   ViewimgFixed: {
     width: "95%",
     alignSelf: "center",
-    height: 470,
+    height: 475,
     backgroundColor: "#44475a",
     borderRadius: 8,
     paddingTop: 0,
     borderBottomWidth: 0.8,
     marginBottom: 15,
     marginTop: 10,
+    flexDirection: "column",
+    flex: 1,
+  },
+
+  btnPostar: {
+    width: "95%",
+    alignSelf: "center",
+    height: 42,
+    backgroundColor: "#44475a",
+    borderRadius: 8,
+    paddingTop: 0,
+    borderBottomWidth: 0.8,
+    marginTop: 10,
+    color: '#95a5a6',
     flexDirection: "column",
     flex: 1,
   },

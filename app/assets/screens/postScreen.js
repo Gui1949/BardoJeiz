@@ -33,6 +33,7 @@ export default class postScreen extends Component {
     return (
       <KeyboardAvoidingView
         style={styles.container}
+        backgroundColor="#282a36"
         behavior={Platform.OS === "ios" ? "padding" : null}
       >
         <StatusBar barStyle="default" />

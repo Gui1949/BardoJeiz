@@ -26,7 +26,16 @@ export default class App extends Component {
         <Stack.Navigator initialRouteName="Welcome">
           <Stack.Screen
             name="welcome"
-            options={{ title: "Bem Vindo(a)!", headerTitleAlign: "center" }}
+            options={{
+              title: "Bem Vindo(a)!",
+              headerTitleAlign: "center",
+              headerStyle: { backgroundColor: "#282a36" },
+              headerTitleStyle: {
+                color: "#ffffff",
+              },
+              headerTitleAlign: "center",
+              headerLeft: "",
+            }}
             component={WelcomeScreen}
           />
           <Stack.Screen
@@ -53,6 +62,11 @@ export default class App extends Component {
           <Stack.Screen
             name="post"
             options={({ navigation, route }) => ({
+              headerStyle: { backgroundColor: "#282a36" },
+              headerTitleStyle: {
+                color: "#ffffff",
+              },
+              headerTitleAlign: "center",
               title: "Postar",
               headerLeft: () => (
                 <TouchableOpacity
@@ -83,6 +97,6 @@ const styles = StyleSheet.create({
   },
 
   FloatingButtonStyle: {
-    color: "#212121",
+    color: "#ffffff",
   },
 });

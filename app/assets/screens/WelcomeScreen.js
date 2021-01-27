@@ -88,6 +88,7 @@ const WelcomeScreen = ({ navigation }) => {
   return (
     <ImageBackground
       style={styles.background}
+      backgroundColor="#282a36"
       source={{
         uri: "https://i.picsum.photos/id/432/1000/3000.jpg",
       }}
@@ -155,8 +156,9 @@ const styles = StyleSheet.create({
   username_text: {
     width: "80%",
     alignSelf: "center",
+    color: '#ffffff',
     marginTop: 10,
-    marginBottom: 100,
+    marginBottom: 120,
     paddingLeft: 10,
     height: 46,
     borderWidth: 1.5,
@@ -196,8 +198,8 @@ const styles = StyleSheet.create({
     width: 140,
     alignSelf: "center",
     alignItems: "center",
-    top: -120,
-    flexShrink: 1,
+    top: -200,
+    // flexShrink: 1,
   },
 
   logo: {
@@ -206,7 +208,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: "grey",
+    color: "#ffffff",
     fontSize: 20,
     marginTop: 5,
   },
