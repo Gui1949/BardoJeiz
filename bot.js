@@ -9,9 +9,10 @@ function bot_jeiz() {
   var data = new FormData();
   const fetch = require("node-fetch");
 
-  data.append("photo", input);
-  data.append("description", desc);
-  data.append("username", name);
+  data.append("PIC_LOCAL", input);
+  data.append("USER_PIC", input);
+  data.append("POST_DESC", desc);
+  data.append("USERNAME", name);
 
   fetch(apiUrl, {
     method: "POST",
