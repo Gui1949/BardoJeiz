@@ -302,7 +302,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
   sendNotification(message);
 });
 
-restapi.post("/data/upload_bot", (req, res) => {
+restapi.post("/data/upload_bot", upload.single("photo"), (req, res) => {
   let date_ob = new Date();
 
   let day = ("0" + date_ob.getDate()).slice(-2);
@@ -389,4 +389,4 @@ restapi.post("/data/upload_bot", (req, res) => {
 restapi.listen(process.env.PORT || 80);
 
 
-console.log("Rest API Online");
+console.log("Submit GET or POST to http://localhost:80/data");
