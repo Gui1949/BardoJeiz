@@ -1,5 +1,4 @@
 function bot_jeiz() {
-  setInterval(() => {
     var input = "https://img.estadao.com.br/thumbs/640/resources/jpg/0/4/1568918250040.jpg"    
     var name = "Jeiz";
     var desc = "Hoje to feliz rapaziada, pique beiçola";
@@ -20,7 +19,12 @@ function bot_jeiz() {
       if (response.ok) {
         console.log("Bot rodou");
       }
+      else{
+          console.log("Bot nao rodou")
+      }
     });
-  }, 4000000);
 }
-bot_jeiz();
+
+// bot_jeiz();
+
+setInterval(bot_jeiz, 4000000);
