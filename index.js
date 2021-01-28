@@ -304,7 +304,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
 
 //var server = https.createServer(options, restapi);
 
-restapi.listen(process.env.PORT || 8089);
+restapi.listen(process.env.PORT || 80);
 //server.listen(443);
 
 console.log("Submit GET or POST to http://localhost:80/data");
