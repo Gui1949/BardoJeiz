@@ -1,37 +1,28 @@
 function bot_jeiz() {
-  var input =
-    "https://img.estadao.com.br/thumbs/640/resources/jpg/0/4/1568918250040.jpg";
-  var name = "Jeiz";
-  var desc = "Hoje to feliz rapaziada, pique beiçola";
-  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/insert";
+  var input = "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127"
+  var userpic = "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127"
+  var name = "Jeiz"
+  var desc = "Hoje to feliz rapaziada, pique beiçola"
+  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
 
-  var FormData = require("form-data");
+  var FormData = require('form-data');
   var data = new FormData();
   const fetch = require("node-fetch");
 
-  data.append("PIC_LOCAL", input);
-  data.append("USER_PIC", input);
-  data.append("POST_DESC", desc);
-  data.append("USERNAME", name);
+  data.append("photo", input);
+  data.append("photo_pic", userpic);
+  data.append("description", desc);
+  data.append("username", name);
 
   fetch(apiUrl, {
     method: "POST",
     body: data,
-  })
-    .then(function (response) {
-      if (response.ok) {
-        console.log("Bot rodou");
-      } else {
-        console.log("Bot nao rodou");
-        console.log(response)
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  }).then(function (response) {
+    if (response.ok) {
+      console.log('Bot rodou')
+    }
+  });
 }
 
-// bot_jeiz();
+setInterval(bot_jeiz, 100000);
 
-setInterval(bot_jeiz, 30000);
-// setInterval(bot_jeiz, 4000000);
