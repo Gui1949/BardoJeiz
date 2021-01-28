@@ -27,7 +27,8 @@ restapi.get("/data", (req, res) => {
 });
 
 restapi.get("/data/video_file", (req, res) => {
-  var sql = "select * from POSTS WHERE PIC_LOCAL LIKE '%.mov%' OR PIC_LOCAL LIKE '%.mp4%' order by id desc";
+  var sql =
+    "select * from POSTS WHERE PIC_LOCAL LIKE '%.mov%' OR PIC_LOCAL LIKE '%.mp4%' order by id desc";
   var params = [];
   db.all(sql, params, (err, rows) => {
     if (err) {
@@ -41,7 +42,8 @@ restapi.get("/data/video_file", (req, res) => {
 });
 
 restapi.get("/data/img_file", (req, res) => {
-  var sql = "select * from POSTS WHERE PIC_LOCAL LIKE '%.jpg%' OR PIC_LOCAL LIKE '%.png%' order by ID desc";
+  var sql =
+    "select * from POSTS WHERE PIC_LOCAL LIKE '%.jpg%' OR PIC_LOCAL LIKE '%.png%' order by ID desc";
   var params = [];
   db.all(sql, params, (err, rows) => {
     if (err) {
@@ -80,7 +82,7 @@ restapi.post("/data/insert", function (req, res) {
   };
   var sql =
     "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC) VALUES(?,?,?,?,?)";
-  console.log('Arquivo Upado')
+  console.log("Arquivo Upado");
   var params = [
     data.USERNAME,
     data.USER_PIC,
@@ -110,7 +112,7 @@ restapi.post("/data/like", function (req, res) {
   };
   var sql = "UPDATE POSTS SET POST_LIKE = POST_LIKE+1 WHERE ID=?";
   var params = [data.ID];
-  console.log('Like recebido no Post ', [data.ID])
+  console.log("Like recebido no Post ", [data.ID]);
   db.all(sql, params, (err, rows) => {
     if (err) {
       console.log(data.ID);
@@ -201,8 +203,6 @@ var storage = multer.diskStorage({
   },
 });
 
-
-
 restapi.use("/data/img", express.static("../app/assets/uploads/"));
 
 var upload = multer({ storage: storage });
@@ -249,19 +249,62 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
     res.json({
       data: rows,
     });
-    exec("sudo convert ../app/assets/uploads/" + cuiaba + " -scale 30% -auto-orient ../app/assets/uploads/" + cuiaba, (error, stdout, stderr) => {
-	if (error){
-		console.log(error.message);
-	}
-	});
+    exec(
+      "sudo convert ../app/assets/uploads/" +
+        cuiaba +
+        " -scale 30% -auto-orient ../app/assets/uploads/" +
+        cuiaba,
+      (error, stdout, stderr) => {
+        if (error) {
+          console.log(error.message);
+        }
+      }
+    );
   });
-});
+  var sendNotification = function (data) {
+    var headers = {
+      "Content-Type": "application/json; charset=utf-8",
+      Authorization: "Basic NmFmNmZhZTMtMzRlMC00MzFjLTk5MWUtMWI3NWY3ZThmMzMw",
+    };
 
+    var options = {
+      host: "onesignal.com",
+      port: 443,
+      path: "/api/v1/notifications",
+      method: "POST",
+      headers: headers,
+    };
+
+    var https = require("https");
+    var req = https.request(options, function (res) {
+      res.on("data", function (data) {
+        console.log("Response:");
+        console.log(JSON.parse(data));
+      });
+    });
+
+    req.on("error", function (e) {
+      console.log("ERROR:");
+      console.log(e);
+    });
+
+    req.write(JSON.stringify(data));
+    req.end();
+  };
+
+  var message = {
+    app_id: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
+    contents: { en: data.USERNAME + " postou alguma merda" },
+    web_url: 'https://gui1949.github.io/BardoJeiz',
+    included_segments: ["Subscribed Users"],
+  };
+
+  sendNotification(message);
+});
 
 //var server = https.createServer(options, restapi);
 
-restapi.listen(process.env.PORT || 80);
+restapi.listen(process.env.PORT || 8089);
 //server.listen(443);
-
 
 console.log("Submit GET or POST to http://localhost:80/data");
