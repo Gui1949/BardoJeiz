@@ -302,7 +302,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
   sendNotification(message);
 });
 
-restapi.post("/data/upload_bot", upload.single("photo"), (req, res) => {
+restapi.post("/data/upload_bot", (req, res) => {
   let date_ob = new Date();
 
   let day = ("0" + date_ob.getDate()).slice(-2);
