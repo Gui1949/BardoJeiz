@@ -22,6 +22,7 @@ function bot_jeiz() {
         console.log("Bot rodou");
       } else {
         console.log("Bot nao rodou");
+        console.log(response)
       }
     })
     .catch(function (error) {
