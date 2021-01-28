@@ -297,17 +297,6 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     res.json({
       data: rows,
     });
-    exec(
-      "sudo convert ../app/assets/uploads/" +
-        cuiaba +
-        " -scale 30% -auto-orient ../app/assets/uploads/" +
-        cuiaba,
-      (error, stdout, stderr) => {
-        if (error) {
-          console.log(error.message);
-        }
-      }
-    );
   });
   var sendNotification = function (data) {
     var headers = {
@@ -342,14 +331,13 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
 
   var message = {
     app_id: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
-    contents: { en: data.USERNAME + " postou alguma merda" },
+    contents: { en: data.USERNAME + ", A LENDA, postou no Bar" },
     web_url: "https://gui1949.github.io/BardoJeiz",
     included_segments: ["Subscribed Users"],
   };
 
   sendNotification(message);
 });
-
 
 restapi.listen(process.env.PORT || 25565);
 
