@@ -302,89 +302,89 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
   sendNotification(message);
 });
 
-// restapi.post("/data/upload_bot", (req, res) => {
-//   let date_ob = new Date();
+restapi.post("/data/upload_bot", (req, res) => {
+  let date_ob = new Date();
 
-//   let day = ("0" + date_ob.getDate()).slice(-2);
+  let day = ("0" + date_ob.getDate()).slice(-2);
 
-//   let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
 
-//   let year = date_ob.getFullYear();
+  let year = date_ob.getFullYear();
 
-//   let hours = date_ob.getHours();
+  let hours = date_ob.getHours();
 
-//   let minutes = date_ob.getMinutes();
-//   var data = {
-//     USERNAME: req.body.username,
-//     USER_PIC: req.body.photo,
-//     POST_DATA: day + "/" + month + "/" + year + " - " + hours + ":" + minutes,
-//     PIC_LOCAL: req.body.photo,
-//     POST_DESC: req.body.description,
-//     POST_LIKE: 0,
-//     POST_DISLIKE: 0,
-//   };
-//   var sql =
-//     "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC,POST_LIKE,POST_DISLIKE) VALUES(?,?,?,?,?,?,?)";
-//   var params = [
-//     data.USERNAME,
-//     data.USER_PIC,
-//     data.POST_DATA,
-//     data.PIC_LOCAL,
-//     data.POST_DESC,
-//     data.POST_LIKE,
-//     data.POST_DISLIKE,
-//   ];
-//   db.all(sql, params, (err, rows) => {
-//     if (err) {
-//       console.log(data.USERNAME);
-//       res.status(400).json({ error: err.message });
-//       return;
-//     }
-//     res.json({
-//       data: rows,
-//     });
-//   });
+  let minutes = date_ob.getMinutes();
+  var data = {
+    USERNAME: req.body.username,
+    USER_PIC: req.body.photo,
+    POST_DATA: day + "/" + month + "/" + year + " - " + hours + ":" + minutes,
+    PIC_LOCAL: req.body.photo,
+    POST_DESC: req.body.description,
+    POST_LIKE: 0,
+    POST_DISLIKE: 0,
+  };
+  var sql =
+    "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC,POST_LIKE,POST_DISLIKE) VALUES(?,?,?,?,?,?,?)";
+  var params = [
+    data.USERNAME,
+    data.USER_PIC,
+    data.POST_DATA,
+    data.PIC_LOCAL,
+    data.POST_DESC,
+    data.POST_LIKE,
+    data.POST_DISLIKE,
+  ];
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      console.log(data.USERNAME);
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      data: rows,
+    });
+  });
 
-//   var sendNotification = function (data) {
-//     var headers = {
-//       "Content-Type": "application/json; charset=utf-8",
-//       Authorization: "Basic NmFmNmZhZTMtMzRlMC00MzFjLTk5MWUtMWI3NWY3ZThmMzMw",
-//     };
+  var sendNotification = function (data) {
+    var headers = {
+      "Content-Type": "application/json; charset=utf-8",
+      Authorization: "Basic NmFmNmZhZTMtMzRlMC00MzFjLTk5MWUtMWI3NWY3ZThmMzMw",
+    };
 
-//     var options = {
-//       host: "onesignal.com",
-//       port: 443,
-//       path: "/api/v1/notifications",
-//       method: "POST",
-//       headers: headers,
-//     };
+    var options = {
+      host: "onesignal.com",
+      port: 443,
+      path: "/api/v1/notifications",
+      method: "POST",
+      headers: headers,
+    };
 
-//     var https = require("https");
-//     var req = https.request(options, function (res) {
-//       res.on("data", function (data) {
-//         console.log("Response:");
-//         console.log(JSON.parse(data));
-//       });
-//     });
+    var https = require("https");
+    var req = https.request(options, function (res) {
+      res.on("data", function (data) {
+        console.log("Response:");
+        console.log(JSON.parse(data));
+      });
+    });
 
-//     req.on("error", function (e) {
-//       console.log("ERROR:");
-//       console.log(e);
-//     });
+    req.on("error", function (e) {
+      console.log("ERROR:");
+      console.log(e);
+    });
 
-//     req.write(JSON.stringify(data));
-//     req.end();
-//   };
+    req.write(JSON.stringify(data));
+    req.end();
+  };
 
-//   var message = {
-//     app_id: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
-//     contents: { en: data.USERNAME + ", o mestre, postou la, vey" },
-//     web_url: 'https://gui1949.github.io/BardoJeiz',
-//     included_segments: ["Subscribed Users"],
-//   };
+  var message = {
+    app_id: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
+    contents: { en: data.USERNAME + ", o mestre, postou la, vey" },
+    web_url: 'https://gui1949.github.io/BardoJeiz',
+    included_segments: ["Subscribed Users"],
+  };
 
-//   sendNotification(message);
-// });
+  sendNotification(message);
+});
 
 restapi.listen(process.env.PORT || 80);
 
