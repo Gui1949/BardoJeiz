@@ -6,7 +6,7 @@ function bot_jeiz() {
 
   var imagem = [
     "https://afabrica.bar/wp-content/uploads/2018/07/botequim-do-hugo.jpg",
-    "https://www.youtube.com/watch?v=6xa6F7ntzJU"
+    "https://www.youtube.com/watch?v=6xa6F7ntzJU",
     "https://www.clicrbs.com.br/imagesrc/5572057.jpg",
     "https://images.redetv.uol.com.br/public/jornalismo/redetvinoticias/20200110155648NqUiNaXlhR.png",
     "https://static-wp-tor15-prd.torcedores.com/wp-content/uploads/2015/10/varzea.jpg",
@@ -28,7 +28,7 @@ function bot_jeiz() {
     "https://miro.medium.com/max/3838/1*2P9GSHpGl64ZLwrwnOn9hQ.jpeg",
     "https://pesqueiropontepreta.com.br/wp-content/uploads/2017/12/Peixe-Tambac%C3%BA.jpeg",
     "https://i.ytimg.com/vi/rWghZZ8y7i0/mqdefault.jpg",
-    // //23
+    //23
 
   ];
 
