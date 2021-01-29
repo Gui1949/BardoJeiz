@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import { render } from "@testing-library/react";
 
-// const puxar_api = axios.get(`http://34.95.243.9/data`).then((res) => {
 const puxar_api = axios
   .get(`https://bardojeiz-server.herokuapp.com/data`)
   .then((res) => {
@@ -227,16 +226,25 @@ function Feed(ler_dados) {
                       </video>
                     );
                   }
-                  else if (
-                    window["Object" + i][4].includes(".png", ".jpg", ".jpeg") ==
-                    true
-                  ) {
+                  else {
                     conteudo = (
                       <img className="conteudo" src={window["Object" + i][4]} />
                     );
                   }
-                  else{
-                    
+                  if (
+                    window["Object" + i][4].includes(
+                      "https://www.youtube.com"
+                    ) == true
+                  ) {
+                    conteudo = (
+                      <iframe
+                        class="conteudo"
+                        src={window["Object" + i][4]}
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
+                    );
                   }
                 })()}
                 <div id="header">
