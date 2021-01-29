@@ -257,6 +257,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
 });
 
 restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
+
   let date_ob = new Date();
 
   let day = ("0" + date_ob.getDate()).slice(-2);
@@ -277,6 +278,12 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     POST_LIKE: 0,
     POST_DISLIKE: 0,
   };
+
+  if(data.PIC_LOCAL.includes("https://www.youtube.com")){
+    data.PIC_LOCAL = data.PIC_LOCAL.replace("watch?v=", "embed/");
+    console.log(data.PIC_LOCAL)
+  }
+
   var sql =
     "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC,POST_LIKE,POST_DISLIKE) VALUES(?,?,?,?,?,?,?)";
   var params = [
@@ -339,6 +346,6 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   sendNotification(message);
 });
 
-restapi.listen(process.env.PORT || 80);
+restapi.listen(process.env.PORT || 81);
 
 console.log("Submit GET or POST to http://localhost:80/data");
