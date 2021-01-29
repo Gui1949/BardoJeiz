@@ -257,6 +257,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
 });
 
 restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
+
   let date_ob = new Date();
 
   let day = ("0" + date_ob.getDate()).slice(-2);
@@ -277,6 +278,12 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     POST_LIKE: 0,
     POST_DISLIKE: 0,
   };
+
+  if(PIC_LOCAL.includes("https://www.youtube.com")){
+    var PIC_LOCAL = PIC_LOCAL.replace("watch?v=", "embed/");
+    console.log(PIC_LOCAL)
+  }
+
   var sql =
     "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC,POST_LIKE,POST_DISLIKE) VALUES(?,?,?,?,?,?,?)";
   var params = [
