@@ -29,6 +29,17 @@ function bot_jeiz() {
     "https://pesqueiropontepreta.com.br/wp-content/uploads/2017/12/Peixe-Tambac%C3%BA.jpeg",
     "https://i.ytimg.com/vi/rWghZZ8y7i0/mqdefault.jpg",
     //23
+    "https://www.youtube.com/watch?v=JyJfS7BpeDg",
+    "https://www.youtube.com/watch?v=SjU4u6C-eaA",
+    "https://www.youtube.com/watch?v=lR-kdXr9ZvM",
+    "https://www.youtube.com/watch?v=jwI1j7sslYI",
+    "https://www.youtube.com/watch?v=6a4pVMQ8pnY",
+    "https://www.youtube.com/watch?v=wWUPdA9n01o",
+    "https://www.youtube.com/watch?v=PpEABeH4dw8",
+    "https://www.youtube.com/watch?v=QWVdyVd79HI",
+    "https://www.youtube.com/watch?v=ZA5F2Z6gLzE",
+    "https://www.youtube.com/watch?v=wAeejHGBazg",
+    "https://www.youtube.com/watch?v=izGwDsrQ1eQ",
 
   ];
 
