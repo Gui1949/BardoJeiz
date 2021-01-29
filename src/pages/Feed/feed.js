@@ -226,10 +226,17 @@ function Feed(ler_dados) {
                         />
                       </video>
                     );
-                  } else {
+                  }
+                  else if (
+                    window["Object" + i][4].includes(".png", ".jpg", ".jpeg") ==
+                    true
+                  ) {
                     conteudo = (
                       <img className="conteudo" src={window["Object" + i][4]} />
                     );
+                  }
+                  else{
+                    
                   }
                 })()}
                 <div id="header">
