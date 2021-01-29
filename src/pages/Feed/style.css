@@ -167,26 +167,15 @@ body {
   object-fit: contain;
 }
 
-/* .conteudo {
-  transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
-  -webkit-transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
-  -o-transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
-  -moz-transition: width 0.3s ease,height 0.3s ease,left 0.3s ease,top 0.3s ease;
-}
-
-.conteudo:hover,#post_feed:hover
-{
-  height: 100vh;
-  z-index:9999;
-} */
-
 .avatar {
+  margin-top: 0.1vh;
   margin-right: 1.2vh;
   float: left;
+  display: none;
 }
 
 #header {
-  margin-bottom: 1.8vh;
+  margin-bottom: 1vh;
 }
 
 .username_data_post {
@@ -244,6 +233,11 @@ body {
   }
   .reacao_btn {
     width: 45vh;
+  }
+  .avatar {
+    margin-top: 0.7vh;
+    float: left;
+    display: 'none';
   }
 }
 
