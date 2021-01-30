@@ -32,12 +32,22 @@ Atualmente o Bar do Jeiz está distribuído em quatro Branchs:
     * Arrumado o tamanho da descrição (anteriormente cortava algumas letras).
     * Alterada a barra superior do app, agora com dois botões nas telas principais.
 * 0.0.5
-    * Remoção de bugs
-    * Like e dislike agora desmarcam um ao outro
+    * Remoção de bugs.
+    * Like e dislike agora desmarcam um ao outro.
 * 0.0.6
-    * Remoção de bugs
-    * Alteração de backend para o Heroku
-
+    * Remoção de bugs.
+    * Alteração de backend para o Heroku.
+* 0.0.7
+    * Tema escuro em todas as páginas.
+    * Removida a tela de vídeos.
+    * Unificada a página de posts.
+* 0.0.8
+    * Adicionado o suporte a vídeos do YT (somente via bot do Jeiz).
+    * Ao lançar nova versão, o aplicativo notifica o usuário.
+* 0.0.9
+    * Tela de carregamento com o "Pensamento do dia".
+    * Correção de cor da status bar.
+    
 ## Meta
 
 Guilherme Floriano – [@xxpoliclinicaxx](https://twitter.com/xxpoliclinicaxx) – guilhermesantiago12@gmail.com
