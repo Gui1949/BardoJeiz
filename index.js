@@ -26,6 +26,13 @@ restapi.get("/data", (req, res) => {
   });
 });
 
+restapi.get("/version", (req,res) =>{
+  versao = "0.0.8"
+  res.json({
+    data: versao
+  })
+})
+
 restapi.get("/data/video_file", (req, res) => {
   var sql =
     "select * from POSTS WHERE PIC_LOCAL LIKE '%.mov%' OR PIC_LOCAL LIKE '%.mp4%' order by id desc";
@@ -346,6 +353,6 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   sendNotification(message);
 });
 
-restapi.listen(process.env.PORT || 80);
+restapi.listen(process.env.PORT || 8990);
 
 console.log("Submit GET or POST to http://localhost:80/data");
