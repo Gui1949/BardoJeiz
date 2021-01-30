@@ -27,7 +27,7 @@ restapi.get("/data", (req, res) => {
 });
 
 restapi.get("/version", (req,res) =>{
-  versao = "0.0.8"
+  versao = "0.0.9"
   res.json({
     data: versao
   })
@@ -353,6 +353,6 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   sendNotification(message);
 });
 
-restapi.listen(process.env.PORT || 8990);
+restapi.listen(process.env.PORT || 80);
 
 console.log("Submit GET or POST to http://localhost:80/data");
