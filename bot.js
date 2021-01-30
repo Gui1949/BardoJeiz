@@ -99,4 +99,4 @@ function bot_jeiz() {
   });
 }
 
-setInterval(bot_jeiz, 1200000);
+setInterval(bot_jeiz, 600000);
