@@ -40,7 +40,10 @@ function bot_jeiz() {
     "https://www.youtube.com/watch?v=ZA5F2Z6gLzE",
     "https://www.youtube.com/watch?v=wAeejHGBazg",
     "https://www.youtube.com/watch?v=izGwDsrQ1eQ",
-
+    "https://www.youtube.com/watch?v=wPh-MK_5k_k",
+    "https://www.youtube.com/watch?v=CKTkigVUNBc",
+    "https://www.youtube.com/watch?v=H6wl-EyhXl0",
+    "https://www.youtube.com/watch?v=fUjOfsoBhMY",
   ];
 
   var descricao = [
@@ -96,4 +99,4 @@ function bot_jeiz() {
   });
 }
 
-setInterval(bot_jeiz, 600000);
+setInterval(bot_jeiz, 1200000);
