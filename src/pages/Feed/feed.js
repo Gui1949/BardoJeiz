@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import { render } from "@testing-library/react";
 
-// const puxar_api = axios.get(`http://34.95.243.9/data`).then((res) => {
 const puxar_api = axios
   .get(`https://bardojeiz-server.herokuapp.com/data`)
   .then((res) => {
