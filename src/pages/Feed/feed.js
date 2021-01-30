@@ -137,7 +137,7 @@ function Feed(ler_dados) {
                     id="txt_descricao"
                   ></textarea>
                   <br />
-                  <div id="btn_upload_modal">
+                  <div>
                     <label
                       for="btn_upload"
                       className="material-icons"
@@ -225,9 +225,25 @@ function Feed(ler_dados) {
                         />
                       </video>
                     );
-                  } else {
+                  }
+                  else {
                     conteudo = (
                       <img className="conteudo" src={window["Object" + i][4]} />
+                    );
+                  }
+                  if (
+                    window["Object" + i][4].includes(
+                      "https://www.youtube.com"
+                    ) == true
+                  ) {
+                    conteudo = (
+                      <iframe
+                        class="conteudo"
+                        src={window["Object" + i][4]}
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
                     );
                   }
                 })()}
