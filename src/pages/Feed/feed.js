@@ -137,7 +137,7 @@ function Feed(ler_dados) {
                     id="txt_descricao"
                   ></textarea>
                   <br />
-                  <div id="btn_upload_modal">
+                  <div>
                     <label
                       for="btn_upload"
                       className="material-icons"

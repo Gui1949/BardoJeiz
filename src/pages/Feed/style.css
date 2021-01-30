@@ -217,27 +217,30 @@ body {
   font-size: 1.5vh;
 }
 
-@media only screen and (orientation: landscape) {
-  .nav {
-    display: none;
+@media only screen and (orientation: portrait) {
+  .modal_window {
+    width: 80vw;
+    height: 70vw;
+    position: relative;
+    border-radius: 1vh;
+    margin: 10% auto;
+    background: #282a36;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  .conteudo {
-    width: 90vh;
-  }
-  #post_feed {
-    height: 75vh;
-  }
-  #post_feed,
-  #post_header {
-    width: 96vh;
-  }
-  .reacao_btn {
-    width: 45vh;
-  }
-  .avatar {
-    margin-top: 0.7vh;
-    float: left;
-    display: 'none';
+
+  #txt_username,
+  #txt_descricao {
+    color: #282a36;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50em;
+    height: 5em;
+    border: none;
+    padding-left: 1vw;
+    border-radius: 1vw;
+    margin: 1vw 1vw 1vw 0vh;
   }
 }
 
@@ -251,7 +254,9 @@ input[type="file"] {
 
 #upload {
   border: 0px;
-  align-self: center;
+  position: relative;
+  top: 20%;
+  margin: 10 auto;
   color: #95a5a6;
   cursor: pointer;
   outline: none;
@@ -278,15 +283,6 @@ input[type="file"] {
   pointer-events: auto;
 }
 
-.modal_window {
-  width: 46.5vh;
-  position: relative;
-  border-radius: 1vh;
-  margin: 10% auto;
-  padding: 15px 20px;
-  background: #282a36;
-}
-
 .fechar {
   position: absolute;
   width: 30px;
@@ -306,15 +302,12 @@ input[type="file"] {
 #txt_descricao {
   color: #282a36;
   font-family: Arial, Helvetica, sans-serif;
-  width: 40vh;
+  width: 70vw;
+  height: 10em;
   border: none;
-  padding-left: 1vh;
-  border-radius: 1vh;
-  margin: 1vh 1vh 1vh 0vh;
-}
-
-#txt_username {
-  height: 4vh;
+  padding-left: 1vw;
+  border-radius: 1vw;
+  margin: 1vw 1vw 1vw 0vh;
 }
 
 #txt_descricao {
@@ -325,12 +318,48 @@ a {
   text-decoration: none;
 }
 
-#btn_upload_modal {
-  background-color: #44475a;
-  align-self: flex-start;
-  text-align: center;
-  width: 40vh;
-  display: block;
-  border-radius: 1vh;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+@media only screen and (orientation: landscape) {
+  .nav {
+    display: none;
+  }
+  .modal_window {
+    width: 50vh;
+    height: 50vh;
+    position: relative;
+    border-radius: 1vh;
+    margin: 10% auto;
+    background: #282a36;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #txt_username,
+  #txt_descricao {
+    width: 40vh;
+    padding-left: 1vh;
+    border-radius: 1vh;
+    margin: 1vh 1vh 1vh 0vh;
+  }
+  .conteudo {
+    width: 90vh;
+  }
+  #post_feed {
+    height: 75vh;
+  }
+  #post_feed,
+  #post_header {
+    width: 96vh;
+  }
+  .reacao_btn {
+    width: 45vh;
+  }
+  .avatar {
+    margin-top: 0.7vh;
+    float: left;
+    display: "none";
+  }
+  #txt_username {
+    height: 4vh;
+  }
 }
