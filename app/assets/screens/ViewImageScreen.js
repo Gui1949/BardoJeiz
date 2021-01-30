@@ -8,6 +8,7 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
@@ -16,6 +17,8 @@ import { Video } from "expo-av";
 import { withNavigation } from "react-navigation";
 import { color } from "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
+import YoutubePlayer from "react-native-youtube-iframe";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 let likeCounter = [];
 let dislikeCounter = [];
@@ -173,6 +176,12 @@ export default class ViewImageScreen extends React.Component {
 
   render() {
     let claudinho_sensacao = this.state.persons.data[0];
+    axios
+    .get(`https://bardojeiz-server.herokuapp.com/version`)
+    .then((res) => {
+      const version = res.data;
+      this.setState({ version });
+    });
     if (claudinho_sensacao == undefined) {
       return (
         <View style={[StyleSheet.absoluteFill, styles.maybeRenderUploading]}>
@@ -182,10 +191,45 @@ export default class ViewImageScreen extends React.Component {
       );
     } else {
       let antenor_albuquerque = this.state.persons.data;
+      let versao_instalada = "0.0.8";
+      let versao_atual = ""
+      try{
+         versao_atual = this.state.version.data;
+      }
+      catch{
+        versao_atual = versao_instalada
+        axios
+        .get(`https://bardojeiz-server.herokuapp.com/version`)
+        .then((res) => {
+          const version = res.data;
+          this.setState({ version });
+        });
+      }
+      let alertAtualizar = (<TouchableHighlight></TouchableHighlight>);
+      if (versao_atual > versao_instalada) {
+        alertAtualizar = (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() =>
+              Linking.openURL("https://github.com/Gui1949/BardoJeiz/releases/")
+            }
+            style={styles.alertNovaVersao}
+          >
+            <Text style={styles.alertNovaVersaoText}>
+              Nova versão disponível{" "}
+              <FontAwesomeIcon
+                style={styles.alertNovaVersaoText}
+                icon={["fas", "cloud-download-alt"]}
+              />
+            </Text>
+          </TouchableOpacity>
+        );
+      } 
       let i = -1;
       let conteudo;
       return (
         <>
+          {alertAtualizar}
           <ScrollView
             backgroundColor="#282a36"
             removeClippedSubviews
@@ -272,6 +316,25 @@ export default class ViewImageScreen extends React.Component {
                         style={styles.img}
                         resizeMode="contain"
                       />
+                    );
+                  }
+                  if (
+                    window["Object" + i][4].includes(
+                      "https://www.youtube.com"
+                    ) == true
+                  ) {
+                    let embed = window["Object" + i][4].replace(
+                      "https://www.youtube.com/embed/",
+                      ""
+                    );
+                    conteudo = (
+                      <View style={styles.imgYT}>
+                        <YoutubePlayer
+                          height={200}
+                          resizeMode="contain"
+                          videoId={embed}
+                        />
+                      </View>
                     );
                   }
                 })()}
@@ -443,6 +506,13 @@ const styles = StyleSheet.create({
     height: 300,
   },
 
+  imgYT: {
+    width: "100%",
+    paddingTop: 50,
+    paddingBottom: 50,
+    alignSelf: "center",
+  },
+
   img_fixed: {
     width: "100%",
     borderRadius: 8,
@@ -520,9 +590,24 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     borderBottomWidth: 0.8,
     marginTop: 10,
-    color: '#95a5a6',
+    color: "#95a5a6",
     flexDirection: "column",
     flex: 1,
+  },
+
+  alertNovaVersao: {
+    justifyContent: "center",
+    alignSelf: "center",
+    textAlign: "center",
+    width: "100%",
+    height: 30,
+    backgroundColor: "#ff5555",
+  },
+
+  alertNovaVersaoText: {
+    alignSelf: "center",
+    fontWeight: "bold",
+    color: "#ffffff",
   },
 
   Viewimg: {

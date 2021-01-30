@@ -16,6 +16,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import logo from "../bar.png";
 import { AsyncStorage } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useRef, useEffect } from "react";
 let name = "";
@@ -99,7 +100,6 @@ const WelcomeScreen = ({ navigation }) => {
       >
         <View style={styles.logoView}>
           <Image source={logo} style={styles.logo} />
-
           <Text style={styles.title}>Fica logo ali!</Text>
           <TouchableOpacity
             onPress={() => {
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   username_text: {
     width: "80%",
     alignSelf: "center",
-    color: '#ffffff',
+    color: "#ffffff",
     marginTop: 10,
     marginBottom: 120,
     paddingLeft: 10,

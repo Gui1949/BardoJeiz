@@ -212,6 +212,7 @@ const styles = StyleSheet.create({
     width: "80%",
     marginTop: 10,
     paddingLeft: 10,
+    color: '#ffffff',
     height: 46,
     borderWidth: 1.5,
     flexDirection: "row",

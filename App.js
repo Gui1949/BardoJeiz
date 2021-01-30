@@ -13,11 +13,14 @@ import { faBorderNone, fas } from "@fortawesome/free-solid-svg-icons";
 import postScreen from "./app/assets/screens/postScreen";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { withNavigation } from "react-navigation";
+import { StatusBar } from "expo-status-bar";
+
 library.add(fab, fas, far);
 
 const Stack = createStackNavigator();
 
 export default class App extends Component {
+  
   render() {
     const MickJagger = this.props.navigation;
 
