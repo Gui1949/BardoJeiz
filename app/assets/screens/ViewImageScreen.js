@@ -25,6 +25,31 @@ let dislikeCounter = [];
 let catchLikes = [];
 let catchDislikes = [];
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+let fraseTosca = [
+  "As mulheres piscam duas vezes mais que os homens.",
+  "Fevereiro de 1865 é o único mês registrado na história que não teve uma lua cheia.",
+  "Há mais galinhas no mundo que pessoas.",
+  "Na moeda de 10 centavos de dólar americano tem 118 sulcos ao redor da borda.",
+  "Nas notas de dois dólares canadenses, a bandeira esvoaçante sobre o edifício do parlamento é uma bandeira americana.",
+  "No cartão de visitas de Capone dizia que ele era vendedor de móveis usados",
+  "O navio de cruzeiro Queen Elizabeth 2, move-se meio metro por cada litro de diesel que consome.",
+  "Se a população de China caminhasse diante de você numa fila única, esta nunca teria fim devido à velocidade de reprodução neste país.",
+  "Se você mora numa grande metrópole, em toda sua vida, passará ao menos 6 meses esperando nos semáforos.",
+  "7% dos norte-americanos religiosos rezam quando precisam achar um lugar para estacionar seus carros.",
+  "Em 2011, uma mulher comprou uma obra de arte invisível por US$ 10 mil.",
+  "Ronaldinho Gaúcho perdeu o contrato que tinha com a Coca-Cola quando foi visto tomando Pepsi durante uma conferência.",
+  "O Serviço Secreto dos EUA já tentou colocar hormônios femininos na comida de Hitler, para que ele se tornasse mais feminino.",
+  "Em Oklahoma, nos EUA, é ilegal comer o pedaço do hambúrguer de uma pessoa",
+  "As últimas palavras do criador do Rolls-Royce, Henry Royce, foram: “eu gostaria de ter passado mais tempo no escritório",
+  "Na versão árabe de “Os Simpsons”, Homer se chama Omar Shamshoom",
+];
+
+let frase = fraseTosca[getRandomInt(0, fraseTosca.length)];
+
 export default class ViewImageScreen extends React.Component {
   state = {
     persons: {
@@ -176,36 +201,56 @@ export default class ViewImageScreen extends React.Component {
 
   render() {
     let claudinho_sensacao = this.state.persons.data[0];
-    axios
-    .get(`https://bardojeiz-server.herokuapp.com/version`)
-    .then((res) => {
+    axios.get(`https://bardojeiz-server.herokuapp.com/version`).then((res) => {
       const version = res.data;
       this.setState({ version });
     });
     if (claudinho_sensacao == undefined) {
       return (
-        <View style={[StyleSheet.absoluteFill, styles.maybeRenderUploading]}>
-          <ActivityIndicator color="#fff" size="large" />
-          <StatusBar barStyle="light-content" />
+        <View style={[StyleSheet.absoluteFill]} backgroundColor="#282a36">
+          <View style={styles.ViewimgLoading}>
+            <View style={styles.header}>
+              <Image source={require("../eu.png")} style={styles.avatar} />
+
+              <View>
+                <Text style={styles.avatarName}>Desenvolvedor</Text>
+                <Text style={styles.avatarDescription}>Pensamento do Dia:</Text>
+              </View>
+            </View>
+            <View style={styles.img_field}>
+              <Image
+                source={{
+                  uri:
+                    "https://media.tenor.com/images/d740131a4906504d47cab865f1bd95b3/tenor.gif",
+                }}
+                style={styles.img_fixed}
+                borderRadius={20}
+              />
+            </View>
+            <View style={styles.descriptionFixed}>
+              <Text numberOfLines={2} style={styles.imageDescriptionFixed}>
+                {frase}
+              </Text>
+            </View>
+          </View>
         </View>
       );
     } else {
       let antenor_albuquerque = this.state.persons.data;
-      let versao_instalada = "0.0.8";
-      let versao_atual = ""
-      try{
-         versao_atual = this.state.version.data;
-      }
-      catch{
-        versao_atual = versao_instalada
+      let versao_instalada = "0.0.9"
+      let versao_atual = "";
+      try {
+        versao_atual = this.state.version.data;
+      } catch {
+        versao_atual = versao_instalada;
         axios
-        .get(`https://bardojeiz-server.herokuapp.com/version`)
-        .then((res) => {
-          const version = res.data;
-          this.setState({ version });
-        });
+          .get(`https://bardojeiz-server.herokuapp.com/version`)
+          .then((res) => {
+            const version = res.data;
+            this.setState({ version });
+          });
       }
-      let alertAtualizar = (<TouchableHighlight></TouchableHighlight>);
+      let alertAtualizar = <TouchableHighlight></TouchableHighlight>;
       if (versao_atual > versao_instalada) {
         alertAtualizar = (
           <TouchableOpacity
@@ -224,7 +269,7 @@ export default class ViewImageScreen extends React.Component {
             </Text>
           </TouchableOpacity>
         );
-      } 
+      }
       let i = -1;
       let conteudo;
       return (
@@ -576,6 +621,20 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     borderBottomWidth: 0.8,
     marginBottom: 15,
+    marginTop: 10,
+    flexDirection: "column",
+    flex: 1,
+  },
+
+  ViewimgLoading: {
+    width: "95%",
+    alignSelf: "center",
+    height: 200,
+    backgroundColor: "#44475a",
+    borderRadius: 8,
+    paddingTop: 0,
+    borderBottomWidth: 0.8,
+    marginBottom: 225,
     marginTop: 10,
     flexDirection: "column",
     flex: 1,

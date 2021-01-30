@@ -26,6 +26,7 @@ export default class App extends Component {
 
     return (
       <NavigationContainer>
+        <StatusBar style="light" backgroundColor="#000000" />
         <Stack.Navigator initialRouteName="Welcome">
           <Stack.Screen
             name="welcome"
