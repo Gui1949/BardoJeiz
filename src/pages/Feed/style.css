@@ -217,45 +217,6 @@ body {
   font-size: 1.5vh;
 }
 
-@media only screen and (orientation: landscape) {
-  .nav {
-    display: none;
-  }
-  #txt_username,
-  #txt_descricao {
-    width: 40vh;
-    padding-left: 1vh;
-    border-radius: 1vh;
-    margin: 1vh 1vh 1vh 0vh;
-  }
-  .modal_window {
-    width: 45vh;
-    height: 40vh;
-  }
-  .conteudo {
-    width: 90vh;
-  }
-  #post_feed {
-    height: 75vh;
-  }
-  #post_feed,
-  #post_header {
-    width: 96vh;
-  }
-  .reacao_btn {
-    width: 45vh;
-  }
-  .avatar {
-    margin-top: 0.7vh;
-    float: left;
-    display: "none";
-  }
-  #txt_username {
-    height: 4vh;
-  }
-}
-
-
 #txt_desc {
   width: 50vh;
 }
@@ -296,8 +257,8 @@ input[type="file"] {
 }
 
 .modal_window {
-  width: 55vh;
-  height: 65vh;
+  width: 80vw;
+  height: 70vw;
   position: relative;
   border-radius: 1vh;
   margin: 10% auto;
@@ -327,9 +288,9 @@ input[type="file"] {
 #txt_descricao {
   color: #282a36;
   font-family: Arial, Helvetica, sans-serif;
-  width: 40vh;
-  /* height: 10em; */
-  display:table-cell;
+  width: 70vw;
+  height: 50vw;
+  display: table-cell;
   border: none;
   padding-left: 1vh;
   border-radius: 1vh;
@@ -338,8 +299,48 @@ input[type="file"] {
 
 #txt_descricao {
   padding-top: 1vh;
+  height: 200vw;
 }
 
 a {
   text-decoration: none;
+}
+
+@media only screen and (orientation: landscape) {
+  .modal_window {
+    width: 55vh;
+    height: 50vh;
+  }
+  .nav {
+    display: none;
+  }
+  #txt_username,
+  #txt_descricao {
+    width: 40vh;
+    padding-left: 1vh;
+    border-radius: 1vh;
+    margin: 1vh 1vh 1vh 0vh;
+    height: 20vh;
+  }
+  .conteudo {
+    width: 90vh;
+  }
+  #post_feed {
+    height: 75vh;
+  }
+  #post_feed,
+  #post_header {
+    width: 96vh;
+  }
+  .reacao_btn {
+    width: 45vh;
+  }
+  .avatar {
+    margin-top: 0.7vh;
+    float: left;
+    display: "none";
+  }
+  #txt_username {
+    height: 4vh;
+  }
 }
