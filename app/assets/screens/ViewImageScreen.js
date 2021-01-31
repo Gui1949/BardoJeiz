@@ -237,7 +237,7 @@ export default class ViewImageScreen extends React.Component {
       );
     } else {
       let antenor_albuquerque = this.state.persons.data;
-      let versao_instalada = "0.0.9"
+      let versao_instalada = "0.1.0"
       let versao_atual = "";
       try {
         versao_atual = this.state.version.data;
@@ -326,7 +326,7 @@ export default class ViewImageScreen extends React.Component {
               <View style={styles.descriptionFixed}>
                 <Text numberOfLines={6} style={styles.imageDescriptionFixed}>
                   Opa, salve! Você está no Bar do Jeiz, o Instagram se fosse
-                  bom! Em desenvolvimento desde Abril/2020, o Bar do Jeiz nada
+                  bom! Em desenvolvimento desde Junho/2020, o Bar do Jeiz nada
                   mais é do que um beta gigante, um monstro indomável... Nem eu
                   sei aonde vai parar essa budega, mas enfim, por enquanto os
                   posts duram por tempo limitado, então, aproveite enquanto é
@@ -629,7 +629,7 @@ const styles = StyleSheet.create({
   ViewimgLoading: {
     width: "95%",
     alignSelf: "center",
-    height: 200,
+    height: 180,
     backgroundColor: "#44475a",
     borderRadius: 8,
     paddingTop: 0,
