@@ -64,8 +64,8 @@ function bot_jeiz() {
     "comprar papagaio é crime?",
     "qual é o número da policia?",
     "abrir o bar no natal é pecado?",
-    "vou encher a cara, vou me embreagar"
-    "grande noite hein, hj inauguro o pinga 24hrs"
+    "vou encher a cara, vou me embreagar",
+    "grande noite hein, hj inauguro o pinga 24hrs",
     "cine florida fechou, estou de luto",
     "bar fechado hoje para fins pessoais (roubaram meu bujão de gás)",
     "inferninho amostra gratis google pesquisar",
