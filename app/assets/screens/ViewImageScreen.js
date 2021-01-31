@@ -75,7 +75,6 @@ export default class ViewImageScreen extends React.Component {
   }
 
   likeColor(i) {
-    this.componentDidMount();
     var str = "";
     str = i.replace(/[^0-9\.]+/g, "");
 
@@ -137,10 +136,10 @@ export default class ViewImageScreen extends React.Component {
         });
       }
     }
+    this.componentDidMount();
   }
 
   dislikeColor(i) {
-    this.componentDidMount();
     var str = "";
     str = i.replace(/[^0-9\.]+/g, "");
     catchDislikes.push(str);
@@ -197,6 +196,7 @@ export default class ViewImageScreen extends React.Component {
         }),
       });
     }
+    this.componentDidMount();
   }
 
   render() {
