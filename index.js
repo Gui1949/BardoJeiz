@@ -12,6 +12,8 @@ restapi.use(bodyParser.urlencoded({ extended: false }));
 restapi.use(bodyParser.json());
 restapi.use(cors());
 
+balcao = []
+
 restapi.get("/data", (req, res) => {
   var sql = "select * from POSTS order by id desc";
   var params = [];
@@ -32,6 +34,32 @@ restapi.get("/version", (req,res) =>{
     data: versao
   })
 })
+
+// restapi.get("/balcao", (req,res) =>{
+//   res.json({
+//     data: balcao
+//   })
+// })
+
+// restapi.post("/balcao/send", function (req, res) {
+//   var errors = [];
+//   if (!req.body.username) {
+//     errors.push("Username não especificado");
+//   }
+//   if (!req.body.msg) {
+//     errors.push("Mensagem não especificada");
+//   }
+//   var data = {
+//     USERNAME: req.body.username,
+//     MENSAGEM: req.body.msg,
+//   };
+//   mensagem = data.USERNAME + ": " + data.MENSAGEM
+//   console.log(mensagem)
+//   balcao.push(mensagem); 
+//   res.json({
+//     data: balcao,
+//   });
+// });
 
 restapi.get("/data/video_file", (req, res) => {
   var sql =

@@ -44,6 +44,7 @@ function bot_jeiz() {
     "https://www.youtube.com/watch?v=CKTkigVUNBc",
     "https://www.youtube.com/watch?v=H6wl-EyhXl0",
     "https://www.youtube.com/watch?v=fUjOfsoBhMY",
+    "https://www.youtube.com/watch?v=8_7qkRwcMFc",
   ];
 
   var descricao = [
@@ -63,6 +64,8 @@ function bot_jeiz() {
     "comprar papagaio é crime?",
     "qual é o número da policia?",
     "abrir o bar no natal é pecado?",
+    "vou encher a cara, vou me embreagar"
+    "grande noite hein, hj inauguro o pinga 24hrs"
     "cine florida fechou, estou de luto",
     "bar fechado hoje para fins pessoais (roubaram meu bujão de gás)",
     "inferninho amostra gratis google pesquisar",
