@@ -1,5 +1,4 @@
 function bot_jeiz() {
-
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
@@ -45,6 +44,20 @@ function bot_jeiz() {
     "https://www.youtube.com/watch?v=H6wl-EyhXl0",
     "https://www.youtube.com/watch?v=fUjOfsoBhMY",
     "https://www.youtube.com/watch?v=8_7qkRwcMFc",
+    "https://www.youtube.com/watch?v=KRttQEyK4F8",
+    "https://i.pinimg.com/564x/b6/74/5e/b6745ef924d75e11eb4af59c88a99355.jpg",
+    "https://i.pinimg.com/736x/19/5f/0d/195f0dae8d35417d39cdf1ced4001f06.jpg",
+    "https://images3.memedroid.com/images/UPLOADED465/5c1f0af23834a.jpeg",
+    "https://images7.memedroid.com/images/UPLOADED598/57979854243c5.jpeg",
+    "https://www.notibras.com/site/wp-content/uploads/2018/03/cerveja.jpg",
+    "https://www.youtube.com/watch?v=KXkxznwWXug",
+    "https://www.youtube.com/watch?v=4XKGfziuw5c",
+    "https://www.youtube.com/watch?v=gbdqaDRhs84",
+    "https://www.youtube.com/watch?v=BtKg458XAHk",
+    "https://www.youtube.com/watch?v=Sc9j7YBcVO8",
+    "https://www.youtube.com/watch?v=gbdqaDRhs84",
+    "https://www.youtube.com/watch?v=bdXr_PiQoTc",
+    "https://www.youtube.com/watch?v=9fMPltVszpQ",
   ];
 
   var descricao = [
@@ -67,11 +80,30 @@ function bot_jeiz() {
     "vou encher a cara, vou me embreagar",
     "grande noite hein, hj inauguro o pinga 24hrs",
     "cine florida fechou, estou de luto",
-    "bar fechado hoje para fins pessoais (roubaram meu bujão de gás)",
+    "bar fechado hoje (roubaram meu bujão de gás)",
     "inferninho amostra gratis google pesquisar",
     "reginaldo rossi - garçom",
+    "quero ver falar mal do ponte preta NA MINHA CARA",
+    "HOJE SE O PONTE PRETA PERDER, O BAR NÃO ABRE",
+    "Pinga 24 horas, agora o bar ta outro nivel",
+    "to servindo almoço a 3 real aqui, jacksons aprovou",
+    "tomando uma glacial de boa no bar",
     "fazendo uma farmacia aqui pro Jacksons",
     "compro chevette 1992 só pra rodar",
+    "ouvindo um modão aqui tranquilo",
+    "quero saber quem me denunciou por abrir na fase vermelha",
+    "BAR É SERVIÇO ESSENCIAL SIM",
+    "hoje tem torneio de sinuca com o baianinho de osasco",
+    "coloquei uma maquina caça niquel aqui",
+    "atenção: a partir de agora o roubo na sinuca vai ter PUNIÇÃO SEVERA",
+    "#BOLSONAROLIBERAARINHADEGALO",
+    "ganhei no bicho, hj tem rodada na minha conta",
+    "apostei tudo que ganhei no bicho no ponte preta e perdi",
+    "jogos de azar são de azar mesmo, descobri aqui",
+    "hoje teve porradaria na sinuca, tive que bater em todos",
+    "proibido roubar na sinuca, sujeito a FACADA",
+    "fiado só amanhã",
+    "hoje tem churrasquinho de gato no bar"
     //23
   ];
 
