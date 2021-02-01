@@ -58,6 +58,11 @@ function bot_jeiz() {
     "https://www.youtube.com/watch?v=gbdqaDRhs84",
     "https://www.youtube.com/watch?v=bdXr_PiQoTc",
     "https://www.youtube.com/watch?v=9fMPltVszpQ",
+    "https://www.youtube.com/watch?v=WUT6qnYw9Dc",
+    "https://www.youtube.com/watch?v=3CQfom3ceCk",
+    "https://www.youtube.com/watch?v=nXyHfv6XUSc",
+    "https://www.youtube.com/watch?v=uK62BM7pnMA",
+    "https://www.youtube.com/watch?v=qi0VCZhum2c",
   ];
 
   var descricao = [
@@ -93,6 +98,8 @@ function bot_jeiz() {
     "ouvindo um modão aqui tranquilo",
     "quero saber quem me denunciou por abrir na fase vermelha",
     "BAR É SERVIÇO ESSENCIAL SIM",
+    "TO COMPRANDO OPALA HEIN, PRINCIPALMENTE SE FOR COMODORO",
+    "fui no pesqueiro, peguei uma puta tilapia",
     "hoje tem torneio de sinuca com o baianinho de osasco",
     "coloquei uma maquina caça niquel aqui",
     "atenção: a partir de agora o roubo na sinuca vai ter PUNIÇÃO SEVERA",
@@ -103,7 +110,9 @@ function bot_jeiz() {
     "hoje teve porradaria na sinuca, tive que bater em todos",
     "proibido roubar na sinuca, sujeito a FACADA",
     "fiado só amanhã",
-    "hoje tem churrasquinho de gato no bar"
+    "hoje tem churrasquinho de gato no bar",
+    "ednaldo pereira é um dos melhores artistas vivos"
+    "PESSOAL ME DERAM UM GOLPE AQUI, UMA NOTA DE 3 REAIS, CUIDADO",
     //23
   ];
 
