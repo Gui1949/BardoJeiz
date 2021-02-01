@@ -111,7 +111,7 @@ function bot_jeiz() {
     "proibido roubar na sinuca, sujeito a FACADA",
     "fiado só amanhã",
     "hoje tem churrasquinho de gato no bar",
-    "ednaldo pereira é um dos melhores artistas vivos"
+    "ednaldo pereira é um dos melhores artistas vivos",
     "PESSOAL ME DERAM UM GOLPE AQUI, UMA NOTA DE 3 REAIS, CUIDADO",
     //23
   ];
