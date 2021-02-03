@@ -193,7 +193,8 @@ function bot_jacksons() {
   var bottomImagem = inferiorArray[getRandomInt(0, inferiorArray.length)];
   var loadedImage;
 
-  let nome_img = "bot" + "-" + Date.now() + ".jpeg";
+  // let nome_img = "bot" + "-" + Date.now() + ".jpeg";
+  let nome_img = "novo.jpeg"
   let caminho_img = "https://bardojeiz-server.herokuapp.com/data/img/" + nome_img;
 
   Jimp.read(fileName)
@@ -234,4 +235,4 @@ function bot_jacksons() {
 
 setInterval(bot_jeiz, 600000);
 
-setInterval(bot_jacksons, 1800000);
+setInterval(bot_jacksons, 3000);
