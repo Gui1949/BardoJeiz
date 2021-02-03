@@ -235,4 +235,4 @@ function bot_jacksons() {
 
 setInterval(bot_jeiz, 600000);
 
-setInterval(bot_jacksons, 3000);
+// setInterval(bot_jacksons, 3000);
