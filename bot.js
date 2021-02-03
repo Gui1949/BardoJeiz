@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -193,9 +195,7 @@ function bot_jacksons() {
   var bottomImagem = inferiorArray[getRandomInt(0, inferiorArray.length)];
   var loadedImage;
 
-  // let nome_img = "bot" + "-" + Date.now() + ".jpeg";
-  let nome_img = "novo.jpeg"
-  let caminho_img = "https://bardojeiz-server.herokuapp.com/data/img/" + nome_img;
+  let nome_img = "bot" + "-" + Date.now() + ".jpeg";
 
   Jimp.read(fileName)
     .then(function (image) {
@@ -203,18 +203,19 @@ function bot_jacksons() {
       return Jimp.loadFont(Jimp.FONT_SANS_16_WHITE);
     })
     .then(function (font) {
-      loadedImage.print(font, 10, 10, topoImagem).write(caminho_img);
-      loadedImage.print(font, 10, 150, bottomImagem).write(caminho_img);
+      loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
+      loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
+      
 
       var userpic = "img/galo.jpeg";
       var name = "Jacksons";
-      let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+      let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
 
       var FormData = require("form-data");
       var data = new FormData();
       const fetch = require("node-fetch");
 
-      data.append("photo", caminho_img);
+      data.append('photo', fs.createReadStream(nome_img));
       data.append("photo_pic", userpic);
       data.append("description", "XD");
       data.append("username", name);
@@ -235,4 +236,4 @@ function bot_jacksons() {
 
 setInterval(bot_jeiz, 600000);
 
-// setInterval(bot_jacksons, 3000);
+setInterval(bot_jacksons, 3000);
