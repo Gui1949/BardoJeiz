@@ -1,8 +1,8 @@
-function bot_jeiz() {
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
+function bot_jeiz() {
   var imagem = [
     "https://afabrica.bar/wp-content/uploads/2018/07/botequim-do-hugo.jpg",
     "https://www.youtube.com/watch?v=6xa6F7ntzJU",
@@ -27,7 +27,6 @@ function bot_jeiz() {
     "https://miro.medium.com/max/3838/1*2P9GSHpGl64ZLwrwnOn9hQ.jpeg",
     "https://pesqueiropontepreta.com.br/wp-content/uploads/2017/12/Peixe-Tambac%C3%BA.jpeg",
     "https://i.ytimg.com/vi/rWghZZ8y7i0/mqdefault.jpg",
-    //23
     "https://www.youtube.com/watch?v=JyJfS7BpeDg",
     "https://www.youtube.com/watch?v=SjU4u6C-eaA",
     "https://www.youtube.com/watch?v=lR-kdXr9ZvM",
@@ -113,7 +112,6 @@ function bot_jeiz() {
     "hoje tem churrasquinho de gato no bar",
     "ednaldo pereira é um dos melhores artistas vivos",
     "PESSOAL ME DERAM UM GOLPE AQUI, UMA NOTA DE 3 REAIS, CUIDADO",
-    //23
   ];
 
   input = imagem[getRandomInt(0, imagem.length)];
@@ -143,4 +141,97 @@ function bot_jeiz() {
   });
 }
 
+function bot_jacksons() {
+  var Jimp = require("jimp");
+
+  var superiorArray = [
+    "vou falar só uma vez",
+    "tem um viado me olhando",
+    "todo mundo",
+    "ae, na moral",
+    "fala aí",
+    "só tem corno nesse porra",
+    "ei gatinha",
+    "me ve uma dose aí",
+    "cara, se liga",
+    "ei",
+    "aew papito",
+    "homem q eh homem",
+  ];
+
+  var inferiorArray = [
+    "vai toma no cu aew",
+    "agora ele ta disfarçando",
+    "da muito eh o cu",
+    "pega no meu pau",
+    "como q tu eh tão corno?",
+    "to mentindo?",
+    "me da uma mamadinha",
+    "caralho",
+    "pega na minha pika",
+    "vai se fude",
+    "para de ser trosha",
+    "sua mae sabe q tu eh?",
+    "caga na mão e come",
+  ];
+
+  var imagem = [
+    "img/britto.jpeg",
+    "img/fallon.jpeg",
+    "img/galo.jpeg",
+    "img/gilberto.jpeg",
+    "img/jackye.jpeg",
+    "img/justus.jpeg",
+    "img/nicolascage.jpeg",
+    "img/ozzy.jpeg",
+    "img/sara.jpeg",
+    "img/vin.jpeg",
+  ];
+
+  var fileName = imagem[getRandomInt(0, imagem.length)];
+  var topoImagem = superiorArray[getRandomInt(0, superiorArray.length)];
+  var bottomImagem = inferiorArray[getRandomInt(0, inferiorArray.length)];
+  var loadedImage;
+
+  let nome_img = "bot" + "-" + Date.now() + ".jpeg";
+  let caminho_img = "https://bardojeiz-server.herokuapp.com/data/img/" + nome_img;
+
+  Jimp.read(fileName)
+    .then(function (image) {
+      loadedImage = image;
+      return Jimp.loadFont(Jimp.FONT_SANS_16_WHITE);
+    })
+    .then(function (font) {
+      loadedImage.print(font, 10, 10, topoImagem).write(caminho_img);
+      loadedImage.print(font, 10, 150, bottomImagem).write(caminho_img);
+
+      var userpic = "img/galo.jpeg";
+      var name = "Jacksons";
+      let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+      var FormData = require("form-data");
+      var data = new FormData();
+      const fetch = require("node-fetch");
+
+      data.append("photo", caminho_img);
+      data.append("photo_pic", userpic);
+      data.append("description", "XD");
+      data.append("username", name);
+
+      fetch(apiUrl, {
+        method: "POST",
+        body: data,
+      }).then(function (response) {
+        if (response.ok) {
+          console.log("Bot Jacksons rodou");
+        }
+      });
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+}
+
 setInterval(bot_jeiz, 600000);
+
+setInterval(bot_jacksons, 1800000);

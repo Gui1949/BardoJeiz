@@ -185,14 +185,14 @@ const path = require("path");
 let cuiaba = "";
 
 var storage = multer.diskStorage({
-  destination: "../app/assets/uploads/",
+  destination: "./img/",
   filename: function (req, file, cb) {
     cuiaba = "upload" + "-" + Date.now() + path.extname(file.originalname);
     cb(null, cuiaba);
   },
 });
 
-restapi.use("/data/img", express.static("../app/assets/uploads/"));
+restapi.use("/data/img", express.static("./img"));
 
 var upload = multer({ storage: storage });
 
@@ -239,9 +239,9 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
       data: rows,
     });
     exec(
-      "sudo convert ../app/assets/uploads/" +
+      "sudo convert ./img/" +
         cuiaba +
-        " -scale 30% -auto-orient ../app/assets/uploads/" +
+        " -scale 30% -auto-orient ./img/" +
         cuiaba,
       (error, stdout, stderr) => {
         if (error) {
