@@ -159,6 +159,11 @@ function bot_jacksons() {
     "ei",
     "aew papito",
     "homem q eh homem",
+    "to lendo aq",
+    "PARA PARA PARA",
+    "quando falarem mal de vc",
+    "ei, tu foi no passeio?",
+    "aí mermão",
   ];
 
   var inferiorArray = [
@@ -175,6 +180,11 @@ function bot_jacksons() {
     "para de ser trosha",
     "sua mae sabe q tu eh?",
     "caga na mão e come",
+    "q tu eh corno",
+    "para de ser trosha",
+    "foda-se porra",
+    "passei o pal na tua cara",
+    "porra, vai toma no cu porra",
   ];
 
   var imagem = [
@@ -187,7 +197,9 @@ function bot_jacksons() {
     "img/nicolascage.jpeg",
     "img/ozzy.jpeg",
     "img/sara.jpeg",
-    "img/vin.jpeg",
+    "img/fausto.jpeg",
+    "img/jk.jpeg",
+    "img/therock.jpeg",
   ];
 
   var fileName = imagem[getRandomInt(0, imagem.length)];
@@ -237,3 +249,5 @@ function bot_jacksons() {
 setInterval(bot_jeiz, 600000);
 
 setInterval(bot_jacksons, 1800000);
+
+// ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
