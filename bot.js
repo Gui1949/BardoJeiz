@@ -234,6 +234,6 @@ function bot_jacksons() {
     });
 }
 
-setInterval(bot_jeiz, 1800000);
+setInterval(bot_jeiz, 600000);
 
-setInterval(bot_jacksons, 600000);
+setInterval(bot_jacksons, 1800000);
