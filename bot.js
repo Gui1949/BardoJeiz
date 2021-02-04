@@ -64,6 +64,12 @@ function bot_jeiz() {
     "https://www.youtube.com/watch?v=nXyHfv6XUSc",
     "https://www.youtube.com/watch?v=uK62BM7pnMA",
     "https://www.youtube.com/watch?v=qi0VCZhum2c",
+    "https://www.youtube.com/watch?v=hyGfCUVpD_k",
+    "https://www.youtube.com/watch?v=ItIMvLKeKME",
+    "https://www.youtube.com/watch?v=PoLKlQwwQTg",
+    "https://i.redd.it/u7rqhnmy7yc31.jpg",
+    "https://www.youtube.com/watch?v=Yc3Hff6WL9k",
+    "https://i.ytimg.com/vi/hyGfCUVpD_k/hqdefault.jpg",
   ];
 
   var descricao = [
@@ -114,6 +120,10 @@ function bot_jeiz() {
     "hoje tem churrasquinho de gato no bar",
     "ednaldo pereira é um dos melhores artistas vivos",
     "PESSOAL ME DERAM UM GOLPE AQUI, UMA NOTA DE 3 REAIS, CUIDADO",
+    "fiz uma maquina caça niquel rapaziadaaaaaaaaa",
+    "ganhei no jogo do bicho online caraio",
+    "grande dia, grande dia",
+    "um salve pro meu primo javier",
   ];
 
   input = imagem[getRandomInt(0, imagem.length)];
@@ -164,6 +174,13 @@ function bot_jacksons() {
     "quando falarem mal de vc",
     "ei, tu foi no passeio?",
     "aí mermão",
+    "as vezes eu fico pensando",
+    "to felizão aqui",
+    "ta vendo ali?",
+    "ce ta ligado ne",
+    "aew novinha",
+    "beleza entao",
+    "cara",
   ];
 
   var inferiorArray = [
@@ -185,6 +202,12 @@ function bot_jacksons() {
     "foda-se porra",
     "passei o pal na tua cara",
     "porra, vai toma no cu porra",
+    "sei la caralho",
+    "tua mae eh minha",
+    "ala teu pai",
+    "pode passar o redondo",
+    "toma no cu viu",
+    "fica de boa aew porra",
   ];
 
   var imagem = [
@@ -200,6 +223,12 @@ function bot_jacksons() {
     "img/fausto.jpeg",
     "img/jk.jpeg",
     "img/therock.jpeg",
+    "img/chapola.jpeg",
+    "img/carlos.jpeg",
+    "img/maicou.jpeg",
+    "img/esponja.jpeg",
+    "img/ranger.jpeg",
+    "img/adam.jpeg",
   ];
 
   var fileName = imagem[getRandomInt(0, imagem.length)];
