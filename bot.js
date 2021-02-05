@@ -181,6 +181,8 @@ function bot_jacksons() {
     "aew novinha",
     "beleza entao",
     "cara",
+    "caralho mano",
+    "ei pessoal, ei pessoal",
   ];
 
   var inferiorArray = [
@@ -208,6 +210,8 @@ function bot_jacksons() {
     "pode passar o redondo",
     "toma no cu viu",
     "fica de boa aew porra",
+    "tu eh mo trosha pqp",
+    "pega no meu pal q te levo a portugal",
   ];
 
   var imagem = [
@@ -222,13 +226,19 @@ function bot_jacksons() {
     "img/sara.jpeg",
     "img/fausto.jpeg",
     "img/jk.jpeg",
+    "img/KOERANO.jpeg",
+    "img/ranger.jpeg",
     "img/therock.jpeg",
     "img/chapola.jpeg",
     "img/carlos.jpeg",
+    "img/chalie.jpeg",
     "img/maicou.jpeg",
     "img/esponja.jpeg",
-    "img/ranger.jpeg",
-    "img/adam.jpeg",
+    "img/ranger.jpg",
+    "img/adam.jpg",
+    "img/gozo.jpg",
+    "img/joselito.jpeg",
+    "img/vin.jpeg",
   ];
 
   var fileName = imagem[getRandomInt(0, imagem.length)];
