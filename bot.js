@@ -1,4 +1,5 @@
-const fs = require('fs');
+const fs = require("fs");
+const fetch = require("node-fetch");
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -136,7 +137,6 @@ function bot_jeiz() {
 
   var FormData = require("form-data");
   var data = new FormData();
-  const fetch = require("node-fetch");
 
   data.append("photo", input);
   data.append("photo_pic", userpic);
@@ -246,7 +246,6 @@ function bot_jacksons() {
     .then(function (font) {
       loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
       loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
-      
 
       var userpic = "img/galo.jpeg";
       var name = "Jacksons";
@@ -256,7 +255,7 @@ function bot_jacksons() {
       var data = new FormData();
       const fetch = require("node-fetch");
 
-      data.append('photo', fs.createReadStream(nome_img));
+      data.append("photo", fs.createReadStream(nome_img));
       data.append("photo_pic", userpic);
       data.append("description", "XD");
       data.append("username", name);
@@ -275,8 +274,47 @@ function bot_jacksons() {
     });
 }
 
-setInterval(bot_jeiz, 600000);
+function bot_gringo() {
+  let gringoArray = [
+    "SO KOERANO",
+    "E ODEIO BARZIL VOCES",
+    "BRAZILEIRO É PORCO",
+    "VOCE GOSTA DE FEIJOADA",
+    "VOCE GOSTA DE CAIPIRINHA",
+    "LULA DILMA ASASINO",
+    "BRAIZL PORCOS",
+    "CRIME OCORRE NADA ACONTECE FEIJOADA",
+  ];
 
-setInterval(bot_jacksons, 1800000);
+  input = "https://picsum.photos/200/300?random=" + [getRandomInt(0, 999)];
+  desc = gringoArray[getRandomInt(0, gringoArray.length)];
+
+  var userpic = "https://bardojeiz-server.herokuapp.com/data/img/KOERANO.jpeg";
+  var name = "KOERANO";
+  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+  var FormData = require("form-data");
+  var data = new FormData();
+
+  data.append("photo", input);
+  data.append("photo_pic", userpic);
+  data.append("description", desc);
+  data.append("username", name);
+
+  fetch(apiUrl, {
+    method: "POST",
+    body: data,
+  }).then(function (response) {
+    if (response.ok) {
+      console.log("Bot rodou");
+    }
+  });
+}
+
+setInterval(bot_gringo, 1800000);
+
+setInterval(bot_jeiz, 1000000);
+
+setInterval(bot_jacksons, 600000);
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
