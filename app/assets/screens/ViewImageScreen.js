@@ -228,8 +228,15 @@ export default class ViewImageScreen extends React.Component {
               />
             </View>
             <View style={styles.descriptionFixed}>
-              <Text numberOfLines={2} style={styles.imageDescriptionFixed}>
+              <Text numberOfLines={2} style={styles.imageDescriptionLoading}>
                 {frase}
+              </Text>
+              <Text style={styles.imageDescriptionLoadingTitle}>Notas da Versão - 0.1.0</Text>
+              <Text style={styles.imageDescriptionLoadingVersion}>
+                - Alteração da tela de splash;{"\n"}{"\n"}
+                - Correção na tela de loading;{"\n"}{"\n"}
+                - Adição de bots (Jeiz e Jacksons);{"\n"}{"\n"}
+                - Correção da função de Like/Dislike;{"\n"}{"\n"}
               </Text>
             </View>
           </View>
@@ -237,7 +244,7 @@ export default class ViewImageScreen extends React.Component {
       );
     } else {
       let antenor_albuquerque = this.state.persons.data;
-      let versao_instalada = "0.1.0"
+      let versao_instalada = "0.1.0";
       let versao_atual = "";
       try {
         versao_atual = this.state.version.data;
@@ -600,6 +607,24 @@ const styles = StyleSheet.create({
     height: 108,
   },
 
+  imageDescriptionLoadingTitle: {
+    color: "#ffffff",
+    fontSize: 23,
+    height: 40,
+  },
+
+  imageDescriptionLoading: {
+    color: "#ffffff",
+    fontSize: 13,
+    height: 36,
+  },
+
+  imageDescriptionLoadingVersion:{
+    color: "#ffffff",
+    fontSize: 13,
+    height: 180,
+  },
+
   header: {
     width: "100%",
     paddingLeft: 10,
@@ -629,13 +654,12 @@ const styles = StyleSheet.create({
   ViewimgLoading: {
     width: "95%",
     alignSelf: "center",
-    height: 180,
     backgroundColor: "#44475a",
     borderRadius: 8,
     paddingTop: 0,
     borderBottomWidth: 0.8,
-    marginBottom: 225,
     marginTop: 10,
+    marginBottom: 10,
     flexDirection: "column",
     flex: 1,
   },
