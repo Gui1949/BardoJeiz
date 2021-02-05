@@ -47,7 +47,12 @@ Atualmente o Bar do Jeiz está distribuído em quatro Branchs:
 * 0.0.9
     * Tela de carregamento com o "Pensamento do dia".
     * Correção de cor da status bar.
-    
+* 0.1.0
+    * Alteração da tela de splash;
+    * Correção na tela de loading;
+    * Adição de bots (Jeiz e Jacksons);
+    * Correção da função de Like/Dislike;
+
 ## Meta
 
 Guilherme Floriano – [@xxpoliclinicaxx](https://twitter.com/xxpoliclinicaxx) – guilhermesantiago12@gmail.com
