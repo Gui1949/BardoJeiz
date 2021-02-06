@@ -399,50 +399,64 @@ function bot_g1() {
 function bot_bitcoin() {
   let url = "https://www.mercadobitcoin.net/api/BTC/ticker";
   fetch(url)
-  .then((resp) => resp.json())
-  .then(function(data) {
-    let dados = data.ticker;
-    let high = dados.buy;
-    high_virgula = high.slice(0,3)
-    high_dps_virgula = high.slice(3,7)
-    high = high_virgula + ',' + high_dps_virgula
-    console.log(high_virgula)
-    
-    var FormData = require("form-data");
-    var data = new FormData();
+    .then((resp) => resp.json())
+    .then(function (data) {
+      let dados = data.ticker;
+      let high = dados.buy;
+      high_virgula = high.slice(0, 3);
+      high_dps_virgula = high.slice(3, 7);
+      high = high_virgula + "," + high_dps_virgula;
+      console.log(high_virgula);
 
-    let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+      var FormData = require("form-data");
+      var data = new FormData();
 
-    let picture  = 'https://bardojeiz-server.herokuapp.com/data/img/bitcoin.jpeg';
+      let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
 
-    let icone = 'https://pbs.twimg.com/profile_images/1307854653091196929/pFJRfkV6_400x400.jpg'
+      let picture =
+        "https://bardojeiz-server.herokuapp.com/data/img/bitcoin.jpeg";
 
-    data.append("photo", picture);
-    data.append("photo_pic", icone);
-    data.append("description", "O valor atual do Bitcoin é: R$ " + high);
-    data.append("username", "BTC by Mercado Bitcoin");
+      let icone =
+        "https://pbs.twimg.com/profile_images/1307854653091196929/pFJRfkV6_400x400.jpg";
 
-     fetch(apiUrl, {
-      method: "POST",
-      body: data,
-    }).then(function (response) {
-      if (response.ok) {
-        console.log("Bot BTC rodou");
-      }
+      data.append("photo", picture);
+      data.append("photo_pic", icone);
+      data.append("description", "O valor atual do Bitcoin é: R$ " + high);
+      data.append("username", "BTC by Mercado Bitcoin");
+
+      fetch(apiUrl, {
+        method: "POST",
+        body: data,
+      }).then(function (response) {
+        if (response.ok) {
+          console.log("Bot BTC rodou");
+        }
+      });
     });
-
-  })
-
 }
 
-setInterval(bot_gringo, 3000000);
+function keep_alive() {
+  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/";
 
-setInterval(bot_bitcoin, 1500000);
+  fetch(apiUrl, {
+    method: "GET",
+  }).then(function (response) {
+    if (response.ok) {
+      console.log("Keep Alive");
+    }
+  });
+}
 
-setInterval(bot_jeiz, 1000000);
+setInterval(bot_gringo, 6000000);
 
-setInterval(bot_jacksons, 600000);
+setInterval(bot_bitcoin, 1000000);
 
-setInterval(bot_g1, 800000);
+setInterval(bot_jeiz, 4000000);
+
+setInterval(bot_jacksons, 2000000);
+
+setInterval(bot_g1, 1500000);
+
+setInterval(keep_alive, 600000);
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
