@@ -1,3 +1,4 @@
+const { response, json } = require("express");
 const fs = require("fs");
 const fetch = require("node-fetch");
 
@@ -148,7 +149,7 @@ function bot_jeiz() {
     body: data,
   }).then(function (response) {
     if (response.ok) {
-      console.log("Bot rodou");
+      console.log("Bot JEIZ rodou");
     }
   });
 }
@@ -316,7 +317,7 @@ function bot_gringo() {
     body: data,
   }).then(function (response) {
     if (response.ok) {
-      console.log("Bot rodou");
+      console.log("Bot KOERANO rodou");
     }
   });
 }
@@ -366,45 +367,82 @@ function bot_g1() {
           img = icone;
         }
 
-        send_g1(img,icone,head_noticia,titulo)
+        send_g1(img, icone, head_noticia);
 
         i++;
-
       }
     });
 
-     async function send_g1(img,icone,head_noticia){
-  
+    async function send_g1(img, icone, head_noticia) {
       var FormData = require("form-data");
       var data = new FormData();
-    
+
       let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
-    
+
       data.append("photo", img);
       data.append("photo_pic", icone);
       data.append("description", head_noticia);
       data.append("username", "Notícias - Powered by G1");
-    
+
       await fetch(apiUrl, {
         method: "POST",
         body: data,
       }).then(function (response) {
         if (response.ok) {
-          console.log("Bot rodou");
+          console.log("Bot G1 rodou");
         }
       });
     }
-
   })();
 }
 
+function bot_bitcoin() {
+  let url = "https://www.mercadobitcoin.net/api/BTC/ticker";
+  fetch(url)
+  .then((resp) => resp.json())
+  .then(function(data) {
+    let dados = data.ticker;
+    let high = dados.buy;
+    high_virgula = high.slice(0,3)
+    high_dps_virgula = high.slice(3,7)
+    high = high_virgula + ',' + high_dps_virgula
+    console.log(high_virgula)
+    
+    var FormData = require("form-data");
+    var data = new FormData();
 
-setInterval(bot_gringo, 2000000);
+    let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+    let picture  = 'https://bardojeiz-server.herokuapp.com/data/img/bitcoin.jpeg';
+
+    let icone = 'https://pbs.twimg.com/profile_images/1307854653091196929/pFJRfkV6_400x400.jpg'
+
+    data.append("photo", picture);
+    data.append("photo_pic", icone);
+    data.append("description", "O valor atual do Bitcoin é: R$ " + high);
+    data.append("username", "BTC by Mercado Bitcoin");
+
+     fetch(apiUrl, {
+      method: "POST",
+      body: data,
+    }).then(function (response) {
+      if (response.ok) {
+        console.log("Bot BTC rodou");
+      }
+    });
+
+  })
+
+}
+
+setInterval(bot_gringo, 3000000);
+
+setInterval(bot_bitcoin, 1500000);
 
 setInterval(bot_jeiz, 1000000);
 
 setInterval(bot_jacksons, 600000);
 
-setInterval(bot_g1, 800000)
+setInterval(bot_g1, 800000);
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
