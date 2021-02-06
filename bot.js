@@ -348,7 +348,6 @@ function bot_g1() {
 
   (async () => {
     let feed = await parser.parseURL(url);
-    titulo = feed.title;
     icone = feed.image.url;
 
     feed.items.forEach((item) => {
@@ -374,7 +373,7 @@ function bot_g1() {
       }
     });
 
-     async function send_g1(img,icone,head_noticia,titulo){
+     async function send_g1(img,icone,head_noticia){
   
       var FormData = require("form-data");
       var data = new FormData();
@@ -384,7 +383,7 @@ function bot_g1() {
       data.append("photo", img);
       data.append("photo_pic", icone);
       data.append("description", head_noticia);
-      data.append("username", "Notícias - Powered by " + titulo);
+      data.append("username", "Notícias - Powered by G1");
     
       await fetch(apiUrl, {
         method: "POST",
