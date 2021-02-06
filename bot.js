@@ -321,10 +321,91 @@ function bot_gringo() {
   });
 }
 
-setInterval(bot_gringo, 1800000);
+function bot_g1() {
+  let Parser = require("rss-parser");
+  let parser = new Parser();
+  let i = 0;
+
+  let fontes_g1 = [
+    "http://g1.globo.com/dynamo/brasil/rss2.xml",
+    "http://g1.globo.com/dynamo/carros/rss2.xml",
+    "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
+    "http://g1.globo.com/dynamo/concursos-e-emprego/rss2.xml",
+    "http://g1.globo.com/dynamo/economia/rss2.xml",
+    "http://g1.globo.com/dynamo/educacao/rss2.xml",
+    "http://g1.globo.com/dynamo/loterias/rss2.xml",
+    "http://g1.globo.com/dynamo/mundo/rss2.xml",
+    "http://g1.globo.com/dynamo/musica/rss2.xml",
+    "http://g1.globo.com/dynamo/natureza/rss2.xml",
+    "http://g1.globo.com/dynamo/planeta-bizarro/rss2.xml",
+    "http://g1.globo.com/dynamo/politica/mensalao/rss2.xml",
+    "http://g1.globo.com/dynamo/pop-arte/rss2.xml",
+    "http://g1.globo.com/dynamo/tecnologia/rss2.xml",
+    "http://g1.globo.com/dynamo/turismo-e-viagem/rss2.xml",
+  ];
+
+  url = fontes_g1[getRandomInt(0, fontes_g1.length)];
+
+  (async () => {
+    let feed = await parser.parseURL(url);
+    titulo = feed.title;
+    icone = feed.image.url;
+
+    feed.items.forEach((item) => {
+      while (i < 1) {
+        let head_noticia = item.title;
+        let conteudo_bruto = item.content;
+
+        find_img_ini = conteudo_bruto.search("<img src=");
+        find_img_fi = conteudo_bruto.search("/>");
+
+        let img = conteudo_bruto.slice(find_img_ini, find_img_fi);
+        img = img.replace('<img src="', "");
+        img = img.replace('"', "");
+
+        if (img == "") {
+          img = icone;
+        }
+
+        send_g1(img,icone,head_noticia,titulo)
+
+        i++;
+
+      }
+    });
+
+     async function send_g1(img,icone,head_noticia,titulo){
+  
+      var FormData = require("form-data");
+      var data = new FormData();
+    
+      let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+    
+      data.append("photo", img);
+      data.append("photo_pic", icone);
+      data.append("description", head_noticia);
+      data.append("username", "Notícias - Powered by " + titulo);
+    
+      await fetch(apiUrl, {
+        method: "POST",
+        body: data,
+      }).then(function (response) {
+        if (response.ok) {
+          console.log("Bot rodou");
+        }
+      });
+    }
+
+  })();
+}
+
+
+setInterval(bot_gringo, 2000000);
 
 setInterval(bot_jeiz, 1000000);
 
 setInterval(bot_jacksons, 600000);
+
+setInterval(bot_g1, 800000)
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
