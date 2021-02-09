@@ -52,6 +52,10 @@ Atualmente o Bar do Jeiz está distribuído em quatro Branchs:
     * Correção na tela de loading;
     * Adição de bots (Jeiz e Jacksons);
     * Correção da função de Like/Dislike;
+* 0.1.1
+    * Adição de bots (Koerano, G1 e Bitcoin);
+    * Alteração no tempo de postagem dos bots;
+    * Correção da descrição da imagem;
 
 ## Meta
 

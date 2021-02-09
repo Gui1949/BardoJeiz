@@ -231,12 +231,13 @@ export default class ViewImageScreen extends React.Component {
               <Text numberOfLines={2} style={styles.imageDescriptionLoading}>
                 {frase}
               </Text>
-              <Text style={styles.imageDescriptionLoadingTitle}>Notas da Versão - 0.1.0</Text>
+              <Text style={styles.imageDescriptionLoadingTitle}>
+                Notas da Versão - 0.1.1
+              </Text>
               <Text style={styles.imageDescriptionLoadingVersion}>
-                - Alteração da tela de splash;{"\n"}{"\n"}
-                - Correção na tela de loading;{"\n"}{"\n"}
-                - Adição de bots (Jeiz e Jacksons);{"\n"}{"\n"}
-                - Correção da função de Like/Dislike;{"\n"}{"\n"}
+                - Adição de bots (Koerano, G1 e Bitcoin);{"\n"}
+                {"\n"}- Correção da descrição da imagem;{"\n"}
+                {"\n"}- Alteração no tempo de postagem dos bots;
               </Text>
             </View>
           </View>
@@ -410,7 +411,7 @@ export default class ViewImageScreen extends React.Component {
                 </View>
                 <View style={styles.img_field}>{conteudo}</View>
                 <View style={styles.description}>
-                  <Text numberOfLines={1} style={styles.imageDescription}>
+                  <Text numberOfLines={2} style={styles.imageDescription}>
                     {window["Object" + i][5]}
                   </Text>
                 </View>
@@ -598,7 +599,7 @@ const styles = StyleSheet.create({
   imageDescription: {
     color: "#ffffff",
     fontSize: 13,
-    height: 18,
+    height: 35,
   },
 
   imageDescriptionFixed: {
@@ -609,8 +610,8 @@ const styles = StyleSheet.create({
 
   imageDescriptionLoadingTitle: {
     color: "#ffffff",
-    fontSize: 23,
-    height: 40,
+    fontSize: 18,
+    height: 30,
   },
 
   imageDescriptionLoading: {
@@ -619,7 +620,7 @@ const styles = StyleSheet.create({
     height: 36,
   },
 
-  imageDescriptionLoadingVersion:{
+  imageDescriptionLoadingVersion: {
     color: "#ffffff",
     fontSize: 13,
     height: 180,
@@ -695,7 +696,7 @@ const styles = StyleSheet.create({
 
   Viewimg: {
     width: "95%",
-    height: 450,
+    height: 470,
     alignSelf: "center",
     paddingTop: 0,
     backgroundColor: "#44475a",
