@@ -338,9 +338,22 @@ a {
   .avatar {
     margin-top: 0.7vh;
     float: left;
-    display: "none";
+    display: none;
   }
   #txt_username {
     height: 4vh;
   }
 }
+
+/* @media only screen and (orientation: portrait){
+  #upload{
+    display: none;
+  }
+  .modal:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .fechar:target {
+    opacity: 0;
+  }
+} */
