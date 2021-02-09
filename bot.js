@@ -184,6 +184,7 @@ function bot_jacksons() {
     "cara",
     "caralho mano",
     "ei pessoal, ei pessoal",
+    "ae mermao"
   ];
 
   var inferiorArray = [
@@ -213,6 +214,7 @@ function bot_jacksons() {
     "fica de boa aew porra",
     "tu eh mo trosha pqp",
     "pega no meu pal q te levo a portugal",
+    "vai pra puta q te pariu"
   ];
 
   var imagem = [
