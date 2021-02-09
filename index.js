@@ -29,7 +29,7 @@ restapi.get("/data", (req, res) => {
 });
 
 restapi.get("/version", (req,res) =>{
-  versao = "0.1.0"
+  versao = "0.1.1"
   res.json({
     data: versao
   })
