@@ -335,22 +335,23 @@ function bot_g1() {
     "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
     "http://g1.globo.com/dynamo/economia/rss2.xml",
     "http://g1.globo.com/dynamo/mundo/rss2.xml",
-    "http://g1.globo.com/dynamo/musica/rss2.xml",
     "http://g1.globo.com/dynamo/natureza/rss2.xml",
-    "http://g1.globo.com/dynamo/planeta-bizarro/rss2.xml",
-    "http://g1.globo.com/dynamo/politica/mensalao/rss2.xml",
+    // "http://g1.globo.com/dynamo/planeta-bizarro/rss2.xml",
     "http://g1.globo.com/dynamo/pop-arte/rss2.xml",
     "http://g1.globo.com/dynamo/tecnologia/rss2.xml",
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
 
+
   (async () => {
     let feed = await parser.parseURL(url);
     icone = feed.image.url;
 
+    console.log(url)
+
     feed.items.forEach((item) => {
-      while (i < 1) {
+      while (i < 3) {
         let head_noticia = item.title;
         let conteudo_bruto = item.content;
 
@@ -453,7 +454,9 @@ setInterval(bot_jeiz, 4000000);
 
 setInterval(bot_jacksons, 2000000);
 
-setInterval(bot_g1, 1500000);
+// setInterval(bot_g1, 1500000);
+
+bot_g1()
 
 setInterval(keep_alive, 600000);
 
