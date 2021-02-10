@@ -95,7 +95,17 @@ function upload() {
 function Feed(ler_dados) {
   if (ler_dados[1] == undefined) {
     console.log("Não leu:", ler_dados[1]);
-    return <p>Carregando...</p>;
+    return (
+      <>
+        <nav className="top_nav">
+          <a href="#" className="nav_top_link">
+            Bar do Jeiz
+          </a>
+        </nav>
+        <p>
+        </p>
+      </>
+    );
   } else {
     let i = -1;
     let conteudo;
@@ -225,8 +235,7 @@ function Feed(ler_dados) {
                         />
                       </video>
                     );
-                  }
-                  else {
+                  } else {
                     conteudo = (
                       <img className="conteudo" src={window["Object" + i][4]} />
                     );
