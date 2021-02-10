@@ -351,7 +351,7 @@ function bot_g1() {
     console.log(url)
 
     feed.items.forEach((item) => {
-      while (i < 3) {
+      while (i < i) {
         let head_noticia = item.title;
         let conteudo_bruto = item.content;
 
@@ -454,9 +454,7 @@ setInterval(bot_jeiz, 4000000);
 
 setInterval(bot_jacksons, 2000000);
 
-// setInterval(bot_g1, 1500000);
-
-bot_g1()
+setInterval(bot_g1, 1500000);
 
 setInterval(keep_alive, 600000);
 
