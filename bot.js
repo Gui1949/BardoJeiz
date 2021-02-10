@@ -348,10 +348,8 @@ function bot_g1() {
     let feed = await parser.parseURL(url);
     icone = feed.image.url;
 
-    console.log(url)
-
     feed.items.forEach((item) => {
-      while (i < i) {
+      while (i < 1) {
         let head_noticia = item.title;
         let conteudo_bruto = item.content;
 
