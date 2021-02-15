@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import "../../assets/styles/global.css";
 import List from "@material-ui/core/List";
@@ -64,7 +64,7 @@ function dislike(id_btn) {
 }
 
 function colorir(objeto) {
-  if (objeto.style.color == "rgb(255, 121, 198)") {
+  if (objeto.style.color === "rgb(255, 121, 198)") {
     objeto.style.color = "#95a5a6";
   } else {
     objeto.style.color = "#ff79c6";
@@ -94,12 +94,11 @@ function upload() {
 
 function Feed(ler_dados) {
   if (ler_dados[1] == undefined) {
-    console.log("Não leu:", ler_dados[1]);
     return (
       <>
-        <nav className="top_nav">
+        <nav id="top_nav">
           <a href="#" className="nav_top_link">
-            Bar do Jeiz
+          <b>Bar do Jeiz</b>
           </a>
         </nav>
         <p>
@@ -117,9 +116,9 @@ function Feed(ler_dados) {
         ></link>
 
         {/* Barra superior */}
-        <nav className="top_nav">
+        <nav id="top_nav">
           <a href="#" className="nav_top_link">
-            Bar do Jeiz
+            <b>Bar do Jeiz</b>
           </a>
         </nav>
 
@@ -223,7 +222,6 @@ function Feed(ler_dados) {
               <div id="post_feed">
                 {(() => {
                   i++;
-                  console.log("Leu:", ler_dados);
                   window["Object" + parseInt(i)] = new Object();
                   window["Object" + parseInt(i)] = Object.values(ler_dados);
                   if (window["Object" + i][4].includes(".mp4", "mov") == true) {
@@ -259,8 +257,7 @@ function Feed(ler_dados) {
                 <div id="header">
                   <Avatar
                     className="avatar"
-                    alt={window["Object" + i][1]}
-                    src="/static/images/avatar/2.jpg"
+                    src={window["Object" + i][2]}
                   />
                   <ListItemText
                     primary={
@@ -314,13 +311,6 @@ function Feed(ler_dados) {
             ))}
           </List>
         </div>
-        {/* Navigation bar inferior */}
-        {/* <nav className="nav">
-          <a href="#" className="nav__link nav__link--active">
-            <i className="material-icons nav__icon">dashboard</i>
-            <span className="nav__text">Feed</span>
-          </a>
-        </nav> */}
       </>
     );
   }
