@@ -358,6 +358,7 @@ function bot_g1() {
       while (i < 1) {
         let head_noticia = item.title;
         let conteudo_bruto = item.content;
+        console.log(conteudo_bruto)
 
         find_img_ini = conteudo_bruto.search("<img src=");
         find_img_fi = conteudo_bruto.search("/>");
@@ -438,30 +439,14 @@ function bot_bitcoin() {
     });
 }
 
-function keep_alive() {
-  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/";
-
-  fetch(apiUrl, {
-    method: "GET",
-  }).then(function (response) {
-    if (response.ok) {
-      console.log("Keep Alive");
-    }
-  });
-}
-
 setInterval(bot_gringo, 6000000);
 
-setInterval(bot_bitcoin, 1000000);
+setInterval(bot_bitcoin, 2000000);
 
 setInterval(bot_jeiz, 4000000);
 
-setInterval(bot_jacksons, 2000000);
+setInterval(bot_jacksons, 3000000);
 
-setInterval(bot_g1, 1500000);
-
-// bot_g1();
-
-setInterval(keep_alive, 600000);
+setInterval(bot_g1, 2500000);
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
