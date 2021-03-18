@@ -184,7 +184,7 @@ function bot_jacksons() {
     "cara",
     "caralho mano",
     "ei pessoal, ei pessoal",
-    "ae mermao"
+    "ae mermao",
   ];
 
   var inferiorArray = [
@@ -214,7 +214,7 @@ function bot_jacksons() {
     "fica de boa aew porra",
     "tu eh mo trosha pqp",
     "pega no meu pal q te levo a portugal",
-    "vai pra puta q te pariu"
+    "vai pra puta q te pariu",
   ];
 
   var imagem = [
@@ -330,8 +330,6 @@ function bot_g1() {
   let i = 0;
 
   let fontes_g1 = [
-    "http://g1.globo.com/dynamo/brasil/rss2.xml",
-    "http://g1.globo.com/dynamo/carros/rss2.xml",
     "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
     "http://g1.globo.com/dynamo/economia/rss2.xml",
     "http://g1.globo.com/dynamo/mundo/rss2.xml",
@@ -340,7 +338,15 @@ function bot_g1() {
     "http://g1.globo.com/dynamo/planeta-bizarro/rss2.xml",
     "http://g1.globo.com/dynamo/politica/mensalao/rss2.xml",
     "http://g1.globo.com/dynamo/pop-arte/rss2.xml",
-    "http://g1.globo.com/dynamo/tecnologia/rss2.xml",
+    "https://rss.tecmundo.com.br/feed",
+    "http://www.valor.com.br/rss",
+    "https://feeds.folha.uol.com.br/ilustrada/rss091.xml",
+    "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml",
+    "https://feeds.folha.uol.com.br/opiniao/rss091.xml",
+    "http://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
+    "http://rss.home.uol.com.br/index.xml",
+    "https://ahnegao.com.br/rss",
+    "http://rss.megacurioso.com.br/feed",
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
@@ -348,11 +354,13 @@ function bot_g1() {
   (async () => {
     let feed = await parser.parseURL(url);
     icone = feed.image.url;
+    titulo = feed.title
 
     feed.items.forEach((item) => {
       while (i < 1) {
         let head_noticia = item.title;
         let conteudo_bruto = item.content;
+        console.log(conteudo_bruto)
 
         find_img_ini = conteudo_bruto.search("<img src=");
         find_img_fi = conteudo_bruto.search("/>");
@@ -365,13 +373,13 @@ function bot_g1() {
           img = icone;
         }
 
-        send_g1(img, icone, head_noticia);
+        send_g1(img, icone, head_noticia, titulo);
 
         i++;
       }
     });
 
-    async function send_g1(img, icone, head_noticia) {
+    async function send_g1(img, icone, head_noticia, titulo) {
       var FormData = require("form-data");
       var data = new FormData();
 
@@ -380,7 +388,7 @@ function bot_g1() {
       data.append("photo", img);
       data.append("photo_pic", icone);
       data.append("description", head_noticia);
-      data.append("username", "Notícias - Powered by G1");
+      data.append("username", titulo);
 
       await fetch(apiUrl, {
         method: "POST",
@@ -433,28 +441,14 @@ function bot_bitcoin() {
     });
 }
 
-function keep_alive() {
-  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/";
-
-  fetch(apiUrl, {
-    method: "GET",
-  }).then(function (response) {
-    if (response.ok) {
-      console.log("Keep Alive");
-    }
-  });
-}
-
 setInterval(bot_gringo, 6000000);
 
-setInterval(bot_bitcoin, 1000000);
+setInterval(bot_bitcoin, 800000);
 
 setInterval(bot_jeiz, 4000000);
 
-setInterval(bot_jacksons, 2000000);
+setInterval(bot_jacksons, 3000000);
 
-setInterval(bot_g1, 1500000);
-
-setInterval(keep_alive, 600000);
+setInterval(bot_g1, 1000000);
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
