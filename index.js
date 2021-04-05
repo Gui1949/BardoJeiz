@@ -378,6 +378,7 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
       web_url: "https://gui1949.github.io/BardoJeiz",
       included_segments: ["Subscribed Users"],
     };
+    sendNotification(message);
   }
 
   // else{
@@ -389,8 +390,6 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   //   };
   // }
 
-
-  sendNotification(message);
 });
 
 restapi.listen(process.env.PORT || 80);
