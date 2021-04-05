@@ -380,14 +380,14 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     };
   }
 
-  else{
-    var message = {
-      app_id: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
-      contents: { en: data.USERNAME + ", A LENDA, postou no Bar" },
-      web_url: "https://gui1949.github.io/BardoJeiz",
-      included_segments: ["Subscribed Users"],
-    };
-  }
+  // else{
+  //   var message = {
+  //     app_id: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
+  //     contents: { en: data.USERNAME + ", A LENDA, postou no Bar" },
+  //     web_url: "https://gui1949.github.io/BardoJeiz",
+  //     included_segments: ["Subscribed Users"],
+  //   };
+  // }
 
 
   sendNotification(message);
