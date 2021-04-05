@@ -333,17 +333,19 @@ function bot_g1() {
     "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
     "http://g1.globo.com/dynamo/economia/rss2.xml",
     "http://g1.globo.com/dynamo/mundo/rss2.xml",
-    "http://g1.globo.com/dynamo/pop-arte/rss2.xml",
-    "http://g1.globo.com/dynamo/tecnologia/rss2.xml",
     "https://rss.tecmundo.com.br/feed",
     "http://www.valor.com.br/rss",
     "https://feeds.folha.uol.com.br/ilustrada/rss091.xml",
     "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml",
     "https://feeds.folha.uol.com.br/opiniao/rss091.xml",
-    "http://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
     "http://rss.home.uol.com.br/index.xml",
-    "https://ahnegao.com.br/rss",
     "http://rss.megacurioso.com.br/feed",
+    "https://www.noticiasaominuto.com.br/rss/ultima-hora",
+    "http://www.bbc.co.uk/portuguese/index.xml",
+    "https://atarde.uol.com.br/arquivos/rss/brasil.xml",
+    "https://exame.com/rss",
+    "https://super.abril.com.br/rss",
+    "https://veja.abril.com.br/rss"
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
@@ -440,12 +442,14 @@ function bot_bitcoin() {
 
 setInterval(bot_gringo, 6000000);
 
-setInterval(bot_bitcoin, 2000000);
+setInterval(bot_bitcoin, 800000);
 
 setInterval(bot_jeiz, 4000000);
 
 setInterval(bot_jacksons, 3000000);
 
-setInterval(bot_g1, 2500000);
+// setInterval(bot_g1, 1000000);
+
+bot_g1()
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
