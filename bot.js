@@ -333,7 +333,6 @@ function bot_g1() {
     "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
     "http://g1.globo.com/dynamo/economia/rss2.xml",
     "http://g1.globo.com/dynamo/mundo/rss2.xml",
-    "http://g1.globo.com/dynamo/natureza/rss2.xml",
     "http://g1.globo.com/dynamo/pop-arte/rss2.xml",
     "http://g1.globo.com/dynamo/tecnologia/rss2.xml",
     "https://rss.tecmundo.com.br/feed",
