@@ -72,6 +72,7 @@ function bot_jeiz() {
     "https://i.redd.it/u7rqhnmy7yc31.jpg",
     "https://www.youtube.com/watch?v=Yc3Hff6WL9k",
     "https://i.ytimg.com/vi/hyGfCUVpD_k/hqdefault.jpg",
+    "https://media.tenor.com/images/cea228dc3a8012d41fa7e0373ddbce2b/tenor.gif"
   ];
 
   var descricao = [
@@ -448,8 +449,6 @@ setInterval(bot_jeiz, 4000000);
 
 setInterval(bot_jacksons, 3000000);
 
-// setInterval(bot_g1, 1000000);
-
-bot_g1()
+setInterval(bot_g1, 1000000);
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
