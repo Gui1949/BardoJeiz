@@ -72,7 +72,7 @@ function bot_jeiz() {
     "https://i.redd.it/u7rqhnmy7yc31.jpg",
     "https://www.youtube.com/watch?v=Yc3Hff6WL9k",
     "https://i.ytimg.com/vi/hyGfCUVpD_k/hqdefault.jpg",
-    "https://media.tenor.com/images/cea228dc3a8012d41fa7e0373ddbce2b/tenor.gif"
+    "https://media.tenor.com/images/cea228dc3a8012d41fa7e0373ddbce2b/tenor.gif",
   ];
 
   var descricao = [
@@ -347,6 +347,11 @@ function bot_g1() {
     "https://exame.com/rss",
     "https://super.abril.com.br/rss",
     "https://veja.abril.com.br/rss"
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606f9a5f5d23c430a739d4b2.xml",
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa0f7797cae06b75a6952.xml",
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa12374a0415a0b72f852.xml",
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa16f06f25d059f216e22.xml",
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa1b92e38c201aa23d3f2.xml",
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
@@ -354,13 +359,13 @@ function bot_g1() {
   (async () => {
     let feed = await parser.parseURL(url);
     icone = feed.image.url;
-    titulo = feed.title
+    titulo = feed.title;
 
     feed.items.forEach((item) => {
       while (i < 1) {
         let head_noticia = item.title;
         let conteudo_bruto = item.content;
-        console.log(conteudo_bruto)
+        console.log(item);
 
         find_img_ini = conteudo_bruto.search("<img src=");
         find_img_fi = conteudo_bruto.search("/>");
@@ -368,6 +373,10 @@ function bot_g1() {
         let img = conteudo_bruto.slice(find_img_ini, find_img_fi);
         img = img.replace('<img src="', "");
         img = img.replace('"', "");
+        img = img.replace(/amp;/g, "");
+        img = img.replace(/>/g, "");
+        img = img.replace(/<br/g, "");
+        console.log(img)
 
         if (img == "") {
           img = icone;
@@ -449,6 +458,8 @@ setInterval(bot_jeiz, 4000000);
 
 setInterval(bot_jacksons, 3000000);
 
-setInterval(bot_g1, 1000000);
+// setInterval(bot_g1, 1000000);
+
+bot_g1();
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
