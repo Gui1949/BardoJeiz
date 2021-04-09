@@ -346,12 +346,13 @@ function bot_g1() {
     "https://atarde.uol.com.br/arquivos/rss/brasil.xml",
     "https://exame.com/rss",
     "https://super.abril.com.br/rss",
-    "https://veja.abril.com.br/rss"
+    "https://veja.abril.com.br/rss",
     "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606f9a5f5d23c430a739d4b2.xml",
     "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa0f7797cae06b75a6952.xml",
     "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa12374a0415a0b72f852.xml",
     "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa16f06f25d059f216e22.xml",
     "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa1b92e38c201aa23d3f2.xml",
+    "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa428c6a908778105abc2.xml",
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
@@ -455,6 +456,8 @@ setInterval(bot_gringo, 6000000);
 setInterval(bot_bitcoin, 800000);
 
 setInterval(bot_jeiz, 4000000);
+
+bot_g1()
 
 setInterval(bot_jacksons, 3000000);
 
