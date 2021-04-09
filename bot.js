@@ -458,8 +458,7 @@ setInterval(bot_jeiz, 4000000);
 
 setInterval(bot_jacksons, 3000000);
 
-// setInterval(bot_g1, 1000000);
+setInterval(bot_g1, 1000000);
 
-bot_g1();
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
