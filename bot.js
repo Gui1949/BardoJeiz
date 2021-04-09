@@ -353,6 +353,7 @@ function bot_g1() {
     "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa16f06f25d059f216e22.xml",
     "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa1b92e38c201aa23d3f2.xml",
     "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa428c6a908778105abc2.xml",
+    "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa5c1aac0bd619e61e6c3.xml",
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
