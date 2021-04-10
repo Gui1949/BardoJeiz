@@ -356,6 +356,18 @@ function bot_g1() {
     "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa428c6a908778105abc2.xml",
     "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa5c1aac0bd619e61e6c3.xml",
     "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa7f3dbb5e51dae1f30e2.xml",
+    "http://fetchrss.com/rss/606fa41e4881070fd7670d02607221d711e1091bbf7464a2.xml",
+    "http://fetchrss.com/rss/607222b9c01aec5c3f6f24f2607222d8f8ddf451027515e2.xml",
+    "https://veja.abril.com.br/blog/sensacionalista/rss",
+    "https://vejasp.abril.com.br/rss",
+    "https://quatrorodas.abril.com.br/rss",
+    "https://www.techtudo.com.br/rss/techtudo/",
+    "https://feeds.folha.uol.com.br/mundo/rss091.xml",
+    "https://feeds.folha.uol.com.br/ilustrissima/rss091.xml",
+    "https://feeds.folha.uol.com.br/colunas/reinaldoazevedo/rss091.xml",
+    "https://feeds.folha.uol.com.br/cotidiano/rss091.xml",
+    "http://g1.globo.com/dynamo/carros/rss2.xml",
+    "http://g1.globo.com/dynamo/sao-paulo/rss2.xml",
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
