@@ -466,13 +466,65 @@ function bot_bitcoin() {
     });
 }
 
+function bot_dogecoin() {
+  let url = "http://rest.coinapi.io/v1/assets/DOGE?apikey=27EAF079-A588-40DE-90EE-FCD5C5CE3720";
+  fetch(url)
+    .then((resp) => resp.json())
+    .then(function (data) {
+      let dados = data[0].price_usd
+      console.log(dados)
+      dados = dados.toFixed(2)
+      let usd = 0
+      
+      fetch("https://economia.awesomeapi.com.br/usd-brl/1")
+        .then((resp) => resp.json())
+        .then(function (data){
+          usd = data[0].high
+          console.log(usd)
+          usd = parseFloat(usd).toFixed(2)
+          console.log(usd)
+          dados = dados * usd
+          dados = parseFloat(dados).toFixed(2)
+          console.log(dados)
+    
+          var FormData = require("form-data");
+          var data = new FormData();
+    
+          let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+    
+          let picture =
+            "https://media.giphy.com/media/gRHn9ERANxrHiff73F/giphy.gif";
+    
+          let icone =
+            "https://dogechain.info/content/img/doge.png";
+    
+          data.append("photo", picture);
+          data.append("photo_pic", icone);
+          data.append("description", "O valor atual do Dogecoin é de: R$ " + dados);
+          data.append("username", "DOGE by CoinAPI");
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot DOGE rodou");
+            }
+          });
+
+        })
+    });
+}
+
 setInterval(bot_gringo, 6000000);
 
 setInterval(bot_bitcoin, 800000);
 
+setInterval(bot_dogecoin, 800000);
+
 setInterval(bot_jeiz, 4000000);
 
-bot_g1()
+bot_dogecoin()
 
 setInterval(bot_jacksons, 3000000);
 
