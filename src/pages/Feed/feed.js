@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import "../../assets/styles/global.css";
 import List from "@material-ui/core/List";
@@ -18,6 +18,10 @@ let url = "https://bardojeiz-server.herokuapp.com/data";
 // });
 
 function puxar_api() {
+  try {
+    deletar_elementos();
+  } catch {}
+
   axios.get(url).then((res) => {
     puxar_api.dados = res.data;
     puxar_api.leitura = puxar_api.dados.data;
@@ -75,7 +79,7 @@ function dislike(id_btn) {
 }
 
 function colorir(objeto) {
-  if (objeto.style.color == "rgb(255, 121, 198)") {
+  if (objeto.style.color === "rgb(255, 121, 198)") {
     objeto.style.color = "#95a5a6";
   } else {
     objeto.style.color = "#ff79c6";
@@ -103,11 +107,15 @@ function upload() {
   });
 }
 
-function username_unico(id) {
+function deletar_elementos() {
   let elementos = document.getElementsByClassName("posts");
   while (elementos.length > 0) {
     elementos[0].parentNode.removeChild(elementos[0]);
   }
+}
+
+function username_unico(id) {
+  deletar_elementos();
   id = JSON.parse(id);
   console.log(id.USERNAME);
   url = "https://bardojeiz-server.herokuapp.com/data/" + id.USERNAME;
@@ -116,9 +124,23 @@ function username_unico(id) {
 }
 
 function Feed(ler_dados) {
-  if (ler_dados[1] == undefined) {
-    console.log("Não leu:", ler_dados[1]);
-    return <p>Carregando...</p>;
+  if (ler_dados[0] == undefined) {
+    return (
+      <>
+        <nav id="top_nav">
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              url = "https://bardojeiz-server.herokuapp.com/data/";
+              puxar_api();
+            }}
+            className="nav_top_link"
+          >
+            <b>Bar do Jeiz</b>
+          </a>
+        </nav>
+      </>
+    );
   } else {
     let i = -1;
     let conteudo;
@@ -129,23 +151,9 @@ function Feed(ler_dados) {
           rel="stylesheet"
         ></link>
 
-        {/* Barra superior */}
-        <nav className="top_nav">
-          <a
-            style={{cursor:'pointer'}}
-            onClick={() => {
-              url = "https://bardojeiz-server.herokuapp.com/data/";
-              puxar_api();
-            }}
-            className="nav_top_link"
-          >
-            Bar do Jeiz
-          </a>
-        </nav>
-
         <div id="master">
           <List className="lista_feed">
-            <div id="post_header">
+            <div id="post_header" class="posts">
               <a href="#modal_upload" className="material-icons" id="upload">
                 publish
               </a>
@@ -186,7 +194,7 @@ function Feed(ler_dados) {
               </div>
             </div>
 
-            <div id="post_feed">
+            <div id="post_feed" class="posts">
               <div id="header">
                 <Avatar
                   className="avatar"
@@ -277,23 +285,19 @@ function Feed(ler_dados) {
                   }
                 })()}
                 <div id="header">
-                  <Avatar
-                    className="avatar"
-                    alt={window["Object" + i][1]}
-                    src="/static/images/avatar/2.jpg"
-                  />
+                  <Avatar className="avatar" src={window["Object" + i][2]} />
                   <ListItemText
                     primary={
                       <p
                         className="username"
-                        style={{cursor:'pointer'}}
+                        style={{ cursor: "pointer" }}
                         onClick={() =>
                           username_unico(
                             JSON.stringify(ler_dados, ["USERNAME"])
                           )
                         }
                       >
-                        {window["Object" + i][1]}
+                        <b>{window["Object" + i][1]}</b>
                       </p>
                     }
                     className="username_data_post"
@@ -344,13 +348,6 @@ function Feed(ler_dados) {
             ))}
           </List>
         </div>
-        {/* Navigation bar inferior */}
-        {/* <nav className="nav">
-          <a href="#" className="nav__link nav__link--active">
-            <i className="material-icons nav__icon">dashboard</i>
-            <span className="nav__text">Feed</span>
-          </a>
-        </nav> */}
       </>
     );
   }
