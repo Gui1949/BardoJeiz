@@ -29,7 +29,18 @@ restapi.get("/data", (req, res) => {
 });
 
 restapi.get("/data/:username", (req,res) => {
-  res.send(req.params.username)
+  let username = req.params.username
+  var sql = "select * from POSTS order by id desc WHERE USERNAME LIKE ?";
+  var params = [username];
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      data: rows,
+    });
+  });
 })
 
 restapi.get("/version", (req,res) =>{
