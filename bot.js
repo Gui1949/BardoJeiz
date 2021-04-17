@@ -156,12 +156,13 @@ function bot_jeiz() {
 }
 
 function bot_jacksons() {
-  var Jimp = require("jimp");
+  let Jimp = require("jimp");
 
-  var superiorArray = [
+  let superiorArray = [
     "vou falar só uma vez",
     "tem um viado me olhando",
     "todo mundo",
+    "as vezes no silencio da noite",
     "ae, na moral",
     "fala aí",
     "só tem corno nesse porra",
@@ -188,8 +189,9 @@ function bot_jacksons() {
     "ae mermao",
   ];
 
-  var inferiorArray = [
+  let inferiorArray = [
     "vai toma no cu aew",
+    "tu eh korno que eu sei",
     "agora ele ta disfarçando",
     "da muito eh o cu",
     "pega no meu pau",
@@ -218,7 +220,7 @@ function bot_jacksons() {
     "vai pra puta q te pariu",
   ];
 
-  var imagem = [
+  let imagem = [
     "img/britto.jpeg",
     "img/fallon.jpeg",
     "img/galo.jpeg",
