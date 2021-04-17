@@ -151,7 +151,7 @@ function Feed(ler_dados) {
           rel="stylesheet"
         ></link>
 
-        <nav id="top_nav">
+        <nav id="top_nav" class="posts">
           <a
             style={{ cursor: "pointer" }}
             onClick={() => {
