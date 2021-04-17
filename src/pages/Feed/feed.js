@@ -8,14 +8,25 @@ import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import { render } from "@testing-library/react";
 
-const puxar_api = axios
-  .get(`https://bardojeiz-server.herokuapp.com/data`)
-  .then((res) => {
+let url = "https://bardojeiz-server.herokuapp.com/data";
+
+// const puxar_api = axios.get(url).then((res) => {
+//   puxar_api.dados = res.data;
+//   puxar_api.leitura = puxar_api.dados.data;
+//   let ler_dados = Object.values(puxar_api.leitura);
+//   Feed(ler_dados);
+// });
+
+function puxar_api() {
+  axios.get(url).then((res) => {
     puxar_api.dados = res.data;
     puxar_api.leitura = puxar_api.dados.data;
     let ler_dados = Object.values(puxar_api.leitura);
     Feed(ler_dados);
   });
+}
+
+puxar_api();
 
 function like(id_btn) {
   let id_trat = "";
@@ -92,6 +103,18 @@ function upload() {
   });
 }
 
+function username_unico(id) {
+  let elementos = document.getElementsByClassName("posts");
+  while (elementos.length > 0) {
+    elementos[0].parentNode.removeChild(elementos[0]);
+  }
+  id = JSON.parse(id);
+  console.log(id.USERNAME);
+  url = "https://bardojeiz-server.herokuapp.com/data/" + id.USERNAME;
+  console.log(url);
+  puxar_api();
+}
+
 function Feed(ler_dados) {
   if (ler_dados[1] == undefined) {
     console.log("Não leu:", ler_dados[1]);
@@ -108,7 +131,14 @@ function Feed(ler_dados) {
 
         {/* Barra superior */}
         <nav className="top_nav">
-          <a href="#" className="nav_top_link">
+          <a
+            style={{cursor:'pointer'}}
+            onClick={() => {
+              url = "https://bardojeiz-server.herokuapp.com/data/";
+              puxar_api();
+            }}
+            className="nav_top_link"
+          >
             Bar do Jeiz
           </a>
         </nav>
@@ -210,12 +240,12 @@ function Feed(ler_dados) {
               />
             </div>
             {ler_dados.map((ler_dados) => (
-              <div id="post_feed">
+              <div id="post_feed" class="posts">
                 {(() => {
                   i++;
-                  console.log("Leu:", ler_dados);
                   window["Object" + parseInt(i)] = new Object();
                   window["Object" + parseInt(i)] = Object.values(ler_dados);
+
                   if (window["Object" + i][4].includes(".mp4", "mov") == true) {
                     conteudo = (
                       <video className="conteudo" controls>
@@ -225,8 +255,7 @@ function Feed(ler_dados) {
                         />
                       </video>
                     );
-                  }
-                  else {
+                  } else {
                     conteudo = (
                       <img className="conteudo" src={window["Object" + i][4]} />
                     );
@@ -255,7 +284,17 @@ function Feed(ler_dados) {
                   />
                   <ListItemText
                     primary={
-                      <p className="username">{window["Object" + i][1]}</p>
+                      <p
+                        className="username"
+                        style={{cursor:'pointer'}}
+                        onClick={() =>
+                          username_unico(
+                            JSON.stringify(ler_dados, ["USERNAME"])
+                          )
+                        }
+                      >
+                        {window["Object" + i][1]}
+                      </p>
                     }
                     className="username_data_post"
                     secondary={
