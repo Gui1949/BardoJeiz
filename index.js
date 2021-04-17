@@ -28,6 +28,10 @@ restapi.get("/data", (req, res) => {
   });
 });
 
+restapi.get("/data/:username", (req,res) => {
+  res.send(req.params.username)
+})
+
 restapi.get("/version", (req,res) =>{
   versao = "0.1.1"
   res.json({
