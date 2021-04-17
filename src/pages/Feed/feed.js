@@ -151,6 +151,19 @@ function Feed(ler_dados) {
           rel="stylesheet"
         ></link>
 
+        <nav id="top_nav">
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              url = "https://bardojeiz-server.herokuapp.com/data/";
+              puxar_api();
+            }}
+            className="nav_top_link"
+          >
+            <b>Bar do Jeiz</b>
+          </a>
+        </nav>
+
         <div id="master">
           <List className="lista_feed">
             <div id="post_header" class="posts">
