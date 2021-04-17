@@ -30,7 +30,7 @@ restapi.get("/data", (req, res) => {
 
 restapi.get("/data/:username", (req,res) => {
   let username = req.params.username
-  var sql = "select * from POSTS order by id desc WHERE USERNAME LIKE ?";
+  var sql = "select * from POSTS WHERE USERNAME LIKE ? order by id desc ";
   var params = [username];
   db.all(sql, params, (err, rows) => {
     if (err) {
