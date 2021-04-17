@@ -381,7 +381,7 @@ function bot_g1() {
 
     feed.items.forEach((item) => {
       while (i < 1) {
-        let head_noticia = item.title;
+        let head_noticia = titulo + ": " + item.title;
         let conteudo_bruto = item.content;
         console.log(item);
 
@@ -400,7 +400,7 @@ function bot_g1() {
           img = icone;
         }
 
-        send_g1(img, icone, head_noticia, titulo);
+        send_g1(img, icone, head_noticia, "Informes");
 
         i++;
       }
@@ -527,6 +527,8 @@ setInterval(bot_dogecoin, 800000);
 setInterval(bot_jeiz, 4000000);
 
 setInterval(bot_jacksons, 3000000);
+
+bot_g1()
 
 setInterval(bot_g1, 1000000);
 
