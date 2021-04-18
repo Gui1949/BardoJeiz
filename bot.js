@@ -332,57 +332,49 @@ function bot_g1() {
   let parser = new Parser();
   let i = 0;
 
-  let Scraper = require('images-scraper');
+  let fontes_g1 = [
+    "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
+    "http://g1.globo.com/dynamo/economia/rss2.xml",
+    "http://g1.globo.com/dynamo/mundo/rss2.xml",
+    "https://rss.tecmundo.com.br/feed",
+    "http://www.valor.com.br/rss",
+    "https://feeds.folha.uol.com.br/ilustrada/rss091.xml",
+    "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml",
+    "https://feeds.folha.uol.com.br/opiniao/rss091.xml",
+    "http://rss.home.uol.com.br/index.xml",
+    "http://rss.megacurioso.com.br/feed",
+    "https://www.noticiasaominuto.com.br/rss/ultima-hora",
+    "http://www.bbc.co.uk/portuguese/index.xml",
+    "https://atarde.uol.com.br/arquivos/rss/brasil.xml",
+    "https://exame.com/rss",
+    "https://super.abril.com.br/rss",
+    "https://veja.abril.com.br/rss",
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606f9a5f5d23c430a739d4b2.xml",
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa0f7797cae06b75a6952.xml",
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa12374a0415a0b72f852.xml",
+    "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa7bcc93ba434c901f6f2.xml",
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa16f06f25d059f216e22.xml",
+    "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa1b92e38c201aa23d3f2.xml",
+    "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa428c6a908778105abc2.xml",
+    "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa5c1aac0bd619e61e6c3.xml",
+    "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa7f3dbb5e51dae1f30e2.xml",
+    "http://fetchrss.com/rss/606fa41e4881070fd7670d02607221d711e1091bbf7464a2.xml",
+    "http://fetchrss.com/rss/607222b9c01aec5c3f6f24f2607222d8f8ddf451027515e2.xml",
+    "https://veja.abril.com.br/blog/sensacionalista/rss",
+    "https://vejasp.abril.com.br/rss",
+    "https://quatrorodas.abril.com.br/rss",
+    "https://www.techtudo.com.br/rss/techtudo/",
+    "https://feeds.folha.uol.com.br/mundo/rss091.xml",
+    "https://feeds.folha.uol.com.br/ilustrissima/rss091.xml",
+    "https://feeds.folha.uol.com.br/colunas/reinaldoazevedo/rss091.xml",
+    "https://feeds.folha.uol.com.br/cotidiano/rss091.xml",
+    "http://g1.globo.com/dynamo/carros/rss2.xml",
+    "http://g1.globo.com/dynamo/sao-paulo/rss2.xml",
+  ];
 
-  const google = new Scraper({
-    puppeteer: {
-      headless: false,
-    },
-  });
+  url = fontes_g1[getRandomInt(0, fontes_g1.length)];
 
   (async () => {
-    let fontes_g1 = [
-      "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
-      "http://g1.globo.com/dynamo/economia/rss2.xml",
-      "http://g1.globo.com/dynamo/mundo/rss2.xml",
-      "https://rss.tecmundo.com.br/feed",
-      "http://www.valor.com.br/rss",
-      "https://feeds.folha.uol.com.br/ilustrada/rss091.xml",
-      "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml",
-      "https://feeds.folha.uol.com.br/opiniao/rss091.xml",
-      "http://rss.home.uol.com.br/index.xml",
-      "http://rss.megacurioso.com.br/feed",
-      "https://www.noticiasaominuto.com.br/rss/ultima-hora",
-      "http://www.bbc.co.uk/portuguese/index.xml",
-      "https://atarde.uol.com.br/arquivos/rss/brasil.xml",
-      "https://exame.com/rss",
-      "https://super.abril.com.br/rss",
-      "https://veja.abril.com.br/rss",
-      "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606f9a5f5d23c430a739d4b2.xml",
-      "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa0f7797cae06b75a6952.xml",
-      "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa12374a0415a0b72f852.xml",
-      "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa7bcc93ba434c901f6f2.xml",
-      "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa16f06f25d059f216e22.xml",
-      "http://fetchrss.com/rss/606f9a52317c9e1b747d29d3606fa1b92e38c201aa23d3f2.xml",
-      "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa428c6a908778105abc2.xml",
-      "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa5c1aac0bd619e61e6c3.xml",
-      "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa7f3dbb5e51dae1f30e2.xml",
-      "http://fetchrss.com/rss/606fa41e4881070fd7670d02607221d711e1091bbf7464a2.xml",
-      "http://fetchrss.com/rss/607222b9c01aec5c3f6f24f2607222d8f8ddf451027515e2.xml",
-      "https://veja.abril.com.br/blog/sensacionalista/rss",
-      "https://vejasp.abril.com.br/rss",
-      "https://quatrorodas.abril.com.br/rss",
-      "https://www.techtudo.com.br/rss/techtudo/",
-      "https://feeds.folha.uol.com.br/mundo/rss091.xml",
-      "https://feeds.folha.uol.com.br/ilustrissima/rss091.xml",
-      "https://feeds.folha.uol.com.br/colunas/reinaldoazevedo/rss091.xml",
-      "https://feeds.folha.uol.com.br/cotidiano/rss091.xml",
-      "http://g1.globo.com/dynamo/carros/rss2.xml",
-      "http://g1.globo.com/dynamo/sao-paulo/rss2.xml",
-    ];
-  
-    url = fontes_g1[getRandomInt(0, fontes_g1.length)];
-
     let feed = await parser.parseURL(url);
     icone = feed.image.url;
     titulo = feed.title;
@@ -397,27 +389,18 @@ function bot_g1() {
         find_img_fi = conteudo_bruto.search("/>");
 
         let img = conteudo_bruto.slice(find_img_ini, find_img_fi);
+        img = img.replace('<img src="', "");
+        img = img.replace('"', "");
+        img = img.replace(/amp;/g, "");
+        img = img.replace(/>/g, "");
+        img = img.replace(/<br/g, "");
+        console.log(img)
 
-        async function gerar_img(){
-          if (img == "") {
-            const results = await google.scrape(head_noticia, 1);
-            console.log('results', results);
-            let imagem = results[0].url
-            console.log(imagem)
-            send_g1(imagem, icone, head_noticia, "Informes");
-          }
-          else{        
-            img = img.replace('<img src="', "");
-            img = img.replace('"', "");
-            img = img.replace(/amp;/g, "");
-            img = img.replace(/>/g, "");
-            img = img.replace(/<br/g, "");
-            console.log(img)
-            send_g1(img, icone, head_noticia, "Informes");
-          }
+        if (img == "") {
+          img = icone;
         }
-        
-        gerar_img()
+
+        send_g1(img, icone, head_noticia, "Informes");
 
         i++;
       }
