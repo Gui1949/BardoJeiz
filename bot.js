@@ -475,9 +475,9 @@ setInterval(bot_bitcoin, 800000);
 
 setInterval(bot_dogecoin, 800000);
 
-setInterval(bot_jeiz, 900000);
+// setInterval(bot_jeiz, 900000);
 
-bot_jeiz()
+// bot_jeiz()
 
 setInterval(bot_jacksons, 3000000);
 
