@@ -1,8 +1,11 @@
 const { response, json } = require("express");
 const fs = require("fs");
 const fetch = require("node-fetch");
-const GoogleImages = require('google-images');          
-const client = new GoogleImages('partner-pub-4228098010894354:5271861158', 'AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY');          
+const GoogleImages = require("google-images");
+const client = new GoogleImages(
+  "partner-pub-4228098010894354:5271861158",
+  "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
+);
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -66,15 +69,13 @@ function bot_jeiz() {
 
   desc = descricao[getRandomInt(0, descricao.length)];
 
-  let img_aleatoria = ""
+  let img_aleatoria = "";
 
-  const GoogleImages = require('google-images');          
-  const client = new GoogleImages('partner-pub-4228098010894354:5271861158', 'AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY');          
-  client.search(desc)
-    .then(images => {
-        let i = getRandomInt(0,10)
-        img_aleatoria = images[i].url
-        console.log(img_aleatoria)
+  async function puxar_img() {
+    try {
+      await client.search(desc).then((images) => {
+        let i = getRandomInt(0, 10);
+        img_aleatoria = images[i].url;
         let userpic =
           "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
         let name = "Jeiz";
@@ -96,7 +97,34 @@ function bot_jeiz() {
             console.log("Bot JEIZ rodou");
           }
         });
-    });        
+      });
+    } catch (err) {
+      console.log("Erro:", err);
+      input = "https://picsum.photos/500/500?random=" + [getRandomInt(0, 999)];
+      let userpic =
+        "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
+      let name = "Jeiz";
+      let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+      let FormData = require("form-data");
+      let data = new FormData();
+
+      data.append("photo", input);
+      data.append("photo_pic", userpic);
+      data.append("description", desc);
+      data.append("username", name);
+
+      fetch(apiUrl, {
+        method: "POST",
+        body: data,
+      }).then(function (response) {
+        if (response.ok) {
+          console.log("Bot JEIZ rodou");
+        }
+      });
+    }
+  }
+  puxar_img();
 }
 
 function bot_jacksons() {
@@ -337,19 +365,26 @@ function bot_g1() {
         img = img.replace(/amp;/g, "");
         img = img.replace(/>/g, "");
         img = img.replace(/<br/g, "");
-        console.log(img)
+        console.log(img);
 
         if (img == "") {
-          // img = icone;
-          client.search(item.title)
-            .then(images => {
-                img_srch = images[0].url
-                console.log(img_srch)
+          async function puxar_img() {
+            try {
+              await client.search(item.title).then((images) => {
+                img_srch = images[0].url;
+                console.log(img_srch);
                 send_g1(img_srch, icone, head_noticia, "Informes");
-            });        
-        }
-
-        else{
+              });
+            } catch (err) {
+              console.log("Erro:", err);
+              input =
+                "https://picsum.photos/500/500?random=" +
+                [getRandomInt(0, 999)];
+              send_g1(input, icone, head_noticia, "Informes");
+            }
+          }
+          puxar_img();
+        } else {
           send_g1(img, icone, head_noticia, "Informes");
         }
 
@@ -420,40 +455,43 @@ function bot_bitcoin() {
 }
 
 function bot_dogecoin() {
-  let url = "http://rest.coinapi.io/v1/assets/DOGE?apikey=27EAF079-A588-40DE-90EE-FCD5C5CE3720";
+  let url =
+    "http://rest.coinapi.io/v1/assets/DOGE?apikey=27EAF079-A588-40DE-90EE-FCD5C5CE3720";
   fetch(url)
     .then((resp) => resp.json())
     .then(function (data) {
-      let dados = data[0].price_usd
-      console.log(dados)
-      dados = dados.toFixed(2)
-      let usd = 0
-      
+      let dados = data[0].price_usd;
+      console.log(dados);
+      dados = dados.toFixed(2);
+      let usd = 0;
+
       fetch("https://economia.awesomeapi.com.br/usd-brl/1")
         .then((resp) => resp.json())
-        .then(function (data){
-          usd = data[0].high
-          console.log(usd)
-          usd = parseFloat(usd).toFixed(2)
-          console.log(usd)
-          dados = dados * usd
-          dados = parseFloat(dados).toFixed(2)
-          console.log(dados)
-    
+        .then(function (data) {
+          usd = data[0].high;
+          console.log(usd);
+          usd = parseFloat(usd).toFixed(2);
+          console.log(usd);
+          dados = dados * usd;
+          dados = parseFloat(dados).toFixed(2);
+          console.log(dados);
+
           var FormData = require("form-data");
           var data = new FormData();
-    
+
           let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
-    
+
           let picture =
             "https://media.giphy.com/media/gRHn9ERANxrHiff73F/giphy.gif";
-    
-          let icone =
-            "https://dogechain.info/content/img/doge.png";
-    
+
+          let icone = "https://dogechain.info/content/img/doge.png";
+
           data.append("photo", picture);
           data.append("photo_pic", icone);
-          data.append("description", "O valor atual do Dogecoin é de: R$ " + dados);
+          data.append(
+            "description",
+            "O valor atual do Dogecoin é de: R$ " + dados
+          );
           data.append("username", "DOGE by CoinAPI");
 
           fetch(apiUrl, {
@@ -464,8 +502,7 @@ function bot_dogecoin() {
               console.log("Bot DOGE rodou");
             }
           });
-
-        })
+        });
     });
 }
 
@@ -475,13 +512,10 @@ setInterval(bot_bitcoin, 800000);
 
 setInterval(bot_dogecoin, 800000);
 
-// setInterval(bot_jeiz, 900000);
-
-// bot_jeiz()
+setInterval(bot_jeiz, 900000);
 
 setInterval(bot_jacksons, 3000000);
 
-// setInterval(bot_g1, 1000000);
-
+setInterval(bot_g1, 1000000);
 
 // ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg

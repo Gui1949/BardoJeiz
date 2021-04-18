@@ -12,7 +12,7 @@ restapi.use(bodyParser.urlencoded({ extended: false }));
 restapi.use(bodyParser.json());
 restapi.use(cors());
 
-balcao = []
+balcao = [];
 
 restapi.get("/data", (req, res) => {
   var sql = "select * from POSTS order by id desc";
@@ -28,8 +28,8 @@ restapi.get("/data", (req, res) => {
   });
 });
 
-restapi.get("/data/:username", (req,res) => {
-  let username = req.params.username
+restapi.get("/data/:username", (req, res) => {
+  let username = req.params.username;
   var sql = "select * from POSTS WHERE USERNAME LIKE ? order by id desc ";
   var params = [username];
   db.all(sql, params, (err, rows) => {
@@ -41,14 +41,14 @@ restapi.get("/data/:username", (req,res) => {
       data: rows,
     });
   });
-})
+});
 
-restapi.get("/version", (req,res) =>{
-  versao = "0.1.1"
+restapi.get("/version", (req, res) => {
+  versao = "0.1.1";
   res.json({
-    data: versao
-  })
-})
+    data: versao,
+  });
+});
 
 // restapi.get("/balcao", (req,res) =>{
 //   res.json({
@@ -70,7 +70,7 @@ restapi.get("/version", (req,res) =>{
 //   };
 //   mensagem = data.USERNAME + ": " + data.MENSAGEM
 //   console.log(mensagem)
-//   balcao.push(mensagem); 
+//   balcao.push(mensagem);
 //   res.json({
 //     data: balcao,
 //   });
@@ -307,7 +307,6 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
 });
 
 restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
-
   let date_ob = new Date();
 
   let day = ("0" + date_ob.getDate()).slice(-2);
@@ -329,9 +328,9 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     POST_DISLIKE: 0,
   };
 
-  if(data.PIC_LOCAL.includes("https://www.youtube.com")){
+  if (data.PIC_LOCAL.includes("https://www.youtube.com")) {
     data.PIC_LOCAL = data.PIC_LOCAL.replace("watch?v=", "embed/");
-    console.log(data.PIC_LOCAL)
+    console.log(data.PIC_LOCAL);
   }
 
   var sql =
@@ -386,7 +385,10 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     req.end();
   };
 
-  if (data.USERNAME == "BTC by Mercado Bitcoin" || data.USERNAME == "DOGE by CoinAPI" ){
+  if (
+    data.USERNAME == "BTC by Mercado Bitcoin" ||
+    data.USERNAME == "DOGE by CoinAPI"
+  ) {
     var message = {
       app_id: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
       contents: { en: data.POST_DESC },
@@ -404,7 +406,6 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   //     included_segments: ["Subscribed Users"],
   //   };
   // }
-
 });
 
 restapi.listen(process.env.PORT || 80);
