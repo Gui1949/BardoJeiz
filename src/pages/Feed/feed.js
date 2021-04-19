@@ -10,6 +10,8 @@ import { render } from "@testing-library/react";
 
 let url = "https://bardojeiz-server.herokuapp.com/data";
 
+setTimeout(() => window.location.reload(),850000)
+
 // const puxar_api = axios.get(url).then((res) => {
 //   puxar_api.dados = res.data;
 //   puxar_api.leitura = puxar_api.dados.data;
@@ -35,7 +37,6 @@ puxar_api();
 function like(id_btn) {
   let id_trat = "";
   id_trat = id_btn.replace(/[^0-9\.]+/g, "");
-
   let objeto_desfazer = document.getElementById("btn_dislike_" + id_trat);
   objeto_desfazer.style.color = "#95a5a6";
 
@@ -257,7 +258,7 @@ function Feed(ler_dados) {
                     então, aproveite enquanto é tempo...
                   </p>
                 }
-                className="username_data_post"
+                className="username_data_post_"
               />
             </div>
             {ler_dados.map((ler_dados) => (
@@ -338,7 +339,7 @@ function Feed(ler_dados) {
                       Likes, {window["Object" + i][7]} Dislikes
                     </p>
                   }
-                  className="username_data_post"
+                  className="username_data_post_"
                 />
 
                 <button

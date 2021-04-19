@@ -22,10 +22,10 @@ body {
 .nav_top_link {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  flex-grow: 1;
-  min-width: 50px;
+  align-self: center;
+  margin: auto;
+  width: max-content;
   overflow: hidden;
   white-space: nowrap;
   font-family: sans-serif;
@@ -33,7 +33,7 @@ body {
   color: #f8f8f2;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out; 
 }
 
 #master {
@@ -81,7 +81,7 @@ body {
 }
 
 .avatar {
-  margin-top: 0.5vh;
+  margin-top: 1vh;
   height: 5vh;
   border-radius: 100%;
   width: 5vh;
@@ -98,15 +98,18 @@ body {
 
 #header {
   margin-bottom: 1vh;
+  margin-top: 0.1vh;
 }
 
 .username_data_post {
-  padding-top: 0.5vh;
+  float: left
 }
 
 .username {
   font-size: 1.8vh;
   font-weight: 500;
+  width: max-content;
+  float: left;
 }
 
 .username:hover,
@@ -122,6 +125,7 @@ body {
 .data_post {
   font-size: 1.6vh;
   color: #f8f8f2;
+  float: left;
 }
 
 .reacao_btn {
