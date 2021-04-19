@@ -2,10 +2,10 @@ const { response, json } = require("express");
 const fs = require("fs");
 const fetch = require("node-fetch");
 const GoogleImages = require("google-images");
-// const client = new GoogleImages(
-//   "partner-pub-4228098010894354:5271861158",
-//   "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
-// );
+const client = new GoogleImages(
+  "partner-pub-4228098010894354:5271861158",
+  "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
+);
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -512,7 +512,7 @@ setInterval(bot_bitcoin, 800000);
 
 setInterval(bot_dogecoin, 800000);
 
-setInterval(bot_jeiz, 900000);
+setInterval(bot_jeiz, 700000);
 
 setInterval(bot_jacksons, 3000000);
 
