@@ -100,7 +100,7 @@ function bot_jeiz() {
       });
     } catch (err) {
       console.log("Erro:", err);
-      input = "https://picsum.photos/500/500?random=" + [getRandomInt(0, 999)];
+      input = "https://picsum.photos/1000/1000?random=" + [getRandomInt(0, 999)];
       let userpic =
         "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
       let name = "Jeiz";
@@ -378,7 +378,7 @@ function bot_g1() {
             } catch (err) {
               console.log("Erro:", err);
               input =
-                "https://picsum.photos/500/500?random=" +
+                "https://picsum.photos/1000/1000?random=" +
                 [getRandomInt(0, 999)];
               send_g1(input, icone, head_noticia, "Informes");
             }
