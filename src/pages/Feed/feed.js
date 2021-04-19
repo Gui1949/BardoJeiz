@@ -142,7 +142,7 @@ function Feed(ler_dados) {
       </>
     );
   } else {
-    let i = -1;
+    let i = 0;
     let conteudo;
     render(
       <>
@@ -209,10 +209,10 @@ function Feed(ler_dados) {
 
             <div id="post_feed" class="posts">
               <div id="header">
-                <Avatar
+                <img
                   className="avatar"
                   alt="Desenvolvedor"
-                  src="/static/images/avatar/2.jpg"
+                  src="https://i.scdn.co/image/6761637ad5f57a7bbb34d00b6578811af27208db"
                 />
                 <ListItemText
                   primary={
@@ -298,7 +298,9 @@ function Feed(ler_dados) {
                   }
                 })()}
                 <div id="header">
-                  <Avatar className="avatar" src={window["Object" + i][2]} />
+                  <div className="avatar">
+                    <img className="avatar_img" src={window["Object" + i][2]} />
+                  </div>
                   <ListItemText
                     primary={
                       <p
