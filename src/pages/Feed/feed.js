@@ -10,7 +10,7 @@ import { render } from "@testing-library/react";
 
 let url = "https://bardojeiz-server.herokuapp.com/data";
 
-setTimeout(() => window.location.reload(),850000)
+setTimeout(() => window.location.reload(), 850000);
 
 // const puxar_api = axios.get(url).then((res) => {
 //   puxar_api.dados = res.data;
@@ -295,6 +295,28 @@ function Feed(ler_dados) {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
                       ></iframe>
+                    );
+                  }
+                  if (window["Object" + i][4].includes("fbsbx") == true || window["Object" + i][4].includes("fbcdn") == true) {
+                    conteudo = (
+                      <div class="conteudo">
+                        <div class="caixa_fb">
+                          <div class="titulo_fb">
+                            <p>
+                              <b>Publicação do FaceBook</b>
+                            </p>
+                          </div>
+                          <div class="desc_fb">
+                            <p class="desc_fb_class">
+                              A postagem a seguir é proveniente do Facebook. Não
+                              me responsabilizo por nada de lá não.
+                            </p>
+                          </div>
+                            <a class="btn_fb" href={window["Object" + i][4]}>
+                              <b>Acessar</b>
+                            </a>
+                        </div>
+                      </div>
                     );
                   }
                 })()}

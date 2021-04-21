@@ -74,10 +74,60 @@ body {
 .conteudo {
   width: 100%;
   height: 30vh;
+  float:left;
   margin-top: 1vh;
+  margin-bottom: 1vh;
   border-radius: 1vh;
   background-color: #282a36;
   object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo_fb{
+  background-color: #3b5998;
+  font-size: 2vh;
+  border-top-left-radius: 1vh;
+  border-top-right-radius: 1vh;
+  height: 5vh;
+  padding-left: 2vh;
+  display: flex;
+  align-items: center;
+}
+
+.caixa_fb{
+  background-color: #d8dfea;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: auto;
+  border-radius: 1vh;
+  vertical-align: middle;
+  width: 80%;
+}
+
+.desc_fb{
+  padding: 1vh 2vh 1vh 2vh;
+  background-color: #f8fbff;;
+}
+
+.desc_fb_class{
+  color: black;
+  font-size: 1.8vh;
+}
+
+.btn_fb{
+  width: 10vh;
+  height: 4vh;
+  font-size: 2vh;
+  text-decoration: none;
+  color: #f8fbff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+  float: right;
+  right: 0%;
+  background-color: #3b5998;
 }
 
 .avatar {
