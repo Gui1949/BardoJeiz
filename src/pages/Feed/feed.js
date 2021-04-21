@@ -308,7 +308,7 @@ function Feed(ler_dados) {
                           </div>
                           <div class="desc_fb">
                             <p class="desc_fb_class">
-                              A postagem a seguir é proveniente do Facebook. Não
+                              A postagem a seguir é proveniente do FaceBook. Não
                               me responsabilizo por nada de lá não.
                             </p>
                           </div>
