@@ -137,16 +137,15 @@ let interval = setInterval(() => {
   if (horas >= 0 && horas <= 6) {
     document.getElementById("timer_title").innerHTML =
       "Vai dormir porra, ta loko?";
-  }
-  if (horas >= 7 && horas <= 12) {
+  } else if (horas >= 7 && horas <= 12) {
     document.getElementById("timer_title").innerHTML = "Eae cumpadi, bom dia";
   } else if (horas >= 12 && horas <= 18) {
     document.getElementById("timer_title").innerHTML =
       "Boa tarde, meu consagrado";
   } else if (horas >= 18 && horas <= 22) {
     document.getElementById("timer_title").innerHTML = "Boa noite e até amanhã";
-  } else {
-    document.getElementById("timer_title").innerHTML = "Boa noite aew";
+  } else if (horas >= 22) {
+    document.getElementById("timer_title").innerHTML = "Boa noite aew, vai dormir porra";
   }
 }, 1000);
 
