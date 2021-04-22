@@ -388,10 +388,9 @@ function Feed(ler_dados) {
                   />
                 </div>
                 {conteudo}
-                <br />
                 <ListItemText
                   primary={
-                    <p className="descricao">
+                    <p className="descricao_post">
                       {window["Object" + i][5]} - {window["Object" + i][6]}{" "}
                       Likes, {window["Object" + i][7]} Dislikes
                     </p>
