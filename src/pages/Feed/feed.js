@@ -3,21 +3,11 @@ import "./style.css";
 import "../../assets/styles/global.css";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import { render } from "@testing-library/react";
 
 let url = "https://bardojeiz-server.herokuapp.com/data";
-
-setTimeout(() => window.location.reload(), 850000);
-
-// const puxar_api = axios.get(url).then((res) => {
-//   puxar_api.dados = res.data;
-//   puxar_api.leitura = puxar_api.dados.data;
-//   let ler_dados = Object.values(puxar_api.leitura);
-//   Feed(ler_dados);
-// });
 
 function puxar_api() {
   try {
@@ -41,7 +31,6 @@ function like(id_btn) {
   objeto_desfazer.style.color = "#95a5a6";
 
   let objeto = document.getElementById("btn_like_" + id_trat);
-
   colorir(objeto);
 
   fetch("https://bardojeiz-server.herokuapp.com/data/like", {
@@ -124,24 +113,61 @@ function username_unico(id) {
   puxar_api();
 }
 
+const top_nav = () => {
+  return (
+    <nav id="top_nav">
+      <a
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          url = "https://bardojeiz-server.herokuapp.com/data/";
+          puxar_api();
+        }}
+        className="nav_top_link"
+      >
+        <b>Bar do Jeiz</b>
+      </a>
+    </nav>
+  );
+};
+
+let interval = setInterval(() => {
+
+  let date_ob = new Date();
+  let dia = ("0" + date_ob.getDate()).slice(-2);
+  let mes = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+  let ano = date_ob.getFullYear();
+  let horas = date_ob.getHours();
+  let minutos = date_ob.getMinutes();
+  let segundos = date_ob.getSeconds();
+
+  function str_pad_left(string, pad, length) {
+    return (new Array(length + 1).join(pad) + string).slice(-length);
+  }
+
+  let tempo_final =
+  str_pad_left(horas, "0", 2)  + ":" +  str_pad_left(minutos, "0", 2) + ":" + str_pad_left(segundos, "0", 2);
+  document.getElementById("timer_clock").innerHTML = tempo_final;
+  
+  if(horas >= 0 && horas <= 6){
+    document.getElementById("timer_title").innerHTML = "Vai dormir porra, ta loko?"
+  }
+  if(horas >= 7 && horas <= 12){
+    document.getElementById("timer_title").innerHTML = "Eae cumpadi, bom dia"
+  }
+  else if(horas >= 12 && horas <= 18){
+    document.getElementById("timer_title").innerHTML = "Boa tarde, meu consagrado"
+  }
+  else if(horas >= 18 && horas <= 22){
+    document.getElementById("timer_title").innerHTML = "Boa noite e até amanhã"
+  }
+  else{
+    document.getElementById("timer_title").innerHTML = "Boa noite aew"
+  }
+}, 1000);
+
 function Feed(ler_dados) {
   if (ler_dados[0] == undefined) {
-    return (
-      <>
-        <nav id="top_nav">
-          <a
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              url = "https://bardojeiz-server.herokuapp.com/data/";
-              puxar_api();
-            }}
-            className="nav_top_link"
-          >
-            <b>Bar do Jeiz</b>
-          </a>
-        </nav>
-      </>
-    );
+    return top_nav();
   } else {
     let i = 0;
     let conteudo;
@@ -152,22 +178,11 @@ function Feed(ler_dados) {
           rel="stylesheet"
         ></link>
 
-        <nav id="top_nav" class="posts">
-          <a
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              url = "https://bardojeiz-server.herokuapp.com/data/";
-              puxar_api();
-            }}
-            className="nav_top_link"
-          >
-            <b>Bar do Jeiz</b>
-          </a>
-        </nav>
+        {top_nav}
 
         <div id="master">
           <List className="lista_feed">
-            <div id="post_header" class="posts">
+            <div class="post_header posts">
               <a href="#modal_upload" className="material-icons" id="upload">
                 publish
               </a>
@@ -177,7 +192,7 @@ function Feed(ler_dados) {
                   <a href="#fechar" title="Fechar" class="fechar">
                     x
                   </a>
-                  Username:
+                  Nome de Usuário:
                   <input type="text" id="txt_username" />
                   <br />
                   Descrição:
@@ -205,6 +220,15 @@ function Feed(ler_dados) {
                     />
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div class="post_timer posts">
+              <p class="nav_top_link" id="timer_title">
+              </p>
+              <hr></hr>
+              <div class="timer_body">
+                <p id="timer_clock">00:00</p>
               </div>
             </div>
 
@@ -297,7 +321,10 @@ function Feed(ler_dados) {
                       ></iframe>
                     );
                   }
-                  if (window["Object" + i][4].includes("fbsbx") == true || window["Object" + i][4].includes("fbcdn") == true) {
+                  if (
+                    window["Object" + i][4].includes("fbsbx") == true ||
+                    window["Object" + i][4].includes("fbcdn") == true
+                  ) {
                     conteudo = (
                       <div class="conteudo">
                         <div class="caixa_fb">
@@ -312,9 +339,9 @@ function Feed(ler_dados) {
                               me responsabilizo por nada de lá não.
                             </p>
                           </div>
-                            <a class="btn_fb" href={window["Object" + i][4]}>
-                              <b>Acessar</b>
-                            </a>
+                          <a class="btn_fb" href={window["Object" + i][4]}>
+                            <b>Acessar</b>
+                          </a>
                         </div>
                       </div>
                     );
