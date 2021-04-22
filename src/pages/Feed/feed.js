@@ -113,25 +113,7 @@ function username_unico(id) {
   puxar_api();
 }
 
-const top_nav = () => {
-  return (
-    <nav id="top_nav">
-      <a
-        style={{ cursor: "pointer" }}
-        onClick={() => {
-          url = "https://bardojeiz-server.herokuapp.com/data/";
-          puxar_api();
-        }}
-        className="nav_top_link"
-      >
-        <b>Bar do Jeiz</b>
-      </a>
-    </nav>
-  );
-};
-
 let interval = setInterval(() => {
-
   let date_ob = new Date();
   let dia = ("0" + date_ob.getDate()).slice(-2);
   let mes = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -145,29 +127,45 @@ let interval = setInterval(() => {
   }
 
   let tempo_final =
-  str_pad_left(horas, "0", 2)  + ":" +  str_pad_left(minutos, "0", 2) + ":" + str_pad_left(segundos, "0", 2);
+    str_pad_left(horas, "0", 2) +
+    ":" +
+    str_pad_left(minutos, "0", 2) +
+    ":" +
+    str_pad_left(segundos, "0", 2);
   document.getElementById("timer_clock").innerHTML = tempo_final;
 
-  if(horas >= 0 && horas <= 6){
-    document.getElementById("timer_title").innerHTML = "Vai dormir porra, ta loko?"
+  if (horas >= 0 && horas <= 6) {
+    document.getElementById("timer_title").innerHTML =
+      "Vai dormir porra, ta loko?";
   }
-  if(horas >= 7 && horas <= 12){
-    document.getElementById("timer_title").innerHTML = "Eae cumpadi, bom dia"
-  }
-  else if(horas >= 12 && horas <= 18){
-    document.getElementById("timer_title").innerHTML = "Boa tarde, meu consagrado"
-  }
-  else if(horas >= 18 && horas <= 22){
-    document.getElementById("timer_title").innerHTML = "Boa noite e até amanhã"
-  }
-  else{
-    document.getElementById("timer_title").innerHTML = "Boa noite aew"
+  if (horas >= 7 && horas <= 12) {
+    document.getElementById("timer_title").innerHTML = "Eae cumpadi, bom dia";
+  } else if (horas >= 12 && horas <= 18) {
+    document.getElementById("timer_title").innerHTML =
+      "Boa tarde, meu consagrado";
+  } else if (horas >= 18 && horas <= 22) {
+    document.getElementById("timer_title").innerHTML = "Boa noite e até amanhã";
+  } else {
+    document.getElementById("timer_title").innerHTML = "Boa noite aew";
   }
 }, 1000);
 
 function Feed(ler_dados) {
   if (ler_dados[0] == undefined) {
-    return top_nav;
+    return (
+      <nav id="top_nav">
+        <a
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            url = "https://bardojeiz-server.herokuapp.com/data/";
+            puxar_api();
+          }}
+          className="nav_top_link"
+        >
+          <b>Bar do Jeiz</b>
+        </a>
+      </nav>
+    );
   } else {
     let i = 0;
     let conteudo;
@@ -178,7 +176,18 @@ function Feed(ler_dados) {
           rel="stylesheet"
         ></link>
 
-        {top_nav}
+        <nav id="top_nav">
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              url = "https://bardojeiz-server.herokuapp.com/data/";
+              puxar_api();
+            }}
+            className="nav_top_link"
+          >
+            <b>Bar do Jeiz</b>
+          </a>
+        </nav>
 
         <div id="master">
           <List className="lista_feed">
@@ -224,8 +233,7 @@ function Feed(ler_dados) {
             </div>
 
             <div class="post_timer posts">
-              <p class="nav_top_link" id="timer_title">
-              </p>
+              <p class="nav_top_link" id="timer_title"></p>
               <hr></hr>
               <div class="timer_body">
                 <p id="timer_clock">00:00</p>

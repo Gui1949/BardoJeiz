@@ -29,7 +29,8 @@ body {
 }
 
 #timer_clock {
-  font-size: 12vh;
+  font-size: 8vh;
+  padding-top: 1vh;
   font-weight: 700;
 }
 
