@@ -239,7 +239,7 @@ function Feed(ler_dados) {
               </div>
             </div>
 
-            <div id="post_feed" class="posts">
+            {/* <div id="post_feed" class="posts">
               <div id="header">
                 <img
                   className="avatar"
@@ -291,7 +291,8 @@ function Feed(ler_dados) {
                 }
                 className="username_data_post_"
               />
-            </div>
+            </div> */}
+            
             {ler_dados.map((ler_dados) => (
               <div id="post_feed" class="posts">
                 {(() => {
