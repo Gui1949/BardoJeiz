@@ -147,7 +147,7 @@ let interval = setInterval(() => {
   let tempo_final =
   str_pad_left(horas, "0", 2)  + ":" +  str_pad_left(minutos, "0", 2) + ":" + str_pad_left(segundos, "0", 2);
   document.getElementById("timer_clock").innerHTML = tempo_final;
-  
+
   if(horas >= 0 && horas <= 6){
     document.getElementById("timer_title").innerHTML = "Vai dormir porra, ta loko?"
   }
@@ -167,7 +167,7 @@ let interval = setInterval(() => {
 
 function Feed(ler_dados) {
   if (ler_dados[0] == undefined) {
-    return top_nav();
+    return top_nav;
   } else {
     let i = 0;
     let conteudo;
