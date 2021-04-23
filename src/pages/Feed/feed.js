@@ -132,21 +132,35 @@ let interval = setInterval(() => {
     str_pad_left(minutos, "0", 2) +
     ":" +
     str_pad_left(segundos, "0", 2);
-  document.getElementById("timer_clock").innerHTML = tempo_final;
+  try {
+    document.getElementById("timer_clock").innerHTML = tempo_final;
 
-  if (horas >= 0 && horas <= 6) {
-    document.getElementById("timer_title").innerHTML =
-      "Vai dormir porra, ta loko?";
-  } else if (horas >= 7 && horas <= 12) {
-    document.getElementById("timer_title").innerHTML = "Eae cumpadi, bom dia";
-  } else if (horas >= 12 && horas <= 18) {
-    document.getElementById("timer_title").innerHTML =
-      "Boa tarde, meu consagrado";
-  } else if (horas >= 18 && horas <= 22) {
-    document.getElementById("timer_title").innerHTML = "Boa noite e até amanhã";
-  } else if (horas >= 22) {
-    document.getElementById("timer_title").innerHTML = "Boa noite aew, vai dormir porra";
-  }
+    if (horas > 0 && horas <= 5) {
+      document.getElementById("timer_title").innerHTML =
+        "Vai dormir porra, ta loko?";
+      document.getElementById("icon_dash").innerHTML = "psychology";
+    } else if (horas >= 6 && horas <= 12) {
+      document.getElementById("timer_title").innerHTML =
+        "Eae cumpadi, bom dia!";
+      document.getElementById("icon_dash").innerHTML = "brightness_7";
+    } else if (horas > 12 && horas <= 17) {
+      document.getElementById("timer_title").innerHTML =
+        "Boa tarde, meu consagrado";
+      document.getElementById("icon_dash").innerHTML = "brightness_medium";
+    } else if (horas > 17 && horas <= 21) {
+      document.getElementById("timer_title").innerHTML =
+        "Boa noite e até amanhã.";
+      document.getElementById("icon_dash").innerHTML = "nights_stay";
+    } else if (horas > 21 && horas <= 23) {
+      document.getElementById("timer_title").innerHTML =
+        "Bora dormir ou ta dificil?";
+      document.getElementById("icon_dash").innerHTML = "hotel";
+    } else if (horas == 0) {
+      document.getElementById("timer_title").innerHTML =
+        "CIRCULANDO, MEIA NOITE JAH";
+      document.getElementById("icon_dash").innerHTML = "local_police";
+    }
+  } catch {}
 }, 1000);
 
 function Feed(ler_dados) {
@@ -232,7 +246,10 @@ function Feed(ler_dados) {
             </div>
 
             <div class="post_timer posts">
-              <p class="nav_top_link" id="timer_title"></p>
+              <div id="timer_header">
+                <p class="nav_top_link" id="timer_title"></p>
+                <span class="material-icons md-5" id="icon_dash"></span>
+              </div>
               <hr></hr>
               <div class="timer_body">
                 <p id="timer_clock">00:00</p>
@@ -292,7 +309,7 @@ function Feed(ler_dados) {
                 className="username_data_post_"
               />
             </div> */}
-            
+
             {ler_dados.map((ler_dados) => (
               <div id="post_feed" class="posts">
                 {(() => {
@@ -398,24 +415,26 @@ function Feed(ler_dados) {
                   className="username_data_post_"
                 />
 
-                <button
-                  className="reacao_btn"
-                  id={"btn_like_" + window["Object" + i][0]}
-                  onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
-                >
-                  <i className="material-icons" id="font_like">
-                    thumb_up
-                  </i>
-                </button>
-                <button
-                  className="reacao_btn"
-                  id={"btn_dislike_" + window["Object" + i][0]}
-                  onClick={() => dislike(JSON.stringify(ler_dados, ["ID"]))}
-                >
-                  <i className="material-icons" id="font_dislike">
-                    thumb_down
-                  </i>
-                </button>
+                <div id="botoes_reacao">
+                  <button
+                    className="reacao_btn"
+                    id={"btn_like_" + window["Object" + i][0]}
+                    onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
+                  >
+                    <i className="material-icons" id="font_like">
+                      thumb_up
+                    </i>
+                  </button>
+                  <button
+                    className="reacao_btn"
+                    id={"btn_dislike_" + window["Object" + i][0]}
+                    onClick={() => dislike(JSON.stringify(ler_dados, ["ID"]))}
+                  >
+                    <i className="material-icons" id="font_dislike">
+                      thumb_down
+                    </i>
+                  </button>
+                </div>
               </div>
             ))}
           </List>
