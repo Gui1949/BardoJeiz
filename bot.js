@@ -2,6 +2,7 @@ const { response, json } = require("express");
 const fs = require("fs");
 const fetch = require("node-fetch");
 const GoogleImages = require("google-images");
+const { exception } = require("console");
 const client = new GoogleImages(
   "partner-pub-4228098010894354:5271861158",
   "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
@@ -44,6 +45,27 @@ function bot_jeiz() {
     "fazendo uma farmacia aqui pro Jacksons",
     "compro chevette 1992 só pra rodar",
     "ouvindo um modão aqui tranquilo",
+    "to fazendo promoção de pitu hein",
+    "tive um pequeno problema aqui no bar, coisa boba",
+    "NÃO REALIZO MAIS APOSTAS DO BICHO (MOTIVO: BICHEIRO ESTÁ DESAPARECIDO)",
+    "to comendo um frango que achei numa macumba, mt bom",
+    "cabaré da leila ta fechado... COMO ASSIM? COMO ASSIM????????",
+    "alguem tira o edinho do ponte preta, pelo amor de deus",
+    "hoje aqui no la honda só tem tribufu...",
+    "ATENÇÃO: JACKSONS ESTÁ ME DEVENDO 1700 REAIS DESDE AGOSTO DE 2018",
+    "comprei um cavalo lindo aqui no leilão",
+    "ganhei no bingo, foi roubado, mas foi honesto",
+    "roubaram o premio que ganhei roubando no bingo. pequeno dia",
+    "GLACIAL É A MELHOR CERVEJA DO MUNDO! QUEM NEGAR É MENTIROSO",
+    "de boa aqui no lago dos patos ouvindo amado batista",
+    "sonhei com o número 7 hj... vou jogar no jogo do bicho",
+    "policia veio reclamar do bar só pq estavamos gritando no truco as três da manhã",
+    "NÃO TENHO NADA A VER COM O SUMIÇO DO BICHEIRO. pq eu faria isso? só pq ele me deve?",
+    "tive que ir no enterro do cara que me deve a quatro anos. obs: ele ainda não me pagou",
+    "pesquei dez quilos de tilápia hj",
+    "quase roubaram o meu vectra no pesqueiro hj, tive que deitar os caras na porrada",
+    "EU QUERO LEVY FIDELIX PRESIDENTE! PARA UM BRASIL MAIS JUSTO",
+    "hj eu não to bom pra beber... to EXCELENTE",
     "quero saber quem me denunciou por abrir na fase vermelha",
     "BAR É SERVIÇO ESSENCIAL SIM",
     "TO COMPRANDO OPALA HEIN, PRINCIPALMENTE SE FOR COMODORO",
@@ -51,6 +73,8 @@ function bot_jeiz() {
     "hoje tem torneio de sinuca com o baianinho de osasco",
     "coloquei uma maquina caça niquel aqui",
     "atenção: a partir de agora o roubo na sinuca vai ter PUNIÇÃO SEVERA",
+    "FORAM ME DENUNCIAR PQ AGREDI UM IDOSO NO MEU BAR... ele roubou na sinuca, EU VI",
+    "estou vendendo batata e cebola, pra virar serviço essencial, agora é MERCEARIA DO JEIZ",
     "#BOLSONAROLIBERAARINHADEGALO",
     "ganhei no bicho, hj tem rodada na minha conta",
     "apostei tudo que ganhei no bicho no ponte preta e perdi",
@@ -62,7 +86,7 @@ function bot_jeiz() {
     "ednaldo pereira é um dos melhores artistas vivos",
     "PESSOAL ME DERAM UM GOLPE AQUI, UMA NOTA DE 3 REAIS, CUIDADO",
     "fiz uma maquina caça niquel rapaziadaaaaaaaaa",
-    "ganhei no jogo do bicho online caraio",
+    "ganhei no jogo do bicho online",
     "grande dia, grande dia",
     "um salve pro meu primo javier",
   ];
@@ -80,6 +104,10 @@ function bot_jeiz() {
           "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
         let name = "Jeiz";
         let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+        if (img_aleatoria.includes("x-raw-image")) {
+          throw new Error("001 - X-RAW IMAGE");
+        }
 
         let FormData = require("form-data");
         let data = new FormData();
