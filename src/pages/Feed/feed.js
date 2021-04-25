@@ -9,6 +9,7 @@ import { render } from "@testing-library/react";
 
 let url = "https://bardojeiz-server.herokuapp.com/data";
 let temp_atual = 0;
+let clima = "";
 
 function puxar_api() {
   try {
@@ -171,7 +172,13 @@ fetch(
     temp_atual = reqres.main.temp;
     temp_atual = temp_atual - 273;
     temp_atual = parseFloat(temp_atual).toFixed(1);
-    console.log(temp_atual);
+    let icon_clima = reqres.weather[0].description;
+    if(!icon_clima.includes('clear')){
+      clima = 'cloud'
+    }
+    else{
+      clima = 'wb_sunny'
+    }
   });
 
 function Feed(ler_dados) {
@@ -270,9 +277,11 @@ function Feed(ler_dados) {
                   </p>
                   <div id="temp_temperatura">
                     <p id="temp_num" class="nav_top_link">
-                      24°C
+                      {temp_atual}°C
                     </p>
-                    <span class="material-icons md-5" id="temp_ico">cloud</span>
+                    <span class="material-icons md-5" id="temp_ico">
+                      {clima}
+                    </span>
                   </div>
                 </div>
               </div>
