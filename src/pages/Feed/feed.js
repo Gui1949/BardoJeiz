@@ -8,8 +8,6 @@ import axios from "axios";
 import { render } from "@testing-library/react";
 
 let url = "https://bardojeiz-server.herokuapp.com/data";
-let temp_atual = 0;
-let clima = "";
 
 function puxar_api() {
   try {
@@ -160,26 +158,28 @@ let interval = setInterval(() => {
   } catch {}
 }, 1000);
 
-fetch(
-  "http://api.openweathermap.org/data/2.5/weather?q=GUARULHOS,SP,BR&appid=cc2a0c4ba3d95cc8c10568222f57d0be",
-  {
-    method: "POST",
-  }
-)
-  .then((resp) => resp.text())
-  .then(function (reqres) {
-    reqres = JSON.parse(reqres);
-    temp_atual = reqres.main.temp;
-    temp_atual = temp_atual - 273;
-    temp_atual = parseFloat(temp_atual).toFixed(1);
-    let icon_clima = reqres.weather[0].description;
-    if(!icon_clima.includes('clear')){
-      clima = 'cloud'
+async function clima_tempo() {
+  await fetch(
+    "http://api.openweathermap.org/data/2.5/weather?q=GUARULHOS,SP,BR&appid=cc2a0c4ba3d95cc8c10568222f57d0be",
+    {
+      method: "POST",
     }
-    else{
-      clima = 'wb_sunny'
-    }
-  });
+  )
+    .then((resp) => resp.text())
+    .then(function (reqres) {
+      reqres = JSON.parse(reqres);
+      let temp_atual = reqres.main.temp;
+      temp_atual = temp_atual - 273;
+      temp_atual = parseFloat(temp_atual).toFixed(1);
+      document.getElementById("temp_num").innerHTML = temp_atual + "°C";
+      let icon_clima = reqres.weather[0].description;
+      if (!icon_clima.includes("clear")) {
+        document.getElementById("temp_ico").innerHTML = "cloud";
+      } else {
+        document.getElementById("temp_ico").innerHTML = "wb_sunny";
+      }
+    });
+}
 
 function Feed(ler_dados) {
   if (ler_dados[0] == undefined) {
@@ -277,15 +277,15 @@ function Feed(ler_dados) {
                   </p>
                   <div id="temp_temperatura">
                     <p id="temp_num" class="nav_top_link">
-                      {temp_atual}°C
+                      Carregando
                     </p>
-                    <span class="material-icons md-5" id="temp_ico">
-                      {clima}
+                    <span class="material-icons md-5" id="temp_ico" onclick={clima_tempo()}>
+                      cached
                     </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </div>            
 
             {/* <div id="post_feed" class="posts">
               <div id="header">
@@ -468,6 +468,7 @@ function Feed(ler_dados) {
                 </div>
               </div>
             ))}
+
           </List>
         </div>
       </>
