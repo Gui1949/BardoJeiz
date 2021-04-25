@@ -8,6 +8,7 @@ import axios from "axios";
 import { render } from "@testing-library/react";
 
 let url = "https://bardojeiz-server.herokuapp.com/data";
+let temp_atual = 0;
 
 function puxar_api() {
   try {
@@ -120,18 +121,13 @@ let interval = setInterval(() => {
   let ano = date_ob.getFullYear();
   let horas = date_ob.getHours();
   let minutos = date_ob.getMinutes();
-  let segundos = date_ob.getSeconds();
 
   function str_pad_left(string, pad, length) {
     return (new Array(length + 1).join(pad) + string).slice(-length);
   }
 
   let tempo_final =
-    str_pad_left(horas, "0", 2) +
-    ":" +
-    str_pad_left(minutos, "0", 2) +
-    ":" +
-    str_pad_left(segundos, "0", 2);
+    str_pad_left(horas, "0", 2) + ":" + str_pad_left(minutos, "0", 2);
   try {
     document.getElementById("timer_clock").innerHTML = tempo_final;
 
@@ -162,6 +158,21 @@ let interval = setInterval(() => {
     }
   } catch {}
 }, 1000);
+
+fetch(
+  "http://api.openweathermap.org/data/2.5/weather?q=GUARULHOS,SP,BR&appid=cc2a0c4ba3d95cc8c10568222f57d0be",
+  {
+    method: "POST",
+  }
+)
+  .then((resp) => resp.text())
+  .then(function (reqres) {
+    reqres = JSON.parse(reqres);
+    temp_atual = reqres.main.temp;
+    temp_atual = temp_atual - 273;
+    temp_atual = parseFloat(temp_atual).toFixed(1);
+    console.log(temp_atual);
+  });
 
 function Feed(ler_dados) {
   if (ler_dados[0] == undefined) {
@@ -253,6 +264,17 @@ function Feed(ler_dados) {
               <hr></hr>
               <div class="timer_body">
                 <p id="timer_clock">00:00</p>
+                <div id="temp_dados">
+                  <p id="temp_lbl" class="nav_top_link">
+                    Guarulhos - SP
+                  </p>
+                  <div id="temp_temperatura">
+                    <p id="temp_num" class="nav_top_link">
+                      24°C
+                    </p>
+                    <span class="material-icons md-5" id="temp_ico">cloud</span>
+                  </div>
+                </div>
               </div>
             </div>
 
