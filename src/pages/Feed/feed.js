@@ -158,27 +158,30 @@ let interval = setInterval(() => {
   } catch {}
 }, 1000);
 
-async function clima_tempo() {
-  await fetch(
-    "http://api.openweathermap.org/data/2.5/weather?q=GUARULHOS,SP,BR&appid=cc2a0c4ba3d95cc8c10568222f57d0be",
-    {
-      method: "POST",
-    }
-  )
-    .then((resp) => resp.text())
-    .then(function (reqres) {
-      reqres = JSON.parse(reqres);
-      let temp_atual = reqres.main.temp;
-      temp_atual = temp_atual - 273;
-      temp_atual = parseFloat(temp_atual).toFixed(1);
-      document.getElementById("temp_num").innerHTML = temp_atual + "°C";
-      let icon_clima = reqres.weather[0].description;
-      if (!icon_clima.includes("clear")) {
-        document.getElementById("temp_ico").innerHTML = "cloud";
-      } else {
-        document.getElementById("temp_ico").innerHTML = "wb_sunny";
+function getTemp() {
+  setTimeout(() => {
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?q=GUARULHOS,SP,BR&appid=cc2a0c4ba3d95cc8c10568222f57d0be",
+      {
+        method: "POST",
       }
-    });
+    )
+      .then((resp) => resp.text())
+      .then(function (reqres) {
+        reqres = JSON.parse(reqres);
+        let temp_atual = reqres.main.temp;
+        temp_atual = temp_atual - 273;
+        temp_atual = parseFloat(temp_atual).toFixed(1);
+        document.getElementById("temp_num").innerHTML = temp_atual + "°C";
+        document.getElementById("temp_lbl").innerHTML = reqres.name;
+        let icon_clima = reqres.weather[0].description;
+        if (!icon_clima.includes("clear")) {
+          document.getElementById("temp_ico").innerHTML = "cloud";
+        } else {
+          document.getElementById("temp_ico").innerHTML = "wb_sunny";
+        }
+      });
+  }, 5000);
 }
 
 function Feed(ler_dados) {
@@ -272,20 +275,18 @@ function Feed(ler_dados) {
               <div class="timer_body">
                 <p id="timer_clock">00:00</p>
                 <div id="temp_dados">
-                  <p id="temp_lbl" class="nav_top_link">
-                    Guarulhos - SP
-                  </p>
+                  <p id="temp_lbl" class="nav_top_link"></p>
                   <div id="temp_temperatura">
                     <p id="temp_num" class="nav_top_link">
                       Carregando
                     </p>
-                    <span class="material-icons md-5" id="temp_ico" onclick={clima_tempo()}>
+                    <span class="material-icons md-5" id="temp_ico">
                       cached
                     </span>
                   </div>
                 </div>
               </div>
-            </div>            
+            </div>
 
             {/* <div id="post_feed" class="posts">
               <div id="header">
@@ -468,11 +469,11 @@ function Feed(ler_dados) {
                 </div>
               </div>
             ))}
-
           </List>
         </div>
       </>
     );
+    getTemp()
   }
 }
 
