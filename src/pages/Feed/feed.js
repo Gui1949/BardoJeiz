@@ -159,13 +159,25 @@ let interval = setInterval(() => {
 }, 1000);
 
 function getTemp() {
-  setTimeout(() => {
-    fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=GUARULHOS,SP,BR&appid=cc2a0c4ba3d95cc8c10568222f57d0be",
-      {
-        method: "POST",
-      }
-    )
+  let startPos;
+  let geoSuccess = function (position) {
+    startPos = position;
+    let latitude = startPos.coords.latitude;
+    let longitude = startPos.coords.longitude;
+    let url =
+      "https://api.openweathermap.org/data/2.5/weather?lat=" +
+      latitude +
+      "&lon=" +
+      longitude +
+      "&appid=cc2a0c4ba3d95cc8c10568222f57d0be";
+    getTempByCoord(url)
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+
+  function getTempByCoord(url){
+    fetch(url, {
+      method: "POST",
+    })
       .then((resp) => resp.text())
       .then(function (reqres) {
         reqres = JSON.parse(reqres);
@@ -181,7 +193,7 @@ function getTemp() {
           document.getElementById("temp_ico").innerHTML = "wb_sunny";
         }
       });
-  }, 5000);
+  }
 }
 
 function Feed(ler_dados) {
@@ -473,7 +485,7 @@ function Feed(ler_dados) {
         </div>
       </>
     );
-    getTemp()
+    getTemp();
   }
 }
 
