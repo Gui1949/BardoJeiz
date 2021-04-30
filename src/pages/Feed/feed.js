@@ -98,21 +98,25 @@ function upload() {
 }
 
 function deletar_elementos() {
-  document.getElementById('master').remove()
-  let elementos = document.getElementsByClassName("posts");
-  while (elementos.length > 0) {
-    elementos[0].parentNode.removeChild(elementos[0]);
-  }
+
+    document.getElementById('master').remove()
+    let elementos = document.getElementsByClassName("posts");
+    while (elementos.length > 0) {
+      elementos[0].parentNode.removeChild(elementos[0]);
+    }
 }
 
 function username_unico(id) {
-  deletar_elementos();
-  id = JSON.parse(id);
-  console.log(id.USERNAME);
-  url = "https://bardojeiz-server.herokuapp.com/data/" + id.USERNAME;
-  document.getElementById('title_navbar').innerHTML = id.USERNAME
-  console.log(url);
-  puxar_api();
+  document.getElementById('master').style.animation = 'fade-out 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards'
+  setTimeout(() => {
+    deletar_elementos()
+    id = JSON.parse(id);
+    console.log(id.USERNAME);
+    url = "https://bardojeiz-server.herokuapp.com/data/" + id.USERNAME;
+    document.getElementById('title_navbar').innerHTML = id.USERNAME
+    console.log(url);
+    puxar_api();    
+  }, 800)
 }
 
 let interval = setInterval(() => {
