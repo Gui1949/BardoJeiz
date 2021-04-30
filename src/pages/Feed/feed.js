@@ -98,6 +98,7 @@ function upload() {
 }
 
 function deletar_elementos() {
+  document.getElementById('master').remove()
   let elementos = document.getElementsByClassName("posts");
   while (elementos.length > 0) {
     elementos[0].parentNode.removeChild(elementos[0]);
@@ -109,6 +110,7 @@ function username_unico(id) {
   id = JSON.parse(id);
   console.log(id.USERNAME);
   url = "https://bardojeiz-server.herokuapp.com/data/" + id.USERNAME;
+  document.getElementById('title_navbar').innerHTML = id.USERNAME
   console.log(url);
   puxar_api();
 }
@@ -170,11 +172,11 @@ function getTemp() {
       "&lon=" +
       longitude +
       "&appid=cc2a0c4ba3d95cc8c10568222f57d0be";
-    getTempByCoord(url)
+    getTempByCoord(url);
   };
   navigator.geolocation.getCurrentPosition(geoSuccess);
 
-  function getTempByCoord(url){
+  function getTempByCoord(url) {
     fetch(url, {
       method: "POST",
     })
@@ -199,46 +201,75 @@ function getTemp() {
 function Feed(ler_dados) {
   if (ler_dados[0] == undefined) {
     return (
-      <nav id="top_nav">
-        <a
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            url = "https://bardojeiz-server.herokuapp.com/data/";
-            puxar_api();
-          }}
-          className="nav_top_link"
-        >
-          <b>Bar do Jeiz</b>
-        </a>
-      </nav>
+      // <nav id="top_nav">
+      //   <a
+      //     style={{ cursor: "pointer" }}
+      //     onClick={() => {
+      //       url = "https://bardojeiz-server.herokuapp.com/data/";
+      //       puxar_api();
+      //     }}
+      //     className="nav_top_link"
+      //   >
+      //     <b>Bar do Jeiz</b>
+      //   </a>
+      // </nav>
+      <></>
     );
   } else {
     let i = 0;
     let conteudo;
-    render(
-      <>
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        ></link>
+    let navbar;
 
+    try{
+      document.getElementById('top_nav').remove()
+    }
+    catch{}
+
+    if (url == "https://bardojeiz-server.herokuapp.com/data") {
+      navbar = (
         <nav id="top_nav">
           <a
             style={{ cursor: "pointer" }}
             onClick={() => {
-              url = "https://bardojeiz-server.herokuapp.com/data/";
+              url = "https://bardojeiz-server.herokuapp.com/data";
               puxar_api();
             }}
             className="nav_top_link"
           >
-            <b>Bar do Jeiz</b>
+            <p class="nav_top_filter_title" id="title_navbar">Bar do Jeiz</p>
           </a>
         </nav>
+      );
+    } else {
+      let user_atual = url
+      user_atual = user_atual.replace('https://bardojeiz-server.herokuapp.com/data/','')
+      navbar = (
+        <nav id="top_nav">
+          <div id="btn_filtro">
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                url = "https://bardojeiz-server.herokuapp.com/data";
+                puxar_api();
+              }}
+              className="material-icons md-5"
+            >
+              arrow_back
+            </span>
+          </div>
+          <p class="nav_top_filter_title" id="title_navbar">{user_atual}</p>
+        </nav>
+      );
+    }
+
+    render(
+      <>
+        {navbar}
 
         <div id="master">
           <List className="lista_feed">
             <div class="post_header posts">
-              <a href="#modal_upload" className="material-icons" id="upload">
+              <a href="#modal_upload" className="material-icons md-5" id="upload">
                 publish
               </a>
 
