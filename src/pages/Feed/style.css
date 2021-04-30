@@ -54,8 +54,13 @@ body {
 
 #btn_filtro{
   position: absolute;
+  height: 100%;
   margin-left: 1vh;
   left:0;
+}
+
+.filtro{
+  margin-top: 2.3vh;
 }
 
 #temp_dados{
@@ -90,7 +95,7 @@ hr {
 }
 
 .material-icons.md-5 {
-  font-size: 3.2vh
+  font-size: 3.2vh;
 }
 
 #timer_header {

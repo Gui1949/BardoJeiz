@@ -236,7 +236,7 @@ function Feed(ler_dados) {
             }}
             className="nav_top_link"
           >
-            <p class="nav_top_filter_title" id="title_navbar">Bar do Jeiz</p>
+            <p className="nav_top_filter_title" id="title_navbar">Bar do Jeiz</p>
           </a>
         </nav>
       );
@@ -252,12 +252,12 @@ function Feed(ler_dados) {
                 url = "https://bardojeiz-server.herokuapp.com/data";
                 puxar_api();
               }}
-              className="material-icons md-5"
+              className="material-icons md-5 filtro"
             >
               arrow_back
             </span>
           </div>
-          <p class="nav_top_filter_title" id="title_navbar">{user_atual}</p>
+          <p className="nav_top_filter_title" id="title_navbar">{user_atual}</p>
         </nav>
       );
     }
@@ -268,14 +268,14 @@ function Feed(ler_dados) {
 
         <div id="master">
           <List className="lista_feed">
-            <div class="post_header posts">
+            <div className="post_header posts">
               <a href="#modal_upload" className="material-icons md-5" id="upload">
                 publish
               </a>
 
-              <div id="modal_upload" class="modal">
-                <div class="modal_window">
-                  <a href="#fechar" title="Fechar" class="fechar">
+              <div id="modal_upload" className="modal">
+                <div className="modal_window">
+                  <a href="#fechar" title="Fechar" className="fechar">
                     x
                   </a>
                   Nome de Usuário:
@@ -292,7 +292,7 @@ function Feed(ler_dados) {
                   <br />
                   <div>
                     <label
-                      for="btn_upload"
+                      htmlFor="btn_upload"
                       className="material-icons"
                       id="upload"
                     >
@@ -309,21 +309,21 @@ function Feed(ler_dados) {
               </div>
             </div>
 
-            <div class="post_timer posts">
+            <div className="post_timer posts">
               <div id="timer_header">
-                <p class="nav_top_link" id="timer_title"></p>
-                <span class="material-icons md-5" id="icon_dash"></span>
+                <p className="nav_top_link" id="timer_title"></p>
+                <span className="material-icons md-5" id="icon_dash"></span>
               </div>
               <hr></hr>
-              <div class="timer_body">
+              <div className="timer_body">
                 <p id="timer_clock">00:00</p>
                 <div id="temp_dados">
-                  <p id="temp_lbl" class="nav_top_link"></p>
+                  <p id="temp_lbl" className="nav_top_link"></p>
                   <div id="temp_temperatura">
-                    <p id="temp_num" class="nav_top_link">
+                    <p id="temp_num" className="nav_top_link">
                       Carregando
                     </p>
-                    <span class="material-icons md-5" id="temp_ico">
+                    <span className="material-icons md-5" id="temp_ico">
                       cached
                     </span>
                   </div>
@@ -386,7 +386,7 @@ function Feed(ler_dados) {
             </div> */}
 
             {ler_dados.map((ler_dados) => (
-              <div id="post_feed" class="posts">
+              <div id="post_feed" className="posts">
                 {(() => {
                   i++;
                   window["Object" + parseInt(i)] = new Object();
@@ -413,7 +413,7 @@ function Feed(ler_dados) {
                   ) {
                     conteudo = (
                       <iframe
-                        class="conteudo"
+                      className="conteudo"
                         src={window["Object" + i][4]}
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -426,20 +426,20 @@ function Feed(ler_dados) {
                     window["Object" + i][4].includes("fbcdn") == true
                   ) {
                     conteudo = (
-                      <div class="conteudo">
-                        <div class="caixa_fb">
-                          <div class="titulo_fb">
+                      <div className="conteudo">
+                        <div className="caixa_fb">
+                          <div className="titulo_fb">
                             <p>
                               <b>Publicação do FaceBook</b>
                             </p>
                           </div>
-                          <div class="desc_fb">
-                            <p class="desc_fb_class">
+                          <div className="desc_fb">
+                            <p className="desc_fb_class">
                               A postagem a seguir é proveniente do FaceBook. Não
                               me responsabilizo por nada de lá não.
                             </p>
                           </div>
-                          <a class="btn_fb" href={window["Object" + i][4]}>
+                          <a className="btn_fb" href={window["Object" + i][4]}>
                             <b>Acessar</b>
                           </a>
                         </div>
