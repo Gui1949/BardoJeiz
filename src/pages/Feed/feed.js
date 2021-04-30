@@ -439,7 +439,7 @@ function Feed(ler_dados) {
                               me responsabilizo por nada de lá não.
                             </p>
                           </div>
-                          <a className="btn_fb" href={window["Object" + i][4]}>
+                          <a className="btn_fb" target="_blank" href={window["Object" + i][4]}>
                             <b>Acessar</b>
                           </a>
                         </div>
