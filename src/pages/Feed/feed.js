@@ -9,7 +9,7 @@ import { render } from "@testing-library/react";
 
 let url = "https://bardojeiz-server.herokuapp.com/data";
 
-function puxar_api() {
+const puxar_api = () => {
   try {
     deletar_elementos();
   } catch {}
@@ -24,7 +24,7 @@ function puxar_api() {
 
 puxar_api();
 
-function like(id_btn) {
+const like = (id_btn) => {
   let id_trat = "";
   id_trat = id_btn.replace(/[^0-9\.]+/g, "");
   let objeto_desfazer = document.getElementById("btn_dislike_" + id_trat);
@@ -76,26 +76,26 @@ function colorir(objeto) {
   }
 }
 
-function upload() {
-  var input = document.querySelector('input[type="file"]');
-  var name = document.getElementById("txt_username").value;
-  var desc = document.getElementById("txt_descricao").value;
-  let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
+// function upload() {
+//   var input = document.querySelector('input[type="file"]');
+//   var name = document.getElementById("txt_username").value;
+//   var desc = document.getElementById("txt_descricao").value;
+//   let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
 
-  var data = new FormData();
-  data.append("photo", input.files[0]);
-  data.append("description", desc);
-  data.append("username", name);
+//   var data = new FormData();
+//   data.append("photo", input.files[0]);
+//   data.append("description", desc);
+//   data.append("username", name);
 
-  fetch(apiUrl, {
-    method: "POST",
-    body: data,
-  }).then(function (response) {
-    if (response.ok) {
-      window.location.reload();
-    }
-  });
-}
+//   fetch(apiUrl, {
+//     method: "POST",
+//     body: data,
+//   }).then(function (response) {
+//     if (response.ok) {
+//       window.location.reload();
+//     }
+//   });
+// }
 
 function deletar_elementos() {
 
@@ -272,8 +272,8 @@ function Feed(ler_dados) {
 
         <div id="master">
           <List className="lista_feed">
-            <div className="post_header posts">
-              <a href="#modal_upload" className="material-icons md-5" id="upload">
+            {/*<div className="post_header posts">
+               <a href="#modal_upload" className="material-icons md-5" id="upload">
                 publish
               </a>
 
@@ -311,7 +311,7 @@ function Feed(ler_dados) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="post_timer posts">
               <div id="timer_header">
@@ -487,8 +487,7 @@ function Feed(ler_dados) {
                 <ListItemText
                   primary={
                     <p className="descricao_post">
-                      {window["Object" + i][5]} - {window["Object" + i][6]}{" "}
-                      Likes, {window["Object" + i][7]} Dislikes
+                      {window["Object" + i][5]}
                     </p>
                   }
                   className="username_data_post_"
