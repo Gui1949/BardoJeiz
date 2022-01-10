@@ -368,7 +368,6 @@ function bot_g1() {
     "https://feeds.folha.uol.com.br/colunas/reinaldoazevedo/rss091.xml",
     "https://feeds.folha.uol.com.br/cotidiano/rss091.xml",
     "http://g1.globo.com/dynamo/carros/rss2.xml",
-    "http://g1.globo.com/dynamo/sao-paulo/rss2.xml",
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];

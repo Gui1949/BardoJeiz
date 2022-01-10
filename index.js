@@ -387,7 +387,8 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
 
   if (
     data.USERNAME == "BTC by Mercado Bitcoin" ||
-    data.USERNAME == "DOGE by CoinAPI"
+    data.USERNAME == "DOGE by CoinAPI" ||
+    data.USERNAME == "Informes"
   ) {
     var message = {
       app_id: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
