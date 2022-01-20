@@ -48,7 +48,6 @@ function bot_jeiz() {
     "jacksons",
     "koerano",
     "jogo do bicho",
-    "sinuca",
     "cara",
     'cachaça',
     'faca enferrujada',
