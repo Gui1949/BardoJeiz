@@ -409,6 +409,6 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   // }
 });
 
-restapi.listen(process.env.PORT || 80);
+restapi.listen(process.env.PORT || 8080);
 
 console.log("Submit GET or POST to http://localhost:80/data");
