@@ -49,37 +49,36 @@ function bot_jeiz() {
     "koerano",
     "jogo do bicho",
     "cara",
-    'cachaça',
-    'faca enferrujada',
-    'zap',
-    'ponte preta'
+    "cachaça",
+    "faca enferrujada",
+    "zap",
+    "ponte preta",
   ];
 
   let verb_lig = [
-    'é',
-    'ta',
-    'parece',
-    'anda',
-    'vive',
-    'fica',
-    'continua',
-    'gosta',
-    'quer',
-    'fode'
-  ]
+    "é",
+    "ta",
+    "parece",
+    "anda",
+    "vive",
+    "fica",
+    "continua",
+    "gosta",
+    "quer"
+  ];
 
   let pron_adj = [
-    'meu',
-    'nosso',
-    'foda',
-    'filho da puta',
-    'corno',
-    'parecido com o reginaldo rossi',
-    'fi de rapariga',
-    'sujo',
-    'arrombado',
-    'cachaceiro'
-  ]
+    "meu",
+    "nosso",
+    "foda",
+    "filho da puta",
+    "corno",
+    "parecido com o reginaldo rossi",
+    "fi de rapariga",
+    "sujo",
+    "arrombado",
+    "cachaceiro",
+  ];
   // let descricao = [
   //   "hoje ta foda aqui rapaziada",
   //   "bar do jeiz é só maravilha",
@@ -159,7 +158,14 @@ function bot_jeiz() {
   // ];
 
   // desc = descricao[getRandomInt(0, descricao.length)];
-  desc = artigos[getRandomInt(0, artigos.length)] + ' ' + sujeitos[getRandomInt(0, sujeitos.length)] + ' ' + verb_lig[getRandomInt(0, verb_lig.length)] + ' ' + pron_adj[getRandomInt(0, pron_adj.length)]
+  desc =
+    artigos[getRandomInt(0, artigos.length)] +
+    " " +
+    sujeitos[getRandomInt(0, sujeitos.length)] +
+    " " +
+    verb_lig[getRandomInt(0, verb_lig.length)] +
+    " " +
+    pron_adj[getRandomInt(0, pron_adj.length)];
 
   let img_aleatoria = "";
 
