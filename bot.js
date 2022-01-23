@@ -13,35 +13,7 @@ function getRandomInt(min, max) {
 }
 
 function bot_jeiz() {
-  let artigos = [
-    "o",
-    "os",
-    // "a",
-    // "as",
-    // "um",
-    // "uns",
-    // "uma",
-    // "umas",
-    // "a",
-    // "ao",
-    // "aos",
-    // "à",
-    // "às",
-    // "em",
-    // "no",
-    // "nos",
-    // "na",
-    // "nas",
-    // "num",
-    // "nuns",
-    // "numa",
-    // "numas",
-    // "por",
-    // "pelo",
-    // "pelos",
-    // "pela",
-    // "pelas",
-  ];
+  let artigos = ["o"];
 
   let sujeitos = [
     "bar",
@@ -64,7 +36,7 @@ function bot_jeiz() {
     "fica",
     "continua",
     "gosta",
-    "quer"
+    "quer",
   ];
 
   let pron_adj = [
@@ -79,93 +51,103 @@ function bot_jeiz() {
     "arrombado",
     "cachaceiro",
   ];
-  // let descricao = [
-  //   "hoje ta foda aqui rapaziada",
-  //   "bar do jeiz é só maravilha",
-  //   "tomando uma de boa",
-  //   "bar ta estranho hj",
-  //   "como pesquisar no google",
-  //   "vender droga no bar é crime? google pesquisar",
-  //   "converter dolar para real",
-  //   "preço espingarda para bar",
-  //   "tétano mata?",
-  //   "como punir ladrões na sinuca?",
-  //   "como roubar no truco?",
-  //   "51 delivery com motoboy bebado, só aqui no bar do jeiz",
-  //   "como ganhar no jogo do bicho?",
-  //   "comprar papagaio é crime?",
-  //   "qual é o número da policia?",
-  //   "abrir o bar no natal é pecado?",
-  //   "vou encher a cara, vou me embreagar",
-  //   "grande noite hein, hj inauguro o pinga 24hrs",
-  //   "cine florida fechou, estou de luto",
-  //   "bar fechado hoje (roubaram meu bujão de gás)",
-  //   "inferninho amostra gratis google pesquisar",
-  //   "reginaldo rossi - garçom",
-  //   "quero ver falar mal do ponte preta NA MINHA CARA",
-  //   "HOJE SE O PONTE PRETA PERDER, O BAR NÃO ABRE",
-  //   "acordei do nada aqui, aonde eu to",
-  //   "Pinga 24 horas, agora o bar ta outro nivel",
-  //   "to servindo almoço a 3 real aqui, jacksons aprovou",
-  //   "tomando uma glacial de boa no bar",
-  //   "fazendo uma farmacia aqui pro Jacksons",
-  //   "compro chevette 1992 só pra rodar",
-  //   "ouvindo um modão aqui tranquilo",
-  //   "to fazendo promoção de pitu hein",
-  //   "tive um pequeno problema aqui no bar, coisa boba",
-  //   "NÃO REALIZO MAIS APOSTAS DO BICHO (MOTIVO: BICHEIRO ESTÁ DESAPARECIDO)",
-  //   "to comendo um frango que achei numa macumba, mt bom",
-  //   "cabaré da leila ta fechado... COMO ASSIM? COMO ASSIM????????",
-  //   "alguem tira o edinho do ponte preta, pelo amor de deus",
-  //   "hoje aqui no la honda só tem tribufu...",
-  //   "ATENÇÃO: JACKSONS ESTÁ ME DEVENDO 1700 REAIS DESDE AGOSTO DE 2018",
-  //   "comprei um cavalo lindo aqui no leilão",
-  //   "ganhei no bingo, foi roubado, mas foi honesto",
-  //   "roubaram o premio que ganhei roubando no bingo. pequeno dia",
-  //   "GLACIAL É A MELHOR CERVEJA DO MUNDO! QUEM NEGAR É MENTIROSO",
-  //   "de boa aqui no lago dos patos ouvindo amado batista",
-  //   "sonhei com o número 7 hj... vou jogar no jogo do bicho",
-  //   "policia veio reclamar do bar só pq estavamos gritando no truco as três da manhã",
-  //   "NÃO TENHO NADA A VER COM O SUMIÇO DO BICHEIRO. pq eu faria isso? só pq ele me deve?",
-  //   "tive que ir no enterro do cara que me deve a quatro anos. obs: ele ainda não me pagou",
-  //   "pesquei dez quilos de tilápia hj",
-  //   "quase roubaram o meu vectra no pesqueiro hj, tive que deitar os caras na porrada",
-  //   "EU QUERO LEVY FIDELIX PRESIDENTE! PARA UM BRASIL MAIS JUSTO",
-  //   "hj eu não to bom pra beber... to EXCELENTE",
-  //   "quero saber quem me denunciou por abrir na fase vermelha",
-  //   "BAR É SERVIÇO ESSENCIAL SIM",
-  //   "TO COMPRANDO OPALA HEIN, PRINCIPALMENTE SE FOR COMODORO",
-  //   "fui no pesqueiro, peguei uma puta tilapia",
-  //   "hoje tem torneio de sinuca com o baianinho de osasco",
-  //   "coloquei uma maquina caça niquel aqui",
-  //   "atenção: a partir de agora o roubo na sinuca vai ter PUNIÇÃO SEVERA",
-  //   "FORAM ME DENUNCIAR PQ AGREDI UM IDOSO NO MEU BAR... ele roubou na sinuca, EU VI",
-  //   "estou vendendo batata e cebola, pra virar serviço essencial, agora é MERCEARIA DO JEIZ",
-  //   "#BOLSONAROLIBERAARINHADEGALO",
-  //   "ganhei no bicho, hj tem rodada na minha conta",
-  //   "apostei tudo que ganhei no bicho no ponte preta e perdi",
-  //   "jogos de azar são de azar mesmo, descobri aqui",
-  //   "hoje teve porradaria na sinuca, tive que bater em todos",
-  //   "proibido roubar na sinuca, sujeito a FACADA",
-  //   "fiado só amanhã",
-  //   "hoje tem churrasquinho de gato no bar",
-  //   "ednaldo pereira é um dos melhores artistas vivos",
-  //   "PESSOAL ME DERAM UM GOLPE AQUI, UMA NOTA DE 3 REAIS, CUIDADO",
-  //   "fiz uma maquina caça niquel rapaziadaaaaaaaaa",
-  //   "ganhei no jogo do bicho online",
-  //   "grande dia, grande dia",
-  //   "um salve pro meu primo javier",
-  // ];
 
-  // desc = descricao[getRandomInt(0, descricao.length)];
-  desc =
-    artigos[getRandomInt(0, artigos.length)] +
-    " " +
-    sujeitos[getRandomInt(0, sujeitos.length)] +
-    " " +
-    verb_lig[getRandomInt(0, verb_lig.length)] +
-    " " +
-    pron_adj[getRandomInt(0, pron_adj.length)];
+  let descricao = [
+    "hoje ta foda aqui rapaziada",
+    "bar do jeiz é só maravilha",
+    "tomando uma de boa",
+    "bar ta estranho hj",
+    "como pesquisar no google",
+    "vender droga no bar é crime? google pesquisar",
+    "converter dolar para real",
+    "preço espingarda para bar",
+    "tétano mata?",
+    "como punir ladrões na sinuca?",
+    "como roubar no truco?",
+    "51 delivery com motoboy bebado, só aqui no bar do jeiz",
+    "como ganhar no jogo do bicho?",
+    "comprar papagaio é crime?",
+    "qual é o número da policia?",
+    "abrir o bar no natal é pecado?",
+    "vou encher a cara, vou me embreagar",
+    "grande noite hein, hj inauguro o pinga 24hrs",
+    "cine florida fechou, estou de luto",
+    "bar fechado hoje (roubaram meu bujão de gás)",
+    "inferninho amostra gratis google pesquisar",
+    "reginaldo rossi - garçom",
+    "quero ver falar mal do ponte preta NA MINHA CARA",
+    "HOJE SE O PONTE PRETA PERDER, O BAR NÃO ABRE",
+    "acordei do nada aqui, aonde eu to",
+    "Pinga 24 horas, agora o bar ta outro nivel",
+    "to servindo almoço a 3 real aqui, jacksons aprovou",
+    "tomando uma glacial de boa no bar",
+    "fazendo uma farmacia aqui pro Jacksons",
+    "compro chevette 1992 só pra rodar",
+    "ouvindo um modão aqui tranquilo",
+    "to fazendo promoção de pitu hein",
+    "tive um pequeno problema aqui no bar, coisa boba",
+    "NÃO REALIZO MAIS APOSTAS DO BICHO (MOTIVO: BICHEIRO ESTÁ DESAPARECIDO)",
+    "to comendo um frango que achei numa macumba, mt bom",
+    "cabaré da leila ta fechado... COMO ASSIM? COMO ASSIM????????",
+    "alguem tira o edinho do ponte preta, pelo amor de deus",
+    "hoje aqui no la honda só tem tribufu...",
+    "ATENÇÃO: JACKSONS ESTÁ ME DEVENDO 1700 REAIS DESDE AGOSTO DE 2018",
+    "comprei um cavalo lindo aqui no leilão",
+    "ganhei no bingo, foi roubado, mas foi honesto",
+    "roubaram o premio que ganhei roubando no bingo. pequeno dia",
+    "GLACIAL É A MELHOR CERVEJA DO MUNDO! QUEM NEGAR É MENTIROSO",
+    "de boa aqui no lago dos patos ouvindo amado batista",
+    "sonhei com o número 7 hj... vou jogar no jogo do bicho",
+    "policia veio reclamar do bar só pq estavamos gritando no truco as três da manhã",
+    "NÃO TENHO NADA A VER COM O SUMIÇO DO BICHEIRO. pq eu faria isso? só pq ele me deve?",
+    "tive que ir no enterro do cara que me deve a quatro anos. obs: ele ainda não me pagou",
+    "pesquei dez quilos de tilápia hj",
+    "quase roubaram o meu vectra no pesqueiro hj, tive que deitar os caras na porrada",
+    "EU QUERO LEVY FIDELIX PRESIDENTE! PARA UM BRASIL MAIS JUSTO",
+    "hj eu não to bom pra beber... to EXCELENTE",
+    "quero saber quem me denunciou por abrir na fase vermelha",
+    "BAR É SERVIÇO ESSENCIAL SIM",
+    "TO COMPRANDO OPALA HEIN, PRINCIPALMENTE SE FOR COMODORO",
+    "fui no pesqueiro, peguei uma puta tilapia",
+    "hoje tem torneio de sinuca com o baianinho de osasco",
+    "coloquei uma maquina caça niquel aqui",
+    "atenção: a partir de agora o roubo na sinuca vai ter PUNIÇÃO SEVERA",
+    "FORAM ME DENUNCIAR PQ AGREDI UM IDOSO NO MEU BAR... ele roubou na sinuca, EU VI",
+    "estou vendendo batata e cebola, pra virar serviço essencial, agora é MERCEARIA DO JEIZ",
+    "#BOLSONAROLIBERAARINHADEGALO",
+    "ganhei no bicho, hj tem rodada na minha conta",
+    "apostei tudo que ganhei no bicho no ponte preta e perdi",
+    "jogos de azar são de azar mesmo, descobri aqui",
+    "hoje teve porradaria na sinuca, tive que bater em todos",
+    "proibido roubar na sinuca, sujeito a FACADA",
+    "fiado só amanhã",
+    "hoje tem churrasquinho de gato no bar",
+    "ednaldo pereira é um dos melhores artistas vivos",
+    "PESSOAL ME DERAM UM GOLPE AQUI, UMA NOTA DE 3 REAIS, CUIDADO",
+    "fiz uma maquina caça niquel rapaziadaaaaaaaaa",
+    "ganhei no jogo do bicho online",
+    "grande dia, grande dia",
+    "um salve pro meu primo javier",
+    'clonei o cartão do bicheiro fdp, hj tem rodada na conta desse CHIFRUDO!!!!!!',
+    'quando fui pra portugal, arrumei uma briga muito feia com a mafia russa'
+  ];
+
+  tipo_frase = getRandomInt(0, 10);
+
+  console.table(tipo_frase);
+
+  if (tipo_frase <= 5) {
+    desc =
+      artigos[getRandomInt(0, artigos.length)] +
+      " " +
+      sujeitos[getRandomInt(0, sujeitos.length)] +
+      " " +
+      verb_lig[getRandomInt(0, verb_lig.length)] +
+      " " +
+      pron_adj[getRandomInt(0, pron_adj.length)];
+  } else {
+    desc = descricao[getRandomInt(0, descricao.length)];
+  }
 
   let img_aleatoria = "";
 
@@ -433,7 +415,6 @@ function bot_g1() {
     "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa7f3dbb5e51dae1f30e2.xml",
     "http://fetchrss.com/rss/606fa41e4881070fd7670d02607221d711e1091bbf7464a2.xml",
     "http://fetchrss.com/rss/607222b9c01aec5c3f6f24f2607222d8f8ddf451027515e2.xml",
-    "https://veja.abril.com.br/blog/sensacionalista/rss",
     "https://vejasp.abril.com.br/rss",
     "https://quatrorodas.abril.com.br/rss",
     "https://www.techtudo.com.br/rss/techtudo/",
@@ -611,13 +592,9 @@ setInterval(bot_gringo, 6000000);
 
 setInterval(bot_bitcoin, 800000);
 
-// setInterval(bot_dogecoin, 800000);
-
 setInterval(bot_jeiz, 700000);
-// setInterval(bot_jeiz, 1000);
+// setInterval(bot_jeiz, 10000);
 
 setInterval(bot_jacksons, 3000000);
 
 setInterval(bot_g1, 800000);
-
-// ffmpeg -i img/galo.jpeg -vf scale=276:183 img/galo.jpeg
