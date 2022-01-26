@@ -305,7 +305,7 @@ function Feed() {
     <div id="post_feed" className="posts">
       <div id="header">
         <div className="avatar">
-          <img className="avatar_img" src={ler_dados.PIC_LOCAL} />
+          <img className="avatar_img" src={ler_dados.USER_PIC} />
         </div>
         <ListItemText
           primary={
