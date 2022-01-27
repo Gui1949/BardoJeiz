@@ -1,5 +1,10 @@
+/* *{
+  color: #ffffff
+} */
+
 body {
   margin: 0 0 55px 0;
+  background-color: #282a36;
 }
 
 #top_nav {
@@ -394,6 +399,24 @@ input[type="file"] {
 a {
   text-decoration: none;
 }
+
+#loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: #282a36;
+  color: #ffffff
+}
+
 
 @media only screen and (orientation: landscape) {
   .modal_window {
