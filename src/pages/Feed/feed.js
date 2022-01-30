@@ -8,9 +8,6 @@ import Conteudo from "./components/Conteudo";
 import Navbar from "./components/Navbar";
 import "./loader.css";
 
-// let url = "https://bardojeiz-server.herokuapp.com/data";
-let url = "http://localhost:80/data";
-
 const like = (id_btn) => {
   let id_trat = "";
   id_trat = id_btn.replace(/[^0-9\.]+/g, "");
@@ -146,16 +143,14 @@ function getTemp() {
   }
 }
 
-function Feed() {
-  console.log("cu");
+let teste = 0
 
+function Feed() {
   const [lerdados, setDados] = React.useState([]);
   const [puxando, setPuxando] = React.useState(0);
+  const [puxandoNews, setPuxandoNews] = React.useState(0);
   const [user, setUser] = React.useState("");
-
-  // try {
-  //   deletar_elementos();
-  // } catch {}
+  const [news, setNews] = React.useState({});
 
   if (puxando == 0) {
     fetch("https://bardojeiz-server.herokuapp.com/data", {
@@ -173,6 +168,23 @@ function Feed() {
         getTemp();
       });
   }
+
+  if (puxando == 0) {
+    fetch("https://bardojeiz-server.herokuapp.com/news", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((reqres) => {
+        let dados = reqres;
+        setNews(dados);
+        setPuxandoNews(1);
+      });
+  }
+
   if (lerdados[0] == undefined) {
     return (
       <div id="loading">
@@ -305,7 +317,7 @@ function Feed() {
 
   return (
     <>
-      <Navbar />
+      <Navbar text={user} />
       <div id="master">
         <List className="lista_feed">
           <div className="post_timer posts">
@@ -328,6 +340,31 @@ function Feed() {
                 </div>
               </div>
             </div>
+          </div>
+          <div id="post_feed" className="posts">
+            <br />
+            <p className="username">
+              <b>
+                {puxandoNews == 1
+                  // ? news.titulo + ": Noticias do Dia"
+                  ? "Noticias do Dia - por BBC Brasil"
+                  : "Carregando"}
+              </b>
+            </p>
+            <br />
+            {puxandoNews == 1
+              ? news.data.map((noticia) => (
+                  <p>
+                    <br />
+                    <a href={noticia.link} target="blank">
+                      {noticia.title}
+                    </a>
+                    <br />
+                    <br />
+                    <hr></hr>
+                  </p>
+                ))
+              : ""}
           </div>
           {lista_feed}
         </List>
