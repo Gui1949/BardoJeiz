@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/BardoJeiz/static/css/main.1abef669.chunk.css",
+    "main.js": "/BardoJeiz/static/js/main.d19d9494.chunk.js",
+    "main.js.map": "/BardoJeiz/static/js/main.d19d9494.chunk.js.map",
+    "runtime-main.js": "/BardoJeiz/static/js/runtime-main.5641efc7.js",
+    "runtime-main.js.map": "/BardoJeiz/static/js/runtime-main.5641efc7.js.map",
+    "static/js/2.bf688a28.chunk.js": "/BardoJeiz/static/js/2.bf688a28.chunk.js",
+    "static/js/2.bf688a28.chunk.js.map": "/BardoJeiz/static/js/2.bf688a28.chunk.js.map",
+    "index.html": "/BardoJeiz/index.html",
+    "precache-manifest.00e932e773909b5a56c1a63baa638b98.js": "/BardoJeiz/precache-manifest.00e932e773909b5a56c1a63baa638b98.js",
+    "service-worker.js": "/BardoJeiz/service-worker.js",
+    "static/css/main.1abef669.chunk.css.map": "/BardoJeiz/static/css/main.1abef669.chunk.css.map",
+    "static/js/2.bf688a28.chunk.js.LICENSE.txt": "/BardoJeiz/static/js/2.bf688a28.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/BardoJeiz/static/media/logo.ee7cd8ed.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5641efc7.js",
+    "static/js/2.bf688a28.chunk.js",
+    "static/css/main.1abef669.chunk.css",
+    "static/js/main.d19d9494.chunk.js"
+  ]
+}
