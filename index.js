@@ -7,12 +7,18 @@ var bodyParser = require("body-parser");
 const { exec } = require("child_process");
 const fs = require("fs");
 var https = require("https");
+let Parser = require("rss-parser");
+let parser = new Parser();
 
 restapi.use(bodyParser.urlencoded({ extended: false }));
 restapi.use(bodyParser.json());
 restapi.use(cors());
 
 balcao = [];
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 restapi.get("/data", (req, res) => {
   var sql = "select * from POSTS order by id desc";
@@ -22,6 +28,9 @@ restapi.get("/data", (req, res) => {
       res.status(400).json({ error: err.message });
       return;
     }
+
+    console.log(rows);
+
     res.json({
       data: rows,
     });
@@ -41,6 +50,42 @@ restapi.get("/data/:username", (req, res) => {
       data: rows,
     });
   });
+});
+
+restapi.get("/news", (req, res) => {
+
+  let links = [
+    // "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
+    // "http://g1.globo.com/dynamo/economia/rss2.xml",
+    // "http://g1.globo.com/dynamo/mundo/rss2.xml",
+    // "https://rss.tecmundo.com.br/feed",
+    // "http://www.valor.com.br/rss",
+    // "http://rss.megacurioso.com.br/feed",
+    // "https://www.noticiasaominuto.com.br/rss/ultima-hora",
+    "http://www.bbc.co.uk/portuguese/index.xml",
+    // "https://exame.com/rss",
+    // "https://super.abril.com.br/rss",
+    // "https://veja.abril.com.br/rss",
+    // "https://vejasp.abril.com.br/rss",
+    // "https://quatrorodas.abril.com.br/rss",
+    // "https://www.techtudo.com.br/rss/techtudo/",
+  ];
+
+  let url = links[getRandomInt(0, links.length)];
+
+  parser.parseURL(url).then( result => {
+    icone = result.image.url
+    titulo = result.title
+
+    noticias = result.items.slice(0, 5)
+
+    res.json({
+      icone: icone,
+      titulo: titulo,
+      data: noticias
+    });
+
+  })
 });
 
 restapi.get("/version", (req, res) => {
@@ -409,6 +454,6 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   // }
 });
 
-restapi.listen(process.env.PORT || 8080);
+restapi.listen(process.env.PORT || 8180);
 
 console.log("Submit GET or POST to http://localhost:80/data");

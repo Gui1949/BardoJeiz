@@ -392,6 +392,7 @@ function bot_g1() {
     "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
     "http://g1.globo.com/dynamo/economia/rss2.xml",
     "http://g1.globo.com/dynamo/mundo/rss2.xml",
+    "https://g1.globo.com/rss/g1/",
     "https://rss.tecmundo.com.br/feed",
     "http://www.valor.com.br/rss",
     "https://feeds.folha.uol.com.br/ilustrada/rss091.xml",
