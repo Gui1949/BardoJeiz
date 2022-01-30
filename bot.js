@@ -128,8 +128,8 @@ function bot_jeiz() {
     "ganhei no jogo do bicho online",
     "grande dia, grande dia",
     "um salve pro meu primo javier",
-    'clonei o cartão do bicheiro fdp, hj tem rodada na conta desse CHIFRUDO!!!!!!',
-    'quando fui pra portugal, arrumei uma briga muito feia com a mafia russa'
+    "clonei o cartão do bicheiro fdp, hj tem rodada na conta desse CHIFRUDO!!!!!!",
+    "quando fui pra portugal, arrumei uma briga muito feia com a mafia russa",
   ];
 
   tipo_frase = getRandomInt(0, 10);
@@ -414,9 +414,6 @@ function bot_g1() {
     "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa428c6a908778105abc2.xml",
     "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa5c1aac0bd619e61e6c3.xml",
     "http://fetchrss.com/rss/606fa41e4881070fd7670d02606fa7f3dbb5e51dae1f30e2.xml",
-    "http://fetchrss.com/rss/606fa41e4881070fd7670d02607221d711e1091bbf7464a2.xml",
-    "http://fetchrss.com/rss/607222b9c01aec5c3f6f24f2607222d8f8ddf451027515e2.xml",
-    "https://vejasp.abril.com.br/rss",
     "https://quatrorodas.abril.com.br/rss",
     "https://www.techtudo.com.br/rss/techtudo/",
     "https://feeds.folha.uol.com.br/mundo/rss091.xml",
@@ -424,13 +421,22 @@ function bot_g1() {
     "https://feeds.folha.uol.com.br/colunas/reinaldoazevedo/rss091.xml",
     "https://feeds.folha.uol.com.br/cotidiano/rss091.xml",
     "http://g1.globo.com/dynamo/carros/rss2.xml",
+    "https://viatrolebus.com.br/rss",
+    "https://www.metrocptm.com.br/rss",
+    "https://www.ahnegao.com.br/rss",
+    "https://www.guarulhoshoje.com.br/rss"
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
 
   (async () => {
     let feed = await parser.parseURL(url);
-    icone = feed.image.url;
+    try {
+      icone = feed.image.url;
+    } catch {
+      icone =
+        "https://thumbs.dreamstime.com/b/%C3%ADcone-liso-do-vetor-das-not%C3%ADcias-do-mundo-ilustra%C3%A7%C3%A3o-do-logotipo-do-s%C3%ADmbolo-da-not%C3%ADcia-95819924.jpg";
+    }
     titulo = feed.title;
 
     feed.items.forEach((item) => {
