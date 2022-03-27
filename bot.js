@@ -273,7 +273,7 @@ function bot_blogueirinha() {
     try {
       await client
         .search(
-          "bunda rebolando biquini "
+          "bunda rebolando biquini"
         )
         .then((images) => {
           let i = getRandomInt(0, 10);
