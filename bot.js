@@ -211,6 +211,63 @@ function bot_jeiz() {
   puxar_img();
 }
 
+function bot_dona_sonia() {
+  const date = new Date();
+  let time = date.getHours();
+
+  if (time == 6) {
+    let descricao_ = [
+      "BOM DIA ALEGRIA!",
+      "BOM DIA FLORES DO CAMPO, AMO TODOS VOCÊS",
+    ];
+
+  
+    desc = descricao_[getRandomInt(0, descricao_.length)];
+  
+    let img_aleatoria = "";
+  
+    async function puxar_img() {
+      try {
+        await client.search("bom dia gif").then((images) => {
+          let i = getRandomInt(0, 10);
+          img_aleatoria = images[i].url;
+          let userpic =
+            "https://wp-cdn.etiquetaunica.com.br/blog/wp-content/uploads/2018/08/11122702/capa-post-top-blogueiras-brasileiras-compressed.jpg";
+          let name = "Dona Sônia";
+          let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+  
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+  
+          let FormData = require("form-data");
+          let data = new FormData();
+  
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc);
+          data.append("username", name);
+  
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot JEIZ rodou");
+            }
+          });
+        });
+      } catch (err) {
+        console.log("Erro:", err);
+      }
+    }
+    puxar_img();
+  }
+
+
+
+}
+
 function bot_blogueirinha() {
   let descricao_ = [
     "Faça da tua alma teu próprio jardim.",
@@ -265,45 +322,41 @@ function bot_blogueirinha() {
     "Dê mais valor para quem se importa realmente com você. Assim terá mais motivos para ser feliz!",
   ];
 
-  desc = descricao_[getRandomInt(0, descricao_.length)];
+  desc_ = descricao_[getRandomInt(0, descricao_.length)];
 
   let img_aleatoria = "";
 
   async function puxar_img() {
     try {
-      await client
-        .search(
-          "bunda rebolando biquini"
-        )
-        .then((images) => {
-          let i = getRandomInt(0, 10);
-          img_aleatoria = images[i].url;
-          let userpic =
-            "https://wp-cdn.etiquetaunica.com.br/blog/wp-content/uploads/2018/08/11122702/capa-post-top-blogueiras-brasileiras-compressed.jpg";
-          let name = "Julcimara Blog";
-          let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+      await client.search("bunda rebolando biquini").then((images) => {
+        let i = getRandomInt(0, 10);
+        img_aleatoria = images[i].url;
+        let userpic =
+          "https://wp-cdn.etiquetaunica.com.br/blog/wp-content/uploads/2018/08/11122702/capa-post-top-blogueiras-brasileiras-compressed.jpg";
+        let name = "Julcimara Blog";
+        let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
 
-          if (img_aleatoria.includes("x-raw-image")) {
-            throw new Error("001 - X-RAW IMAGE");
+        if (img_aleatoria.includes("x-raw-image")) {
+          throw new Error("001 - X-RAW IMAGE");
+        }
+
+        let FormData = require("form-data");
+        let data = new FormData();
+
+        data.append("photo", img_aleatoria);
+        data.append("photo_pic", userpic);
+        data.append("description", desc_);
+        data.append("username", name);
+
+        fetch(apiUrl, {
+          method: "POST",
+          body: data,
+        }).then(function (response) {
+          if (response.ok) {
+            console.log("Bot JEIZ rodou");
           }
-
-          let FormData = require("form-data");
-          let data = new FormData();
-
-          data.append("photo", img_aleatoria);
-          data.append("photo_pic", userpic);
-          data.append("description", desc);
-          data.append("username", name);
-
-          fetch(apiUrl, {
-            method: "POST",
-            body: data,
-          }).then(function (response) {
-            if (response.ok) {
-              console.log("Bot JEIZ rodou");
-            }
-          });
         });
+      });
     } catch (err) {
       console.log("Erro:", err);
     }
@@ -708,4 +761,4 @@ setInterval(bot_g1, 800000);
 
 setInterval(bot_blogueirinha, 700000);
 
-bot_blogueirinha()
+setInterval(bot_dona_sonia, 700000);
