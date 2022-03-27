@@ -211,6 +211,106 @@ function bot_jeiz() {
   puxar_img();
 }
 
+function bot_blogueirinha() {
+  let descricao = [
+    "Faça da tua alma teu próprio jardim.",
+    "Quem foi que disse que é impossível ser feliz sozinho? Vivo tranquilo, a liberdade é quem me faz carinho.",
+    "Viver, se envolver, se entregar, se encantar!",
+    "O mundo está nas mãos daqueles que têm a coragem de sonhar e de correr o risco de viver seus sonhos. ",
+    "Não pare até se orgulhar de você.",
+    "Arriscar é ser feliz na tentativa.",
+    "Na vida você sempre tem a oportunidade de transformar o mundo em um local mais bonito e alegre!",
+    "Deus sabe quem coloca na sua vida, da mesma forma que sabe quem tira.",
+    "Para quem acredita e persiste, um sonho nunca morre, ele apenas pode ser adiado.",
+    "Tenha coragem para viver a vida do jeito que você quer.",
+    "O sucesso é a soma de pequenos esforços repetidos todos os dias.",
+    "Alegria e tristeza caminham de mão dadas, por isso é necessário não priorizar nenhuma delas, apenas senti-las no momento em que vierem.",
+    "Um dia você ainda vai olhar para trás e ver que os problemas eram apenas degraus que te levaram à vitória.",
+    "Seja de verdade em tudo que você faz.",
+    "A beleza começa quando você decide ser você mesmo.",
+    "Todas as coisas encontram seu lugar quando a gente encontra o nosso!",
+    "Não pergunte o porquê das coisas, apenas deixe que elas aconteçam.",
+    "E você descobrirá que esperar não é a melhor maneira de ser livre.",
+    "A vida começa no final da sua zona de conforto.",
+    "A vida não é um problema para resolver, mas uma realidade para experimentar.",
+    "Uma pequena mudança positiva pode mudar todo o seu dia – ou toda a sua vida.",
+    "Nunca deixe suas memórias serem maiores que seus sonhos.",
+    "Nunca deixe ninguém te fazer sentir que você não merece o que quer.",
+    "Felicidade não é algo que já está feito. Isso vem de suas ações. ",
+    "Os obstáculos na vida nos amadurecem, os sucessos nos fazem refletir e os fracassos nos fazem crescer.",
+    "Esperar não é perder tempo! Esperar é fruto de uma escolha de quem prioriza o que é eterno e não passageiro.",
+    "Espalhe coisa boa, porque a gente merece e o mundo precisa!",
+    "Nenhum obstáculo é tão grande se sua vontade de vencer não for maior.",
+    "Faça e refaça aquilo que te deixa feliz.",
+    "Eu vos digo: é preciso, às vezes, ter um pouco de caos dentro de si, para poder dar a luz uma estrela dançante",
+    "Ser, sobretudo, o melhor de mim!",
+    "Estar preparado é importante, saber esperar é ainda mais, mas tirar proveito do momento certo é a chave para a vida.",
+    "Não deixe a vida acabar com você; todo mundo que foi longe teve que começar do nada",
+    "Ser feliz não significa que tudo está perfeito. Significa que você decidiu olhar além das imperfeições.",
+    "Sempre parece impossível até estar feito.",
+    "No final, só nos arrependemos das oportunidades que não aproveitamos.",
+    "Tudo que temos é o agora.",
+    "A vida não é um problema para ser resolvido, mas uma realidade para ser vivenciada.",
+    "O silêncio fala quando as palavras não conseguem.",
+    "Todo novo dia é uma chance para mudar a sua vida.",
+    "Não tenha medo de falhar, tenha medo de não tentar.",
+    "O melhor ainda está por vir.",
+    "A vida não precisa ser perfeita para ser feliz",
+    "Não precisa caçar muito pra encontrar a alegria, ela às vezes está escondida nas coisas do dia a dia.",
+    "Seja livre da opinião alheia e de toda pressão para ser perfeita o tempo todo.",
+    "Momentos especiais, esses valem a pena de serem lembrados e revividos no coração.",
+    "Não fique esperando o futuro para ser feliz, faça do presente a sua alegria.",
+    "Nunca saberemos o quão forte somos até que ser forte seja a única escolha.",
+    "Por um instante, se deixe em paz.",
+    "Dê mais valor para quem se importa realmente com você. Assim terá mais motivos para ser feliz!",
+  ];
+
+  desc = descricao[getRandomInt(0, descricao.length)];
+
+  let img_aleatoria = "";
+
+  async function puxar_img() {
+    try {
+      await client
+        .search(
+          "bunda rebolando biquini"
+        )
+        .then((images) => {
+          let i = getRandomInt(0, 10);
+          img_aleatoria = images[i].url;
+          let userpic =
+            "https://wp-cdn.etiquetaunica.com.br/blog/wp-content/uploads/2018/08/11122702/capa-post-top-blogueiras-brasileiras-compressed.jpg";
+          let name = "Julcimara Blog";
+          let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc);
+          data.append("username", name);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot JEIZ rodou");
+            }
+          });
+        });
+    } catch (err) {
+      console.log("Erro:", err);
+    }
+  }
+  puxar_img();
+}
+
 function bot_jacksons() {
   let Jimp = require("jimp");
 
@@ -424,7 +524,7 @@ function bot_g1() {
     "https://viatrolebus.com.br/rss",
     "https://www.metrocptm.com.br/rss",
     "https://www.ahnegao.com.br/rss",
-    "https://www.guarulhoshoje.com.br/rss"
+    "https://www.guarulhoshoje.com.br/rss",
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
@@ -605,3 +705,5 @@ setInterval(bot_jeiz, 700000);
 setInterval(bot_jacksons, 3000000);
 
 setInterval(bot_g1, 800000);
+
+setInterval(bot_blogueirinha, 700000);
