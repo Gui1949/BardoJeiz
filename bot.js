@@ -330,6 +330,103 @@ function bot_dona_sonia() {
     }
     puxar_img();
   }
+
+  if (time == 16) {
+    let descricao_ = [
+      "BOA TARDE MEUS ANJOS!",
+      "BOA TARDE QUE DEUS ABENSOE VCS",
+    ];
+
+    desc = descricao_[getRandomInt(0, descricao_.length)];
+
+    let img_aleatoria = "";
+
+    async function puxar_img() {
+      try {
+        await client.search("boa tarde gif").then((images) => {
+          let i = getRandomInt(0, 10);
+          img_aleatoria = images[i].url;
+          let userpic =
+            "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
+          let name = "Dona Sônia";
+          let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc);
+          data.append("username", name);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot sonia rodou");
+            }
+          });
+        });
+      } catch (err) {
+        console.log("Erro:", err);
+      }
+    }
+    puxar_img();
+  }
+
+  if (time == 20) {
+    let descricao_ = [
+      "BOA NOITE A TODOS, BONS SONHOS, QUE DEUS ILUMINE VOCES",
+      "BOA NOITE MEUS ANJOS, DURMAM BEM",
+    ];
+
+    desc = descricao_[getRandomInt(0, descricao_.length)];
+
+    let img_aleatoria = "";
+
+    async function puxar_img() {
+      try {
+        await client.search("boa noite jesus gif").then((images) => {
+          let i = getRandomInt(0, 10);
+          img_aleatoria = images[i].url;
+          let userpic =
+            "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
+          let name = "Dona Sônia";
+          let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc);
+          data.append("username", name);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot sonia rodou");
+            }
+          });
+        });
+      } catch (err) {
+        console.log("Erro:", err);
+      }
+    }
+    puxar_img();
+  }
+
 }
 
 function bot_blogueirinha() {
@@ -826,3 +923,5 @@ setInterval(bot_g1, 800000);
 setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
+
+bot_dona_sonia()
