@@ -289,7 +289,7 @@ function bot_dona_sonia() {
       "BOM DIA FLORES DO CAMPO, AMO TODOS VOCÊS",
     ];
 
-    desc = descricao_[getRandomInt(0, descricao_.length)];
+    desc__ = descricao_[getRandomInt(0, descricao_.length)];
 
     let img_aleatoria = "";
 
@@ -312,7 +312,7 @@ function bot_dona_sonia() {
 
           data.append("photo", img_aleatoria);
           data.append("photo_pic", userpic);
-          data.append("description", desc);
+          data.append("description", desc__);
           data.append("username", name);
 
           fetch(apiUrl, {
@@ -337,7 +337,7 @@ function bot_dona_sonia() {
       "BOA TARDE QUE DEUS ABENSOE VCS",
     ];
 
-    desc = descricao_[getRandomInt(0, descricao_.length)];
+    desc__ = descricao_[getRandomInt(0, descricao_.length)];
 
     let img_aleatoria = "";
 
@@ -385,7 +385,7 @@ function bot_dona_sonia() {
       "BOA NOITE MEUS ANJOS, DURMAM BEM",
     ];
 
-    desc = descricao_[getRandomInt(0, descricao_.length)];
+    desc__ = descricao_[getRandomInt(0, descricao_.length)];
 
     let img_aleatoria = "";
 
@@ -408,7 +408,7 @@ function bot_dona_sonia() {
 
           data.append("photo", img_aleatoria);
           data.append("photo_pic", userpic);
-          data.append("description", desc);
+          data.append("description", desc__);
           data.append("username", name);
 
           fetch(apiUrl, {
