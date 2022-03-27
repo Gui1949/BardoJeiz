@@ -212,7 +212,7 @@ function bot_jeiz() {
 }
 
 function bot_blogueirinha() {
-  let descricao = [
+  let descricao_ = [
     "Faça da tua alma teu próprio jardim.",
     "Quem foi que disse que é impossível ser feliz sozinho? Vivo tranquilo, a liberdade é quem me faz carinho.",
     "Viver, se envolver, se entregar, se encantar!",
@@ -265,7 +265,7 @@ function bot_blogueirinha() {
     "Dê mais valor para quem se importa realmente com você. Assim terá mais motivos para ser feliz!",
   ];
 
-  desc = descricao[getRandomInt(0, descricao.length)];
+  desc = descricao_[getRandomInt(0, descricao_.length)];
 
   let img_aleatoria = "";
 
@@ -707,3 +707,5 @@ setInterval(bot_jacksons, 3000000);
 setInterval(bot_g1, 800000);
 
 setInterval(bot_blogueirinha, 700000);
+
+bot_blogueirinha()
