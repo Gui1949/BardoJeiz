@@ -360,7 +360,7 @@ function bot_dona_sonia() {
 
           data.append("photo", img_aleatoria);
           data.append("photo_pic", userpic);
-          data.append("description", desc);
+          data.append("description", desc__);
           data.append("username", name);
 
           fetch(apiUrl, {
