@@ -283,7 +283,7 @@ function bot_dona_sonia() {
   const date = new Date();
   let time = date.getHours();
 
-  if (time == 6) {
+  if (time >= 8 && time <= 12) {
     let descricao_ = [
       "BOM DIA ALEGRIA!",
       "BOM DIA FLORES DO CAMPO, AMO TODOS VOCÊS",
@@ -331,7 +331,7 @@ function bot_dona_sonia() {
     puxar_img();
   }
 
-  if (time == 16) {
+  if (time >= 16 && time <= 19) {
     let descricao_ = [
       "BOA TARDE MEUS ANJOS!",
       "BOA TARDE QUE DEUS ABENSOE VCS",
@@ -379,7 +379,7 @@ function bot_dona_sonia() {
     puxar_img();
   }
 
-  if (time == 20) {
+  if (time >= 19 && time <= 23) {
     let descricao_ = [
       "BOA NOITE A TODOS, BONS SONHOS, QUE DEUS ILUMINE VOCES",
       "BOA NOITE MEUS ANJOS, DURMAM BEM",
