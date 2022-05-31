@@ -360,9 +360,14 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
 
   let year = date_ob.getFullYear();
 
-  let hours = date_ob.getHours();
+  let hours = (date_ob.getHours() - 3);
 
   let minutes = date_ob.getMinutes();
+
+  if(minutes.length == 1){
+    minutes == '0' + minutes
+  }
+
   var data = {
     USERNAME: req.body.username,
     USER_PIC: req.body.photo_pic,
