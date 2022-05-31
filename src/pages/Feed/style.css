@@ -7,6 +7,10 @@ body {
   background-color: #282a36;
 }
 
+p{
+  font-family: sans-serif;
+}
+
 #top_nav {
   z-index: 1;
   position: fixed;
@@ -398,6 +402,7 @@ input[type="file"] {
 
 a {
   text-decoration: none;
+  color: #ff79c6
 }
 
 #loading {

@@ -63,49 +63,6 @@ function colorir(objeto) {
   }
 }
 
-// function upload() {
-//   var input = document.querySelector('input[type="file"]');
-//   var name = document.getElementById("txt_username").value;
-//   var desc = document.getElementById("txt_descricao").value;
-//   let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
-
-//   var data = new FormData();
-//   data.append("photo", input.files[0]);
-//   data.append("description", desc);
-//   data.append("username", name);
-
-//   fetch(apiUrl, {
-//     method: "POST",
-//     body: data,
-//   }).then(function (response) {
-//     if (response.ok) {
-//       window.location.reload();
-//     }
-//   });
-// }
-
-// function deletar_elementos() {
-//   document.getElementById("master").remove();
-//   let elementos = document.getElementsByClassName("posts");
-//   while (elementos.length > 0) {
-//     elementos[0].parentNode.removeChild(elementos[0]);
-//   }
-// }
-
-// function username_unico(id) {
-//   document.getElementById("master").style.animation =
-//     "fade-out 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards";
-//   setTimeout(() => {
-//     deletar_elementos();
-//     id = JSON.parse(id);
-//     console.log(id.USERNAME);
-//     url = "https://bardojeiz-server.herokuapp.com/data/" + id.USERNAME;
-//     document.getElementById("title_navbar").innerHTML = id.USERNAME;
-//     console.log(url);
-//     // puxar_api();
-//   }, 800);
-// }
-
 let interval = setInterval(() => {
   let date_ob = new Date();
   let dia = ("0" + date_ob.getDate()).slice(-2);
@@ -184,13 +141,14 @@ function getTemp() {
   }
 }
 
+let teste = 0
+
 function Feed() {
   const [lerdados, setDados] = React.useState([]);
   const [puxando, setPuxando] = React.useState(0);
-
-  // try {
-  //   deletar_elementos();
-  // } catch {}
+  const [puxandoNews, setPuxandoNews] = React.useState(0);
+  const [user, setUser] = React.useState("");
+  const [news, setNews] = React.useState({});
 
   if (puxando == 0) {
     fetch("https://bardojeiz-server.herokuapp.com/data", {
@@ -208,6 +166,23 @@ function Feed() {
         getTemp();
       });
   }
+
+  if (puxando == 0) {
+    fetch("https://bardojeiz-server.herokuapp.com/news", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((reqres) => {
+        let dados = reqres;
+        setNews(dados);
+        setPuxandoNews(1);
+      });
+  }
+
   if (lerdados[0] == undefined) {
     return (
       <div id="loading">
@@ -218,120 +193,129 @@ function Feed() {
     );
   }
 
-  try {
-    // document.getElementById("top_nav").remove();
-  } catch {}
+  let lista_feed;
 
-  // if (url == "https://bardojeiz-server.herokuapp.com/data") {
-  //   navbar = (
-  //     <nav id="top_nav">
-  //       <a
-  //         style={{ cursor: "pointer" }}
-  //         onClick={() => {
-  //           url = "https://bardojeiz-server.herokuapp.com/data";
-  //           // puxar_api();
-  //         }}
-  //         className="nav_top_link"
-  //       >
-  //         <p className="nav_top_filter_title" id="title_navbar">
-  //           Bar do Jeiz
-  //         </p>
-  //       </a>
-  //     </nav>
-  //   );
-  // } else {
-  //   let user_atual = url;
-  //   user_atual = user_atual.replace(
-  //     "https://bardojeiz-server.herokuapp.com/data/",
-  //     ""
-  //   );
-  //   navbar = (
-  //     <nav id="top_nav">
-  //       <div id="btn_filtro">
-  //         <span
-  //           style={{ cursor: "pointer" }}
-  //           onClick={() => {
-  //             url = "https://bardojeiz-server.herokuapp.com/data";
-  //             // puxar_api();
-  //           }}
-  //           className="material-icons md-5 filtro"
-  //         >
-  //           arrow_back
-  //         </span>
-  //       </div>
-  //       <p className="nav_top_filter_title" id="title_navbar">
-  //         {user_atual}
-  //       </p>
-  //     </nav>
-  //   );
-  // }
-
-  // console.table(lerdados)
-
-  let lista_feed = lerdados.map((ler_dados) => (
-    <div id="post_feed" className="posts">
-      <div id="header">
-        <div className="avatar">
-          <img className="avatar_img" src={ler_dados.USER_PIC} />
+  if (user == "") {
+    lista_feed = lerdados.map((ler_dados) => (
+      <div id="post_feed" className="posts">
+        <div id="header">
+          <div className="avatar">
+            <img className="avatar_img" src={ler_dados.USER_PIC} />
+          </div>
+          <ListItemText
+            primary={
+              <p
+                className="username"
+                style={{ cursor: "pointer" }}
+                onClick={() => setUser(ler_dados.USERNAME)}
+              >
+                <b>{ler_dados.USERNAME}</b>
+              </p>
+            }
+            className="username_data_post"
+            secondary={
+              <React.Fragment>
+                <Typography
+                  component="span"
+                  variant="body2"
+                  className="nav__icon"
+                  color="textPrimary"
+                ></Typography>
+                <p className="data_post">{ler_dados.POST_DATA}</p>
+              </React.Fragment>
+            }
+          />
         </div>
+        <Conteudo foto={ler_dados.PIC_LOCAL} />
         <ListItemText
-          primary={
-            <p
-              className="username"
-              style={{ cursor: "pointer" }}
-              // onClick={() =>
-              // username_unico(JSON.stringify(ler_dados, ["USERNAME"]))
-              // }
-            >
-              <b>{ler_dados.USERNAME}</b>
-            </p>
-          }
-          className="username_data_post"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className="nav__icon"
-                color="textPrimary"
-              ></Typography>
-              <p className="data_post">{ler_dados.POST_DATA}</p>
-            </React.Fragment>
-          }
+          primary={<p className="descricao_post">{ler_dados.POST_DESC}</p>}
+          className="username_data_post_"
         />
-      </div>
-      <Conteudo foto={ler_dados.PIC_LOCAL} />
-      <ListItemText
-        primary={<p className="descricao_post">{ler_dados.POST_DESC}</p>}
-        className="username_data_post_"
-      />
 
-      <div id="botoes_reacao">
-        <button
-          className="reacao_btn"
-          id={"btn_like_" + ler_dados.ID}
-          onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
-        >
-          <i className="material-icons" id="font_like">
-            thumb_up
-          </i>
-        </button>
-        <button
-          className="reacao_btn"
-          id={"btn_dislike_" + ler_dados.ID}
-          onClick={() => dislike(JSON.stringify(ler_dados, ["ID"]))}
-        >
-          <i className="material-icons" id="font_dislike">
-            thumb_down
-          </i>
-        </button>
+        <div id="botoes_reacao">
+          <button
+            className="reacao_btn"
+            id={"btn_like_" + ler_dados.ID}
+            onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
+          >
+            <i className="material-icons" id="font_like">
+              thumb_up
+            </i>
+          </button>
+          <button
+            className="reacao_btn"
+            id={"btn_dislike_" + ler_dados.ID}
+            onClick={() => dislike(JSON.stringify(ler_dados, ["ID"]))}
+          >
+            <i className="material-icons" id="font_dislike">
+              thumb_down
+            </i>
+          </button>
+        </div>
       </div>
-    </div>
-  ));
+    ));
+  } else {
+    lista_feed = lerdados.map((ler_dados) =>
+      ler_dados.USERNAME == user ? (
+        <div id="post_feed" className="posts">
+          <div id="header">
+            <div className="avatar">
+              <img className="avatar_img" src={ler_dados.USER_PIC} />
+            </div>
+            <ListItemText
+              primary={
+                <p className="username" style={{ cursor: "pointer" }}>
+                  <b>{ler_dados.USERNAME}</b>
+                </p>
+              }
+              className="username_data_post"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className="nav__icon"
+                    color="textPrimary"
+                  ></Typography>
+                  <p className="data_post">{ler_dados.POST_DATA}</p>
+                </React.Fragment>
+              }
+            />
+          </div>
+          <Conteudo foto={ler_dados.PIC_LOCAL} />
+          <ListItemText
+            primary={<p className="descricao_post">{ler_dados.POST_DESC}</p>}
+            className="username_data_post_"
+          />
+
+          <div id="botoes_reacao">
+            <button
+              className="reacao_btn"
+              id={"btn_like_" + ler_dados.ID}
+              onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
+            >
+              <i className="material-icons" id="font_like">
+                thumb_up
+              </i>
+            </button>
+            <button
+              className="reacao_btn"
+              id={"btn_dislike_" + ler_dados.ID}
+              onClick={() => dislike(JSON.stringify(ler_dados, ["ID"]))}
+            >
+              <i className="material-icons" id="font_dislike">
+                thumb_down
+              </i>
+            </button>
+          </div>
+        </div>
+      ) : null
+    );
+  }
 
   return (
     <>
-      <Navbar />
+      <Navbar text={user} />
       <div id="master">
         <List className="lista_feed">
           <div className="post_timer posts">
@@ -354,6 +338,31 @@ function Feed() {
                 </div>
               </div>
             </div>
+          </div>
+          <div id="post_feed" className="posts">
+            <br />
+            <p className="username">
+              <b>
+                {puxandoNews == 1
+                  // ? news.titulo + ": Noticias do Dia"
+                  ? "Noticias do Dia - por BBC Brasil"
+                  : "Carregando"}
+              </b>
+            </p>
+            <br />
+            {puxandoNews == 1
+              ? news.data.map((noticia) => (
+                  <p>
+                    <br />
+                    <a href={noticia.link} target="blank">
+                      {noticia.title}
+                    </a>
+                    <br />
+                    <br />
+                    <hr></hr>
+                  </p>
+                ))
+              : ""}
           </div>
           {lista_feed}
         </List>
