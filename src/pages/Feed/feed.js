@@ -6,10 +6,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import Conteudo from "./components/Conteudo";
 import Navbar from "./components/Navbar";
-import './loader.css'
+import "./loader.css";
 
-// let url = "https://bardojeiz-server.herokuapp.com/data";
-let url = "http://localhost:80/data";
+let url = "https://bardojeiz-server.herokuapp.com/data";
+// let url = "http://localhost:80/data";
 
 const like = (id_btn) => {
   let id_trat = "";
@@ -157,12 +157,7 @@ function getTemp() {
     startPos = position;
     let latitude = startPos.coords.latitude;
     let longitude = startPos.coords.longitude;
-    let url =
-      "https://api.openweathermap.org/data/2.5/weather?lat=" +
-      latitude +
-      "&lon=" +
-      longitude +
-      "&appid=cc2a0c4ba3d95cc8c10568222f57d0be";
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=cc2a0c4ba3d95cc8c10568222f57d0be`;
     getTempByCoord(url);
   };
   navigator.geolocation.getCurrentPosition(geoSuccess);
@@ -190,8 +185,6 @@ function getTemp() {
 }
 
 function Feed() {
-  console.log("cu");
-
   const [lerdados, setDados] = React.useState([]);
   const [puxando, setPuxando] = React.useState(0);
 
