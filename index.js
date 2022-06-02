@@ -289,7 +289,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
       case 9:
         return 06
       default:
-        return (date_ob.getHours.length() < 2 ? '0' + date_ob.getHours() - 3 : date_ob.getHours() - 3)
+        return (date_ob.getHours.length() < 2 ? '0' + (date_ob.getHours() - 3) : date_ob.getHours() - 3)
     }
   }
 
@@ -297,7 +297,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
   var data = {
     USERNAME: req.body.username,
     USER_PIC: "https://bardojeiz-server.herokuapp.com/data/img/" + cuiaba,
-    POST_DATA: day + "/" + month + "/" + year + " - " + hours + ":" + minutes,
+    POST_DATA: day + "/" + month + "/" + year + " - " + hours() + ":" + minutes,
     PIC_LOCAL: "https://bardojeiz-server.herokuapp.com/data/img/" + cuiaba,
     POST_DESC: req.body.description,
     POST_LIKE: 0,
