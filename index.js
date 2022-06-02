@@ -288,6 +288,14 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
         return '05'
       case 9:
         return '06'
+      case 10:
+        return '07'
+      case 11:
+        return '08'
+      case 12:
+        return '09'
+      case 13:
+        return '10'
       default:
         return (date_ob.getHours().length < 2 ? '0' + (date_ob.getHours() - 3) : date_ob.getHours() - 3)
     }
