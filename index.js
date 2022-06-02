@@ -269,31 +269,31 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
   let hours = () => {
     switch(date_ob.getHours()){
       case 0:
-        return 21
+        return '21'        
       case 1:
-        return 22
+        return '22'
       case 2:
-        return 23
+        return '23'
       case 3:
-        return 00
+        return '00'
       case 4:
-        return 01
+        return '01'
       case 5:
-        return 02
+        return '02'
       case 6:
-        return 03
+        return '03'
       case 7:
-        return 04
+        return '04'
       case 8:
-        return 05
+        return '05'
       case 9:
-        return 06
+        return '06'
       default:
-        return (date_ob.getHours.length() < 2 ? '0' + (date_ob.getHours() - 3) : date_ob.getHours() - 3)
+        return (date_ob.getHours().length < 2 ? '0' + (date_ob.getHours() - 3) : date_ob.getHours() - 3)
     }
   }
 
-  let minutes = date_ob.getMinutes();
+  let minutes = (date_ob.getMinutes().length < 2 ? '0' + date_ob.getMinutes() : date_ob.getMinutes());
   var data = {
     USERNAME: req.body.username,
     USER_PIC: "https://bardojeiz-server.herokuapp.com/data/img/" + cuiaba,
