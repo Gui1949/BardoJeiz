@@ -340,10 +340,16 @@ function Feed() {
             <div className="timer_body">
               <p id="timer_clock">00:00</p>
               <div id="temp_dados">
-                <p id="temp_lbl" className="nav_top_link"></p>
+                <p id="temp_lbl" className="nav_top_link">
+                  No armário
+                </p>
                 <div id="temp_temperatura">
-                  <p id="temp_num" className="nav_top_link"></p>
-                  <span className="material-icons md-5" id="temp_ico"></span>
+                  <p id="temp_num" className="nav_top_link">
+                    24ºC
+                  </p>
+                  <span className="material-icons md-5" id="temp_ico">
+                    looks
+                  </span>
                 </div>
               </div>
             </div>
