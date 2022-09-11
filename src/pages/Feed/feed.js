@@ -34,7 +34,7 @@ function dislike(id_btn) {
   id_trat = id_btn.replace(/[^0-9\.]+/g, "");
 
   let objeto_desfazer = document.getElementById("btn_like_" + id_trat);
-  objeto_desfazer.style.color = "#95a5a6";
+  // objeto_desfazer.style.color = "#95a5a6";
 
   let objeto = document.getElementById("btn_dislike_" + id_trat);
 
@@ -143,8 +143,6 @@ function getTemp() {
   }
 }
 
-let teste = 0
-
 function Feed() {
   const [lerdados, setDados] = React.useState([]);
   const [puxando, setPuxando] = React.useState(0);
@@ -230,12 +228,25 @@ function Feed() {
         </div>
         <Conteudo foto={ler_dados.PIC_LOCAL} />
         <ListItemText
-          primary={<p className="descricao_post">{ler_dados.POST_DESC}</p>}
+          primary={
+            <>
+              <p className="descricao_post">{ler_dados.POST_DESC}</p>
+              {ler_dados.LINK ? (
+                <a
+                  className="descricao_post"
+                  href={ler_dados.LINK}
+                  target="_blank"
+                >
+                  Ler artigo
+                </a>
+              ) : null}
+            </>
+          }
           className="username_data_post_"
         />
 
         <div id="botoes_reacao">
-          <button
+          {/* <button
             className="reacao_btn"
             id={"btn_like_" + ler_dados.ID}
             onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
@@ -243,7 +254,7 @@ function Feed() {
             <i className="material-icons" id="font_like">
               thumb_up
             </i>
-          </button>
+          </button> */}
           <button
             className="reacao_btn"
             id={"btn_dislike_" + ler_dados.ID}
@@ -331,12 +342,8 @@ function Feed() {
               <div id="temp_dados">
                 <p id="temp_lbl" className="nav_top_link"></p>
                 <div id="temp_temperatura">
-                  <p id="temp_num" className="nav_top_link">
-                    Carregando
-                  </p>
-                  <span className="material-icons md-5" id="temp_ico">
-                    cached
-                  </span>
+                  <p id="temp_num" className="nav_top_link"></p>
+                  <span className="material-icons md-5" id="temp_ico"></span>
                 </div>
               </div>
             </div>
@@ -346,8 +353,8 @@ function Feed() {
             <p className="username">
               <b>
                 {puxandoNews == 1
-                  // ? news.titulo + ": Noticias do Dia"
-                  ? "Noticias do Dia - por BBC Brasil"
+                  ? // ? news.titulo + ": Noticias do Dia"
+                    "Noticias do Dia - por BBC Brasil"
                   : "Carregando"}
               </b>
             </p>
