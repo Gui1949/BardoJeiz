@@ -409,6 +409,7 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     POST_DESC: req.body.description,
     POST_LIKE: 0,
     POST_DISLIKE: 0,
+    LINK: req.body.link
   };
 
   if (data.PIC_LOCAL.includes("https://www.youtube.com")) {
@@ -417,7 +418,7 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   }
 
   var sql =
-    "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC,POST_LIKE,POST_DISLIKE) VALUES(?,?,?,?,?,?,?)";
+    "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC,POST_LIKE,POST_DISLIKE,LINK) VALUES(?,?,?,?,?,?,?,?)";
   var params = [
     data.USERNAME,
     data.USER_PIC,
@@ -426,6 +427,7 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     data.POST_DESC,
     data.POST_LIKE,
     data.POST_DISLIKE,
+    data.LINK
   ];
   db.all(sql, params, (err, rows) => {
     if (err) {
