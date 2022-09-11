@@ -252,7 +252,7 @@ function bot_jeiz() {
       });
     } catch (err) {
       console.log("Erro:", err);
-      input = imagem[getRandomInt(0, imagem.length)]
+      input = imagem[getRandomInt(0, imagem.length)];
       let userpic =
         "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
       let name = "Jeiz";
@@ -299,7 +299,7 @@ function bot_dona_sonia() {
           let i = getRandomInt(0, 10);
           img_aleatoria = images[i].url;
           let userpic =
-            "https://wp-cdn.etiquetaunica.com.br/blog/wp-content/uploads/2018/08/11122702/capa-post-top-blogueiras-brasileiras-compressed.jpg";
+            "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
           let name = "Dona Sônia";
           let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
 
@@ -426,7 +426,6 @@ function bot_dona_sonia() {
     }
     puxar_img();
   }
-
 }
 
 function bot_blogueirinha() {
@@ -917,8 +916,7 @@ setInterval(bot_gringo, 6000000);
 
 setInterval(bot_bitcoin, 800000);
 
-setInterval(bot_jeiz, 700000);
-// setInterval(bot_jeiz, 10000);
+setInterval(bot_jeiz, 800000);
 
 setInterval(bot_jacksons, 3000000);
 
@@ -928,4 +926,11 @@ setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
-bot_dona_sonia()
+bot_dona_sonia();
+bot_gringo();
+bot_bitcoin();
+bot_jeiz();
+bot_jacksons();
+bot_g1();
+bot_blogueirinha();
+bot_dona_sonia();
