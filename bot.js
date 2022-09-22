@@ -824,10 +824,13 @@ function bot_bitcoin() {
     .then(function (data) {
       let dados = data.ticker;
       let high = dados.buy;
-      high_virgula = high.slice(0, 3);
-      high_dps_virgula = high.slice(3, 7);
-      high = high_virgula + "," + high_dps_virgula;
-      console.log(high_virgula);
+
+      let formatter = new Intl.NumberFormat("ru", {
+        style: "currency",
+        currency: "BRL"
+      })
+
+      high = formatter.format(high);
 
       var FormData = require("form-data");
       var data = new FormData();
@@ -842,7 +845,7 @@ function bot_bitcoin() {
 
       data.append("photo", picture);
       data.append("photo_pic", icone);
-      data.append("description", "O valor atual do Bitcoin é: R$ " + high);
+      data.append("description", "O valor atual do Bitcoin é: " + high);
       data.append("username", "BTC by Mercado Bitcoin");
 
       fetch(apiUrl, {
@@ -922,11 +925,11 @@ setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
-bot_dona_sonia();
-bot_gringo();
+// bot_dona_sonia();
+// bot_gringo();
 bot_bitcoin();
-bot_jeiz();
-bot_jacksons();
-bot_g1();
-bot_blogueirinha();
-bot_dona_sonia();
+// bot_jeiz();
+// bot_jacksons();
+// bot_g1();
+// bot_blogueirinha();
+// bot_dona_sonia();
