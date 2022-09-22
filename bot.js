@@ -381,7 +381,7 @@ function bot_dona_sonia() {
 
   if (time >= 19 && time <= 23) {
     let descricao_ = [
-      "BOA NOITE A TODOS, BONS SONHOS, QUE DEUS ILUMINE VOCES",
+      "BOA NOITE A TODOS, BONS SONHOS, QUE DEUS ELIMINE VOCES",
       "BOA NOITE MEUS ANJOS, DURMAM BEM",
     ];
 
@@ -711,7 +711,6 @@ function bot_g1() {
     "https://feeds.folha.uol.com.br/ilustrada/rss091.xml",
     "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml",
     "https://feeds.folha.uol.com.br/opiniao/rss091.xml",
-    "http://rss.home.uol.com.br/index.xml",
     "http://rss.megacurioso.com.br/feed",
     "https://www.noticiasaominuto.com.br/rss/ultima-hora",
     "http://www.bbc.co.uk/portuguese/index.xml",
@@ -738,6 +737,9 @@ function bot_g1() {
     "https://www.metrocptm.com.br/rss",
     "https://www.ahnegao.com.br/rss",
     "https://www.guarulhoshoje.com.br/rss",
+    "https://capricho.abril.com.br/rss",
+    "https://www.ofuxico.com.br/rss",
+    "https://www.marciafernandes.com.br/site/rss"
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
@@ -751,6 +753,7 @@ function bot_g1() {
         "https://thumbs.dreamstime.com/b/%C3%ADcone-liso-do-vetor-das-not%C3%ADcias-do-mundo-ilustra%C3%A7%C3%A3o-do-logotipo-do-s%C3%ADmbolo-da-not%C3%ADcia-95819924.jpg";
     }
     titulo = feed.title;
+    link = feed.link
 
     feed.items.forEach((item) => {
       while (i < 1) {
@@ -775,26 +778,26 @@ function bot_g1() {
               await client.search(item.title).then((images) => {
                 img_srch = images[0].url;
                 console.log(img_srch);
-                send_g1(img_srch, icone, head_noticia, "Informes");
+                send_g1(img_srch, icone, head_noticia, "Informes", link);
               });
             } catch (err) {
               console.log("Erro:", err);
               input =
                 "https://picsum.photos/500/500?random=" +
                 [getRandomInt(0, 999)];
-              send_g1(input, icone, head_noticia, "Informes");
+              send_g1(input, icone, head_noticia, "Informes", link);
             }
           }
           puxar_img();
         } else {
-          send_g1(img, icone, head_noticia, "Informes");
+          send_g1(img, icone, head_noticia, "Informes", link);
         }
 
         i++;
       }
     });
 
-    async function send_g1(img, icone, head_noticia, titulo) {
+    async function send_g1(img, icone, head_noticia, titulo, link) {
       var FormData = require("form-data");
       var data = new FormData();
 
@@ -804,6 +807,7 @@ function bot_g1() {
       data.append("photo_pic", icone);
       data.append("description", head_noticia);
       data.append("username", titulo);
+      data.append("link", link)
 
       await fetch(apiUrl, {
         method: "POST",
@@ -816,6 +820,8 @@ function bot_g1() {
     }
   })();
 }
+
+bot_g1()
 
 function bot_bitcoin() {
   let url = "https://www.mercadobitcoin.net/api/BTC/ticker";
