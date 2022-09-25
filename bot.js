@@ -8,6 +8,16 @@ const client = new GoogleImages(
   "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
 );
 
+const pasta_img = './img/';
+let imagens = []
+
+fs.readdir(pasta_img, (err, files) => {
+  files.forEach(file => {
+    imagens.push(file);
+    console.log(imagens)
+  });
+});
+
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -556,6 +566,8 @@ function bot_jacksons() {
     "caralho mano",
     "ei pessoal, ei pessoal",
     "ae mermao",
+    "to felizao",
+    "tua veia"
   ];
 
   let inferiorArray = [
@@ -587,36 +599,11 @@ function bot_jacksons() {
     "tu eh mo trosha pqp",
     "pega no meu pal q te levo a portugal",
     "vai pra puta q te pariu",
+    "teu cu eh meu trosha",
+    "uma hora dessa ta dando na zona"
   ];
 
-  let imagem = [
-    "img/britto.jpeg",
-    "img/fallon.jpeg",
-    "img/galo.jpeg",
-    "img/gilberto.jpeg",
-    "img/jackye.jpeg",
-    "img/justus.jpeg",
-    "img/nicolascage.jpeg",
-    "img/ozzy.jpeg",
-    "img/sara.jpeg",
-    "img/fausto.jpeg",
-    "img/jk.jpeg",
-    "img/KOERANO.jpeg",
-    "img/ranger.jpeg",
-    "img/therock.jpeg",
-    "img/chapola.jpeg",
-    "img/carlos.jpeg",
-    "img/chalie.jpeg",
-    "img/maicou.jpeg",
-    "img/esponja.jpeg",
-    "img/ranger.jpg",
-    "img/adam.jpg",
-    "img/gozo.jpg",
-    "img/joselito.jpeg",
-    "img/vin.jpeg",
-  ];
-
-  var fileName = imagem[getRandomInt(0, imagem.length)];
+  var fileName = imagens[getRandomInt(0, imagens.length)];
   var topoImagem = superiorArray[getRandomInt(0, superiorArray.length)];
   var bottomImagem = inferiorArray[getRandomInt(0, inferiorArray.length)];
   var loadedImage;
@@ -671,7 +658,7 @@ function bot_gringo() {
     "CRIME OCORRE NADA ACONTECE FEIJOADA",
   ];
 
-  input = "https://picsum.photos/200/300?random=" + [getRandomInt(0, 999)];
+  input = "https://bardojeiz-server.herokuapp.com/data/img/koerano.jpg";
   desc = gringoArray[getRandomInt(0, gringoArray.length)];
 
   var userpic = "https://bardojeiz-server.herokuapp.com/data/img/KOERANO.jpeg";
@@ -821,8 +808,6 @@ function bot_g1() {
   })();
 }
 
-bot_g1()
-
 function bot_bitcoin() {
   let url = "https://www.mercadobitcoin.net/api/BTC/ticker";
   fetch(url)
@@ -847,7 +832,7 @@ function bot_bitcoin() {
         "https://bardojeiz-server.herokuapp.com/data/img/bitcoin.jpeg";
 
       let icone =
-        "https://pbs.twimg.com/profile_images/1307854653091196929/pFJRfkV6_400x400.jpg";
+        "https://bardojeiz-server.herokuapp.com/data/img/bitcoin.jpeg";
 
       data.append("photo", picture);
       data.append("photo_pic", icone);
@@ -931,11 +916,11 @@ setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
-bot_dona_sonia();
+// bot_dona_sonia();
 bot_gringo();
-bot_bitcoin();
-bot_jeiz();
-bot_jacksons();
-bot_g1();
-bot_blogueirinha();
-bot_dona_sonia();
+// bot_bitcoin();
+// bot_jeiz();
+// bot_jacksons();
+// bot_g1();
+// bot_blogueirinha();
+// bot_dona_sonia();
