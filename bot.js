@@ -498,7 +498,7 @@ function bot_blogueirinha() {
 
   async function puxar_img() {
     try {
-      await client.search("bunda rebolando biquini").then((images) => {
+      await client.search("girl summer vibes tumblr").then((images) => {
         let i = getRandomInt(0, 10);
         img_aleatoria = images[i].url;
         let userpic =
@@ -648,14 +648,14 @@ function bot_jacksons() {
 
 function bot_gringo() {
   let gringoArray = [
-    "SO KOERANO",
-    "E ODEIO BARZIL VOCES",
-    "BRAZILEIRO É PORCO",
-    "VOCE GOSTA DE FEIJOADA",
-    "VOCE GOSTA DE CAIPIRINHA",
-    "LULA DILMA ASASINO",
-    "BRAIZL PORCOS",
-    "CRIME OCORRE NADA ACONTECE FEIJOADA",
+    `SO KOERANO
+    E ODEIO BARZIL VOCES
+    BRAZILEIRO É PORCO
+    VOCE GOSTA DE FEIJOADA
+    VOCE GOSTA DE CAIPIRINHA
+    LULA DILMA ASASINO
+    BRAIZL PORCOS
+    CRIME OCORRE NADA ACONTECE FEIJOADA`,
   ];
 
   input = "https://bardojeiz-server.herokuapp.com/data/img/koerano.jpg";
@@ -816,7 +816,7 @@ function bot_bitcoin() {
       let dados = data.ticker;
       let high = dados.buy;
 
-      let formatter = new Intl.NumberFormat("ru", {
+      let formatter = new Intl.NumberFormat("pt-br", {
         style: "currency",
         currency: "BRL"
       })
@@ -916,11 +916,11 @@ setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
-// bot_dona_sonia();
-bot_gringo();
-// bot_bitcoin();
-// bot_jeiz();
-// bot_jacksons();
-// bot_g1();
-// bot_blogueirinha();
-// bot_dona_sonia();
+bot_dona_sonia();
+//bot_gringo();
+//bot_bitcoin();
+//bot_jeiz();
+//bot_jacksons();
+//bot_g1();
+//bot_blogueirinha();
+//bot_dona_sonia();
