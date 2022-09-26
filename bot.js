@@ -916,11 +916,11 @@ setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
-// bot_dona_sonia();
-// bot_gringo();
-// bot_bitcoin();
-// bot_jeiz();
+bot_dona_sonia();
+bot_gringo();
+bot_bitcoin();
+bot_jeiz();
 bot_jacksons();
-// bot_g1();
-// bot_blogueirinha();
-// bot_dona_sonia();
+bot_g1();
+bot_blogueirinha();
+bot_dona_sonia();
