@@ -8,15 +8,8 @@ const client = new GoogleImages(
   "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
 );
 
-const pasta_img = './img/';
-let imagens = []
-
-fs.readdir(pasta_img, (err, files) => {
-  files.forEach(file => {
-    imagens.push(file);
-    console.log(imagens)
-  });
-});
+const pasta_img = "./img/";
+let imagens = [];
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -567,7 +560,7 @@ function bot_jacksons() {
     "ei pessoal, ei pessoal",
     "ae mermao",
     "to felizao",
-    "tua veia"
+    "tua veia",
   ];
 
   let inferiorArray = [
@@ -600,50 +593,57 @@ function bot_jacksons() {
     "pega no meu pal q te levo a portugal",
     "vai pra puta q te pariu",
     "teu cu eh meu trosha",
-    "uma hora dessa ta dando na zona"
+    "uma hora dessa ta dando na zona",
   ];
 
-  var fileName = imagens[getRandomInt(0, imagens.length)];
-  var topoImagem = superiorArray[getRandomInt(0, superiorArray.length)];
-  var bottomImagem = inferiorArray[getRandomInt(0, inferiorArray.length)];
-  var loadedImage;
+  console.log(imagens);
 
-  let nome_img = "bot" + "-" + Date.now() + ".jpeg";
-
-  Jimp.read(fileName)
-    .then(function (image) {
-      loadedImage = image;
-      return Jimp.loadFont(Jimp.FONT_SANS_16_WHITE);
-    })
-    .then(function (font) {
-      loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
-      loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
-
-      var userpic = "img/galo.jpeg";
-      var name = "Jacksons";
-      let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
-
-      var FormData = require("form-data");
-      var data = new FormData();
-      const fetch = require("node-fetch");
-
-      data.append("photo", fs.createReadStream(nome_img));
-      data.append("photo_pic", userpic);
-      data.append("description", "XD");
-      data.append("username", name);
-
-      fetch(apiUrl, {
-        method: "POST",
-        body: data,
-      }).then(function (response) {
-        if (response.ok) {
-          console.log("Bot Jacksons rodou");
-        }
-      });
-    })
-    .catch(function (err) {
-      console.error(err);
+  fs.readdir(pasta_img, (err, files) => {
+    files.forEach((file) => {
+      imagens.push(file);
     });
+    var fileName = "./img/" + imagens[getRandomInt(0, imagens.length)];
+    var topoImagem = superiorArray[getRandomInt(0, superiorArray.length)];
+    var bottomImagem = inferiorArray[getRandomInt(0, inferiorArray.length)];
+    var loadedImage;
+
+    let nome_img = "bot" + "-" + Date.now() + ".jpeg";
+
+    Jimp.read(fileName)
+      .then(function (image) {
+        loadedImage = image;
+        return Jimp.loadFont(Jimp.FONT_SANS_16_WHITE);
+      })
+      .then(function (font) {
+        loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
+        loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
+
+        var userpic = "img/galo.jpeg";
+        var name = "Jacksons";
+        let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
+
+        var FormData = require("form-data");
+        var data = new FormData();
+        const fetch = require("node-fetch");
+
+        data.append("photo", fs.createReadStream(nome_img));
+        data.append("photo_pic", userpic);
+        data.append("description", "XD");
+        data.append("username", name);
+
+        fetch(apiUrl, {
+          method: "POST",
+          body: data,
+        }).then(function (response) {
+          if (response.ok) {
+            console.log("Bot Jacksons rodou");
+          }
+        });
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
+  });
 }
 
 function bot_gringo() {
@@ -726,7 +726,7 @@ function bot_g1() {
     "https://www.guarulhoshoje.com.br/rss",
     "https://capricho.abril.com.br/rss",
     "https://www.ofuxico.com.br/rss",
-    "https://www.marciafernandes.com.br/site/rss"
+    "https://www.marciafernandes.com.br/site/rss",
   ];
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
@@ -740,7 +740,7 @@ function bot_g1() {
         "https://thumbs.dreamstime.com/b/%C3%ADcone-liso-do-vetor-das-not%C3%ADcias-do-mundo-ilustra%C3%A7%C3%A3o-do-logotipo-do-s%C3%ADmbolo-da-not%C3%ADcia-95819924.jpg";
     }
     titulo = feed.title;
-    link = feed.link
+    link = feed.link;
 
     feed.items.forEach((item) => {
       while (i < 1) {
@@ -794,7 +794,7 @@ function bot_g1() {
       data.append("photo_pic", icone);
       data.append("description", head_noticia);
       data.append("username", titulo);
-      data.append("link", link)
+      data.append("link", link);
 
       await fetch(apiUrl, {
         method: "POST",
@@ -818,8 +818,8 @@ function bot_bitcoin() {
 
       let formatter = new Intl.NumberFormat("pt-br", {
         style: "currency",
-        currency: "BRL"
-      })
+        currency: "BRL",
+      });
 
       high = formatter.format(high);
 
@@ -916,11 +916,11 @@ setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
-bot_dona_sonia();
-bot_gringo();
-bot_bitcoin();
-bot_jeiz();
+// bot_dona_sonia();
+// bot_gringo();
+// bot_bitcoin();
+// bot_jeiz();
 bot_jacksons();
-bot_g1();
-bot_blogueirinha();
-bot_dona_sonia();
+// bot_g1();
+// bot_blogueirinha();
+// bot_dona_sonia();
