@@ -741,12 +741,13 @@ function bot_g1() {
         "https://thumbs.dreamstime.com/b/%C3%ADcone-liso-do-vetor-das-not%C3%ADcias-do-mundo-ilustra%C3%A7%C3%A3o-do-logotipo-do-s%C3%ADmbolo-da-not%C3%ADcia-95819924.jpg";
     }
     titulo = feed.title;
-    link = feed.link;
+    // link = feed.link;
 
     feed.items.forEach((item) => {
       while (i < 1) {
         let head_noticia = titulo + ": " + item.title;
         let conteudo_bruto = item.content;
+        link = item.link;
         console.log(item);
 
         find_img_ini = conteudo_bruto.search("<img src=");
@@ -923,5 +924,5 @@ bot_bitcoin();
 bot_jeiz();
 bot_jacksons();
 bot_g1();
-bot_blogueirinha();;
+bot_blogueirinha();
 bot_dona_sonia();
