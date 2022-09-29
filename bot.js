@@ -7,7 +7,7 @@ const client = new GoogleImages(
   "partner-pub-4228098010894354:5271861158",
   "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
 );
-
+const { image_search } = require("duckduckgo-images-api");
 const pasta_img = "./img/";
 let imagens = [];
 
@@ -255,28 +255,64 @@ function bot_jeiz() {
       });
     } catch (err) {
       console.log("Erro:", err);
-      input = imagem[getRandomInt(0, imagem.length)];
-      let userpic =
-        "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
-      let name = "Jeiz";
-      let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+      console.log("Mudando para DuckDuckGo");
 
-      let FormData = require("form-data");
-      let data = new FormData();
+      image_search({ query: desc, moderate: false, iterations: 2 }).then(
+        (results) => {
+          console.log(results);
+          let i = getRandomInt(0, 10);
+          img_aleatoria = results[i].image;
 
-      data.append("photo", input);
-      data.append("photo_pic", userpic);
-      data.append("description", desc);
-      data.append("username", name);
+          let userpic =
+            "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
+          let name = "Jeiz";
+          let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
 
-      fetch(apiUrl, {
-        method: "POST",
-        body: data,
-      }).then(function (response) {
-        if (response.ok) {
-          console.log("Bot JEIZ rodou");
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc);
+          data.append("username", name);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot JEIZ rodou");
+            }
+          });
         }
-      });
+      );
+
+      // input = imagem[getRandomInt(0, imagem.length)];
+      // let userpic =
+      //   "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
+      // let name = "Jeiz";
+      // let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+      // let FormData = require("form-data");
+      // let data = new FormData();
+
+      // data.append("photo", input);
+      // data.append("photo_pic", userpic);
+      // data.append("description", desc);
+      // data.append("username", name);
+
+      // fetch(apiUrl, {
+      //   method: "POST",
+      //   body: data,
+      // }).then(function (response) {
+      //   if (response.ok) {
+      //     console.log("Bot JEIZ rodou");
+      //   }
+      // });
     }
   }
   puxar_img();
@@ -329,6 +365,42 @@ function bot_dona_sonia() {
         });
       } catch (err) {
         console.log("Erro:", err);
+        console.log("Mudando para DuckDuckGo");
+
+        image_search({ query: desc__, moderate: false, iterations: 2 }).then(
+          (results) => {
+            console.log(results);
+            let i = getRandomInt(0, 10);
+            img_aleatoria = results[i].image;
+
+            let userpic =
+              "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
+            let name = "Dona Sônia";
+            let apiUrl =
+              "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+            if (img_aleatoria.includes("x-raw-image")) {
+              throw new Error("001 - X-RAW IMAGE");
+            }
+
+            let FormData = require("form-data");
+            let data = new FormData();
+
+            data.append("photo", img_aleatoria);
+            data.append("photo_pic", userpic);
+            data.append("description", desc__);
+            data.append("username", name);
+
+            fetch(apiUrl, {
+              method: "POST",
+              body: data,
+            }).then(function (response) {
+              if (response.ok) {
+                console.log("Bot sonia rodou");
+              }
+            });
+          }
+        );
       }
     }
     puxar_img();
@@ -377,6 +449,41 @@ function bot_dona_sonia() {
         });
       } catch (err) {
         console.log("Erro:", err);
+
+        image_search({ query: desc__, moderate: false, iterations: 2 }).then(
+          (results) => {
+            console.log(results);
+            let i = getRandomInt(0, 10);
+            img_aleatoria = results[i].image;
+
+            let userpic =
+              "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
+            let name = "Dona Sônia";
+            let apiUrl =
+              "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+            if (img_aleatoria.includes("x-raw-image")) {
+              throw new Error("001 - X-RAW IMAGE");
+            }
+
+            let FormData = require("form-data");
+            let data = new FormData();
+
+            data.append("photo", img_aleatoria);
+            data.append("photo_pic", userpic);
+            data.append("description", desc__);
+            data.append("username", name);
+
+            fetch(apiUrl, {
+              method: "POST",
+              body: data,
+            }).then(function (response) {
+              if (response.ok) {
+                console.log("Bot sonia rodou");
+              }
+            });
+          }
+        );
       }
     }
     puxar_img();
@@ -425,6 +532,41 @@ function bot_dona_sonia() {
         });
       } catch (err) {
         console.log("Erro:", err);
+
+        image_search({ query: desc__, moderate: false, iterations: 2 }).then(
+          (results) => {
+            console.log(results);
+            let i = getRandomInt(0, 10);
+            img_aleatoria = results[i].image;
+
+            let userpic =
+              "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
+            let name = "Dona Sônia";
+            let apiUrl =
+              "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+            if (img_aleatoria.includes("x-raw-image")) {
+              throw new Error("001 - X-RAW IMAGE");
+            }
+
+            let FormData = require("form-data");
+            let data = new FormData();
+
+            data.append("photo", img_aleatoria);
+            data.append("photo_pic", userpic);
+            data.append("description", desc__);
+            data.append("username", name);
+
+            fetch(apiUrl, {
+              method: "POST",
+              body: data,
+            }).then(function (response) {
+              if (response.ok) {
+                console.log("Bot sonia rodou");
+              }
+            });
+          }
+        );
       }
     }
     puxar_img();
@@ -922,11 +1064,11 @@ setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
-bot_dona_sonia();
-bot_gringo();
-bot_bitcoin();
-bot_jeiz();
-bot_jacksons();
-bot_g1();
-bot_blogueirinha();
+// bot_dona_sonia();
+// bot_gringo();
+// bot_bitcoin();
+// bot_jeiz();
+// bot_jacksons();
+// bot_g1();
+// bot_blogueirinha();
 bot_dona_sonia();
