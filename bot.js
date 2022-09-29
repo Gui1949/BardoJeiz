@@ -605,7 +605,7 @@ function bot_jacksons() {
     var fileName = "./img/" + imagens[getRandomInt(0, imagens.length)];
     var topoImagem = superiorArray[getRandomInt(0, superiorArray.length)];
     var bottomImagem = inferiorArray[getRandomInt(0, inferiorArray.length)];
-    var loadedImage;
+    let loadedImage;
 
     let nome_img = "bot" + "-" + Date.now() + ".jpeg";
 
@@ -615,6 +615,7 @@ function bot_jacksons() {
         return Jimp.loadFont(Jimp.FONT_SANS_16_WHITE);
       })
       .then(function (font) {
+        loadedImage.resize(276, 183)
         loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
         loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
 
@@ -922,5 +923,5 @@ bot_bitcoin();
 bot_jeiz();
 bot_jacksons();
 bot_g1();
-bot_blogueirinha();
+bot_blogueirinha();;
 bot_dona_sonia();
