@@ -560,7 +560,9 @@ function bot_jacksons() {
     "ei pessoal, ei pessoal",
     "ae mermao",
     "to felizao",
+    "quer saber",
     "tua veia",
+    "ei trosha",
   ];
 
   let inferiorArray = [
@@ -576,6 +578,7 @@ function bot_jacksons() {
     "pega na minha pika",
     "vai se fude",
     "para de ser trosha",
+    "comi seu pai",
     "sua mae sabe q tu eh?",
     "caga na mão e come",
     "q tu eh corno",
@@ -594,6 +597,7 @@ function bot_jacksons() {
     "vai pra puta q te pariu",
     "teu cu eh meu trosha",
     "uma hora dessa ta dando na zona",
+    "fecha o cu pra falar cmg porra"
   ];
 
   console.log(imagens);
@@ -615,7 +619,7 @@ function bot_jacksons() {
         return Jimp.loadFont(Jimp.FONT_SANS_16_WHITE);
       })
       .then(function (font) {
-        loadedImage.resize(276, 183)
+        loadedImage.resize(276, 183);
         loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
         loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
 
