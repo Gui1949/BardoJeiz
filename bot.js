@@ -623,7 +623,7 @@ function bot_jacksons() {
         loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
         loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
 
-        var userpic = "tiozao.jpeg";
+        var userpic = "tiozao.jpg";
         var name = "Jacksons";
         let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
 
@@ -922,11 +922,11 @@ setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
-bot_dona_sonia();
-bot_gringo();
-bot_bitcoin();
-bot_jeiz();
-bot_jacksons()
-bot_g1();
-bot_blogueirinha();
-bot_dona_sonia();
+// bot_dona_sonia();
+// bot_gringo();
+// bot_bitcoin();
+// bot_jeiz();
+bot_jacksons();
+// bot_g1();
+// bot_blogueirinha();
+// bot_dona_sonia();
