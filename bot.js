@@ -597,7 +597,7 @@ function bot_jacksons() {
     "vai pra puta q te pariu",
     "teu cu eh meu trosha",
     "uma hora dessa ta dando na zona",
-    "fecha o cu pra falar cmg porra"
+    "fecha o cu pra falar cmg porra",
   ];
 
   console.log(imagens);
@@ -623,7 +623,7 @@ function bot_jacksons() {
         loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
         loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
 
-        var userpic = "img/galo.jpeg";
+        var userpic = "tiozao.jpeg";
         var name = "Jacksons";
         let apiUrl = "https://bardojeiz-server.herokuapp.com/data/upload";
 
@@ -926,7 +926,7 @@ bot_dona_sonia();
 bot_gringo();
 bot_bitcoin();
 bot_jeiz();
-bot_jacksons();
+bot_jacksons()
 bot_g1();
 bot_blogueirinha();
 bot_dona_sonia();
