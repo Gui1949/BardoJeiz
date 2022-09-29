@@ -320,7 +320,7 @@ function bot_jeiz() {
 
 function bot_dona_sonia() {
   const date = new Date();
-  let time = date.getHours();
+  let time = date.getHours() - 3;
 
   if (time >= 8 && time <= 12) {
     let descricao_ = [
