@@ -59,7 +59,7 @@ Atualmente o Bar do Jeiz está distribuído em quatro Branchs:
 
 ## Meta
 
-Guilherme Floriano – [@xxpoliclinicaxx](https://twitter.com/xxpoliclinicaxx) – guilhermesantiago12@gmail.com
+Guilherme Floriano – guilhermesantiago12@gmail.com
 
 [https://github.com/Gui1949](https://github.com/Gui1949/)
 
