@@ -9,7 +9,6 @@ import Navbar from "./components/Navbar";
 import "./loader.css";
 
 let url = "https://bardojeiz-server.herokuapp.com/data";
-// let url = "http://localhost:80/data";
 
 const like = (id_btn) => {
   let id_trat = "";
