@@ -36,7 +36,6 @@ function dislike(id_btn) {
   id_trat = id_btn.replace(/[^0-9\.]+/g, "");
 
   let objeto_desfazer = document.getElementById("btn_like_" + id_trat);
-  // objeto_desfazer.style.color = "#95a5a6";
 
   let objeto = document.getElementById("btn_dislike_" + id_trat);
 
@@ -194,7 +193,14 @@ function Feed() {
 
   if (user == "") {
     lista_feed = lerdados.map((ler_dados) => (
-      <div id="post_feed" className="posts">
+      <div
+        id={
+          ler_dados.USERNAME == "Publicidade"
+            ? "post_merchan"
+            : "post_feed"
+        }
+        className="posts"
+      >
         <div id="header">
           <div className="avatar">
             <img className="avatar_img" src={ler_dados.USER_PIC} />
@@ -218,7 +224,11 @@ function Feed() {
                   className="nav__icon"
                   color="textPrimary"
                 ></Typography>
-                <p className="data_post">{ler_dados.POST_DATA}</p>
+                <p className="data_post">
+                  {ler_dados.USERNAME == "Publicidade"
+                    ? "MATERIAL PUBLICITÁRIO"
+                    : ler_dados.POST_DATA}
+                </p>
               </React.Fragment>
             }
           />
@@ -243,23 +253,16 @@ function Feed() {
         />
 
         <div id="botoes_reacao">
-          {/* <button
-            className="reacao_btn"
-            id={"btn_like_" + ler_dados.ID}
-            onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
-          >
-            <i className="material-icons" id="font_like">
-              thumb_up
-            </i>
-          </button> */}
           <button
             className="reacao_btn"
             id={"btn_dislike_" + ler_dados.ID}
             onClick={() => dislike(JSON.stringify(ler_dados, ["ID"]))}
           >
-            <i className="material-icons" id="font_dislike">
-              thumb_down
-            </i>
+            {ler_dados.USERNAME == "Publicidade" ? null : (
+              <i className="material-icons" id="font_dislike">
+                thumb_down
+              </i>
+            )}
           </button>
         </div>
       </div>
@@ -299,15 +302,6 @@ function Feed() {
           />
 
           <div id="botoes_reacao">
-            <button
-              className="reacao_btn"
-              id={"btn_like_" + ler_dados.ID}
-              onClick={() => like(JSON.stringify(ler_dados, ["ID"]))}
-            >
-              <i className="material-icons" id="font_like">
-                thumb_up
-              </i>
-            </button>
             <button
               className="reacao_btn"
               id={"btn_dislike_" + ler_dados.ID}
