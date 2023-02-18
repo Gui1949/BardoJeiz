@@ -841,7 +841,7 @@ function bot_merchan() {
       console.log("Erro:", err);
       console.log("Mudando para DuckDuckGo");
 
-      image_search({ query: desc, moderate: false, iterations: 2 }).then(
+      image_search({ query: desc_merchan, moderate: false, iterations: 2 }).then(
         (results) => {
           console.log(results);
           let i = getRandomInt(0, 10);
