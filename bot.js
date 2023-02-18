@@ -28,6 +28,7 @@ function bot_jeiz() {
     "faca enferrujada",
     "zap",
     "ponte preta",
+    "fela da puta",
   ];
 
   let verb_lig = [
@@ -39,12 +40,9 @@ function bot_jeiz() {
     "fica",
     "continua",
     "gosta",
-    "quer",
   ];
 
   let pron_adj = [
-    "meu",
-    "nosso",
     "foda",
     "filho da puta",
     "corno",
@@ -117,7 +115,7 @@ function bot_jeiz() {
     "atenção: a partir de agora o roubo na sinuca vai ter PUNIÇÃO SEVERA",
     "FORAM ME DENUNCIAR PQ AGREDI UM IDOSO NO MEU BAR... ele roubou na sinuca, EU VI",
     "estou vendendo batata e cebola, pra virar serviço essencial, agora é MERCEARIA DO JEIZ",
-    "#BOLSONAROLIBERAARINHADEGALO",
+    "#LULALIBERAARINHADEGALO",
     "ganhei no bicho, hj tem rodada na minha conta",
     "apostei tudo que ganhei no bicho no ponte preta e perdi",
     "jogos de azar são de azar mesmo, descobri aqui",
@@ -133,74 +131,6 @@ function bot_jeiz() {
     "um salve pro meu primo javier",
     "clonei o cartão do bicheiro fdp, hj tem rodada na conta desse CHIFRUDO!!!!!!",
     "quando fui pra portugal, arrumei uma briga muito feia com a mafia russa",
-  ];
-
-  let imagem = [
-    "https://afabrica.bar/wp-content/uploads/2018/07/botequim-do-hugo.jpg",
-    "https://www.youtube.com/watch?v=6xa6F7ntzJU",
-    "https://www.clicrbs.com.br/imagesrc/5572057.jpg",
-    "https://images.redetv.uol.com.br/public/jornalismo/redetvinoticias/20200110155648NqUiNaXlhR.png",
-    "https://static-wp-tor15-prd.torcedores.com/wp-content/uploads/2015/10/varzea.jpg",
-    "https://imganuncios.mitula.net/chevrolet_chevette_1992_gasolina_chevrolet_chevette_lslsledlse_1_6_1992_gasolina_cinza_2490082599395995638.jpg",
-    "https://i.ytimg.com/vi/ajyXB2eQd-0/hqdefault.jpg",
-    "https://acervo.oglobo.globo.com/incoming/23270993-3db-b48/imagemVerticalFotogaleria/40380842_23061999DIVULGACAO-CROMOEXT-SXCANTOR-REGINALDO-ROSSI.jpg",
-    "https://64.media.tumblr.com/0cabf68dfb6413acf75179c3850356e1/tumblr_ml442vIeZP1so06jbo1_1280.jpg",
-    "https://4.bp.blogspot.com/-0ZoabEfNkCI/U5Nra3XaVRI/AAAAAAAAC0o/2bVy7OC1h5U/s1600/CINE+FLORIDA+-+GUARULHOS.jpg",
-    "https://i.ytimg.com/vi/ZoAFngyIuZY/hqdefault.jpg",
-    "https://i.ytimg.com/vi/StE0GLJmDu4/hqdefault.jpg",
-    "https://i.ytimg.com/vi/YVcUBoxYx1w/sddefault.jpg",
-    "https://vejario.abril.com.br/wp-content/uploads/2016/12/jboni1.jpg",
-    "https://www.futebolinterior.com.br/Imagem/2050467195/727x489",
-    "https://s2.glbimg.com/gedlN4QRYwb2srRKnG4dXBN-kUw=/s.glbimg.com/og/rg/f/original/2014/12/17/tv_de_tubo.jpg",
-    "https://i.ytimg.com/vi/ZUUC3O8XZ5c/maxresdefault.jpg",
-    "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127",
-    "https://1.bp.blogspot.com/-KPMdzobvHtc/VziZKycsS2I/AAAAAAAADCE/ecYMC6knO80wD6dolQcjgOfkyTf9qpquwCLcB/s400/bebado.jpg",
-    "https://d1o6h00a1h5k7q.cloudfront.net/imagens/img_m/8044/3450347.jpg",
-    "https://miro.medium.com/max/3838/1*2P9GSHpGl64ZLwrwnOn9hQ.jpeg",
-    "https://pesqueiropontepreta.com.br/wp-content/uploads/2017/12/Peixe-Tambac%C3%BA.jpeg",
-    "https://i.ytimg.com/vi/rWghZZ8y7i0/mqdefault.jpg",
-    "https://www.youtube.com/watch?v=JyJfS7BpeDg",
-    "https://www.youtube.com/watch?v=SjU4u6C-eaA",
-    "https://www.youtube.com/watch?v=lR-kdXr9ZvM",
-    "https://www.youtube.com/watch?v=jwI1j7sslYI",
-    "https://www.youtube.com/watch?v=6a4pVMQ8pnY",
-    "https://www.youtube.com/watch?v=wWUPdA9n01o",
-    "https://www.youtube.com/watch?v=PpEABeH4dw8",
-    "https://www.youtube.com/watch?v=QWVdyVd79HI",
-    "https://www.youtube.com/watch?v=ZA5F2Z6gLzE",
-    "https://www.youtube.com/watch?v=wAeejHGBazg",
-    "https://www.youtube.com/watch?v=izGwDsrQ1eQ",
-    "https://www.youtube.com/watch?v=wPh-MK_5k_k",
-    "https://www.youtube.com/watch?v=CKTkigVUNBc",
-    "https://www.youtube.com/watch?v=H6wl-EyhXl0",
-    "https://www.youtube.com/watch?v=fUjOfsoBhMY",
-    "https://www.youtube.com/watch?v=8_7qkRwcMFc",
-    "https://www.youtube.com/watch?v=KRttQEyK4F8",
-    "https://i.pinimg.com/564x/b6/74/5e/b6745ef924d75e11eb4af59c88a99355.jpg",
-    "https://i.pinimg.com/736x/19/5f/0d/195f0dae8d35417d39cdf1ced4001f06.jpg",
-    "https://images3.memedroid.com/images/UPLOADED465/5c1f0af23834a.jpeg",
-    "https://images7.memedroid.com/images/UPLOADED598/57979854243c5.jpeg",
-    "https://www.notibras.com/site/wp-content/uploads/2018/03/cerveja.jpg",
-    "https://www.youtube.com/watch?v=KXkxznwWXug",
-    "https://www.youtube.com/watch?v=4XKGfziuw5c",
-    "https://www.youtube.com/watch?v=gbdqaDRhs84",
-    "https://www.youtube.com/watch?v=BtKg458XAHk",
-    "https://www.youtube.com/watch?v=Sc9j7YBcVO8",
-    "https://www.youtube.com/watch?v=gbdqaDRhs84",
-    "https://www.youtube.com/watch?v=bdXr_PiQoTc",
-    "https://www.youtube.com/watch?v=9fMPltVszpQ",
-    "https://www.youtube.com/watch?v=WUT6qnYw9Dc",
-    "https://www.youtube.com/watch?v=3CQfom3ceCk",
-    "https://www.youtube.com/watch?v=nXyHfv6XUSc",
-    "https://www.youtube.com/watch?v=uK62BM7pnMA",
-    "https://www.youtube.com/watch?v=qi0VCZhum2c",
-    "https://www.youtube.com/watch?v=hyGfCUVpD_k",
-    "https://www.youtube.com/watch?v=ItIMvLKeKME",
-    "https://www.youtube.com/watch?v=PoLKlQwwQTg",
-    "https://i.redd.it/u7rqhnmy7yc31.jpg",
-    "https://www.youtube.com/watch?v=Yc3Hff6WL9k",
-    "https://i.ytimg.com/vi/hyGfCUVpD_k/hqdefault.jpg",
-    "https://media.tenor.com/images/cea228dc3a8012d41fa7e0373ddbce2b/tenor.gif",
   ];
 
   tipo_frase = getRandomInt(0, 10);
@@ -830,6 +760,125 @@ function bot_gringo() {
   });
 }
 
+function bot_merchan() {
+  const merchanArray = [
+    "Venha conhecer o Cabaré da Leila, o lugar perfeito para quem busca diversão e descontração! Aqui você encontra as mais belas dançarinas da região, bebidas de alta qualidade e um ambiente aconchegante e seguro. Não perca mais tempo e venha nos visitar!",
+    "Quer sair da rotina e aproveitar uma noite incrível? Então venha para o Cabaré da Leila! Aqui você encontra as melhores atrações, incluindo shows de strip-tease, música ao vivo e muito mais. Nossa equipe de funcionários está pronta para recebê-lo e garantir que sua noite seja inesquecível!",
+    "Se você procura um lugar onde possa se divertir sem preocupações, o Cabaré da Leila é o lugar certo! Aqui você encontra um ambiente seguro e discreto, com as melhores bebidas e as mais belas dançarinas da região. Venha nos visitar e descubra por que somos considerados o melhor cabaré da cidade!",
+    "Não perca mais tempo procurando um lugar para se divertir! O Cabaré da Leila é o local perfeito para quem busca uma noite de pura diversão e prazer. Aqui você encontra tudo o que precisa para relaxar e aproveitar, incluindo bebidas de alta qualidade, música animada e um ambiente aconchegante e discreto.",
+    "Se você quer viver uma experiência única e inesquecível, o Cabaré da Leila é o lugar certo! Aqui você encontra as mais belas dançarinas, shows incríveis e um ambiente seguro e discreto. Não importa se você está sozinho ou acompanhado, no Cabaré da Leila você sempre encontra diversão e prazer garantidos!",
+    "Não pode faltar no seu rolê a música do momento: 'Gol Quadrado' do MC Floripão. Ouça agora mesmo!",
+    "O hit que tá fazendo sucesso nas paradas é 'Gol Quadrado' do MC Floripão. Escute já!",
+    "Não tem como ficar parado ao som de 'Gol Quadrado' do MC Floripão. Dê o play!",
+    "A música que não sai da cabeça de ninguém é 'Gol Quadrado' do MC Floripão. Aperte o play e confira!",
+    "Se você ainda não ouviu 'Gol Quadrado' do MC Floripão, não sabe o que está perdendo. Ouça agora mesmo!",
+    "Cansado de bares lotados e sem graça? Venha para o Bar do Jeiz, onde a diversão é garantida! Aqui você encontra um ambiente acolhedor, drinks deliciosos e um atendimento impecável. Nada de filas intermináveis e bebidas mal feitas, aqui é só alegria!",
+    "Se você quer beber em um lugar onde o atendimento é top e a qualidade das bebidas é garantida, o Bar do Jeiz é o seu lugar! Venha experimentar nossos drinks exclusivos e curtir um ambiente descontraído e aconchegante. Aqui você é tratado como um rei!",
+    "No Bar do Jeiz, a diversão é levada a sério! Nossos drinks são preparados com os melhores ingredientes e nosso atendimento é incomparável. Aqui você se sente em casa e pode curtir um clima descontraído com os amigos. Venha conferir!",
+    "Quer beber em um lugar onde a qualidade é garantida e o atendimento é de primeira? Então venha para o Bar do Jeiz, o lugar perfeito para quem sabe o que é bom! Aqui você encontra drinks exclusivos, petiscos deliciosos e um ambiente agradável e acolhedor. Não perca mais tempo no Bar do João, venha para o Bar do Jeiz!",
+    "No Bar do Jeiz, você é tratado com respeito e atenção. Nossos drinks são preparados com esmero e nossos petiscos são deliciosos. Aqui você encontra um ambiente agradável e descontraído, perfeito para curtir um happy hour com os amigos. Venha experimentar e comprovar por que somos superiores ao Bar do João!",
+    "Quer conhecer um lugar incrível? Então venha para o Inferninho La Honda! Aqui você encontra drinks deliciosos, música boa e um ambiente descontraído. Vem com a gente!",
+    "No Inferninho La Honda, a diversão é garantida! Aqui você encontra um ambiente animado, drinks exclusivos e muita música boa. Vem curtir com a gente!",
+    "Não perca mais tempo em lugares sem graça. Venha para o Inferninho La Honda, onde a festa não para! Aqui você encontra drinks especiais, petiscos deliciosos e um clima descontraído. Vem pra cá!",
+    "O Inferninho La Honda é o lugar perfeito para quem sabe o que é bom! Aqui você encontra um ambiente agradável, drinks de qualidade e muita música boa. Não perca mais tempo, vem pra cá!",
+    "Quer curtir uma noite incrível? Então venha para o Inferninho La Honda, o lugar onde a diversão não tem hora pra acabar! Aqui você encontra drinks exclusivos, petiscos deliciosos e um clima animado. Vem com a gente!",
+    "Quer experimentar a cachaça mais autêntica do Brasil? Então vem provar a Pimba! Com sua mistura única de sabores, ela é perfeita para animar qualquer festa. Afim de dar uma pimbada? Cachaça Pimba!",
+    "Não há nada melhor do que uma noite com os amigos e a cachaça Pimba! Com seu sabor único e envolvente, ela é ideal para deixar a festa ainda mais animada. Afim de dar uma pimbada? Cachaça Pimba!",
+    "A cachaça Pimba é perfeita para quem sabe apreciar uma boa bebida. Seu sabor marcante e incomparável é o que a torna tão especial. Com ela, sua noite nunca mais será a mesma. Afim de dar uma pimbada? Cachaça Pimba!",
+    "Quer experimentar uma cachaça que vai mudar sua vida? Então vem provar a Pimba! Com sua mistura de sabores exclusiva, ela é a escolha certa para quem quer animar a festa. Afim de dar uma pimbada? Cachaça Pimba!",
+    "A cachaça Pimba é a escolha certa para quem quer experimentar o que há de melhor na cultura brasileira. Seu sabor marcante e único é o que a torna tão especial. Afim de dar uma pimbada? Cachaça Pimba!",
+    "Precisando de ajuda para resolver aquele problema em casa? Marido de Aluguel Brandão está aqui para ajudá-lo! Com anos de experiência em reparos e manutenção, ele tem a solução perfeita para você. Gambiarra? Ta na mão, fale com Brandão!",
+    "Quer resolver aquela gambiarra que você fez em casa e precisa de um especialista? Marido de Aluguel Brandão é o seu homem! Com rapidez e eficiência, ele vai deixar tudo funcionando novamente. Gambiarra? Ta na mão, fale com Brandão!",
+    "Precisando de uma mãozinha para consertar aquele vazamento na torneira ou instalar uma prateleira? Marido de Aluguel Brandão está aqui para ajudá-lo! Com preços acessíveis e serviços de qualidade, ele é a escolha perfeita. Gambiarra? Ta na mão, fale com Brandão!",
+    "Não sabe como resolver aquela situação complicada em casa? Marido de Aluguel Brandão é a resposta para todos os seus problemas! Com experiência em serviços de manutenção, ele tem a habilidade para consertar qualquer coisa. Gambiarra? Ta na mão, fale com Brandão!",
+    "Quer consertar aquela porta que está emperrando ou precisando de ajuda para instalar uma nova fechadura? Marido de Aluguel Brandão está aqui para ajudá-lo! Com sua experiência e profissionalismo, ele garante um serviço de qualidade. Gambiarra? Ta na mão, fale com Brandão!",
+    "Procurando por sinais de vida extraterrestre? O Caçador de Extraterrestres Juninho Cesar tem a habilidade e a tecnologia necessárias para encontrar os mistérios do universo. Vamos descobrir juntos o que há lá fora!",
+    "Se você acredita em vida extraterrestre e quer descobrir os segredos do universo, o Caçador de Extraterrestres Juninho Cesar é o seu homem! Com anos de experiência em investigação alienígena, ele está pronto para ajudá-lo a encontrar a verdade. Vamos juntos nessa aventura!",
+    "Você acredita em vida extraterrestre e quer descobrir se realmente existem seres de outro planeta aqui na Terra? O Caçador de Extraterrestres Juninho Cesar tem a técnica e o equipamento necessários para investigar e descobrir a verdade. Vamos juntos nessa missão!",
+    "Já viu algo estranho no céu e acha que pode ter sido um OVNI? O Caçador de Extraterrestres Juninho Cesar é especialista em avistamentos de objetos voadores não identificados e pode ajudá-lo a desvendar esse mistério. Vamos juntos nessa investigação!",
+    "Se você é um entusiasta de vida extraterrestre e quer explorar o universo com alguém que compartilha da mesma paixão, o Caçador de Extraterrestres Juninho Cesar é a pessoa certa! Com sua experiência e conhecimento, ele pode ajudá-lo a descobrir o que há além dos limites da Terra. Vamos nessa aventura juntos!",
+    "Cansada de limpar a casa? Experimente a bebida Lustra Móveis! Criada especialmente para as donas de casa, ela vai deixar sua casa limpa e sua vida mais feliz. Com Lustra Móveis, limpar a casa nunca foi tão fácil!",
+    "Se você é uma dona de casa que adora uma novidade, precisa experimentar a bebida Lustra Móveis! Além de deixar sua casa limpinha, ela tem um sabor incrível que vai deixar você com água na boca. Não perca mais tempo e experimente já!",
+    "Já imaginou beber algo que além de delicioso, ainda ajuda a limpar a casa? A bebida Lustra Móveis faz exatamente isso! Com seu sabor único e sua fórmula exclusiva, ela é a escolha perfeita para quem quer ter uma casa limpa e uma vida cheia de sabor.",
+    "Quer deixar sua casa limpinha e ainda aproveitar um sabor incrível? Então experimente a bebida Lustra Móveis! Criada especialmente para as donas de casa, ela é a escolha certa para quem busca praticidade e sabor em um só produto. Não perca mais tempo e experimente agora!",
+    "Se você é uma dona de casa que está sempre procurando por produtos que facilitem a rotina, precisa conhecer a bebida Lustra Móveis! Com sua fórmula exclusiva e seu sabor delicioso, ela vai deixar sua casa limpa e sua vida muito mais prática. Experimente agora mesmo!",
+  ];
+
+  desc_merchan = merchanArray[getRandomInt(0, merchanArray.length)];
+
+  async function puxar_img() {
+    try {
+      await client.search(desc_merchan).then((images) => {
+        let i = getRandomInt(0, 10);
+        img_aleatoria_ = images[i].url;
+        var userpic_merchan =
+          "https://bardojeiz-server.herokuapp.com/data/img/propaganda.jpeg";
+        var name1 = "Publicidade";
+        let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+        if (img_aleatoria_.includes("x-raw-image")) {
+          throw new Error("001 - X-RAW IMAGE");
+        }
+
+        let FormData = require("form-data");
+        let data = new FormData();
+
+        data.append("photo", img_aleatoria_);
+        data.append("photo_pic", userpic_merchan);
+        data.append("description", desc_merchan);
+        data.append("username", name1);
+
+        fetch(apiUrl, {
+          method: "POST",
+          body: data,
+        }).then(function (response) {
+          if (response.ok) {
+            console.log("Bot JEIZ rodou");
+          }
+        });
+      });
+    } catch (err) {
+      console.log("Erro:", err);
+      console.log("Mudando para DuckDuckGo");
+
+      image_search({ query: desc, moderate: false, iterations: 2 }).then(
+        (results) => {
+          console.log(results);
+          let i = getRandomInt(0, 10);
+          img_aleatoria_ = results[i].image;
+
+          var userpic_merchan =
+            "https://bardojeiz-server.herokuapp.com/data/img/propaganda.jpeg";
+          var name1 = "Publicidade";
+          let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
+
+          if (img_aleatoria_.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria_);
+          data.append("photo_pic", userpic_merchan);
+          data.append("description", desc_merchan);
+          data.append("username", name1);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot PUBLICIDADE rodou");
+            }
+          });
+        }
+      );
+    }
+  }
+  puxar_img();
+}
+
 function bot_g1() {
   let Parser = require("rss-parser");
   let parser = new Parser();
@@ -1050,6 +1099,8 @@ function bot_bitcoin() {
 //     });
 // }
 
+setInterval(bot_merchan, 600000);
+
 setInterval(bot_gringo, 6000000);
 
 setInterval(bot_bitcoin, 800000);
@@ -1064,6 +1115,7 @@ setInterval(bot_blogueirinha, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
+bot_merchan();
 bot_dona_sonia();
 bot_gringo();
 bot_bitcoin();
