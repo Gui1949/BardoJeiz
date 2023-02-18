@@ -844,7 +844,7 @@ function bot_merchan() {
       image_search({ query: desc_merchan, moderate: false, iterations: 2 }).then(
         (results) => {
           console.log(results);
-          let i = getRandomInt(0, 10);
+          let i = getRandomInt(0, 4);
           img_aleatoria_ = results[i].image;
 
           var userpic_merchan =
