@@ -812,7 +812,7 @@ function bot_merchan() {
         let i = getRandomInt(0, 10);
         img_aleatoria_ = images[i].url;
         var userpic_merchan =
-          "https://bardojeiz-server.herokuapp.com/data/img/propaganda.jpeg";
+          "https://bardojeiz-server.herokuapp.com/data/img/propaganda.png";
         var name1 = "Publicidade";
         let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
 
@@ -848,7 +848,7 @@ function bot_merchan() {
           img_aleatoria_ = results[i].image;
 
           var userpic_merchan =
-            "https://bardojeiz-server.herokuapp.com/data/img/propaganda.jpeg";
+            "https://bardojeiz-server.herokuapp.com/data/img/propaganda.png";
           var name1 = "Publicidade";
           let apiUrl = "https://bardojeiz-server.herokuapp.com/data/bot_upload";
 
