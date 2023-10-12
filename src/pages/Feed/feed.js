@@ -8,7 +8,7 @@ import Conteudo from "./components/Conteudo";
 import Navbar from "./components/Navbar";
 import "./loader.css";
 
-let url = "https://bardojeiz-server.herokuapp.com/data";
+let url = "https://bar-do-jeiz.onrender.com/data";
 
 const like = (id_btn) => {
   let id_trat = "";
@@ -19,7 +19,7 @@ const like = (id_btn) => {
   let objeto = document.getElementById("btn_like_" + id_trat);
   colorir(objeto);
 
-  fetch("https://bardojeiz-server.herokuapp.com/data/like", {
+  fetch("https://bar-do-jeiz.onrender.com/data/like", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -41,7 +41,7 @@ function dislike(id_btn) {
 
   colorir(objeto);
 
-  fetch("https://bardojeiz-server.herokuapp.com/data/dislike", {
+  fetch("https://bar-do-jeiz.onrender.com/data/dislike", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -147,7 +147,7 @@ function Feed() {
   const [news, setNews] = React.useState({});
 
   if (puxando == 0) {
-    fetch("https://bardojeiz-server.herokuapp.com/data", {
+    fetch("https://bar-do-jeiz.onrender.com/data", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -164,7 +164,7 @@ function Feed() {
   }
 
   if (puxando == 0) {
-    fetch("https://bardojeiz-server.herokuapp.com/news", {
+    fetch("https://bar-do-jeiz.onrender.com/news", {
       method: "GET",
       headers: {
         Accept: "application/json",
