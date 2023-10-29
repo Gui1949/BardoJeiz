@@ -134,7 +134,7 @@ function bot_jeiz() {
     "clonei o cartão do bicheiro fdp, hj tem rodada na conta desse CHIFRUDO!!!!!!",
     "quando fui pra portugal, arrumei uma briga muito feia com a mafia russa",
     "AVISO: estão confundindo o bar com o puteiro da leila! É O ESTABELECIMENTO AO LADO. PRESTEM ATENÇÃO",
-    "CUIDADO, ESTÃO ACONTECENDO FENOMENOS EXTRATERRESTRES NO BAR!!!!"
+    "CUIDADO, ESTÃO ACONTECENDO FENOMENOS EXTRATERRESTRES NO BAR!!!!",
   ];
 
   tipo_frase = getRandomInt(0, 10);
@@ -564,7 +564,7 @@ function bot_blogueirinha() {
 
   async function puxar_img() {
     try {
-      await client.search("girl summer vibes tumblr").then((images) => {
+      await client.search("bunda rebolando").then((images) => {
         let i = getRandomInt(0, 10);
         img_aleatoria = images[i].url;
         let userpic =
@@ -595,6 +595,43 @@ function bot_blogueirinha() {
       });
     } catch (err) {
       console.log("Erro:", err);
+      console.log("Mudando para DuckDuckGo");
+
+      image_search({
+        query: "bunda rebolando",
+        moderate: false,
+        iterations: 2,
+      }).then((results) => {
+        console.log(results);
+        let i = getRandomInt(0, 100);
+        let img_aleatoria_ = results[i].image;
+
+        var userpic_julcimara =
+          "https://wp-cdn.etiquetaunica.com.br/blog/wp-content/uploads/2018/08/11122702/capa-post-top-blogueiras-brasileiras-compressed.jpg";
+        var name1 = "Julcimara Blog";
+        let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+        if (img_aleatoria_.includes("x-raw-image")) {
+          throw new Error("001 - X-RAW IMAGE");
+        }
+
+        let FormData = require("form-data");
+        let data = new FormData();
+
+        data.append("photo", img_aleatoria_);
+        data.append("photo_pic", userpic_julcimara);
+        data.append("description", desc_);
+        data.append("username", name1);
+
+        fetch(apiUrl, {
+          method: "POST",
+          body: data,
+        }).then(function (response) {
+          if (response.ok) {
+            console.log("Bot Julcimara rodou");
+          }
+        });
+      });
     }
   }
   puxar_img();
@@ -930,82 +967,87 @@ function bot_g1() {
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
 
-  (async () => {
-    let feed = await parser.parseURL(url);
-    try {
-      icone = feed.image.url;
-    } catch {
-      icone =
-        "https://thumbs.dreamstime.com/b/%C3%ADcone-liso-do-vetor-das-not%C3%ADcias-do-mundo-ilustra%C3%A7%C3%A3o-do-logotipo-do-s%C3%ADmbolo-da-not%C3%ADcia-95819924.jpg";
-    }
-    titulo = feed.title;
-    // link = feed.link;
-
-    feed.items.forEach((item) => {
-      while (i < 1) {
-        let head_noticia = titulo + ": " + item.title;
-        let conteudo_bruto = item.content;
-        link = item.link;
-        console.log(item);
-
-        find_img_ini = conteudo_bruto.search("<img src=");
-        find_img_fi = conteudo_bruto.search("/>");
-
-        let img = conteudo_bruto.slice(find_img_ini, find_img_fi);
-        img = img.replace('<img src="', "");
-        img = img.replace('"', "");
-        img = img.replace(/amp;/g, "");
-        img = img.replace(/>/g, "");
-        img = img.replace(/<br/g, "");
-        console.log(img);
-
-        if (img == "") {
-          async function puxar_img() {
-            try {
-              await client.search(item.title).then((images) => {
-                img_srch = images[0].url;
-                console.log(img_srch);
-                send_g1(img_srch, icone, head_noticia, "Informes", link);
-              });
-            } catch (err) {
-              console.log("Erro:", err);
-              input =
-                "https://picsum.photos/500/500?random=" +
-                [getRandomInt(0, 999)];
-              send_g1(input, icone, head_noticia, "Informes", link);
-            }
-          }
-          puxar_img();
-        } else {
-          send_g1(img, icone, head_noticia, "Informes", link);
-        }
-
-        i++;
+  try{
+    (async () => {
+      let feed = await parser.parseURL(url);
+      try {
+        icone = feed.image.url;
+      } catch {
+        icone =
+          "https://thumbs.dreamstime.com/b/%C3%ADcone-liso-do-vetor-das-not%C3%ADcias-do-mundo-ilustra%C3%A7%C3%A3o-do-logotipo-do-s%C3%ADmbolo-da-not%C3%ADcia-95819924.jpg";
       }
-    });
-
-    async function send_g1(img, icone, head_noticia, titulo, link) {
-      var FormData = require("form-data");
-      var data = new FormData();
-
-      let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
-
-      data.append("photo", img);
-      data.append("photo_pic", icone);
-      data.append("description", head_noticia);
-      data.append("username", titulo);
-      data.append("link", link);
-
-      await fetch(apiUrl, {
-        method: "POST",
-        body: data,
-      }).then(function (response) {
-        if (response.ok) {
-          console.log("Bot G1 rodou");
+      titulo = feed.title;
+      // link = feed.link;
+  
+      feed.items.forEach((item) => {
+        while (i < 1) {
+          let head_noticia = titulo + ": " + item.title;
+          let conteudo_bruto = item.content;
+          link = item.link;
+          console.log(item);
+  
+          find_img_ini = conteudo_bruto.search("<img src=");
+          find_img_fi = conteudo_bruto.search("/>");
+  
+          let img = conteudo_bruto.slice(find_img_ini, find_img_fi);
+          img = img.replace('<img src="', "");
+          img = img.replace('"', "");
+          img = img.replace(/amp;/g, "");
+          img = img.replace(/>/g, "");
+          img = img.replace(/<br/g, "");
+          console.log(img);
+  
+          if (img == "") {
+            async function puxar_img() {
+              try {
+                await client.search(item.title).then((images) => {
+                  img_srch = images[0].url;
+                  console.log(img_srch);
+                  send_g1(img_srch, icone, head_noticia, "Informes", link);
+                });
+              } catch (err) {
+                console.log("Erro:", err);
+                input =
+                  "https://picsum.photos/500/500?random=" +
+                  [getRandomInt(0, 999)];
+                send_g1(input, icone, head_noticia, "Informes", link);
+              }
+            }
+            puxar_img();
+          } else {
+            send_g1(img, icone, head_noticia, "Informes", link);
+          }
+  
+          i++;
         }
       });
-    }
-  })();
+  
+      async function send_g1(img, icone, head_noticia, titulo, link) {
+        var FormData = require("form-data");
+        var data = new FormData();
+  
+        let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+  
+        data.append("photo", img);
+        data.append("photo_pic", icone);
+        data.append("description", head_noticia);
+        data.append("username", titulo);
+        data.append("link", link);
+  
+        await fetch(apiUrl, {
+          method: "POST",
+          body: data,
+        }).then(function (response) {
+          if (response.ok) {
+            console.log("Bot G1 rodou");
+          }
+        });
+      }
+    })();
+  }
+  catch (e){
+    console.log(e, url)
+  }
 }
 
 function bot_bitcoin() {
