@@ -637,128 +637,238 @@ function bot_blogueirinha() {
   puxar_img();
 }
 
-function bot_jacksons() {
-  let Jimp = require("jimp");
+// function bot_jacksons() {
+//   let Jimp = require("jimp");
 
-  let superiorArray = [
-    "vou falar só uma vez",
-    "tem um viado me olhando",
-    "todo mundo",
-    "as vezes no silencio da noite",
-    "ae, na moral",
-    "fala aí",
-    "só tem corno nesse porra",
-    "ei gatinha",
-    "me ve uma dose aí",
-    "cara, se liga",
-    "ei",
-    "aew papito",
-    "homem q eh homem",
-    "to lendo aq",
-    "PARA PARA PARA",
-    "quando falarem mal de vc",
-    "ei, tu foi no passeio?",
-    "aí mermão",
-    "as vezes eu fico pensando",
-    "to felizão aqui",
-    "ta vendo ali?",
-    "ce ta ligado ne",
-    "aew novinha",
-    "beleza entao",
-    "cara",
-    "caralho mano",
-    "ei pessoal, ei pessoal",
-    "ae mermao",
-    "to felizao",
-    "quer saber",
-    "tua veia",
-    "ei trosha",
+//   let superiorArray = [
+//     "vou falar só uma vez",
+//     "tem um viado me olhando",
+//     "todo mundo",
+//     "as vezes no silencio da noite",
+//     "ae, na moral",
+//     "fala aí",
+//     "só tem corno nesse porra",
+//     "ei gatinha",
+//     "me ve uma dose aí",
+//     "cara, se liga",
+//     "ei",
+//     "aew papito",
+//     "homem q eh homem",
+//     "to lendo aq",
+//     "PARA PARA PARA",
+//     "quando falarem mal de vc",
+//     "ei, tu foi no passeio?",
+//     "aí mermão",
+//     "as vezes eu fico pensando",
+//     "to felizão aqui",
+//     "ta vendo ali?",
+//     "ce ta ligado ne",
+//     "aew novinha",
+//     "beleza entao",
+//     "cara",
+//     "caralho mano",
+//     "ei pessoal, ei pessoal",
+//     "ae mermao",
+//     "to felizao",
+//     "quer saber",
+//     "tua veia",
+//     "ei trosha",
+//   ];
+
+//   let inferiorArray = [
+//     "vai toma no cu aew",
+//     "tu eh korno que eu sei",
+//     "agora ele ta disfarçando",
+//     "da muito eh o cu",
+//     "pega no meu pau",
+//     "como q tu eh tão corno?",
+//     "to mentindo?",
+//     "me da uma mamadinha",
+//     "caralho",
+//     "pega na minha pika",
+//     "vai se fude",
+//     "para de ser trosha",
+//     "comi seu pai",
+//     "sua mae sabe q tu eh?",
+//     "caga na mão e come",
+//     "q tu eh corno",
+//     "para de ser trosha",
+//     "foda-se porra",
+//     "passei o pal na tua cara",
+//     "porra, vai toma no cu porra",
+//     "sei la caralho",
+//     "tua mae eh minha",
+//     "ala teu pai",
+//     "pode passar o redondo",
+//     "toma no cu viu",
+//     "fica de boa aew porra",
+//     "tu eh mo trosha pqp",
+//     "pega no meu pal q te levo a portugal",
+//     "vai pra puta q te pariu",
+//     "teu cu eh meu trosha",
+//     "uma hora dessa ta dando na zona",
+//     "fecha o cu pra falar cmg porra",
+//   ];
+
+//   console.log(imagens);
+
+//   fs.readdir(pasta_img, (err, files) => {
+//     files.forEach((file) => {
+//       imagens.push(file);
+//     });
+//     var fileName = "./img/" + imagens[getRandomInt(0, imagens.length)];
+//     var topoImagem = superiorArray[getRandomInt(0, superiorArray.length)];
+//     var bottomImagem = inferiorArray[getRandomInt(0, inferiorArray.length)];
+//     let loadedImage;
+
+//     let nome_img = "bot" + "-" + Date.now() + ".jpeg";
+
+//     Jimp.read(fileName)
+//       .then(function (image) {
+//         loadedImage = image;
+//         return Jimp.loadFont(Jimp.FONT_SANS_16_WHITE);
+//       })
+//       .then(function (font) {
+//         loadedImage.resize(276, 183);
+//         loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
+//         loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
+
+//         var userpic = "tiozao.jpg";
+//         var name = "Jacksons";
+//         let apiUrl = "https://bar-do-jeiz.onrender.com/data/upload";
+
+//         var FormData = require("form-data");
+//         var data = new FormData();
+//         const fetch = require("node-fetch");
+
+//         data.append("photo", fs.createReadStream(nome_img));
+//         data.append("photo_pic", userpic);
+//         data.append("description", "XD");
+//         data.append("username", name);
+
+//         fetch(apiUrl, {
+//           method: "POST",
+//           body: data,
+//         }).then(function (response) {
+//           if (response.ok) {
+//             console.log("Bot Jacksons rodou");
+//           }
+//         });
+//       })
+//       .catch(function (err) {
+//         console.error(err);
+//       });
+//   });
+// }
+
+function bot_bolsonarista() {
+  let descricao_bolsonarista = [
+    "O QUE FALTA NOBRASIL E UMA GUERRA CIVIL",
+    "BOSLONARO TME QUE DAR GOLPE E TIRAR LYLA DO PODER",
+    "COMUNISTSAS SUJOS SAFADOS PORCOS",
+    "BOLSONROAR VAI VOLTAR E VOCES PORCOS ESTARAO LASCADOS",
+    "SERGIO MORO PRESIDERNTE",
+    "LULA QUER TORNAR O BRASIL GAY",
+    "ABAIXOAO COMUNISMO E SOCIALISMO BOLSONARO SEMPRE",
+    "DEUS ABENÇOES NOSSA PATRIA AMADA BRASIL",
+    "SOU PATRIOTA, OS MILITARES SÃO A SALVAÇÃO DO NOSSO PAIS",
+    "FIQUEI ACAMPADO 32 DIAS NA FRENTE DO QUARTEL PARA GARANTIR O GFUTURO DA NSOSSA NASSAO",
+    "POBRES ESQUERDISTAS, NAO SABEM QUE ISSO VAI VIRAR UMA VENEZUELA",
+    "O LULA TEM ENVOLVIMENTO E É CHEFE DO PCC , BOLSONARO PRECISAV VOLRAR PRA TIRAR PTRALHADA",
+    "FORA PTRALHADA FORA DILMA FORA LULA FORA TDOS VOCES SUJOS TRAIDORES DA DEMOCRACIA",
+    "BOLSONARO E PRESIDENTE DE VERDADE HOMEM BIRIRL VIRILIDADE E FE NA NOÇÇA NACAO",
+    "VOLTA BOLSONARO PELOAMORDEDEUS",
+    "BOLSONARO VAI DAR GOLPE JUNTO AS FORÇAS AMADAS DO NOSSO BRASIL",
+    "FORÇAS ARMADAS SALVEM O BRASIL",
+    "REDE GLOVOBOSTA ESQUERDALHA MENTIROSOS APOIAO O LUAL",
+    "AS GORÇAS ASRMADASD JA DEVERIAM TER TIRADO L O LYLLA DO PODER VOLTA BOLSOONRARO",
+    "BOLSONARO O BRASILV ESTA COM VOCE",
+    "FAÇAO PIX PARA O BOLSONARO PARA ELE VOLTARA OAO PODER E DERRUBAR ALEANDRAE DE MORAES",
+    "ALEXANDRA DE MORAESD LADRAO PTRALHA BOLSONOARO VAI TE DERRUBAR",
+    "COM CERTEXXZA O STF VAI SER O PRIMEIRO A CAIR QUAND O OBLSONARO VOLTAR",
+    "BOLSONARO E FAMILA SAO EZEMPLOS DE FAMILIA E VIRILIVDADEDE",
+    "PARTRIA DEUS WE BRASIL A CIMASDE TUDO VOTE BOLSONARO",
   ];
 
-  let inferiorArray = [
-    "vai toma no cu aew",
-    "tu eh korno que eu sei",
-    "agora ele ta disfarçando",
-    "da muito eh o cu",
-    "pega no meu pau",
-    "como q tu eh tão corno?",
-    "to mentindo?",
-    "me da uma mamadinha",
-    "caralho",
-    "pega na minha pika",
-    "vai se fude",
-    "para de ser trosha",
-    "comi seu pai",
-    "sua mae sabe q tu eh?",
-    "caga na mão e come",
-    "q tu eh corno",
-    "para de ser trosha",
-    "foda-se porra",
-    "passei o pal na tua cara",
-    "porra, vai toma no cu porra",
-    "sei la caralho",
-    "tua mae eh minha",
-    "ala teu pai",
-    "pode passar o redondo",
-    "toma no cu viu",
-    "fica de boa aew porra",
-    "tu eh mo trosha pqp",
-    "pega no meu pal q te levo a portugal",
-    "vai pra puta q te pariu",
-    "teu cu eh meu trosha",
-    "uma hora dessa ta dando na zona",
-    "fecha o cu pra falar cmg porra",
-  ];
+  let desc_ = descricao_bolsonarista[getRandomInt(0, descricao_bolsonarista.length)];
 
-  console.log(imagens);
+  let img_aleatoria = "";
 
-  fs.readdir(pasta_img, (err, files) => {
-    files.forEach((file) => {
-      imagens.push(file);
-    });
-    var fileName = "./img/" + imagens[getRandomInt(0, imagens.length)];
-    var topoImagem = superiorArray[getRandomInt(0, superiorArray.length)];
-    var bottomImagem = inferiorArray[getRandomInt(0, inferiorArray.length)];
-    let loadedImage;
+  async function puxar_img() {
+    try {
+      await client
+        .search("bolsonaro mito presidente bandeira do brasil")
+        .then((images) => {
+          let i = getRandomInt(0, 10);
+          let img_aleatoria = images[i].url;
+          let userpic =
+            "https://th.bing.com/th/id/OIP.ZoPDGJ5KbSZOvW-0NT76pAHaFj?pid=ImgDet&rs=1";
+          let name = "EDIVALDO NUNES";
+          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
 
-    let nome_img = "bot" + "-" + Date.now() + ".jpeg";
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
 
-    Jimp.read(fileName)
-      .then(function (image) {
-        loadedImage = image;
-        return Jimp.loadFont(Jimp.FONT_SANS_16_WHITE);
-      })
-      .then(function (font) {
-        loadedImage.resize(276, 183);
-        loadedImage.print(font, 10, 10, topoImagem).write(nome_img);
-        loadedImage.print(font, 10, 150, bottomImagem).write(nome_img);
+          let FormData = require("form-data");
+          let data = new FormData();
 
-        var userpic = "tiozao.jpg";
-        var name = "Jacksons";
-        let apiUrl = "https://bar-do-jeiz.onrender.com/data/upload";
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc_);
+          data.append("username", name);
 
-        var FormData = require("form-data");
-        var data = new FormData();
-        const fetch = require("node-fetch");
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot EDIVALDO rodou");
+            }
+          });
+        });
+    } catch (err) {
+      console.log("Erro:", err);
+      console.log("Mudando para DuckDuckGo");
 
-        data.append("photo", fs.createReadStream(nome_img));
+      image_search({
+        query: "bolsonaro mito presidente bandeira do brasil",
+        moderate: false,
+        iterations: 2,
+      }).then((results) => {
+        console.log(results);
+        let i = getRandomInt(0, 100);
+        let img_aleatoria_ = results[i].image;
+
+        let userpic =
+          "https://th.bing.com/th/id/OIP.ZoPDGJ5KbSZOvW-0NT76pAHaFj?pid=ImgDet&rs=1";
+        let name1 = "EDIVALDO NUNES";
+        let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+        if (img_aleatoria_.includes("x-raw-image")) {
+          throw new Error("001 - X-RAW IMAGE");
+        }
+
+        let FormData = require("form-data");
+        let data = new FormData();
+
+        data.append("photo", img_aleatoria_);
         data.append("photo_pic", userpic);
-        data.append("description", "XD");
-        data.append("username", name);
+        data.append("description", desc_);
+        data.append("username", name1);
 
         fetch(apiUrl, {
           method: "POST",
           body: data,
         }).then(function (response) {
           if (response.ok) {
-            console.log("Bot Jacksons rodou");
+            console.log("Bot EDIVALDO rodou");
           }
         });
-      })
-      .catch(function (err) {
-        console.error(err);
       });
-  });
+    }
+  }
+  puxar_img();
 }
 
 function bot_gringo() {
@@ -967,7 +1077,7 @@ function bot_g1() {
 
   url = fontes_g1[getRandomInt(0, fontes_g1.length)];
 
-  try{
+  try {
     (async () => {
       let feed = await parser.parseURL(url);
       try {
@@ -978,17 +1088,17 @@ function bot_g1() {
       }
       titulo = feed.title;
       // link = feed.link;
-  
+
       feed.items.forEach((item) => {
         while (i < 1) {
           let head_noticia = titulo + ": " + item.title;
           let conteudo_bruto = item.content;
           link = item.link;
           console.log(item);
-  
+
           find_img_ini = conteudo_bruto.search("<img src=");
           find_img_fi = conteudo_bruto.search("/>");
-  
+
           let img = conteudo_bruto.slice(find_img_ini, find_img_fi);
           img = img.replace('<img src="', "");
           img = img.replace('"', "");
@@ -996,7 +1106,7 @@ function bot_g1() {
           img = img.replace(/>/g, "");
           img = img.replace(/<br/g, "");
           console.log(img);
-  
+
           if (img == "") {
             async function puxar_img() {
               try {
@@ -1017,23 +1127,23 @@ function bot_g1() {
           } else {
             send_g1(img, icone, head_noticia, "Informes", link);
           }
-  
+
           i++;
         }
       });
-  
+
       async function send_g1(img, icone, head_noticia, titulo, link) {
         var FormData = require("form-data");
         var data = new FormData();
-  
+
         let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
-  
+
         data.append("photo", img);
         data.append("photo_pic", icone);
         data.append("description", head_noticia);
         data.append("username", titulo);
         data.append("link", link);
-  
+
         await fetch(apiUrl, {
           method: "POST",
           body: data,
@@ -1044,9 +1154,8 @@ function bot_g1() {
         });
       }
     })();
-  }
-  catch (e){
-    console.log(e, url)
+  } catch (e) {
+    console.log(e, url);
   }
 }
 
@@ -1156,6 +1265,8 @@ setInterval(bot_g1, 800000);
 
 setInterval(bot_blogueirinha, 700000);
 
+setInterval(bot_bolsonarista, 700000);
+
 setInterval(bot_dona_sonia, 700000);
 
 bot_merchan();
@@ -1167,3 +1278,4 @@ bot_jeiz();
 bot_g1();
 bot_blogueirinha();
 bot_dona_sonia();
+bot_bolsonarista();
