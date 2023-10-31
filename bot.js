@@ -973,6 +973,220 @@ function bot_piada() {
   }
 }
 
+function bot_petista() {
+  try {
+    let descricao_bolsonarista = [
+      "OS BONS TEMPOS VOLTARAM",
+      "FORA BOLSONARO FASCISTA INELEGÍVEL",
+      "CHE GUEVARA EU TE AMO",
+      "04:20 HEIN... BORA LEGALIZAR",
+      "ABAIXO A BURGUESIA PORRA",
+      "CUBA E VENEZUELA SÃO EXEMPLOS PERFEITOS DO SOCIALISMO",
+      "ESTOU COM MADURO!",
+      "EI BOLSONARO VAI TOMAR NO CU",
+      "CHE MATOU FOI POUCO",
+      "PM BANDIDOS GOLPISTAS",
+      "PROLETÁRIOS UNI-VOS",
+      "O QUE FIZERAM COM A DILMA FOI GOLPE!",
+      "PRIVATIZAÇÃO É O CARALHO",
+    ];
+
+    let desc_ =
+      descricao_bolsonarista[getRandomInt(0, descricao_bolsonarista.length)];
+
+    let img_aleatoria = "";
+
+    async function puxar_img() {
+      try {
+        await client
+          .search("COMUNISMO LULA SOCIALISMO PT CUBA")
+          .then((images) => {
+            let i = getRandomInt(0, 10);
+            let img_aleatoria = images[i].url;
+            let userpic =
+              "https://pt.org.br/wp-content/themes/pt_2016/assets/images/logos/logo-pt.png";
+            let name = "Raimundo Silva";
+            let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+            if (img_aleatoria.includes("x-raw-image")) {
+              throw new Error("001 - X-RAW IMAGE");
+            }
+
+            let FormData = require("form-data");
+            let data = new FormData();
+
+            data.append("photo", img_aleatoria);
+            data.append("photo_pic", userpic);
+            data.append("description", desc_);
+            data.append("username", name);
+
+            fetch(apiUrl, {
+              method: "POST",
+              body: data,
+            }).then(function (response) {
+              if (response.ok) {
+                console.log("Bot PT rodou");
+              }
+            });
+          });
+      } catch (err) {
+        console.log("Erro:", err);
+        console.log("Mudando para DuckDuckGo");
+
+        image_search({
+          query: "COMUNISMO LULA SOCIALISMO PT CUBA",
+          moderate: false,
+          iterations: 2,
+        }).then((results) => {
+          console.log(results);
+          let i = getRandomInt(0, 100);
+          let img_aleatoria_ = results[i].image;
+
+          let userpic =
+            "https://pt.org.br/wp-content/themes/pt_2016/assets/images/logos/logo-pt.png";
+          let name1 = "Raimundo Silva";
+          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+          if (img_aleatoria_.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria_);
+          data.append("photo_pic", userpic);
+          data.append("description", desc_);
+          data.append("username", name1);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot PT rodou");
+            }
+          });
+        });
+      }
+    }
+    puxar_img();
+  } catch (err) {
+    console.log("Erro: ", err);
+  }
+}
+
+function bot_anime() {
+  try {
+    const descricao_bolsonarista = [
+      "Não desista, não há vergonha em cair! A verdadeira vergonha é não se levantar novamente!",
+      "Você pode morrer a qualquer momento, mas viver requer coragem.",
+      "A vida não é um jogo de sorte. Se você quer vencer, trabalhe duro.",
+      "Lembre-se da lição e não da decepção.",
+      "Você não conhece as pessoas, você conhece apenas o que elas permitem que você veja.",
+      "É mais importante dominar as cartas que você tem nas mãos do que reclamar das cartas que seu oponente recebeu.",
+      "Se você não gosta do seu destino, não o aceite. Em vez disso, tenha a coragem para transformá-lo naquilo que você quer que ele seja.",
+      "Se a sua vida pode mudar uma vez, ela pode mudar novamente.",
+      "Você jamais deve desistir da vida, não importa o que aconteça. Não importa o quanto você queira desistir.",
+      "Se você não consegue fazer algo, então não faça. Foque naquilo que consegue fazer.",
+      "O mundo não é perfeito. Mas ele está aqui para nós, fazendo o melhor que pode... e é isso que o faz tão lindo!",
+      "O que quer que você perca, você encontrará novamente. Mas aquilo que jogar fora, você nunca terá de volta.",
+      "Você é apenas um idiota que nasceu com uma genética boa.",
+      "Viver é comer, dormir e arrumar brigas.",
+      "Eu estou cansado de não fazer nada, mas eu sou muito preguiçoso pra fazer alguma coisa.",
+      "Há três coisas que não posso tolerar: covardia, cortes de cabelo ruins e insurreição militar, e é muito lamentável que nosso amigo Vegeta possua todas essas três.",
+      "Você quer que eu diga a verdade ou continuamos amigos?",
+      "Esta é uma peça mágica que suprime meus poderes mágicos. Se eu fosse tirar isso, uma grande catástrofe certamente aconteceria neste mundo... Ah, mentira. Eu só a uso mesmo para deixar o look mais estiloso.",
+      "Se eu pudesse vender meu tédio, tenho certeza de que ficaria rico.",
+      "Se você desviar os olhos das coisas tristes, elas acontecerão novamente um dia. Se você continuar fugindo, continuará repetindo os mesmos erros. É por isso que você precisa encarar a verdade diretamente.",
+      "O medo não é malvado. Ele te mostra qual é a sua franqueza. E quando você conhece a sua franqueza, então pode se tornar mais forte e mais gentil.",
+      "Pode ser difícil agora, mas você deve silenciar esses pensamentos. Pare de contar as coisas que você perdeu, o que se foi se foi. Então pergunte a si mesmo o que ainda resta para você.",
+      "As pessoas mais solitárias são as mais gentis. As pessoas mais tristes sorriem mais. As pessoas mais machucadas são as mais sábias. Isso porque elas não desejam ver mais ninguém sofrer do jeito que sofreram.",
+    ];
+
+    let desc_ =
+      descricao_bolsonarista[getRandomInt(0, descricao_bolsonarista.length)];
+
+    let img_aleatoria = "";
+
+    async function puxar_img() {
+      try {
+        await client.search("anime sombrio").then((images) => {
+          let i = getRandomInt(0, 10);
+          let img_aleatoria = images[i].url;
+          let userpic =
+            "https://vignette.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_1.png";
+          let name = "Gabriel Sykes";
+          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc_);
+          data.append("username", name);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot otaku rodou");
+            }
+          });
+        });
+      } catch (err) {
+        console.log("Erro:", err);
+        console.log("Mudando para DuckDuckGo");
+
+        image_search({
+          query: "anime sombrio",
+          moderate: false,
+          iterations: 2,
+        }).then((results) => {
+          console.log(results);
+          let i = getRandomInt(0, 100);
+          let img_aleatoria_ = results[i].image;
+
+          let userpic =
+            "https://vignette.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_1.png";
+          let name1 = "Gabriel Sykes";
+          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+          if (img_aleatoria_.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria_);
+          data.append("photo_pic", userpic);
+          data.append("description", desc_);
+          data.append("username", name1);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot otaku rodou");
+            }
+          });
+        });
+      }
+    }
+    puxar_img();
+  } catch (err) {
+    console.log("Erro: ", err);
+  }
+}
+
 function bot_gringo() {
   let gringoArray = [
     `SO KOERANO
@@ -1379,6 +1593,8 @@ setInterval(bot_piada, 700000);
 
 setInterval(bot_bolsonarista, 700000);
 
+setInterval(bot_petista, 700000);
+
 setInterval(bot_dona_sonia, 700000);
 
 bot_merchan();
@@ -1388,7 +1604,8 @@ bot_bitcoin();
 bot_jeiz();
 //bot_jacksons();
 bot_g1();
+bot_petista();
 bot_blogueirinha();
-bot_dona_sonia();
 bot_bolsonarista();
 bot_piada();
+bot_anime();
