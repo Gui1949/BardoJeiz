@@ -573,7 +573,7 @@ function bot_blogueirinha() {
 
     async function puxar_img() {
       try {
-        await client.search("bunda rebolando").then((images) => {
+        await client.search("bunda rebolando meme").then((images) => {
           let i = getRandomInt(0, 10);
           img_aleatoria = images[i].url;
           let userpic =
@@ -607,7 +607,7 @@ function bot_blogueirinha() {
         console.log("Mudando para DuckDuckGo");
 
         image_search({
-          query: "bunda rebolando",
+          query: "bunda rebolando meme",
           moderate: false,
           iterations: 2,
         }).then((results) => {
@@ -1594,6 +1594,7 @@ setInterval(bot_piada, 700000);
 setInterval(bot_bolsonarista, 700000);
 
 setInterval(bot_petista, 700000);
+setInterval(bot_anime, 700000);
 
 setInterval(bot_dona_sonia, 700000);
 
