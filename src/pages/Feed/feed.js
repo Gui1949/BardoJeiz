@@ -276,7 +276,7 @@ function Feed() {
           >
             {ler_dados.USERNAME == "Publicidade" ? null : (
               <i className="material-icons" id="font_dislike">
-                thumb_down
+                thumb_down_off_alt
               </i>
             )}
           </button>
