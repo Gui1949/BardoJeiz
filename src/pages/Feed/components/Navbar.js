@@ -25,7 +25,24 @@ class Navbar extends React.Component {
         ) : null}
         <a style={{ cursor: "pointer" }} className="nav_top_link">
           <p className="nav_top_filter_title" id="title_navbar">
-            {this.props.text == "" ? "Bar do Jeiz" : this.props.text}
+            {this.props.text == "" ? (
+              <div style={{ display: "flex", alignItems: 'center' }}>
+                Bar do
+                <div
+                  style={{
+                    backgroundColor: "#FFB86C",
+                    color: "#000000",
+                    borderRadius: "1vh",
+                    marginLeft: 5,
+                    padding: 2,
+                  }}
+                >
+                  Jeiz
+                </div>
+              </div>
+            ) : (
+              this.props.text
+            )}
           </p>
         </a>
       </nav>

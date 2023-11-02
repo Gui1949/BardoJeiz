@@ -145,6 +145,26 @@ function Feed() {
   const [puxandoNews, setPuxandoNews] = React.useState(0);
   const [user, setUser] = React.useState("");
   const [news, setNews] = React.useState({});
+  const [qtd_posts, setQTD] = React.useState(0);
+
+  //Verificar atualizações
+
+  setTimeout(() => {
+    setInterval(() => {
+      fetch("https://bar-do-jeiz.onrender.com/data", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((resp) => resp.json())
+        .then((reqres) => {
+          let qtd_dados = reqres.data.length;
+          setQTD(qtd_dados);
+        });
+    }, 10000);
+  }, 2000);
 
   if (puxando == 0) {
     fetch("https://bar-do-jeiz.onrender.com/data", {
@@ -194,11 +214,7 @@ function Feed() {
   if (user == "") {
     lista_feed = lerdados.map((ler_dados) => (
       <div
-        id={
-          ler_dados.USERNAME == "Publicidade"
-            ? "post_merchan"
-            : "post_feed"
-        }
+        id={ler_dados.USERNAME == "Publicidade" ? "post_merchan" : "post_feed"}
         className="posts"
       >
         <div id="header">
@@ -372,6 +388,19 @@ function Feed() {
           </div>
           {lista_feed}
         </List>
+
+        {qtd_posts > lerdados.length ? (
+          <div id="bottom_nav">
+            <div class="chip" onClick={() => window.location.reload()}>
+              <p className="nav_top_filter_title" id="title_navbar">
+                Há novas postagens
+              </p>
+              <i className="material-icons" id="font_dislike">
+                cached
+              </i>
+            </div>
+          </div>
+        ) : null}
       </div>
     </>
   );
