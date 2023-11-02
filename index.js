@@ -391,7 +391,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
 restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   let date_ob = new Date();
 
-  date_ob = date_ob.toLocaleString("pt-br");
+  date_ob = date_ob.toLocaleString("pt-br", { timeZone: "America/Sao_Paulo" });
 
   var data = {
     USERNAME: req.body.username,
