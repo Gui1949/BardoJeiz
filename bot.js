@@ -607,8 +607,8 @@ function bot_blogueirinha() {
         console.log("Mudando para DuckDuckGo");
 
         image_search({
-          query: "bunda rebolando meme",
-          moderate: false,
+          query: "bunda rebolando",
+          moderate: true,
           iterations: 2,
         }).then((results) => {
           console.log(results);
