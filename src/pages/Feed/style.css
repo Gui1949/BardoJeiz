@@ -345,7 +345,7 @@ hr {
   border: 0px;
   border-top: 1px solid #bd93f9;
   background-color: #1d1b22;
-  color: #95a5a6;
+  color: #ffffff;
   cursor: pointer;
   outline: none;
 }
@@ -372,7 +372,7 @@ input[type="file"] {
   position: relative;
   top: 20%;
   margin: 10 auto;
-  color: #95a5a6;
+  color: #ffffff;
   cursor: pointer;
   outline: none;
 }

@@ -14,7 +14,7 @@ const like = (id_btn) => {
   let id_trat = "";
   id_trat = id_btn.replace(/[^0-9\.]+/g, "");
   let objeto_desfazer = document.getElementById("btn_dislike_" + id_trat);
-  objeto_desfazer.style.color = "#95a5a6";
+  objeto_desfazer.style.color = "#ffffff";
 
   let objeto = document.getElementById("btn_like_" + id_trat);
   colorir(objeto);
@@ -55,7 +55,7 @@ function dislike(id_btn) {
 
 function colorir(objeto) {
   if (objeto.style.color === "rgb(255, 121, 198)") {
-    objeto.style.color = "#95a5a6";
+    objeto.style.color = "#ffffff";
   } else {
     objeto.style.color = "#ff79c6";
   }
