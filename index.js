@@ -53,7 +53,6 @@ restapi.get("/data/:username", (req, res) => {
 });
 
 restapi.get("/news", (req, res) => {
-
   let links = [
     // "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
     // "http://g1.globo.com/dynamo/economia/rss2.xml",
@@ -73,19 +72,18 @@ restapi.get("/news", (req, res) => {
 
   let url = links[getRandomInt(0, links.length)];
 
-  parser.parseURL(url).then( result => {
-    icone = result.image.url
-    titulo = result.title
+  parser.parseURL(url).then((result) => {
+    icone = result.image.url;
+    titulo = result.title;
 
-    noticias = result.items.slice(0, 5)
+    noticias = result.items.slice(0, 5);
 
     res.json({
       icone: icone,
       titulo: titulo,
-      data: noticias
+      data: noticias,
     });
-
-  })
+  });
 });
 
 restapi.get("/version", (req, res) => {
@@ -267,44 +265,50 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
   let year = date_ob.getFullYear();
 
   let hours = () => {
-    switch(date_ob.getHours()){
+    switch (date_ob.getHours()) {
       case 0:
-        return '21'        
+        return "21";
       case 1:
-        return '22'
+        return "22";
       case 2:
-        return '23'
+        return "23";
       case 3:
-        return '00'
+        return "00";
       case 4:
-        return '01'
+        return "01";
       case 5:
-        return '02'
+        return "02";
       case 6:
-        return '03'
+        return "03";
       case 7:
-        return '04'
+        return "04";
       case 8:
-        return '05'
+        return "05";
       case 9:
-        return '06'
+        return "06";
       case 10:
-        return '07'
+        return "07";
       case 11:
-        return '08'
+        return "08";
       case 12:
-        return '09'
+        return "09";
       case 13:
-        return '10'
+        return "10";
       default:
-        return (date_ob.getHours().length < 2 ? '0' + (date_ob.getHours() - 3) : date_ob.getHours() - 3)
+        return date_ob.getHours().toString().length < 2
+          ? "0" + (date_ob.getHours() - 3)
+          : date_ob.getHours() - 3;
     }
-  }
+  };
 
-  let minutes = (date_ob.getMinutes().length < 2 ? '0' + date_ob.getMinutes() : date_ob.getMinutes());
+  let minutes =
+    date_ob.getMinutes().toString().length < 2
+      ? "0" + date_ob.getMinutes()
+      : date_ob.getMinutes();
   var data = {
     USERNAME: req.body.username,
-    USER_PIC: "https://bardojeiz-server.herokuapp.com/data/img/" + req.body.photo_pic,
+    USER_PIC:
+      "https://bardojeiz-server.herokuapp.com/data/img/" + req.body.photo_pic,
     POST_DATA: day + "/" + month + "/" + year + " - " + hours() + ":" + minutes,
     PIC_LOCAL: "https://bardojeiz-server.herokuapp.com/data/img/" + cuiaba,
     POST_DESC: req.body.description,
@@ -393,12 +397,12 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
 
   let year = date_ob.getFullYear();
 
-  let hours = (date_ob.getHours() - 3);
+  let hours = date_ob.getHours() - 3;
 
   let minutes = date_ob.getMinutes();
 
-  if(minutes.length == 1){
-    minutes == '0' + minutes
+  if (minutes.length == 1) {
+    minutes == "0" + minutes;
   }
 
   var data = {
@@ -409,7 +413,7 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     POST_DESC: req.body.description,
     POST_LIKE: 0,
     POST_DISLIKE: 0,
-    LINK: req.body.link
+    LINK: req.body.link,
   };
 
   if (data.PIC_LOCAL.includes("https://www.youtube.com")) {
@@ -427,7 +431,7 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     data.POST_DESC,
     data.POST_LIKE,
     data.POST_DISLIKE,
-    data.LINK
+    data.LINK,
   ];
   db.all(sql, params, (err, rows) => {
     if (err) {
