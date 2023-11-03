@@ -194,8 +194,7 @@ function bot_jeiz() {
 
         image_search({ query: desc, moderate: false, iterations: 2 }).then(
           (results) => {
-            console.log(results);
-            let i = getRandomInt(0, 10);
+            let i = getRandomInt(0, results.length);
             img_aleatoria = results[i].image;
 
             let userpic =
@@ -309,7 +308,7 @@ function bot_dona_sonia() {
           image_search({ query: desc__, moderate: false, iterations: 2 }).then(
             (results) => {
               console.log(results);
-              let i = getRandomInt(0, 10);
+              let i = getRandomInt(0, results.length);
               img_aleatoria = results[i].image;
 
               let userpic =
@@ -391,7 +390,7 @@ function bot_dona_sonia() {
           image_search({ query: desc__, moderate: false, iterations: 2 }).then(
             (results) => {
               console.log(results);
-              let i = getRandomInt(0, 10);
+              let i = getRandomInt(0, results.length);
               img_aleatoria = results[i].image;
 
               let userpic =
@@ -473,7 +472,7 @@ function bot_dona_sonia() {
           image_search({ query: desc__, moderate: false, iterations: 2 }).then(
             (results) => {
               console.log(results);
-              let i = getRandomInt(0, 10);
+              let i = getRandomInt(0, results.length);
               img_aleatoria = results[i].image;
 
               let userpic =
@@ -573,7 +572,7 @@ function bot_blogueirinha() {
 
     async function puxar_img() {
       try {
-        await client.search("bunda rebolando meme").then((images) => {
+        await client.search("bunda rebolando").then((images) => {
           let i = getRandomInt(0, 10);
           img_aleatoria = images[i].url;
           let userpic =
@@ -612,7 +611,7 @@ function bot_blogueirinha() {
           iterations: 2,
         }).then((results) => {
           console.log(results);
-          let i = getRandomInt(0, 100);
+          let i = getRandomInt(0, results.length);
           let img_aleatoria_ = results[i].image;
 
           var userpic_julcimara =
@@ -849,7 +848,7 @@ function bot_bolsonarista() {
           iterations: 2,
         }).then((results) => {
           console.log(results);
-          let i = getRandomInt(0, 100);
+          let i = getRandomInt(0, results.length);
           let img_aleatoria_ = results[i].image;
 
           let userpic =
@@ -936,7 +935,7 @@ function bot_piada() {
           iterations: 2,
         }).then((results) => {
           console.log(results);
-          let i = getRandomInt(0, 100);
+          let i = getRandomInt(0, results.length);
           let img_aleatoria_ = results[i].image;
 
           let userpic =
@@ -1001,7 +1000,7 @@ function bot_petista() {
         await client
           .search("COMUNISMO LULA SOCIALISMO PT CUBA")
           .then((images) => {
-            let i = getRandomInt(0, 10);
+            let i = getRandomInt(0, images.length);
             let img_aleatoria = images[i].url;
             let userpic =
               "https://pt.org.br/wp-content/themes/pt_2016/assets/images/logos/logo-pt.png";
@@ -1039,7 +1038,7 @@ function bot_petista() {
           iterations: 2,
         }).then((results) => {
           console.log(results);
-          let i = getRandomInt(0, 100);
+          let i = getRandomInt(0, results.length);
           let img_aleatoria_ = results[i].image;
 
           let userpic =
@@ -1150,7 +1149,7 @@ function bot_anime() {
           iterations: 2,
         }).then((results) => {
           console.log(results);
-          let i = getRandomInt(0, 100);
+          let i = getRandomInt(0, results.length);
           let img_aleatoria_ = results[i].image;
 
           let userpic =
@@ -1312,7 +1311,7 @@ function bot_merchan() {
           iterations: 2,
         }).then((results) => {
           console.log(results);
-          let i = getRandomInt(0, 4);
+          let i = getRandomInt(0, results.length);
           img_aleatoria_ = results[i].image;
 
           var userpic_merchan =
@@ -1603,7 +1602,6 @@ bot_dona_sonia();
 bot_gringo();
 bot_bitcoin();
 bot_jeiz();
-//bot_jacksons();
 bot_g1();
 bot_petista();
 bot_blogueirinha();
