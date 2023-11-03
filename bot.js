@@ -221,7 +221,7 @@ function bot_jeiz() {
     console.table(tipo_frase);
 
     if (tipo_frase <= 5) {
-      desc =
+      let desc =
         artigo.palavra +
         " " +
         sujeito.palavra +
@@ -230,7 +230,7 @@ function bot_jeiz() {
         " " +
         adj.palavra;
     } else {
-      desc = descricao[getRandomInt(0, descricao.length)];
+      let desc = descricao[getRandomInt(0, descricao.length)];
     }
 
     let img_aleatoria = "";
@@ -1277,7 +1277,7 @@ function bot_gringo() {
   ];
 
   input = "https://bar-do-jeiz.onrender.com/data/img/koerano.jpg";
-  desc = gringoArray[getRandomInt(0, gringoArray.length)];
+  let desc = gringoArray[getRandomInt(0, gringoArray.length)];
 
   var userpic = "https://bar-do-jeiz.onrender.com/data/img/KOERANO.jpeg";
   var name = "KOERANO";
