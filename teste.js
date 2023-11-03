@@ -76,46 +76,39 @@ let pron_adj = [
   },
 ];
 
-let artigo = artigos[getRandomInt(0, artigos.length)];
+let gerar_frase = () => {
+  let artigo = artigos[getRandomInt(0, artigos.length)];
 
-//Filtra sujeito pelo tipo (masc ou fem)
+  //Filtra sujeito pelo tipo (masc ou fem)
 
-let sujeito = sujeitos.filter((suj) => suj.tipo == artigo.tipo);
-sujeito = sujeito[getRandomInt(0, sujeito.length)];
+  let sujeito = sujeitos.filter((suj) => suj.tipo == artigo.tipo);
+  sujeito = sujeito[getRandomInt(0, sujeito.length)];
 
-//Filtra o verbo de ligação pelo tipo
+  //Filtra o verbo de ligação pelo tipo
 
-let verbo = verb_lig.filter(
-  (ver) => ver.cat == sujeito.cat || sujeito.cat == "ambos"
-);
-verbo = verbo[getRandomInt(0, verbo.length)];
+  let verbo = verb_lig.filter(
+    (ver) => ver.cat == sujeito.cat || sujeito.cat == "ambos"
+  );
+  verbo = verbo[getRandomInt(0, verbo.length)];
 
-//Filta o adjetivo com o verbo de ligação e sujeito
+  //Filta o adjetivo com o verbo de ligação e sujeito
 
-let adj = pron_adj.filter(
-  (pro) =>
-    (pro.cat == verbo.cat || verbo.cat == "ambos") &&
-    (pro.tipo == sujeito.tipo || pro.tipo == "ambos")
-);
-adj = adj[getRandomInt(0, adj.length)];
+  let adj = pron_adj.filter(
+    (pro) =>
+      (pro.cat == verbo.cat || verbo.cat == "ambos") &&
+      (pro.tipo == sujeito.tipo || pro.tipo == "ambos")
+  );
+  adj = adj[getRandomInt(0, adj.length)];
 
-console.log(
-  artigo.palavra +
+  console.log (
+    artigo.palavra +
     " " +
     sujeito.palavra +
     " " +
     verbo.palavra +
     " " +
     adj.palavra
-);
+  );
+};
 
-desc =
-  artigo.palavra +
-  " " +
-  sujeito.palavra +
-  " " +
-  verbo.palavra +
-  " " +
-  adj.palavra;
-
-// console.log(desc);
+ gerar_frase()
