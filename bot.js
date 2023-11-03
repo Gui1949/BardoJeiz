@@ -220,8 +220,10 @@ function bot_jeiz() {
 
     console.table(tipo_frase);
 
+    let desc
+
     if (tipo_frase <= 5) {
-      let desc =
+      desc =
         artigo.palavra +
         " " +
         sujeito.palavra +
@@ -230,7 +232,7 @@ function bot_jeiz() {
         " " +
         adj.palavra;
     } else {
-      let desc = descricao[getRandomInt(0, descricao.length)];
+      desc = descricao[getRandomInt(0, descricao.length)];
     }
 
     let img_aleatoria = "";
