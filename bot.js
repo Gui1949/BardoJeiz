@@ -147,6 +147,7 @@ function bot_jeiz() {
       "como punir ladrões na sinuca?",
       "como roubar no truco?",
       "51 delivery com motoboy bebado, só aqui no bar do jeiz",
+      "essa foi foda... uma cliente pediu uma coxinha, taquei no microondas sem prato (pq n precisa) e só porque o microondas estava sujo (desde que comprei ele em 92, não limpo, pq não precisa e da um gostinho bom) ela achou ruim... virou persona non grata no bar",
       "como ganhar no jogo do bicho?",
       "comprar papagaio é crime?",
       "qual é o número da policia?",
@@ -220,7 +221,7 @@ function bot_jeiz() {
 
     console.table(tipo_frase);
 
-    let desc
+    let desc;
 
     if (tipo_frase <= 5) {
       desc =
@@ -1593,57 +1594,188 @@ function bot_bitcoin() {
     });
 }
 
-// function bot_dogecoin() {
-//   let url =
-//     "http://rest.coinapi.io/v1/assets/DOGE?apikey=27EAF079-A588-40DE-90EE-FCD5C5CE3720";
-//   fetch(url)
-//     .then((resp) => resp.json())
-//     .then(function (data) {
-//       let dados = data[0].price_usd;
-//       console.log(dados);
-//       dados = dados.toFixed(2);
-//       let usd = 0;
+function bot_tiao() {
+  try {
+    let descricao_bolsonarista = [
+      "TIÃO.CONSERTOS.  ZAP 11976461825 TRATAR COM PATRICIA",
+    ];
 
-//       fetch("https://economia.awesomeapi.com.br/usd-brl/1")
-//         .then((resp) => resp.json())
-//         .then(function (data) {
-//           usd = data[0].high;
-//           console.log(usd);
-//           usd = parseFloat(usd).toFixed(2);
-//           console.log(usd);
-//           dados = dados * usd;
-//           dados = parseFloat(dados).toFixed(2);
-//           console.log(dados);
+    let desc_ =
+      descricao_bolsonarista[getRandomInt(0, descricao_bolsonarista.length)];
 
-//           var FormData = require("form-data")f;
-//           var data = new FormData();
+    let img_aleatoria = "";
 
-//           let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+    async function puxar_img() {
+      try {
+        await client.search("GAMBIARRA").then((images) => {
+          let i = getRandomInt(0, 10);
+          let img_aleatoria = images[i].url;
+          let userpic =
+            "https://3.bp.blogspot.com/-vvGsapYHhSw/TWWMoUYyriI/AAAAAAAAFzA/Y0pHOVSkFmc/s1600/consertos_para_casa.JPG";
+          let name = "TIÃO CONSERTOS 11976461825 ZAP";
+          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
 
-//           let picture =
-//             "https://media.giphy.com/media/gRHn9ERANxrHiff73F/giphy.gif";
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
 
-//           let icone = "https://dogechain.info/content/img/doge.png";
+          let FormData = require("form-data");
+          let data = new FormData();
 
-//           data.append("photo", picture);
-//           data.append("photo_pic", icone);
-//           data.append(
-//             "description",
-//             "O valor atual do Dogecoin é de: R$ " + dados
-//           );
-//           data.append("username", "DOGE by CoinAPI");
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc_);
+          data.append("username", name);
 
-//           fetch(apiUrl, {
-//             method: "POST",
-//             body: data,
-//           }).then(function (response) {
-//             if (response.ok) {
-//               console.log("Bot DOGE rodou");
-//             }
-//           });
-//         });
-//     });
-// }
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot TIÃO rodou");
+            }
+          });
+        });
+      } catch (err) {
+        console.log("Erro:", err);
+        console.log("Mudando para DuckDuckGo");
+
+        image_search({
+          query: "GAMBIARRA",
+          moderate: false,
+          iterations: 2,
+        }).then((results) => {
+          console.log(results);
+          let i = getRandomInt(0, results.length);
+          let img_aleatoria_ = results[i].image;
+
+          let userpic =
+            "https://3.bp.blogspot.com/-vvGsapYHhSw/TWWMoUYyriI/AAAAAAAAFzA/Y0pHOVSkFmc/s1600/consertos_para_casa.JPG";
+          let name1 = "TIÃO CONSERTOS 11976461825 ZAP";
+          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+          if (img_aleatoria_.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria_);
+          data.append("photo_pic", userpic);
+          data.append("description", desc_);
+          data.append("username", name1);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot TIÃO rodou");
+            }
+          });
+        });
+      }
+    }
+    puxar_img();
+  } catch (err) {
+    console.log("Erro: ", err);
+  }
+}
+
+function bot_meire() {
+  try {
+    let descricao_bolsonarista = [
+      "olha que lindo filho",
+      "sonia, minha querida... vi isso e lembrei de você",
+      "como ta o seu neto sonia? melhorou da gastrite?",
+      "sabe se o furunculo do jeiz ta melhor?",
+      "piorei da artrite... janete quando que o doutor marcos volta a atender?",
+      "ai franca... to tão ruim das varizes...",
+    ];
+
+    let desc_ =
+      descricao_bolsonarista[getRandomInt(0, descricao_bolsonarista.length)];
+
+    let img_aleatoria = "";
+
+    async function puxar_img() {
+      try {
+        await client.search("gatinho fofinho").then((images) => {
+          let i = getRandomInt(0, 10);
+          let img_aleatoria = images[i].url;
+          let userpic =
+            "https://th.bing.com/th/id/OIP.wutNsJuO6MeEyoE046fc3QHaFj?pid=ImgDet&rs=1";
+          let name = "Dona Meire";
+          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc_);
+          data.append("username", name);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot MEIRE rodou");
+            }
+          });
+        });
+      } catch (err) {
+        console.log("Erro:", err);
+        console.log("Mudando para DuckDuckGo");
+
+        image_search({
+          query: "gatinho fofinho",
+          moderate: false,
+          iterations: 2,
+        }).then((results) => {
+          console.log(results);
+          let i = getRandomInt(0, results.length);
+          let img_aleatoria_ = results[i].image;
+
+          let userpic =
+            "https://th.bing.com/th/id/OIP.wutNsJuO6MeEyoE046fc3QHaFj?pid=ImgDet&rs=1";
+          let name1 = "Dona Meire";
+          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+          if (img_aleatoria_.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria_);
+          data.append("photo_pic", userpic);
+          data.append("description", desc_);
+          data.append("username", name1);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot Meire rodou");
+            }
+          });
+        });
+      }
+    }
+    puxar_img();
+  } catch (err) {
+    console.log("Erro: ", err);
+  }
+}
 
 setInterval(bot_merchan, 600000);
 
@@ -1652,6 +1784,8 @@ setInterval(bot_gringo, 6000000);
 setInterval(bot_bitcoin, 800000);
 
 setInterval(bot_jeiz, 400000);
+setInterval(bot_tiao, 400000);
+setInterval(bot_meire, 400000);
 
 //setInterval(bot_jacksons, 800000);
 
@@ -1680,3 +1814,5 @@ bot_blogueirinha();
 bot_bolsonarista();
 bot_piada();
 bot_anime();
+bot_tiao();
+bot_meire();
