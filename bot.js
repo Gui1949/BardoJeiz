@@ -273,7 +273,7 @@ function bot_jeiz() {
         console.log("Erro:", err);
         console.log("Mudando para DuckDuckGo");
 
-        image_search({ query: desc, moderate: false, iterations: 2 }).then(
+        image_search({ query: desc, moderate: true, iterations: 2 }).then(
           (results) => {
             let i = getRandomInt(0, results.length);
             img_aleatoria = results[i].image;
