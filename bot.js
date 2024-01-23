@@ -350,7 +350,7 @@ function bot_jeiz() {
         .then((json) => console.log(json))
         .catch((err) => console.error("error:" + err));
     } catch (err) {
-      console.log(erro);
+      console.log(err);
     }
   } catch (err) {
     console.log("Erro: ", err);
