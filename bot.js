@@ -332,22 +332,26 @@ function bot_jeiz() {
     }
     puxar_img();
 
-    let url_X = "https://twitter-do-jeiz.onrender.com/tweet";
+    try {
+      let url_X = "https://twitter-do-jeiz.onrender.com/tweet";
 
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "User-Agent": "insomnia/2023.5.8",
-        token: "12dwaFSXk8gIAripWWifSMmQeeTYjm_x9hMlNj4sdso",
-      },
-      body: `{"texto":"${desc} - Via Bar do Jeiz"}`,
-    };
+      let options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "User-Agent": "insomnia/2023.5.8",
+          token: "12dwaFSXk8gIAripWWifSMmQeeTYjm_x9hMlNj4sdso",
+        },
+        body: `{"texto":"${desc} - Via Bar do Jeiz"}`,
+      };
 
-    fetch(url_X, options)
-      .then((res) => res.json())
-      .then((json) => console.log(json))
-      .catch((err) => console.error("error:" + err));
+      fetch(url_X, options)
+        .then((res) => res.json())
+        .then((json) => console.log(json))
+        .catch((err) => console.error("error:" + err));
+    } catch (err) {
+      console.log(erro);
+    }
   } catch (err) {
     console.log("Erro: ", err);
   }
