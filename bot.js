@@ -344,7 +344,7 @@ function bot_jeiz() {
       body: `{"texto":"${desc} - Via Bar do Jeiz"}`,
     };
 
-    fetch(url, options)
+    fetch(url_X, options)
       .then((res) => res.json())
       .then((json) => console.log(json))
       .catch((err) => console.error("error:" + err));
