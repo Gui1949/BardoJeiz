@@ -1804,7 +1804,7 @@ setInterval(bot_gringo, 6000000);
 
 setInterval(bot_bitcoin, 800000);
 
-setInterval(bot_jeiz, 400000);
+setInterval(bot_jeiz, 950000);
 setInterval(bot_tiao, 400000);
 setInterval(bot_meire, 400000);
 
