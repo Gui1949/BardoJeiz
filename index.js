@@ -29,7 +29,7 @@ restapi.get("/data", (req, res) => {
       return;
     }
 
-    console.log(rows);
+    console.log(req.ip);
 
     res.json({
       data: rows,
