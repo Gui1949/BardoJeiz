@@ -11,7 +11,7 @@ const { image_search } = require("duckduckgo-images-api");
 const pasta_img = "./img/";
 
 const path = require("path");
-const promopinga = fs.readFileSync(
+let promopinga = fs.readFileSync(
   path.resolve(__dirname, "./json/promopinga/dados.json")
 );
 promopinga = JSON.parse(promopinga);
@@ -374,7 +374,7 @@ function bot_ze() {
 
     let links = promopinga.links;
 
-    descricao = descricao[getRandomInt(0, descricao.length)];
+    let desc = descricao[getRandomInt(0, descricao.length)];
 
     links = links[getRandomInt(0, links.length)];
 
