@@ -378,6 +378,8 @@ function bot_ze() {
 
     links = links[getRandomInt(0, links.length)];
 
+    desc = desc + " " + links;
+
     let img_aleatoria = "";
 
     async function puxar_img() {
@@ -452,7 +454,7 @@ function bot_ze() {
     puxar_img();
 
     try {
-      let url_X = "https://twitter-do-jeiz.onrender.com/tweet_pinga";
+      let url_X = "https://twitter-do-jeiz.onrender.com/promopinga/tweet";
 
       let options = {
         method: "POST",
