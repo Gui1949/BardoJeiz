@@ -9,6 +9,13 @@ const client = new GoogleImages(
 );
 const { image_search } = require("duckduckgo-images-api");
 const pasta_img = "./img/";
+
+const path = require("path");
+const promopinga = fs.readFileSync(
+  path.resolve(__dirname, "./json/promopinga/dados.json")
+);
+promopinga = JSON.parse(promopinga);
+
 let imagens = [];
 
 function getRandomInt(min, max) {
@@ -343,6 +350,118 @@ function bot_jeiz() {
           token: "12dwaFSXk8gIAripWWifSMmQeeTYjm_x9hMlNj4sdso",
         },
         body: `{"texto":"${desc} - Via Bar do Jeiz"}`,
+      };
+
+      fetch(url_X, options)
+        .then((res) => res.json())
+        .then((json) => console.log(json))
+        .catch((err) => console.error("error:" + err));
+    } catch (err) {
+      console.log(err);
+    }
+  } catch (err) {
+    console.log("Erro: ", err);
+  }
+}
+
+function bot_ze() {
+  try {
+    let getRandomInt = (min, max) => {
+      return Math.floor(Math.random() * (max - min)) + min;
+    };
+
+    let descricao = promopinga.frases;
+
+    let links = promopinga.links;
+
+    descricao = descricao[getRandomInt(0, descricao.length)];
+
+    links = links[getRandomInt(0, links.length)];
+
+    let img_aleatoria = "";
+
+    async function puxar_img() {
+      try {
+        await client.search(desc).then((images) => {
+          let i = getRandomInt(0, 10);
+          img_aleatoria = images[i].url;
+          let userpic =
+            "https://pbs.twimg.com/profile_images/1752465696603136000/3BZvubBm_400x400.jpg";
+          let name = "Zé da Pinga Promoções";
+          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+          if (img_aleatoria.includes("x-raw-image")) {
+            throw new Error("001 - X-RAW IMAGE");
+          }
+
+          let FormData = require("form-data");
+          let data = new FormData();
+
+          data.append("photo", img_aleatoria);
+          data.append("photo_pic", userpic);
+          data.append("description", desc);
+          data.append("username", name);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: data,
+          }).then(function (response) {
+            if (response.ok) {
+              console.log("Bot pinga rodou");
+            }
+          });
+        });
+      } catch (err) {
+        console.log("Erro:", err);
+        console.log("Mudando para DuckDuckGo");
+
+        image_search({ query: desc, moderate: true, iterations: 2 }).then(
+          (results) => {
+            let i = getRandomInt(0, results.length);
+            img_aleatoria = results[i].image;
+
+            let userpic =
+              "https://pbs.twimg.com/profile_images/1752465696603136000/3BZvubBm_400x400.jpg";
+            let name = "Zé da Pinga Promoções";
+            let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+
+            if (img_aleatoria.includes("x-raw-image")) {
+              throw new Error("001 - X-RAW IMAGE");
+            }
+
+            let FormData = require("form-data");
+            let data = new FormData();
+
+            data.append("photo", img_aleatoria);
+            data.append("photo_pic", userpic);
+            data.append("description", desc);
+            data.append("username", name);
+
+            fetch(apiUrl, {
+              method: "POST",
+              body: data,
+            }).then(function (response) {
+              if (response.ok) {
+                console.log("Bot pinga rodou");
+              }
+            });
+          }
+        );
+      }
+    }
+    puxar_img();
+
+    try {
+      let url_X = "https://twitter-do-jeiz.onrender.com/tweet_pinga";
+
+      let options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "User-Agent": "insomnia/2023.5.8",
+          token: "12dwaFSXk8gIAripWWifSMmQeeTYjm_x9hMlNj4sdso",
+        },
+        body: `{"texto":"${desc}"}`,
       };
 
       fetch(url_X, options)
@@ -1799,32 +1918,21 @@ function bot_meire() {
 }
 
 setInterval(bot_merchan, 600000);
-
 setInterval(bot_gringo, 6000000);
-
 setInterval(bot_bitcoin, 800000);
-
 setInterval(bot_jeiz, 950000);
+setInterval(bot_ze, 950000);
 setInterval(bot_tiao, 400000);
 setInterval(bot_meire, 400000);
-
-//setInterval(bot_jacksons, 800000);
-
 setInterval(bot_g1, 800000);
-
 setInterval(bot_blogueirinha, 700000);
-
 setInterval(bot_piada, 700000);
-
 setInterval(bot_bolsonarista, 700000);
-
 setInterval(bot_petista, 700000);
 setInterval(bot_anime, 700000);
-
 setInterval(bot_dona_sonia, 700000);
 
 bot_jeiz();
-
 bot_merchan();
 bot_dona_sonia();
 bot_gringo();
@@ -1837,3 +1945,4 @@ bot_piada();
 bot_anime();
 bot_tiao();
 bot_meire();
+bot_ze();
