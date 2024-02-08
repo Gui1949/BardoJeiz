@@ -1923,7 +1923,7 @@ setInterval(bot_merchan, 600000);
 setInterval(bot_gringo, 6000000);
 setInterval(bot_bitcoin, 800000);
 setInterval(bot_jeiz, 950000);
-setInterval(bot_ze, 950000);
+setInterval(bot_ze, 1950000);
 setInterval(bot_tiao, 400000);
 setInterval(bot_meire, 400000);
 setInterval(bot_g1, 800000);
