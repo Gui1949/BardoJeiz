@@ -269,6 +269,8 @@ function Feed() {
             onClick={() =>
               navigator.share({
                 url: ler_dados.PIC_LOCAL,
+                title: `Olha essa merda que o ${ler_dados.USERNAME} postou`,
+                text: ler_dados.POST_DESC,
               })
             }
           >
