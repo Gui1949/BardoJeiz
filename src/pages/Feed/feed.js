@@ -327,6 +327,23 @@ function Feed() {
                 thumb_down
               </i>
             </button>
+            <button
+              className="reacao_btn"
+              id={"btn_share_" + ler_dados.ID}
+              onClick={() =>
+                navigator.share({
+                  title: `Bar do Jeiz`,
+                  text: `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
+                  url: ler_dados.PIC_LOCAL,
+                })
+              }
+            >
+              {ler_dados.USERNAME == "Publicidade" ? null : (
+                <i className="material-icons" id="font_dislike">
+                  share_icon
+                </i>
+              )}
+            </button>
           </div>
         </div>
       ) : null
