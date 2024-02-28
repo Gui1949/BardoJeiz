@@ -10,27 +10,6 @@ import "./loader.css";
 
 let url = "https://bar-do-jeiz.onrender.com/data";
 
-const like = (id_btn) => {
-  let id_trat = "";
-  id_trat = id_btn.replace(/[^0-9\.]+/g, "");
-  let objeto_desfazer = document.getElementById("btn_dislike_" + id_trat);
-  objeto_desfazer.style.color = "#ffffff";
-
-  let objeto = document.getElementById("btn_like_" + id_trat);
-  colorir(objeto);
-
-  fetch("https://bar-do-jeiz.onrender.com/data/like", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      ID: id_trat,
-    }),
-  });
-};
-
 function dislike(id_btn) {
   let id_trat = "";
   id_trat = id_btn.replace(/[^0-9\.]+/g, "");
@@ -146,6 +125,8 @@ function Feed() {
   const [user, setUser] = React.useState("");
   const [news, setNews] = React.useState({});
   const [qtd_posts, setQTD] = React.useState(0);
+  const [dados_limit, setLimit] = React.useState([]);
+  const [posts_tela, setPostsTela] = React.useState(10);
 
   //Verificar atualizações
 
@@ -178,6 +159,7 @@ function Feed() {
       .then((reqres) => {
         let dados = reqres.data;
         setDados(Object.values(dados));
+        setLimit(lerdados.slice(0, posts_tela));
         setPuxando(1);
         getTemp();
       });
@@ -212,9 +194,10 @@ function Feed() {
   let lista_feed;
 
   if (user == "") {
-    lista_feed = lerdados.map((ler_dados) => (
+    lista_feed = dados_limit.map((ler_dados) => (
       <div
         id={ler_dados.USERNAME == "Publicidade" ? "post_merchan" : "post_feed"}
+        key={ler_dados.ID}
         className="posts"
       >
         <div id="header">
@@ -280,13 +263,28 @@ function Feed() {
               </i>
             )}
           </button>
+          <button
+            className="reacao_btn"
+            id={"btn_share_" + ler_dados.ID}
+            onClick={() =>
+              navigator.share({
+                url: ler_dados.PIC_LOCAL,
+              })
+            }
+          >
+            {ler_dados.USERNAME == "Publicidade" ? null : (
+              <i className="material-icons" id="font_dislike">
+                share_icon
+              </i>
+            )}
+          </button>
         </div>
       </div>
     ));
   } else {
     lista_feed = lerdados.map((ler_dados) =>
       ler_dados.USERNAME == user ? (
-        <div id="post_feed" className="posts">
+        <div id="post_feed" key={ler_dados} className="posts">
           <div id="header">
             <div className="avatar">
               <img className="avatar_img" src={ler_dados.USER_PIC} />
@@ -387,6 +385,22 @@ function Feed() {
               : ""}
           </div>
           {lista_feed}
+          <div
+            // id="post_feed"
+            className="post_header ver_mais"
+            onClick={() => {
+              let qtd_nova = posts_tela + 10;
+              setLimit(lerdados.slice(0, qtd_nova));
+              setPostsTela(qtd_nova);
+            }}
+          >
+            <p className="nav_top_filter_title" id="title_navbar">
+              Ver Mais
+            </p>
+            {/* <i className="material-icons" id="font_dislike">
+              cached
+            </i> */}
+          </div>
         </List>
 
         {qtd_posts > lerdados.length ? (

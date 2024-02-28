@@ -184,6 +184,11 @@ hr {
   }
 }
 
+.ver_mais{
+  margin-top: 1vh;
+  cursor: pointer;
+}
+
 #post_feed,
 .post_header,
 #post_merchan,
@@ -340,7 +345,7 @@ hr {
 
 .reacao_btn {
   margin-top: 1vh;
-  width: 100%;
+  width: 50%;
   height: 7vh;
   border: 0px;
   border-top: 1px solid #bd93f9;
@@ -353,6 +358,8 @@ hr {
 #font_dislike,
 #font_like {
   font-size: 3vh;
+  width: 3vh;
+  height: 3vh;
 }
 
 #post_fixo {
@@ -492,10 +499,14 @@ a {
   .post_timer,
   #post_merchan,
   .post_header {
-    width: 100vh;
+    width: 80vh;
   }
   .reacao_btn {
-    width: 100%;
+    width: 50%;
+    flex: auto;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
   }
   /* .avatar {
     margin-top: 0.7vh;
