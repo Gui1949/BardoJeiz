@@ -266,44 +266,13 @@ function Feed() {
           <button
             className="reacao_btn"
             id={"btn_share_" + ler_dados.ID}
-            onClick={async () => {
-              const blob = await fetch(ler_dados.PIC_LOCAL).then((r) =>
-                r.blob()
-              );
-
-              const share = async (title, text, blob) => {
-                const data = {
-                  files: [
-                    new File([blob], "file.png", {
-                      type: blob.type,
-                    }),
-                  ],
-                  title: title,
-                  text: text,
-                  url: 'https://gui1949.github.io/BardoJeiz'
-                };
-                try {
-                  if (!navigator.canShare(data)) {
-                    throw new Error("Can't share data.", data);
-                  }
-                  await navigator.share(data);
-                } catch (err) {
-                  console.error(err.name, err.message);
-                }
-              };
-
-              share(
-                "Bar do Jeiz",
-                `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
-                blob
-              );
-
-              // navigator.share({
-              //   title: `Bar do Jeiz`,
-              //   text: `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
-              //   url: ler_dados.PIC_LOCAL,
-              // })
-            }}
+            onClick={() =>
+              navigator.share({
+                title: `Bar do Jeiz`,
+                text: `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
+                url: 'https://gui1949.github.io/BardoJeiz',
+              })
+            }
           >
             {ler_dados.USERNAME == "Publicidade" ? null : (
               <i className="material-icons" id="font_dislike">

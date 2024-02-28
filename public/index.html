@@ -1,14 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"
+    />
     <meta name="theme-color" content="#000000" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Bar do Jeiz" />
     <meta
       name="description"
       content="Se o Instagram fosse bom, seria o Bar do Jeiz"
     />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gui1949.github.io/BardoJeiz/" />
+    <meta property="og:title" content="Bar do Jeiz" />
+    <meta
+      property="og:description"
+      content="Se o Instagram fosse bom, seria o Bar do Jeiz"
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://gui1949.github.io/BardoJeiz/"
+    />
+    <meta property="twitter:title" content="Bar do Jeiz" />
+    <meta
+      property="twitter:description"
+      content="Se o Instagram fosse bom, seria o Bar do Jeiz"
+    />
+    <meta property="twitter:image" content="%PUBLIC_URL%/logo512.png" />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -28,15 +60,18 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-      <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-          OneSignal.init({
-            appId: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
-          });
+    <script
+      src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+      async=""
+    ></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: "aeb277cc-35e9-4ec4-84a4-406fc5a78c34",
         });
-      </script>
+      });
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
