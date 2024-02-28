@@ -268,8 +268,8 @@ function Feed() {
             id={"btn_share_" + ler_dados.ID}
             onClick={() =>
               navigator.share({
-                title: `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz`,
-                text: ler_dados.POST_DESC,
+                title: `Bar do Jeiz`,
+                text: `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
                 url: ler_dados.PIC_LOCAL,
               })
             }
