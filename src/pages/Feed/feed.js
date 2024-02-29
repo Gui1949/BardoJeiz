@@ -380,28 +380,6 @@ function Feed() {
           </div>
           <div id="post_feed" className="posts">
             <br />
-            <p className="username">
-              <b>
-                {puxandoNews == 1
-                  ? // ? news.titulo + ": Noticias do Dia"
-                    "Noticias do Dia - por BBC Brasil"
-                  : "Carregando"}
-              </b>
-            </p>
-            <br />
-            {puxandoNews == 1
-              ? news.data.map((noticia) => (
-                  <p>
-                    <br />
-                    <a href={noticia.link} target="blank">
-                      {noticia.title}
-                    </a>
-                    <br />
-                    <br />
-                    <hr></hr>
-                  </p>
-                ))
-              : ""}
           </div>
           {lista_feed}
           <div
