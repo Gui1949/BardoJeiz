@@ -85,7 +85,7 @@ restapi.get("/news", (req, res) => {
       titulo: titulo,
       data: noticias,
     });
-  });
+  }).catch((e) => console.log(e))
 });
 
 restapi.get("/version", (req, res) => {
