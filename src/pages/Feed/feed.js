@@ -292,35 +292,54 @@ function Feed() {
                   window.alert(blob);
 
                   try {
-                    navigator.share({
-                      files: blob,
-                      title: `Bar do Jeiz`,
-                      text: `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
-                      url: "https://gui1949.github.io/BardoJeiz",
-                    });
+                    const share = async (title, text, blob) => {
+                      const data = {
+                        files: [
+                          new File([blob], "file.png", {
+                            type: blob.type,
+                          }),
+                        ],
+                        title: title,
+                        text: text,
+                        url: "https://gui1949.github.io/BardoJeiz",
+                      };
+                      try {
+                        if (!navigator.canShare(data)) {
+                          throw new Error("Can't share data.", data);
+                        }
+                        await navigator.share(data);
+                      } catch (err) {
+                        console.error(err.name, err.message);
+                      }
+                    };
+
+                    share(
+                      "Bar do Jeiz",
+                      `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
+                      blob
+                    );
                   } catch {
-                    
                     function openBlobImage(blob) {
                       // Create a temporary URL for the blob
                       const imageUrl = URL.createObjectURL(blob);
-                    
+
                       // Open the image in a new window
                       const windowRef = window.open("", "_blank");
-                    
+
                       // Set the window's content to the image URL
-                      windowRef.document.write(`<img src="${imageUrl}" alt="Image from Blob">`);
-                    
+                      windowRef.document.write(
+                        `<img src="${imageUrl}" alt="Image from Blob">`
+                      );
+
                       // Release the temporary URL when the window is closed
                       windowRef.addEventListener("beforeunload", () => {
                         URL.revokeObjectURL(imageUrl);
                       });
                     }
-                    
+
                     // Example usage:
                     // Assuming you have a blob object named 'imageBlob'
                     openBlobImage(blob);
-                    
-
                   }
                 });
             }}
