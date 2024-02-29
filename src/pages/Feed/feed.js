@@ -266,53 +266,13 @@ function Feed() {
           <button
             className="reacao_btn"
             id={"btn_share_" + ler_dados.ID}
-            onClick={async () => {
-              const blob = await fetch(
-                "https://bar-do-jeiz.onrender.com/share",
-                {
-                  method: "POST",
-                  headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    query: `<div id='post_feed' class='posts'><div id='header'><div class='avatar'><img class='avatar_img' src='${ler_dados.USER_PIC}'></div><div class='MuiListItemText-root username_data_post MuiListItemText-multiline'><span class='MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock'><p class='username' style='cursor: pointer;'><b>${ler_dados.USERNAME}</b> - Via Bar do Jeiz</p></span><p class='MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock'><span class='MuiTypography-root nav__icon MuiTypography-body2 MuiTypography-colorTextPrimary'></span></p></div></div><img class='conteudo' src='${ler_dados.PIC_LOCAL}'><div class='MuiListItemText-root username_data_post_'><span class='MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock'><p class='descricao_post'>${ler_dados.POST_DESC}</p></span></div></div>`,
-                  }),
-                }
-              )
-                .then((r) => r.blob())
-                .catch((e) => window.alert(e));
-
-              const share = async (title, text, blob) => {
-                const data = {
-                  files: [
-                    new File([blob], "file.png", {
-                      type: blob.type,
-                    }),
-                  ],
-                  title: title,
-                  text: text,
-                  url: "https://gui1949.github.io/BardoJeiz",
-                };
-                try {
-                  if (!navigator.canShare(data)) {
-                    throw new Error("Can't share data.", data);
-                  }
-                  await navigator.share(data);
-                } catch (err) {
-                  console.error(err.name, err.message);
-                  window.alert(err);
-                }
-              };
-
-              setTimeout(() => {
-                share(
-                  "Bar do Jeiz",
-                  `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
-                  blob
-                );
-              }, 1000);
-            }}
+            onClick={() =>
+              navigator.share({
+                title: `Bar do Jeiz`,
+                text: `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
+                url: ler_dados.PIC_LOCAL,
+              })
+            }
           >
             {ler_dados.USERNAME == "Publicidade" ? null : (
               <i className="material-icons" id="font_dislike">
