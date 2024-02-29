@@ -289,7 +289,6 @@ function Feed() {
               })
                 .then((res) => res.blob())
                 .then((blob) => {
-                  window.alert(blob);
 
                   try {
                     const share = async (title, text, blob) => {
