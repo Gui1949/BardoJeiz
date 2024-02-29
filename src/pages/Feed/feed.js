@@ -378,9 +378,6 @@ function Feed() {
               </div>
             </div>
           </div>
-          <div id="post_feed" className="posts">
-            <br />
-          </div>
           {lista_feed}
           <div
             // id="post_feed"
