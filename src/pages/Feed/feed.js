@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Conteudo from "./components/Conteudo";
 import Navbar from "./components/Navbar";
 import "./loader.css";
+import domtoimage from "dom-to-image";
 
 let url = "https://bar-do-jeiz.onrender.com/data";
 
@@ -196,9 +197,13 @@ function Feed() {
   if (user == "") {
     lista_feed = dados_limit.map((ler_dados) => (
       <div
-        id={ler_dados.USERNAME == "Publicidade" ? "post_merchan" : "post_feed"}
+        id={
+          ler_dados.USERNAME == "Publicidade"
+            ? "post_merchan"
+            : "post_feed_" + ler_dados.ID
+        }
         key={ler_dados.ID}
-        className="posts"
+        className="posts post_feed"
       >
         <div id="header">
           <div className="avatar">
@@ -266,13 +271,59 @@ function Feed() {
           <button
             className="reacao_btn"
             id={"btn_share_" + ler_dados.ID}
-            onClick={() =>
-              navigator.share({
-                title: `Bar do Jeiz`,
-                text: `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
-                url: ler_dados.PIC_LOCAL,
+            onClick={() => {
+              let elemento = document.getElementById(
+                "post_feed_" + ler_dados.ID
+              );
+              let element = elemento.outerHTML;
+
+              fetch("https://bar-do-jeiz.onrender.com/share", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  dados: ler_dados,
+                  nome: "post_feed_" + ler_dados.ID,
+                }),
               })
-            }
+                .then((res) => res.blob())
+                .then((blob) => {
+                  window.alert(blob);
+
+                  try {
+                    navigator.share({
+                      files: blob,
+                      title: `Bar do Jeiz`,
+                      text: `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
+                      url: "https://gui1949.github.io/BardoJeiz",
+                    });
+                  } catch {
+                    
+                    function openBlobImage(blob) {
+                      // Create a temporary URL for the blob
+                      const imageUrl = URL.createObjectURL(blob);
+                    
+                      // Open the image in a new window
+                      const windowRef = window.open("", "_blank");
+                    
+                      // Set the window's content to the image URL
+                      windowRef.document.write(`<img src="${imageUrl}" alt="Image from Blob">`);
+                    
+                      // Release the temporary URL when the window is closed
+                      windowRef.addEventListener("beforeunload", () => {
+                        URL.revokeObjectURL(imageUrl);
+                      });
+                    }
+                    
+                    // Example usage:
+                    // Assuming you have a blob object named 'imageBlob'
+                    openBlobImage(blob);
+                    
+
+                  }
+                });
+            }}
           >
             {ler_dados.USERNAME == "Publicidade" ? null : (
               <i className="material-icons" id="font_dislike">
