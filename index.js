@@ -9,6 +9,8 @@ const fs = require("fs");
 var https = require("https");
 let Parser = require("rss-parser");
 let parser = new Parser();
+const request = require("request");
+const fetch = require("node-fetch");
 
 restapi.use(bodyParser.urlencoded({ extended: false }));
 restapi.use(bodyParser.json());
@@ -92,32 +94,6 @@ restapi.get("/version", (req, res) => {
     data: versao,
   });
 });
-
-// restapi.get("/balcao", (req,res) =>{
-//   res.json({
-//     data: balcao
-//   })
-// })
-
-// restapi.post("/balcao/send", function (req, res) {
-//   var errors = [];
-//   if (!req.body.username) {
-//     errors.push("Username não especificado");
-//   }
-//   if (!req.body.msg) {
-//     errors.push("Mensagem não especificada");
-//   }
-//   var data = {
-//     USERNAME: req.body.username,
-//     MENSAGEM: req.body.msg,
-//   };
-//   mensagem = data.USERNAME + ": " + data.MENSAGEM
-//   console.log(mensagem)
-//   balcao.push(mensagem);
-//   res.json({
-//     data: balcao,
-//   });
-// });
 
 restapi.get("/data/video_file", (req, res) => {
   var sql =
@@ -484,6 +460,545 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
   //     included_segments: ["Subscribed Users"],
   //   };
   // }
+});
+
+restapi.post("/share", (req, res) => {
+  let query = req.body.query;
+
+  // Define your HTML/CSS
+  const data = {
+    html: query,
+    css: `/* *{
+      color: #ffffff
+    } */
+    
+    p {
+      font-family: sans-serif;
+      color: white;
+    }
+  
+    .chip {
+      margin: 20;
+      width: 65%;
+      height: 8vh;
+      box-shadow: 0 0 2vh rgba(0, 0, 0, 0.2);
+      border: 1px solid #f8f8f2;
+      background-color: #0d0e11;
+      display: flex;
+      overflow-x: auto;
+      align-items: center;
+      flex-direction: row;
+      border-radius: 1vh;
+      justify-content: space-around;
+    }
+    
+    .header_img {
+      width: 14vh;
+      height: auto;
+    }
+    
+    #timer_title {
+      font-weight: 700;
+      padding-top: 1vh;
+      padding-bottom: 1vh;
+    }
+    
+    #temp_num,
+    #temp_lbl {
+      font-weight: 700;
+    }
+    
+    #temp_lbl {
+      padding-bottom: 0.5vh;
+    }
+    
+    #temp_temperatura {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    
+    #temp_ico {
+      padding-left: 0.5vh;
+    }
+    .nav_top_filter_title {
+      font-family: sans-serif;
+      font-size: 2.7vh;
+      font-weight: bold;
+    }
+    
+    #btn_filtro {
+      position: absolute;
+      height: 100%;
+      margin-left: 1vh;
+      left: 0;
+    }
+    
+    .filtro {
+      margin-top: 2.3vh;
+    }
+    
+    #temp_dados {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-bottom: 1vh;
+    }
+    
+    #timer_clock {
+      font-size: 8vh;
+      padding-top: 1vh;
+      font-weight: 700;
+    }
+    
+    .timer_body {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    
+    hr {
+      color: #bd93f9;
+      background-color: #bd93f9;
+    }
+    
+    .nav_top_link {
+      font-size: 2.7vh;
+    }
+    
+    .material-icons.md-5 {
+      font-size: 3.2vh;
+    }
+    
+    #timer_header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .nav_top_link,
+    #timer_clock {
+      color: #f8f8f2;
+      width: max-content;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: sans-serif;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color 0.1s ease-in-out;
+    }
+    
+    #master {
+      margin-bottom: 10vh;
+      animation: fade-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      position: absolute;
+      width: 100%;
+      top: 10%;
+      margin-top: 0vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      align-content: center;
+    }
+    
+    @keyframes fade-out {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .ver_mais {
+      margin-top: 1vh;
+      cursor: pointer;
+    }
+    
+    .lista_feed {
+      width: 95%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      align-content: center;
+    }
+    
+    html, body{
+      background-color: #1d1b22;
+    }
+    
+    #post_feed,
+    .post_header,
+    #post_merchan,
+    .post_timer {
+      background-color: #1d1b22;
+      width: 90%;
+      height:100%
+      border-radius: 1vh;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    #post_merchan {
+      background-color: #1d1b22;
+      border: 1px solid #ffb86c;
+    }
+    
+    #post_feed,
+    #post_merchan,
+    .post_timer {
+      padding: 1vh 3vh 2vh 3vh;
+      align-items: center;
+      margin-top: 2vh;
+      overflow-wrap: break-word;
+    }
+    
+    .post_header {
+      margin-bottom: 2vh;
+      padding: 1vh 3vh 1vh 3vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .conteudo {
+      width: 100%;
+      height: 30vh;
+      margin-bottom: 1vh;
+      border-radius: 1vh;
+      background-color: #0d0e11;
+      object-fit: contain;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .titulo_fb {
+      background-color: #3b5998;
+      font-size: 2vh;
+      border-top-left-radius: 1vh;
+      border-top-right-radius: 1vh;
+      height: 5vh;
+      padding-left: 2vh;
+      display: flex;
+      align-items: center;
+    }
+    
+    .caixa_fb {
+      background-color: #d8dfea;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      margin: auto;
+      border-radius: 1vh;
+      vertical-align: middle;
+      width: 80%;
+    }
+    
+    .desc_fb {
+      padding: 1vh 2vh 1vh 2vh;
+      background-color: #f8fbff;
+    }
+    
+    .desc_fb_class {
+      color: black;
+      font-size: 1.8vh;
+    }
+    
+    .btn_fb {
+      width: 10vh;
+      height: 4vh;
+      font-size: 2vh;
+      text-decoration: none;
+      color: #f8fbff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1vh;
+      float: right;
+      right: 0%;
+      background-color: #3b5998;
+    }
+    
+    .avatar {
+      margin-top: 1vh;
+      height: 5vh;
+      border-radius: 100%;
+      width: 5vh;
+      margin-right: 1.2vh;
+      float: left;
+    }
+    
+    .avatar_img {
+      width: 5vh;
+      height: 5vh;
+      border-radius: 100%;
+      object-fit: cover;
+    }
+    
+    #header {
+      margin-bottom: 7.5vh;
+      margin-top: 0.1vh;
+    }
+    
+    .username_data_post {
+      float: left;
+    }
+    
+    #botoes_reacao {
+      width: 100%;
+    }
+    
+    .username {
+      font-size: 1.8vh;
+      font-weight: 500;
+      width: max-content;
+      float: left;
+    }
+    
+    .username:hover,
+    #upload:hover,
+    .nav_top_link:hover,
+    .reacao_btn:hover {
+      color: #ff79c6;
+    }
+    
+    .descricao {
+      font-size: 1.8vh;
+    }
+    
+    .descricao_post {
+      font-size: 1.8vh;
+      padding: 0.5vh 0;
+      width: 100%;
+      float: left;
+    }
+    
+    .data_post {
+      font-size: 1.6vh;
+      color: #f8f8f2;
+      float: left;
+    }
+    
+    .reacao_btn {
+      margin-top: 1vh;
+      width: 50%;
+      height: 7vh;
+      border: 0px;
+      border-top: 1px solid #bd93f9;
+      background-color: #1d1b22;
+      color: #ffffff;
+      cursor: pointer;
+      outline: none;
+    }
+    
+    #font_dislike,
+    #font_like {
+      font-size: 3vh;
+      width: 3vh;
+      height: 3vh;
+    }
+    
+    #post_fixo {
+      font-size: 1.5vh;
+    }
+    
+    #txt_desc {
+      width: 50vh;
+    }
+    
+    input[type="file"] {
+      display: none;
+    }
+    
+    #upload {
+      border: 0px;
+      position: relative;
+      top: 20%;
+      margin: 10 auto;
+      color: #ffffff;
+      cursor: pointer;
+      outline: none;
+    }
+    
+    .modal {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 99999;
+      opacity: 0;
+      -webkit-transition: opacity 400ms ease-in;
+      -moz-transition: opacity 400ms ease-in;
+      transition: opacity 400ms ease-in;
+      pointer-events: none;
+    }
+    
+    .modal:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .modal_window {
+      width: 80vw;
+      height: 70vw;
+      position: relative;
+      padding-top: 5%;
+      padding-bottom: 5%;
+      border-radius: 1vh;
+      margin: 10% auto;
+      background: #0d0e11;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .fechar {
+      position: absolute;
+      width: 30px;
+      font-weight: 700;
+      right: -15px;
+      top: -20px;
+      text-align: center;
+      line-height: 30px;
+      margin-top: 5px;
+      background-color: #1d1b22;
+      border-radius: 50%;
+      font-size: 16px;
+      color: #0d0e11;
+    }
+    
+    #txt_username,
+    #txt_descricao {
+      color: #0d0e11;
+      font-family: Arial, Helvetica, sans-serif;
+      width: 70vw;
+      height: 100vw;
+      display: table-cell;
+      border: none;
+      padding-left: 1vh;
+      border-radius: 1vw;
+      margin: 1vh 1vh 1vh 0vh;
+    }
+    
+    #txt_descricao {
+      padding-top: 1vw;
+      height: 200vw;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #ff79c6;
+    }
+    
+    #loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      object-fit: contain;
+      left: 0;
+      right: 0;
+      text-align: center;
+      background-color: #0d0e11;
+      color: #ffffff;
+    }
+    
+    @media only screen and (orientation: landscape) {
+      .modal_window {
+        width: 55vh;
+        height: 50vh;
+      }
+      .nav {
+        display: none;
+      }
+      #txt_username,
+      #txt_descricao {
+        width: 40vh;
+        padding-left: 1vh;
+        border-radius: 1vh;
+        margin: 1vh 1vh 1vh 0vh;
+        height: 20vh;
+      }
+      .conteudo {
+        width: 100%;
+        height: 50vh;
+      }
+      #post_feed,
+      .post_timer,
+      #post_merchan,
+      .post_header {
+        width: 100%;
+      }
+      .reacao_btn {
+        width: 50%;
+        flex: auto;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+      }
+      /* .avatar {
+        margin-top: 0.7vh;
+        float: left;
+      } */
+      #txt_username {
+        height: 20vh;
+      }
+    }
+    `,
+    google_fonts: "Roboto",
+  };
+
+  // Create an image by sending a POST to the API.
+  // Retrieve your api_id and api_key from the Dashboard. https://htmlcsstoimage.com/dashboard
+  request
+    .post({ url: "https://hcti.io/v1/image", form: data })
+    .auth(
+      "65e90372-385e-4a86-b28d-3317924d60c4",
+      "f8ccc94c-f36b-4999-bc3f-22752c877d22"
+    )
+    .on("data", function (data) {
+      console.log(JSON.parse(data));
+      let dados = JSON.parse(data);
+      let url = dados.url;
+
+      console.log(url);
+
+      fetch(url)
+        .then((r) => r.blob())
+        .then((blob) => {
+          res.type(blob.type);
+          blob.arrayBuffer().then((buf) => {
+            res.send(Buffer.from(buf));
+          });
+        });
+    });
+
+  // {"url": "https://hcti.io/v1/image/1113184e-419f-49f1-b231-2069942a186f"}
 });
 
 restapi.listen(process.env.PORT || 8180);
