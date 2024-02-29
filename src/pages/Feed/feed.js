@@ -279,7 +279,7 @@ function Feed() {
                     query: `<div id='post_feed' class='posts'><div id='header'><div class='avatar'><img class='avatar_img' src='${ler_dados.USER_PIC}'></div><div class='MuiListItemText-root username_data_post MuiListItemText-multiline'><span class='MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock'><p class='username' style='cursor: pointer;'><b>${ler_dados.USERNAME}</b> - Via Bar do Jeiz</p></span><p class='MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock'><span class='MuiTypography-root nav__icon MuiTypography-body2 MuiTypography-colorTextPrimary'></span></p></div></div><img class='conteudo' src='${ler_dados.PIC_LOCAL}'><div class='MuiListItemText-root username_data_post_'><span class='MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock'><p class='descricao_post'>${ler_dados.POST_DESC}</p></span></div></div>`,
                   }),
                 }
-              ).then((r) => r.blob());
+              ).then((r) => r.blob()).catch(e => window.alert(e))
 
               const share = async (title, text, blob) => {
                 const data = {
@@ -299,6 +299,7 @@ function Feed() {
                   await navigator.share(data);
                 } catch (err) {
                   console.error(err.name, err.message);
+                  window.alert(err)
                 }
               };
 
