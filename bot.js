@@ -1,14 +1,12 @@
-const { response, json } = require("express");
 const fs = require("fs");
 const fetch = require("node-fetch");
 const GoogleImages = require("google-images");
-const { exception } = require("console");
 const client = new GoogleImages(
   "partner-pub-4228098010894354:5271861158",
   "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
 );
 const { image_search } = require("duckduckgo-images-api");
-const pasta_img = "./img/";
+const { gerar_frase } = require("./services/geradorFrase");
 
 const path = require("path");
 let promopinga = fs.readFileSync(
@@ -16,7 +14,10 @@ let promopinga = fs.readFileSync(
 );
 promopinga = JSON.parse(promopinga);
 
-let imagens = [];
+let frasesJeiz = fs.readFileSync(
+  path.resolve(__dirname, "./json/jeiz/dados.json")
+);
+frasesJeiz = JSON.parse(frasesJeiz);
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -24,230 +25,20 @@ function getRandomInt(min, max) {
 
 function bot_jeiz() {
   try {
-    let getRandomInt = (min, max) => {
-      return Math.floor(Math.random() * (max - min)) + min;
-    };
-
-    let artigos = [
-      { palavra: "o", tipo: "masc" },
-      { palavra: "a", tipo: "fem" },
-    ];
-
-    let sujeitos = [
-      { palavra: "bar", tipo: "masc", cat: "obj" },
-      { palavra: "jacksons", tipo: "masc", cat: "pessoa" },
-      { palavra: "bolsonaro", tipo: "masc", cat: "pessoa" },
-      { palavra: "lula", tipo: "masc", cat: "pessoa" },
-      {
-        palavra: "desgraçado da vigilancia sanitaria",
-        tipo: "masc",
-        cat: "pessoa",
-      },
-      { palavra: "jairton kleyson", tipo: "masc", cat: "pessoa" },
-      { palavra: "filho da puta do bicheiro", tipo: "masc", cat: "pessoa" },
-      { palavra: "koerano", tipo: "masc", cat: "pessoa" },
-      { palavra: "bicheiro", tipo: "masc", cat: "obj" },
-      {
-        palavra: "cara que me deve quinze mil reais",
-        tipo: "masc",
-        cat: "pessoa",
-      },
-      {
-        palavra:
-          "cachaça falsificada que comprei semana passada daquele cara suspeito",
-        tipo: "fem",
-        cat: "obj",
-      },
-      {
-        palavra: "faca enferrujada que ta aqui no bar desde 1963",
-        tipo: "fem",
-        cat: "obj",
-      },
-      { palavra: "joão do bar vizinho", tipo: "masc", cat: "pessoa" },
-    ];
-
-    let verb_lig = [
-      { palavra: "é", cat: "obj" },
-      { palavra: "ta", cat: "obj" },
-      { palavra: "parece que ta", cat: "obj" },
-      { palavra: "anda", cat: "pessoa" },
-      { palavra: "vive", cat: "pessoa" },
-      { palavra: "continua", cat: "pessoa" },
-    ];
-
-    let pron_adj = [
-      { palavra: "foda", tipo: "ambos", cat: "ambos" },
-      {
-        palavra: "sendo um belo de um filho da puta",
-        tipo: "masc",
-        cat: "pessoa",
-      },
-      { palavra: "falando putaria nessa porra", tipo: "masc", cat: "pessoa" },
-      {
-        palavra:
-          "comendo traveco escondido e ainda fica disfarçando... a gente sabe de tudo",
-        tipo: "masc",
-        cat: "pessoa",
-      },
-      { palavra: "sendo corno", tipo: "masc", cat: "pessoa" },
-      {
-        palavra: "parecendo com o reginaldo rossi",
-        tipo: "masc",
-        cat: "pessoa",
-      },
-      {
-        palavra: "frequentando o cabaré da leila",
-        tipo: "ambos",
-        cat: "pessoa",
-      },
-      { palavra: "suja pra carai, puta que pariu", tipo: "fem", cat: "obj" },
-      { palavra: "sujo que só a porra viu", tipo: "masc", cat: "obj" },
-      { palavra: "muito ruim viu puta que pariu", tipo: "ambos", cat: "obj" },
-      { palavra: "sendo muito arrombado", tipo: "masc", cat: "pessoa" },
-      {
-        palavra:
-          "cachaceiro, não paga porra nenhuma e rouba na sinuca... ta fudido",
-        tipo: "masc",
-        cat: "pessoa",
-      },
-      { palavra: "muito fudido pra carai", tipo: "masc", cat: "ambos" },
-      {
-        palavra: "só se fudendo, parece puta esse corno",
-        tipo: "masc",
-        cat: "pessoa",
-      },
-    ];
-
-    let artigo = artigos[getRandomInt(0, artigos.length)];
-
-    //Filtra sujeito pelo tipo (masc ou fem)
-
-    let sujeito = sujeitos.filter((suj) => suj.tipo == artigo.tipo);
-    sujeito = sujeito[getRandomInt(0, sujeito.length)];
-
-    //Filtra o verbo de ligação pelo tipo
-
-    let verbo = verb_lig.filter(
-      (ver) => ver.cat == sujeito.cat || sujeito.cat == "ambos"
-    );
-    verbo = verbo[getRandomInt(0, verbo.length)];
-
-    //Filta o adjetivo com o verbo de ligação e sujeito
-
-    let adj = pron_adj.filter(
-      (pro) =>
-        (pro.cat == verbo.cat || verbo.cat == "ambos") &&
-        (pro.tipo == sujeito.tipo || pro.tipo == "ambos")
-    );
-    adj = adj[getRandomInt(0, adj.length)];
-
-    let descricao = [
-      "hoje ta foda aqui rapaziada",
-      "bar do jeiz é só maravilha",
-      "tomando uma de boa",
-      "bar ta estranho hj",
-      "como pesquisar no google",
-      "vender droga no bar é crime? google pesquisar",
-      "converter dolar para real",
-      "preço espingarda para bar",
-      "tétano mata?",
-      "como punir ladrões na sinuca?",
-      "como roubar no truco?",
-      "51 delivery com motoboy bebado, só aqui no bar do jeiz",
-      "essa foi foda... uma cliente pediu uma coxinha, taquei no microondas sem prato (pq n precisa) e só porque o microondas estava sujo (desde que comprei ele em 92, não limpo, pq não precisa e da um gostinho bom) ela achou ruim... virou persona non grata no bar",
-      "como ganhar no jogo do bicho?",
-      "comprar papagaio é crime?",
-      "qual é o número da policia?",
-      "abrir o bar no natal é pecado?",
-      "vou encher a cara, vou me embreagar",
-      "grande noite hein, hj inauguro o pinga 24hrs",
-      "cine florida fechou, estou de luto",
-      "bar fechado hoje (roubaram meu bujão de gás)",
-      "inferninho amostra gratis google pesquisar",
-      "reginaldo rossi - garçom",
-      "quero ver falar mal do ponte preta NA MINHA CARA",
-      "HOJE SE O PONTE PRETA PERDER, O BAR NÃO ABRE",
-      "acordei do nada aqui, aonde eu to",
-      "Pinga 24 horas, agora o bar ta outro nivel",
-      "to servindo almoço a 3 real aqui, jacksons aprovou",
-      "tomando uma glacial de boa no bar",
-      "fazendo uma farmacia aqui pro Jacksons",
-      "compro chevette 1992 só pra rodar",
-      "ouvindo um modão aqui tranquilo",
-      "to fazendo promoção de pitu hein",
-      "tive um pequeno problema aqui no bar, coisa boba",
-      "NÃO REALIZO MAIS APOSTAS DO BICHO (MOTIVO: BICHEIRO ESTÁ DESAPARECIDO)",
-      "to comendo um frango que achei numa macumba, mt bom",
-      "cabaré da leila ta fechado... COMO ASSIM? COMO ASSIM????????",
-      "alguem tira o edinho do ponte preta, pelo amor de deus",
-      "hoje aqui no la honda só tem tribufu...",
-      "ATENÇÃO: JACKSONS ESTÁ ME DEVENDO 1700 REAIS DESDE AGOSTO DE 2018",
-      "comprei um cavalo lindo aqui no leilão",
-      "ganhei no bingo, foi roubado, mas foi honesto",
-      "roubaram o premio que ganhei roubando no bingo. pequeno dia",
-      "GLACIAL É A MELHOR CERVEJA DO MUNDO! QUEM NEGAR É MENTIROSO",
-      "de boa aqui no lago dos patos ouvindo amado batista",
-      "sonhei com o número 7 hj... vou jogar no jogo do bicho",
-      "policia veio reclamar do bar só pq estavamos gritando no truco as três da manhã",
-      "NÃO TENHO NADA A VER COM O SUMIÇO DO BICHEIRO. pq eu faria isso? só pq ele me deve?",
-      "tive que ir no enterro do cara que me deve a quatro anos. obs: ele ainda não me pagou",
-      "pesquei dez quilos de tilápia hj",
-      "quase roubaram o meu vectra no pesqueiro hj, tive que deitar os caras na porrada",
-      "EU QUERO LEVY FIDELIX PRESIDENTE! PARA UM BRASIL MAIS JUSTO",
-      "hj eu não to bom pra beber... to EXCELENTE",
-      "quero saber quem me denunciou por abrir na fase vermelha",
-      "BAR É SERVIÇO ESSENCIAL SIM",
-      "TO COMPRANDO OPALA HEIN, PRINCIPALMENTE SE FOR COMODORO",
-      "fui no pesqueiro, peguei uma puta tilapia",
-      "hoje tem torneio de sinuca com o baianinho de osasco",
-      "coloquei uma maquina caça niquel aqui",
-      "atenção: a partir de agora o roubo na sinuca vai ter PUNIÇÃO SEVERA",
-      "FORAM ME DENUNCIAR PQ AGREDI UM IDOSO NO MEU BAR... ele roubou na sinuca, EU VI",
-      "estou vendendo batata e cebola, pra virar serviço essencial, agora é MERCEARIA DO JEIZ",
-      "#LULALIBERAARINHADEGALO",
-      "ganhei no bicho, hj tem rodada na minha conta",
-      "apostei tudo que ganhei no bicho no ponte preta e perdi",
-      "jogos de azar são de azar mesmo, descobri aqui",
-      "hoje teve porradaria na sinuca, tive que bater em todos",
-      "proibido roubar na sinuca, sujeito a FACADA",
-      "fiado só amanhã",
-      "hoje tem churrasquinho de gato no bar",
-      "ednaldo pereira é um dos melhores artistas vivos",
-      "PESSOAL ME DERAM UM GOLPE AQUI, UMA NOTA DE 3 REAIS, CUIDADO",
-      "fiz uma maquina caça niquel rapaziadaaaaaaaaa",
-      "ganhei no jogo do bicho online",
-      "grande dia, grande dia",
-      "um salve pro meu primo javier",
-      "clonei o cartão do bicheiro fdp, hj tem rodada na conta desse CHIFRUDO!!!!!!",
-      "quando fui pra portugal, arrumei uma briga muito feia com a mafia russa",
-      "AVISO: estão confundindo o bar com o puteiro da leila! É O ESTABELECIMENTO AO LADO. PRESTEM ATENÇÃO",
-      "CUIDADO, ESTÃO ACONTECENDO FENOMENOS EXTRATERRESTRES NO BAR!!!!",
-    ];
-
     tipo_frase = getRandomInt(0, 10);
 
-    console.table(tipo_frase);
-
-    let desc;
-
     if (tipo_frase <= 5) {
-      desc =
-        artigo.palavra +
-        " " +
-        sujeito.palavra +
-        " " +
-        verbo.palavra +
-        " " +
-        adj.palavra;
+      desc = gerar_frase();
     } else {
-      desc = descricao[getRandomInt(0, descricao.length)];
+      desc = frasesJeiz.descricao[getRandomInt(0, frasesJeiz.descricao.length)];
     }
 
     let img_aleatoria = "";
 
     async function puxar_img() {
-      try {
-        await client.search(desc).then((images) => {
+      await client
+        .search(desc)
+        .then((images) => {
           let i = getRandomInt(0, 10);
           img_aleatoria = images[i].url;
           let userpic =
@@ -275,68 +66,46 @@ function bot_jeiz() {
               console.log("Bot JEIZ rodou");
             }
           });
-        });
-      } catch (err) {
-        console.log("Erro:", err);
-        console.log("Mudando para DuckDuckGo");
+        })
+        .catch((err) => {
+          console.log("Erro:", err);
+          console.log("Mudando para DuckDuckGo");
 
-        image_search({ query: desc, moderate: true, iterations: 2 }).then(
-          (results) => {
-            let i = getRandomInt(0, results.length);
-            img_aleatoria = results[i].image;
+          image_search({ query: desc, moderate: true, iterations: 2 }).then(
+            (results) => {
+              let i = getRandomInt(0, results.length);
+              img_aleatoria = results[i].image;
 
-            let userpic =
-              "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
-            let name = "Jeiz";
-            let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+              let userpic =
+                "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
+              let name = "Jeiz";
+              let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
 
-            if (img_aleatoria.includes("x-raw-image")) {
-              throw new Error("001 - X-RAW IMAGE");
-            }
-
-            let FormData = require("form-data");
-            let data = new FormData();
-
-            data.append("photo", img_aleatoria);
-            data.append("photo_pic", userpic);
-            data.append("description", desc);
-            data.append("username", name);
-
-            fetch(apiUrl, {
-              method: "POST",
-              body: data,
-            }).then(function (response) {
-              if (response.ok) {
-                console.log("Bot JEIZ rodou");
+              if (img_aleatoria.includes("x-raw-image")) {
+                throw new Error("001 - X-RAW IMAGE");
               }
-            });
-          }
-        );
 
-        // input = imagem[getRandomInt(0, imagem.length)];
-        // let userpic =
-        //   "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
-        // let name = "Jeiz";
-        // let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+              let FormData = require("form-data");
+              let data = new FormData();
 
-        // let FormData = require("form-data");
-        // let data = new FormData();
+              data.append("photo", img_aleatoria);
+              data.append("photo_pic", userpic);
+              data.append("description", desc);
+              data.append("username", name);
 
-        // data.append("photo", input);
-        // data.append("photo_pic", userpic);
-        // data.append("description", desc);
-        // data.append("username", name);
-
-        // fetch(apiUrl, {
-        //   method: "POST",
-        //   body: data,
-        // }).then(function (response) {
-        //   if (response.ok) {
-        //     console.log("Bot JEIZ rodou");
-        //   }
-        // });
-      }
+              fetch(apiUrl, {
+                method: "POST",
+                body: data,
+              }).then(function (response) {
+                if (response.ok) {
+                  console.log("Bot JEIZ rodou");
+                }
+              });
+            }
+          );
+        });
     }
+
     puxar_img();
 
     try {
@@ -1935,16 +1704,16 @@ setInterval(bot_anime, 700000);
 setInterval(bot_dona_sonia, 700000);
 
 bot_jeiz();
-bot_merchan();
-bot_dona_sonia();
-bot_gringo();
-bot_bitcoin();
-bot_g1();
-bot_petista();
-bot_blogueirinha();
-bot_bolsonarista();
-bot_piada();
-bot_anime();
-bot_tiao();
-bot_meire();
-bot_ze();
+// bot_merchan();
+// bot_dona_sonia();
+// bot_gringo();
+// bot_bitcoin();
+// bot_g1();
+// bot_petista();
+// bot_blogueirinha();
+// bot_bolsonarista();
+// bot_piada();
+// bot_anime();
+// bot_tiao();
+// bot_meire();
+// bot_ze();
