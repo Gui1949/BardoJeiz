@@ -24,7 +24,7 @@ function getRandomInt(min, max) {
 }
 
 restapi.get("/data", (req, res) => {
-  var sql = "select * from POSTS order by rand()";
+  var sql = "select * from POSTS order by random() limit 1";
   var params = [];
   db.all(sql, params, (err, rows) => {
     if (err) {
