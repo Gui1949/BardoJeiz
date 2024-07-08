@@ -32,10 +32,12 @@ restapi.get("/data", (req, res) => {
       return;
     }
 
-    console.log(req.ip);
+    const shuffle = () => {
+      return array.sort(() => Math.random() - 0.5);
+    };
 
     res.json({
-      data: rows,
+      data: shuffle(rows),
     });
   });
 });
