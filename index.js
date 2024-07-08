@@ -32,7 +32,7 @@ restapi.get("/data", (req, res) => {
       return;
     }
 
-    const shuffle = () => {
+    const shuffle = (array) => {
       return array.sort(() => Math.random() - 0.5);
     };
 
