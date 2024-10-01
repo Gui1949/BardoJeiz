@@ -23,7 +23,7 @@
     "use-force-update": "^1.0.7"
   },
   "scripts": {
-    "start": "set PORT=443 && react-scripts start",
+    "start": "react-scripts start",
     "predeploy": "npm run build",
     "build": "react-scripts build && RMDIR /S /Q docs && move build docs",
     "test": "react-scripts test",
