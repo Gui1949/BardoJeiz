@@ -11,28 +11,6 @@ import domtoimage from "dom-to-image";
 
 let url = "https://bar-do-jeiz.onrender.com/data";
 
-function dislike(id_btn) {
-  let id_trat = "";
-  id_trat = id_btn.replace(/[^0-9\.]+/g, "");
-
-  let objeto_desfazer = document.getElementById("btn_like_" + id_trat);
-
-  let objeto = document.getElementById("btn_dislike_" + id_trat);
-
-  colorir(objeto);
-
-  fetch("https://bar-do-jeiz.onrender.com/data/dislike", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      ID: id_trat,
-    }),
-  });
-}
-
 function colorir(objeto) {
   if (objeto.style.color === "rgb(255, 121, 198)") {
     objeto.style.color = "#ffffff";
@@ -259,17 +237,6 @@ function Feed() {
         <div id="botoes_reacao">
           <button
             className="reacao_btn"
-            id={"btn_dislike_" + ler_dados.ID}
-            onClick={() => dislike(JSON.stringify(ler_dados, ["ID"]))}
-          >
-            {ler_dados.USERNAME == "Publicidade" ? null : (
-              <i className="material-icons" id="font_dislike">
-                thumb_down_off_alt
-              </i>
-            )}
-          </button>
-          <button
-            className="reacao_btn"
             id={"btn_share_" + ler_dados.ID}
             onClick={() => {
               let elemento = document.getElementById(
@@ -387,15 +354,6 @@ function Feed() {
           />
 
           <div id="botoes_reacao">
-            <button
-              className="reacao_btn"
-              id={"btn_dislike_" + ler_dados.ID}
-              onClick={() => dislike(JSON.stringify(ler_dados, ["ID"]))}
-            >
-              <i className="material-icons" id="font_dislike">
-                thumb_down
-              </i>
-            </button>
             <button
               className="reacao_btn"
               id={"btn_share_" + ler_dados.ID}
