@@ -11,7 +11,6 @@ let Parser = require("rss-parser");
 const fetch = require("node-fetch");
 let parser = new Parser();
 var domtoimage = require("dom-to-image");
-const jsdom = require("jsdom");
 
 restapi.use(bodyParser.urlencoded({ extended: false }));
 restapi.use(bodyParser.json());
@@ -346,13 +345,7 @@ restapi.post("/data/bot_upload", upload.single("photo"), async (req, res) => {
     POST_DISLIKE: 0,
     LINK: req.body.link,
   };
-  
-  const imageUrlToBase64 = async (url) => {
-  const data = await fetch(url);
-  const blob = await data.blob();
-  let buffer = Buffer.from(await blob.arrayBuffer());
-  return "data:" + blob.type + ';base64,' + buffer.toString('base64');
-};
+
 
   var sql =
     "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC,POST_LIKE,POST_DISLIKE,LINK) VALUES(?,?,?,?,?,?,?,?)";
