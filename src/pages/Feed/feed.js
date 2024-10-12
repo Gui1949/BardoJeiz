@@ -9,8 +9,7 @@ import Navbar from "./components/Navbar";
 import "./loader.css";
 import html2canvas from "html2canvas";
 
-//let url = "https://bar-do-jeiz.onrender.com/data";
-let url = "http://localhost:8180/data";
+let url = "https://bar-do-jeiz.onrender.com/data";
 
 function colorir(objeto) {
   if (objeto.style.color === "rgb(255, 121, 198)") {
