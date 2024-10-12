@@ -427,16 +427,16 @@ restapi.post("/data/bot_upload", upload.single("photo"), async (req, res) => {
 restapi.post("/share", async (req, res) => {
   let dados = req.body.dados;
   let nome = req.body.nome;
+  
+  console.log(dados);
 
-  fetch(dados.PIC_LOCAL)
+  fetch(req.query.imagem)
     .then((resp) => resp.blob())
-    .then((blob) => {
+    .then(async (blob) => {
       console.log(blob);
-
-      res.type(blob.type);
-      blob.arrayBuffer().then((buf) => {
-        res.send(Buffer.from(buf));
-      });
+	  let buffer = Buffer.from(await blob.arrayBuffer());
+	  let url_64 = "data:" + blob.type + ';base64,' + buffer.toString('base64');		
+	  res.json({ data: url_64 });
     });
 });
 
