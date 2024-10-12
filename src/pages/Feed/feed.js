@@ -258,7 +258,7 @@ const exportAsImage = async (obj_id, imageFileName) => {
 			let a = [1, 2]
 				
 			for(let loop of a){			
-			downloadedImg.src = await fetch("http://localhost:8180/share?imagem=" + ler_dados.PIC_LOCAL, { method: "POST" })
+			downloadedImg.src = await fetch("https://bar-do-jeiz.onrender.com/share?imagem=" + ler_dados.PIC_LOCAL, { method: "POST" })
 			.then((resp) => resp.json()).then((reqres) => {
 				return reqres.data
 			}).catch((e) => window.alert(e))			 			  
