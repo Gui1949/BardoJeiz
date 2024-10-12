@@ -11,7 +11,6 @@ import html2canvas from "html2canvas";
 
 let url = "https://bar-do-jeiz.onrender.com/data";
 
-
 function colorir(objeto) {
   if (objeto.style.color === "rgb(255, 121, 198)") {
     objeto.style.color = "#ffffff";
@@ -251,21 +250,24 @@ const exportAsImage = async (obj_id, imageFileName) => {
         <button
           className="reacao_btn"
           id={"btn_share_" + ler_dados.ID}
-          onClick={async () => {
-									  
+          onClick={async () => {			
 			  
-			let downloadedImg = document.getElementById("foto_" + ler_dados.ID);			  
+			//Loop para colocar o base64 no lugar da imagem
+			let downloadedImg = document.getElementById("foto_" + ler_dados.ID);	
+			  						  
+			let a = [1, 2]
+				
+			for(let loop of a){			
+			downloadedImg.src = await fetch("http://localhost:8180/share?imagem=" + ler_dados.PIC_LOCAL, { method: "POST" })
+			.then((resp) => resp.json()).then((reqres) => {
+				return reqres.data
+			}).catch((e) => window.alert(e))			 			  
+			        
+			}					  
 			  
-			let elemento = document.getElementById("post_feed_" + ler_dados.ID);
-			
-			  const data = await fetch(ler_dados.PIC_LOCAL);
-			  const blob = await data.blob();
-			  let buffer = Buffer.from(await blob.arrayBuffer());
-			  let url_64 = "data:" + blob.type + ';base64,' + buffer.toString('base64');		
+			let elemento = document.getElementById("post_feed_" + ler_dados.ID);					 			 
 			  
-			  downloadedImg.src = url_64		
-			  
-			let imagem = await exportAsImage("post_feed_" + ler_dados.ID, "test")									 			  
+			let imagem = await exportAsImage("post_feed_" + ler_dados.ID, "test")									 			  			  
 			  
 			const blob_64 = await fetch(imagem).then(r=>r.blob())
 
@@ -296,7 +298,7 @@ const exportAsImage = async (obj_id, imageFileName) => {
                   share(
                     "Bar do Jeiz",
                     `Olha essa merda que o ${ler_dados.USERNAME} postou no Bar do Jeiz: ${ler_dados.POST_DESC}`,
-                    blob
+                    blob_64
                   );
                 } catch {
                   function openBlobImage(blob) {
@@ -319,7 +321,7 @@ const exportAsImage = async (obj_id, imageFileName) => {
 
                   // Example usage:
                   // Assuming you have a blob object named 'imageBlob'
-                  openBlobImage(blob);
+                  openBlobImage(blob_64);
                 }
              
           }}
