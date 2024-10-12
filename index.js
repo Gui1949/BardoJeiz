@@ -11,7 +11,6 @@ let Parser = require("rss-parser");
 const fetch = require("node-fetch");
 let parser = new Parser();
 var domtoimage = require("dom-to-image");
-const jsdom = require("jsdom");
 
 restapi.use(bodyParser.urlencoded({ extended: false }));
 restapi.use(bodyParser.json());
