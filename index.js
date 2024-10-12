@@ -11,6 +11,7 @@ let Parser = require("rss-parser");
 const fetch = require("node-fetch");
 let parser = new Parser();
 var domtoimage = require("dom-to-image");
+const jsdom = require("jsdom");
 
 restapi.use(bodyParser.urlencoded({ extended: false }));
 restapi.use(bodyParser.json());
@@ -359,7 +360,7 @@ restapi.post("/data/bot_upload", upload.single("photo"), async (req, res) => {
     data.USERNAME,
     data.USER_PIC,
     data.POST_DATA,
-    await imageUrlToBase64(data.PIC_LOCAL),
+    data.PIC_LOCAL,
     data.POST_DESC,
     data.POST_LIKE,
     data.POST_DISLIKE,
