@@ -23,8 +23,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// let base = "https://bar-do-jeiz.onrender.com"
-let base = "http://localhost:8180"
+let base = "https://bar-do-jeiz.onrender.com"
 
 function bot_jeiz() {
   try {
