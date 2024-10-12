@@ -23,6 +23,9 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// let base = "https://bar-do-jeiz.onrender.com"
+let base = "http://localhost:8180"
+
 function bot_jeiz() {
   try {
     tipo_frase = getRandomInt(0, 10);
@@ -44,7 +47,7 @@ function bot_jeiz() {
           let userpic =
             "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
           let name = "Jeiz";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/bot_upload";
 
           if (img_aleatoria.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -79,7 +82,7 @@ function bot_jeiz() {
               let userpic =
                 "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
               let name = "Jeiz";
-              let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+              let apiUrl = base + "/data/bot_upload";
 
               if (img_aleatoria.includes("x-raw-image")) {
                 throw new Error("001 - X-RAW IMAGE");
@@ -159,7 +162,7 @@ function bot_ze() {
           let userpic =
             "https://pbs.twimg.com/profile_images/1752465696603136000/3BZvubBm_400x400.jpg";
           let name = "Zé da Pinga Promoções";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -194,7 +197,7 @@ function bot_ze() {
             let userpic =
               "https://pbs.twimg.com/profile_images/1752465696603136000/3BZvubBm_400x400.jpg";
             let name = "Zé da Pinga Promoções";
-            let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+            let apiUrl = base + "/data/bot_upload";
 
             if (img_aleatoria.includes("x-raw-image")) {
               throw new Error("001 - X-RAW IMAGE");
@@ -270,7 +273,7 @@ function bot_dona_sonia() {
             let userpic =
               "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
             let name = "Dona Sônia";
-            let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+            let apiUrl = base + "/data/bot_upload";
 
             if (img_aleatoria.includes("x-raw-image")) {
               throw new Error("001 - X-RAW IMAGE");
@@ -306,7 +309,7 @@ function bot_dona_sonia() {
               let userpic =
                 "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
               let name = "Dona Sônia";
-              let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+              let apiUrl = base + "/data/bot_upload";
 
               if (img_aleatoria.includes("x-raw-image")) {
                 throw new Error("001 - X-RAW IMAGE");
@@ -353,7 +356,7 @@ function bot_dona_sonia() {
             let userpic =
               "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
             let name = "Dona Sônia";
-            let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+            let apiUrl = base + "/data/bot_upload";
 
             if (img_aleatoria.includes("x-raw-image")) {
               throw new Error("001 - X-RAW IMAGE");
@@ -388,7 +391,7 @@ function bot_dona_sonia() {
               let userpic =
                 "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
               let name = "Dona Sônia";
-              let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+              let apiUrl = base + "/data/bot_upload";
 
               if (img_aleatoria.includes("x-raw-image")) {
                 throw new Error("001 - X-RAW IMAGE");
@@ -435,7 +438,7 @@ function bot_dona_sonia() {
             let userpic =
               "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
             let name = "Dona Sônia";
-            let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+            let apiUrl = base + "/data/bot_upload";
 
             if (img_aleatoria.includes("x-raw-image")) {
               throw new Error("001 - X-RAW IMAGE");
@@ -470,7 +473,7 @@ function bot_dona_sonia() {
               let userpic =
                 "https://www.bahianoticias.com.br/fotos/holofote_noticias/23237/IMAGEM_NOTICIA_5.jpg";
               let name = "Dona Sônia";
-              let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+              let apiUrl = base + "/data/bot_upload";
 
               if (img_aleatoria.includes("x-raw-image")) {
                 throw new Error("001 - X-RAW IMAGE");
@@ -570,7 +573,7 @@ function bot_blogueirinha() {
           let userpic =
             "https://wp-cdn.etiquetaunica.com.br/blog/wp-content/uploads/2018/08/11122702/capa-post-top-blogueiras-brasileiras-compressed.jpg";
           let name = "Julcimara Blog";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -609,7 +612,7 @@ function bot_blogueirinha() {
           var userpic_julcimara =
             "https://wp-cdn.etiquetaunica.com.br/blog/wp-content/uploads/2018/08/11122702/capa-post-top-blogueiras-brasileiras-compressed.jpg";
           var name1 = "Julcimara Blog";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria_.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -738,7 +741,7 @@ function bot_blogueirinha() {
 
 //         var userpic = "tiozao.jpg";
 //         var name = "Jacksons";
-//         let apiUrl = "https://bar-do-jeiz.onrender.com/data/upload";
+//         let apiUrl = base + "/data/upload";
 
 //         var FormData = require("form-data");
 //         var data = new FormData();
@@ -807,7 +810,7 @@ function bot_bolsonarista() {
           let userpic =
             "https://th.bing.com/th/id/OIP.ZoPDGJ5KbSZOvW-0NT76pAHaFj?pid=ImgDet&rs=1";
           let name = "EDIVALDO NUNES";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -846,7 +849,7 @@ function bot_bolsonarista() {
           let userpic =
             "https://th.bing.com/th/id/OIP.ZoPDGJ5KbSZOvW-0NT76pAHaFj?pid=ImgDet&rs=1";
           let name1 = "EDIVALDO NUNES";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria_.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -894,7 +897,7 @@ function bot_piada() {
           let userpic =
             "https://caricatures.fr/private10/images/article/caricature/792.jpg";
           let name = "Toninho";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -933,7 +936,7 @@ function bot_piada() {
           let userpic =
             "https://caricatures.fr/private10/images/article/caricature/792.jpg";
           let name1 = "Toninho";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria_.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -997,7 +1000,7 @@ function bot_petista() {
             let userpic =
               "https://pt.org.br/wp-content/themes/pt_2016/assets/images/logos/logo-pt.png";
             let name = "Raimundo Silva";
-            let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+            let apiUrl = base + "/data/bot_upload";
 
             if (img_aleatoria.includes("x-raw-image")) {
               throw new Error("001 - X-RAW IMAGE");
@@ -1036,7 +1039,7 @@ function bot_petista() {
           let userpic =
             "https://pt.org.br/wp-content/themes/pt_2016/assets/images/logos/logo-pt.png";
           let name1 = "Raimundo Silva";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria_.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -1108,7 +1111,7 @@ function bot_anime() {
           let userpic =
             "https://vignette.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_1.png";
           let name = "Gabriel Sykes";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -1147,7 +1150,7 @@ function bot_anime() {
           let userpic =
             "https://vignette.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_1.png";
           let name1 = "Gabriel Sykes";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria_.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -1190,12 +1193,12 @@ function bot_gringo() {
     CRIME OCORRE NADA ACONTECE FEIJOADA`,
   ];
 
-  input = "https://bar-do-jeiz.onrender.com/data/img/koerano.jpg";
+  input = base + "/data/img/koerano.jpg";
   let desc = gringoArray[getRandomInt(0, gringoArray.length)];
 
-  var userpic = "https://bar-do-jeiz.onrender.com/data/img/KOERANO.jpeg";
+  var userpic = base + "/data/img/KOERANO.jpeg";
   var name = "KOERANO";
-  let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+  let apiUrl = base + "/data/bot_upload";
 
   var FormData = require("form-data");
   var data = new FormData();
@@ -1268,9 +1271,9 @@ function bot_merchan() {
           let i = getRandomInt(0, 10);
           img_aleatoria_ = images[i].url;
           var userpic_merchan =
-            "https://bar-do-jeiz.onrender.com/data/img/propaganda.png";
+            base + "/data/img/propaganda.png";
           var name1 = "Publicidade";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria_.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -1307,9 +1310,9 @@ function bot_merchan() {
           img_aleatoria_ = results[i].image;
 
           var userpic_merchan =
-            "https://bar-do-jeiz.onrender.com/data/img/propaganda.png";
+            base + "/data/img/propaganda.png";
           var name1 = "Publicidade";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria_.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -1439,7 +1442,7 @@ function bot_g1() {
           var FormData = require("form-data");
           var data = new FormData();
 
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           data.append("photo", img);
           data.append("photo_pic", icone);
@@ -1483,11 +1486,11 @@ function bot_bitcoin() {
       var FormData = require("form-data");
       var data = new FormData();
 
-      let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+      let apiUrl = base + "/data/bot_upload";
 
-      let picture = "https://bar-do-jeiz.onrender.com/data/img/bitcoin.jpeg";
+      let picture = base + "/data/img/bitcoin.jpeg";
 
-      let icone = "https://bar-do-jeiz.onrender.com/data/img/bitcoin.jpeg";
+      let icone = base + "/data/img/bitcoin.jpeg";
 
       data.append("photo", picture);
       data.append("photo_pic", icone);
@@ -1524,7 +1527,7 @@ function bot_tiao() {
           let userpic =
             "https://3.bp.blogspot.com/-vvGsapYHhSw/TWWMoUYyriI/AAAAAAAAFzA/Y0pHOVSkFmc/s1600/consertos_para_casa.JPG";
           let name = "TIÃO CONSERTOS 11976461825 ZAP";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -1563,7 +1566,7 @@ function bot_tiao() {
           let userpic =
             "https://3.bp.blogspot.com/-vvGsapYHhSw/TWWMoUYyriI/AAAAAAAAFzA/Y0pHOVSkFmc/s1600/consertos_para_casa.JPG";
           let name1 = "TIÃO CONSERTOS 11976461825 ZAP";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria_.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -1618,7 +1621,7 @@ function bot_meire() {
           let userpic =
             "https://th.bing.com/th/id/OIP.wutNsJuO6MeEyoE046fc3QHaFj?pid=ImgDet&rs=1";
           let name = "Dona Meire";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -1657,7 +1660,7 @@ function bot_meire() {
           let userpic =
             "https://th.bing.com/th/id/OIP.wutNsJuO6MeEyoE046fc3QHaFj?pid=ImgDet&rs=1";
           let name1 = "Dona Meire";
-          let apiUrl = "https://bar-do-jeiz.onrender.com/data/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria_.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");

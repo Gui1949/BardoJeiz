@@ -55,43 +55,6 @@ restapi.get("/data/:username", (req, res) => {
   });
 });
 
-restapi.get("/news", (req, res) => {
-  let links = [
-    // "http://g1.globo.com/dynamo/ciencia-e-saude/rss2.xml",
-    // "http://g1.globo.com/dynamo/economia/rss2.xml",
-    // "http://g1.globo.com/dynamo/mundo/rss2.xml",
-    // "https://rss.tecmundo.com.br/feed",
-    // "http://www.valor.com.br/rss",
-    // "http://rss.megacurioso.com.br/feed",
-    // "https://www.noticiasaominuto.com.br/rss/ultima-hora",
-    "http://www.bbc.co.uk/portuguese/index.xml",
-    // "https://exame.com/rss",
-    // "https://super.abril.com.br/rss",
-    // "https://veja.abril.com.br/rss",
-    // "https://vejasp.abril.com.br/rss",
-    // "https://quatrorodas.abril.com.br/rss",
-    // "https://www.techtudo.com.br/rss/techtudo/",
-  ];
-
-  let url = links[getRandomInt(0, links.length)];
-
-  parser
-    .parseURL(url)
-    .then((result) => {
-      icone = result.image.url;
-      titulo = result.title;
-
-      noticias = result.items.slice(0, 5);
-
-      res.json({
-        icone: icone,
-        titulo: titulo,
-        data: noticias,
-      });
-    })
-    .catch((e) => console.log(e));
-});
-
 restapi.get("/version", (req, res) => {
   versao = "0.1.1";
   res.json({
@@ -368,7 +331,7 @@ restapi.post("/data/upload", upload.single("photo"), (req, res) => {
   sendNotification(message);
 });
 
-restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
+restapi.post("/data/bot_upload", upload.single("photo"), async (req, res) => {
   let date_ob = new Date();
 
   date_ob = date_ob.toLocaleString("pt-br", { timeZone: "America/Sao_Paulo" });
@@ -383,11 +346,13 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     POST_DISLIKE: 0,
     LINK: req.body.link,
   };
-
-  if (data.PIC_LOCAL.includes("https://www.youtube.com")) {
-    data.PIC_LOCAL = data.PIC_LOCAL.replace("watch?v=", "embed/");
-    console.log(data.PIC_LOCAL);
-  }
+  
+  const imageUrlToBase64 = async (url) => {
+  const data = await fetch(url);
+  const blob = await data.blob();
+  let buffer = Buffer.from(await blob.arrayBuffer());
+  return "data:" + blob.type + ';base64,' + buffer.toString('base64');
+};
 
   var sql =
     "INSERT INTO POSTS (USERNAME,USER_PIC,POST_DATA,PIC_LOCAL,POST_DESC,POST_LIKE,POST_DISLIKE,LINK) VALUES(?,?,?,?,?,?,?,?)";
@@ -395,7 +360,7 @@ restapi.post("/data/bot_upload", upload.single("photo"), (req, res) => {
     data.USERNAME,
     data.USER_PIC,
     data.POST_DATA,
-    data.PIC_LOCAL,
+    await imageUrlToBase64(data.PIC_LOCAL),
     data.POST_DESC,
     data.POST_LIKE,
     data.POST_DISLIKE,
