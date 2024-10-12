@@ -11,6 +11,7 @@ import html2canvas from "html2canvas";
 
 let url = "https://bar-do-jeiz.onrender.com/data";
 
+
 function colorir(objeto) {
   if (objeto.style.color === "rgb(255, 121, 198)") {
     objeto.style.color = "#ffffff";
@@ -255,12 +256,18 @@ const exportAsImage = async (obj_id, imageFileName) => {
 			  
 			let downloadedImg = document.getElementById("foto_" + ler_dados.ID);			  
 			  
-			let elemento = document.getElementById("post_feed_" + ler_dados.ID);		
-			  
-			let imagem = await exportAsImage("post_feed_" + ler_dados.ID, "test")
+			let elemento = document.getElementById("post_feed_" + ler_dados.ID);
 			
-			const blob = await fetch(imagem).then(r=>r.blob())
-									 			  
+			  const data = await fetch(ler_dados.PIC_LOCAL);
+			  const blob = await data.blob();
+			  let buffer = Buffer.from(await blob.arrayBuffer());
+			  let url_64 = "data:" + blob.type + ';base64,' + buffer.toString('base64');		
+			  
+			  downloadedImg.src = url_64		
+			  
+			let imagem = await exportAsImage("post_feed_" + ler_dados.ID, "test")									 			  
+			  
+			const blob_64 = await fetch(imagem).then(r=>r.blob())
 
             let element = elemento.outerHTML;
 
@@ -268,8 +275,8 @@ const exportAsImage = async (obj_id, imageFileName) => {
                   const share = async (title, text, blob) => {
                     const data = {
                       files: [
-                        new File([blob], "file.png", {
-                          type: blob.type,
+                        new File([blob_64], "file.png", {
+                          type: blob_64.type,
                         }),
                       ],
                       title: title,
