@@ -8,28 +8,9 @@ class Conteudo extends React.Component {
     };
   }
   render() {
-    
-    let foto = this.state.foto
+    let foto = this.state.foto;
 
-    if (foto.includes(".mp4", "mov") == true) {
-      return (
-        <video className="conteudo" controls>
-          <source src={foto} type="video/mp4" />
-        </video>
-      );
-    } 
-    else if (foto.includes("https://www.youtube.com") == true) {
-      return (
-        <iframe
-          className="conteudo"
-          src={foto}
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      );
-    }
-    else if (foto.includes("fbsbx") == true || foto.includes("fbcdn") == true) {
+    if (foto.includes("fbsbx") || foto.includes("fbcdn")) {
       return (
         <div className="conteudo">
           <div className="caixa_fb">
@@ -44,20 +25,23 @@ class Conteudo extends React.Component {
                 responsabilizo por nada de lá não.
               </p>
             </div>
-            <a
-              className="btn_fb"
-              target="_blank"
-              href={foto}
-            >
+            <a className="btn_fb" target="_blank" href={foto}>
               <b>Acessar</b>
             </a>
           </div>
         </div>
       );
+    } else {
+      let imagem = foto.includes("wp-content") 
+      || foto.includes("twimg")
+      || foto.includes("bcdn")
+      || foto.includes("eaglepatches")
+      || foto.includes("cdn")
+        ? "https://media.tenor.com/N_0wM0S-3RAAAAAM/sumiu-cade.gif"
+        : foto;
+
+      return <img crossorigin="anonymous" className="conteudo" src={imagem} />;
     }
-    else {
-        return <img className="conteudo" src={foto} />;
-      }
   }
 }
 
