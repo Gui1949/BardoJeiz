@@ -9,7 +9,8 @@ import Navbar from "./components/Navbar";
 import "./loader.css";
 import html2canvas from "html2canvas";
 
-let url = "https://bar-do-jeiz.onrender.com/data";
+//let url = "https://bar-do-jeiz.onrender.com/data";
+let url = "http://localhost:8180/data";
 
 function colorir(objeto) {
   if (objeto.style.color === "rgb(255, 121, 198)") {
@@ -196,7 +197,7 @@ const exportAsImage = async (obj_id, imageFileName) => {
       <div id="header">
         <div className="avatar">
           <img
-          crossorigin="anonymous"
+			id={"avatar_" + ler_dados.ID}
             className="avatar_img"
             src={
               ler_dados.USER_PIC
@@ -227,7 +228,7 @@ const exportAsImage = async (obj_id, imageFileName) => {
           }
         />
       </div>
-      <Conteudo foto={ler_dados.PIC_LOCAL} />
+      <Conteudo id={"foto_" + ler_dados.ID} foto={ler_dados.PIC_LOCAL} />
       <ListItemText
         primary={
           <>
@@ -251,13 +252,16 @@ const exportAsImage = async (obj_id, imageFileName) => {
           className="reacao_btn"
           id={"btn_share_" + ler_dados.ID}
           onClick={async () => {
-			let elemento = document.getElementById("post_feed_" + ler_dados.ID);
+									  
+			  
+			let downloadedImg = document.getElementById("foto_" + ler_dados.ID);			  
+			  
+			let elemento = document.getElementById("post_feed_" + ler_dados.ID);		
 			  
 			let imagem = await exportAsImage("post_feed_" + ler_dados.ID, "test")
 			
 			const blob = await fetch(imagem).then(r=>r.blob())
-									  
-			  
+									 			  
 
             let element = elemento.outerHTML;
 

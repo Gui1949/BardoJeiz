@@ -9,6 +9,7 @@ class Conteudo extends React.Component {
   }
   render() {
     let foto = this.state.foto;
+    let id = this.state.id
 
     if (foto.includes("fbsbx") || foto.includes("fbcdn")) {
       return (
@@ -32,15 +33,7 @@ class Conteudo extends React.Component {
         </div>
       );
     } else {
-      let imagem = foto.includes("wp-content") 
-      || foto.includes("twimg")
-      || foto.includes("bcdn")
-      || foto.includes("eaglepatches")
-      || foto.includes("cdn")
-        ? "https://media.tenor.com/N_0wM0S-3RAAAAAM/sumiu-cade.gif"
-        : foto;
-
-      return <img crossorigin="anonymous" className="conteudo" src={imagem} />;
+      return <img className="conteudo" id={id} src={foto} />;
     }
   }
 }
