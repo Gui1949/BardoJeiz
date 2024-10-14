@@ -2,6 +2,7 @@ const fs = require("fs");
 const fetch = require("node-fetch");
 const GoogleImages = require("google-images");
 const ahNegao = require('./bots/ahnegao.js')
+const wikiHow = require('./bots/wikihow.js')
 const client = new GoogleImages(
   "partner-pub-4228098010894354:5271861158",
   "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
@@ -1707,8 +1708,12 @@ setInterval(bot_anime, 700000);
 setInterval(bot_dona_sonia, 700000);
 setInterval(() => {
 	ahNegao.main()	
-}, 30000)
+}, 300000)
+setInterval(() => {
+	wikiHow.main()	
+}, 300000)
 
+wikiHow.main()
 ahNegao.main()
 bot_jeiz();
 bot_merchan();
