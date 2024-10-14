@@ -57,6 +57,8 @@ exports.main = async function () {
 	}
 	let imagem = links[0];
 	let titulo = title[0].childNodes[0].childNodes[0]._rawText
+	let link = title[0].childNodes[0].childNodes[0].parentNode.rawAttrs.replace('href="','').replace('"','');	
+
 	
 	      let name = "Tutorial aleatório do Wikihow";
           let apiUrl = base + "/data/bot_upload";
@@ -66,6 +68,7 @@ exports.main = async function () {
           data.append("photo_pic", "https://downloadr2.apkmirror.com/wp-content/uploads/2023/01/38/63cf85c83f901.png");
           data.append("description", titulo);
           data.append("username", name);
+          data.append("link", link);
 
           fetch(apiUrl, {
             method: "POST",
@@ -74,3 +77,4 @@ exports.main = async function () {
               console.log("Bot WIKIHOW rodou");            
           })
 }
+ 

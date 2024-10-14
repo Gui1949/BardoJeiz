@@ -3,6 +3,8 @@ const fetch = require("node-fetch");
 const GoogleImages = require("google-images");
 const ahNegao = require('./bots/ahnegao.js')
 const wikiHow = require('./bots/wikihow.js')
+const buzzFeed = require('./bots/buzzfeed.js')
+const ofertasML = require('./bots/ofertas_ml.js')
 const client = new GoogleImages(
   "partner-pub-4228098010894354:5271861158",
   "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
@@ -172,10 +174,13 @@ function bot_ze() {
           let FormData = require("form-data");
           let data = new FormData();
 
-          data.append("photo", img_aleatoria);
-          data.append("photo_pic", userpic);
-          data.append("description", desc);
-          data.append("username", name);
+            desc = desc.split(':');
+
+            data.append("photo", img_aleatoria);
+            data.append("photo_pic", userpic);
+            data.append("description", desc[0]);
+            data.append("link",  desc[1] + ":" + desc[2]);
+            data.append("username", name);
 
           fetch(apiUrl, {
             method: "POST",
@@ -206,10 +211,13 @@ function bot_ze() {
 
             let FormData = require("form-data");
             let data = new FormData();
+            
+            desc = desc.split(':');
 
             data.append("photo", img_aleatoria);
             data.append("photo_pic", userpic);
-            data.append("description", desc);
+            data.append("description", desc[0]);
+            data.append("link",  desc[1] + ":" + desc[2]);
             data.append("username", name);
 
             fetch(apiUrl, {
@@ -1708,13 +1716,15 @@ setInterval(bot_anime, 700000);
 setInterval(bot_dona_sonia, 700000);
 setInterval(() => {
 	ahNegao.main()	
-}, 300000)
-setInterval(() => {
-	wikiHow.main()	
+	wikiHow.main()
+	buzzFeed.main()
+	ofertasML.main()
 }, 300000)
 
 wikiHow.main()
+ofertasML.main()
 ahNegao.main()
+buzzFeed.main()
 bot_jeiz();
 bot_merchan();
 bot_dona_sonia();
