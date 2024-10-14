@@ -110,7 +110,7 @@ function Feed() {
   const [qtd_posts, setQTD] = React.useState(0);
   const [dados_limit, setLimit] = React.useState([]);
   const [posts_tela, setPostsTela] = React.useState(10);
-  const [shareLoader, setShare] = React.useState(false);
+  const [shareLoader, setShare] = React.useState({});
 
   //Verificar atualizações
 
@@ -254,7 +254,9 @@ const exportAsImage = async (obj_id, imageFileName) => {
           id={"btn_share_" + ler_dados.ID}
           onClick={async () => {			
 			  
-			 setShare(true);
+			setShare({ ...shareLoader, 
+				 [ler_dados.ID]: true
+				 });
 			  
 			//Loop para colocar o base64 no lugar da imagem
 			let downloadedImg = document.getElementById("foto_" + ler_dados.ID);	
@@ -328,11 +330,14 @@ const exportAsImage = async (obj_id, imageFileName) => {
                   openBlobImage(blob_64);
                 }
                 
-                setShare(false);
+            			setShare({ ...shareLoader, 
+				 [ler_dados.ID]: false
+				 });
+
              
           }}
         >
-          {ler_dados.USERNAME == "Publicidade" ? null : shareLoader ? (
+          {ler_dados.USERNAME == "Publicidade" ? null : shareLoader[ler_dados.ID] ? (
 			  <CircularProgress color="white" className="material-icons" id="font_dislike" size={30}/>
 			  ) : (
             <i className="material-icons" id="font_dislike">
