@@ -1,6 +1,7 @@
 const fs = require("fs");
 const fetch = require("node-fetch");
 const GoogleImages = require("google-images");
+const ahNegao = require('./bots/ahnegao.js')
 const client = new GoogleImages(
   "partner-pub-4228098010894354:5271861158",
   "AIzaSyDyZJg8XvB8FtI40o8VDM7muck6fKUpnNY"
@@ -46,7 +47,7 @@ function bot_jeiz() {
           let userpic =
             "https://www.osaogoncalo.com.br/img/Artigo-Destaque/80000/1_marcos_oliveira_como_beicola_em_a_grande_familia_00087132_0.jpg?xid=236127";
           let name = "Jeiz";
-          let apiUrl = base + "/bot_upload";
+          let apiUrl = base + "/data/bot_upload";
 
           if (img_aleatoria.includes("x-raw-image")) {
             throw new Error("001 - X-RAW IMAGE");
@@ -1704,7 +1705,11 @@ setInterval(bot_bolsonarista, 700000);
 setInterval(bot_petista, 700000);
 setInterval(bot_anime, 700000);
 setInterval(bot_dona_sonia, 700000);
+setInterval(() => {
+	ahNegao.main()	
+}, 30000)
 
+ahNegao.main()
 bot_jeiz();
 bot_merchan();
 bot_dona_sonia();
