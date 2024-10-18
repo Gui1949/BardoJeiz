@@ -377,6 +377,19 @@ const exportAsImage = async (obj_id, imageFileName) => {
                 </div>
               </div>
             </div>
+			</div>
+			
+			            
+			<div className="posts post_feed" style={{ paddingBottom: "1.1vh" }}>
+				<div id="temp_temperatura" style={{cursor:"pointer"}} onClick={() => window.open("https://gui1949.github.io/billiards-mobile", "_blank")}>
+                  <a id="temp_num" style={{ marginBottom: 0, paddingBottom: 0 }} className="nav_top_link">
+                    Bora uma sinuquinha?
+                  </a>
+                  <span className="material-icons md-5" id="temp_ico">
+                    toll
+                  </span>
+                </div>
+            
           </div>
           {lista_feed}
           <div
