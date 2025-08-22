@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 import "./loader.css";
 import html2canvas from "html2canvas";
 
-let url = "https://bar-do-jeiz.onrender.com/data";
+let url = "https://bardo-jeiz-server.vercel.app/data";
 
 function colorir(objeto) {
   if (objeto.style.color === "rgb(255, 121, 198)") {
@@ -264,7 +264,7 @@ const exportAsImage = async (obj_id, imageFileName) => {
 			let a = [1, 2]
 				
 			for(let loop of a){			
-			downloadedImg.src = await fetch("https://bar-do-jeiz.onrender.com/share?imagem=" + ler_dados.PIC_LOCAL, { method: "POST" })
+			downloadedImg.src = await fetch("https://bardo-jeiz-server.vercel.app/share?imagem=" + ler_dados.PIC_LOCAL, { method: "POST" })
 			.then((resp) => resp.json()).then((reqres) => {
 				return reqres.data
 			}).catch((e) => window.alert(e))			 			  
