@@ -15,7 +15,6 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import logo from "../bar.png";
-import { AsyncStorage } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useRef, useEffect } from "react";
@@ -131,8 +130,6 @@ const WelcomeScreen = ({ navigation }) => {
             Alert.alert("Erro", "Insira um username");
           } else {
             navigation.navigate("home");
-            AsyncStorage.setItem("username", text);
-            console.log(text);
           }
         }}
       >

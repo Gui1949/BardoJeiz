@@ -13,11 +13,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Platform,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
-import { AsyncStorage } from "react-native";
 
 let pickerResult = "";
 
@@ -34,7 +31,7 @@ export default class postScreen extends Component {
       <KeyboardAvoidingView
         style={styles.container}
         backgroundColor="#282a36"
-        behavior={Platform.OS === "ios" ? "padding" : null}
+        behavior={null}
       >
         <StatusBar barStyle="default" />
 
@@ -185,9 +182,7 @@ async function uploadImageAsync(uri, joao_carlos) {
 
     formData.append("description", joao_carlos);
 
-    const value = await AsyncStorage.getItem("username");
-    formData.append("username", value);
-    console.log(value);
+    formData.append("username", "Desenvolvedor");
 
     let options = {
       method: "POST",
@@ -212,7 +207,7 @@ const styles = StyleSheet.create({
     width: "80%",
     marginTop: 10,
     paddingLeft: 10,
-    color: '#ffffff',
+    color: "#ffffff",
     height: 46,
     borderWidth: 1.5,
     flexDirection: "row",

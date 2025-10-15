@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Image,
   RefreshControl,
-  ActivityIndicator,
   StyleSheet,
   View,
   Text,
@@ -12,11 +11,7 @@ import {
 } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
-import postScreen from "./postScreen";
 import { Video } from "expo-av";
-import { withNavigation } from "react-navigation";
-import { color } from "react-native-reanimated";
-import { StatusBar } from "expo-status-bar";
 import YoutubePlayer from "react-native-youtube-iframe";
 import { TouchableHighlight } from "react-native-gesture-handler";
 
@@ -68,7 +63,7 @@ export default class ViewImageScreen extends React.Component {
   }
 
   async componentDidMount() {
-    axios.get(`https://bardojeiz-server.herokuapp.com/data`).then((res) => {
+    axios.get(`https://bardo-jeiz-server.vercel.app/data`).then((res) => {
       const persons = res.data;
       this.setState({ persons });
     });
@@ -83,7 +78,7 @@ export default class ViewImageScreen extends React.Component {
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = undefined;
 
-      fetch("https://bardojeiz-server.herokuapp.com/data/del_dislike", {
+      fetch("https://bardo-jeiz-server.vercel.app/data/del_dislike", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -101,7 +96,7 @@ export default class ViewImageScreen extends React.Component {
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = 0;
 
-      fetch("https://bardojeiz-server.herokuapp.com/data/like", {
+      fetch("https://bardo-jeiz-server.vercel.app/data/like", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -124,7 +119,7 @@ export default class ViewImageScreen extends React.Component {
         this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
         likeCounter[str] = undefined;
 
-        fetch("https://bardojeiz-server.herokuapp.com/data/del_like", {
+        fetch("https://bardo-jeiz-server.vercel.app/data/del_like", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -149,7 +144,7 @@ export default class ViewImageScreen extends React.Component {
       this.setState({ ["likeLabelColor_" + str]: likeLabelColor_ });
       likeCounter[str] = undefined;
 
-      fetch("https://bardojeiz-server.herokuapp.com/data/del_like", {
+      fetch("https://bardo-jeiz-server.vercel.app/data/del_like", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -166,7 +161,7 @@ export default class ViewImageScreen extends React.Component {
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = 0;
 
-      fetch("https://bardojeiz-server.herokuapp.com/data/dislike", {
+      fetch("https://bardo-jeiz-server.vercel.app/data/dislike", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -185,7 +180,7 @@ export default class ViewImageScreen extends React.Component {
       var dislikeLabelColor_ = "#95a5a6";
       this.setState({ ["dislikeLabelColor_" + str]: dislikeLabelColor_ });
       dislikeCounter[str] = undefined;
-      fetch("https://bardojeiz-server.herokuapp.com/data/del_dislike", {
+      fetch("https://bardo-jeiz-server.vercel.app/data/del_dislike", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -201,7 +196,7 @@ export default class ViewImageScreen extends React.Component {
 
   render() {
     let claudinho_sensacao = this.state.persons.data[0];
-    axios.get(`https://bardojeiz-server.herokuapp.com/version`).then((res) => {
+    axios.get(`https://bardo-jeiz-server.vercel.app/version`).then((res) => {
       const version = res.data;
       this.setState({ version });
     });
@@ -220,8 +215,7 @@ export default class ViewImageScreen extends React.Component {
             <View style={styles.img_field}>
               <Image
                 source={{
-                  uri:
-                    "https://media.tenor.com/images/d740131a4906504d47cab865f1bd95b3/tenor.gif",
+                  uri: "https://media.tenor.com/images/d740131a4906504d47cab865f1bd95b3/tenor.gif",
                 }}
                 style={styles.img_fixed}
                 borderRadius={20}
@@ -245,14 +239,14 @@ export default class ViewImageScreen extends React.Component {
       );
     } else {
       let antenor_albuquerque = this.state.persons.data;
-      let versao_instalada = "0.1.0";
+      let versao_instalada = "0.1.1";
       let versao_atual = "";
       try {
         versao_atual = this.state.version.data;
       } catch {
         versao_atual = versao_instalada;
         axios
-          .get(`https://bardojeiz-server.herokuapp.com/version`)
+          .get(`https://bardo-jeiz-server.vercel.app/version`)
           .then((res) => {
             const version = res.data;
             this.setState({ version });
@@ -712,19 +706,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#ffffff",
     paddingLeft: 7,
-    paddingTop: Platform.OS === "android" ? 1 : 3,
+    paddingTop: 1,
   },
 
   avatarNameIcon: {
     paddingLeft: 10,
     color: "#ffffff",
-    paddingTop: Platform.OS === "android" ? 1 : 3,
+    paddingTop: 1,
   },
 
   avatarDescription: {
     paddingLeft: 7,
     color: "#ffffff",
-    paddingTop: Platform.OS === "android" ? 0 : 2,
+    paddingTop: 0,
     fontSize: 12,
   },
 

@@ -12,7 +12,6 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { faBorderNone, fas } from "@fortawesome/free-solid-svg-icons";
 import postScreen from "./app/assets/screens/postScreen";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { withNavigation } from "react-navigation";
 import { StatusBar } from "expo-status-bar";
 
 library.add(fab, fas, far);

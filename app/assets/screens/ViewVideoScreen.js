@@ -16,7 +16,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import axios from "axios";
 import postScreen from "./postScreen";
 import { Video } from "expo-av";
-import { withNavigation } from "react-navigation";
 
 let likeCounter = [];
 let dislikeCounter = [];
